@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~ALPHA-0909a]
---- VERSION: 1.0.1
+--- VERSION: 1.0.1d
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
