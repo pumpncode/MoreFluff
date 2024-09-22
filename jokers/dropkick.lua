@@ -23,7 +23,7 @@ local joker = {
   },
   loc_vars = function(self, info_queue, center)
     return {
-      vars = { center.ability.extra }
+      vars = { center.ability.extra.hands }
     }
   end,
   calculate = function(self, card, context)
