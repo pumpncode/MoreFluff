@@ -26,7 +26,9 @@ if mf_config["Achievements"] == nil then
   mf_config["Achievements"] = true
 end
 
-SMODS.load_mod_config(SMODS.Mods.Cryptid)
+if Cryptid then
+  SMODS.load_mod_config(SMODS.Mods.Cryptid)
+end
 
 SMODS.Sound({
 	key = "music_colourpack",
