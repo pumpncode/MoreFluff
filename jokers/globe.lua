@@ -39,12 +39,12 @@ for i = 1,jokers_to_create do
               return true
           end)}))
             end
+        return {
+                  message = localize('k_plus_planet'),
+                  colour = G.C.SECONDARY_SET.Planet,
+                  card = card
+              }
     end
-return {
-          message = localize('k_plus_planet'),
-          colour = G.C.SECONDARY_SET.Planet,
-          card = card
-      }
   end
 }
 
