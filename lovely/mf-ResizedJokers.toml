@@ -27,7 +27,7 @@ if center.name == "Pixel Joker" and (center.discovered or self.bypass_discovery_
   self.T.h = H
   self.T.w = W
 end
-if center.config.set == "Colour" then 
+if center.set == "Colour" then 
   H = H * 87 / 95
   self.T.h = H
 end
@@ -48,7 +48,7 @@ if _center.name == 'Pixel Joker' and (_center.discovered or self.bypass_discover
   self.children.center.scale.x = self.children.center.scale.x * (16 / 95)
   self.children.center.scale.y = self.children.center.scale.y * (16 / 95)
 end
-if _center.config.set == 'Colour' then 
+if _center.set == 'Colour' then 
   self.children.center.scale.y = self.children.center.scale.y * (87 / 95)
 end
 '''
