@@ -763,6 +763,48 @@ let decks = [
   },
 ]
 
+let sleeves = [
+  {
+    name: "Gros Michel Sleeve",
+    text: [
+      "Start run with {C:attention}Gros Michel",
+      "{C:yellow}(Cavendish)"
+    ],
+    image_url: "assets/s_mf_grosmichel.png",
+    rarity: "Sleeve"
+  },
+  {
+    name: "Rainbow Sleeve",
+    text: [
+      "Start run with a {C:colourcard}White",
+      "{C:colourcard}Colour{} card and the",
+      "{C:tarot,T:v_mf_paintroller}Paint Roller{} Voucher",
+      "{C:yellow}(and the Colour Theory voucher)",
+    ],
+    image_url: "assets/s_mf_rainbow.png",
+    rarity: "Sleeve"
+  },
+  {
+    name: "Philosophical Sleeve",
+    text: [
+      "Start run with 5 {C:yellow}(10)",
+      "{C:attention}Philosophical Jokers"
+    ],
+    image_url: "assets/s_mf_philosophical.png",
+    rarity: "Sleeve"
+  },
+  {
+    name: "Blasphemous Sleeve",
+    text: [
+      "Start run with a {C:dark_edition}Negative{}",
+      "{C:spectral}Eternal{} {C:yellow}(not eternal)",
+      "{C:attention}Blasphemy",
+    ],
+    image_url: "assets/s_mf_blasphemy.png",
+    rarity: "Sleeve"
+  },
+]
+
 let packs = [
   {
     name: "Paint Roller",
@@ -877,7 +919,8 @@ let rarities = {
   "Showdown": "#4584fa",
 
   "Colour": "#8867a5",
-  "Fusion": "#F7D762"
+  "Fusion": "#F7D762",
+  "Sleeve": "#9bb6bd",
 }
 
 regex = /{([^}]+)}/g;
@@ -1007,6 +1050,13 @@ if (decks.length === 0) {
 } else {
   let decks_div = document.querySelector(".decks");
   add_cards_to_div(decks, decks_div);
+}
+
+if (sleeves.length === 0) {
+  document.querySelector(".sleevesfull").style.display = "none"
+} else {
+  let sleeves_div = document.querySelector(".sleeves");
+  add_cards_to_div(sleeves, sleeves_div);
 }
 
 // if (extras.length === 0) {
