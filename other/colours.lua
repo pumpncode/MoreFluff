@@ -1,6 +1,9 @@
 function init()
   -- for the funny progress bar.
   function progressbar(val, max)
+    if max >= 20 then
+      return val, "/"..max
+    end
     return string.rep("#", val), string.rep("#", max - val)
   end
 
