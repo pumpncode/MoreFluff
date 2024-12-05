@@ -1,7 +1,7 @@
 local joker = {
   name = "Jankman",
   config = {
-    extra = { x_mult = 1.31 }
+    extra = { x_chips = 1.31 }
   },
   pos = {x = 0, y = 1},
   rarity = 3,
@@ -16,12 +16,12 @@ local joker = {
     text = {
       "All {C:dark_edition}modded{} Jokers",
       "{C:inactive}(and also Jolly Joker){}",
-      "each give {X:mult,C:white} X#1# {} Mult",
+      "each give {X:chips,C:white} X#1# {} Chips",
     }
   },
   loc_vars = function(self, info_queue, center)
     return {
-      vars = { center.ability.extra.x_mult }
+      vars = { center.ability.extra.x_chips }
     }
   end,
   calculate = function(self, card, context)
@@ -42,8 +42,9 @@ local joker = {
           end
         })) 
         return {
-          message = localize{type='variable',key='a_xmult',vars={card.ability.extra.x_mult}},
-          Xmult_mod = card.ability.extra.x_mult
+          message = localize{type='variable',key='a_xchips',vars={card.ability.extra.x_chips}},
+          Xchip_mod = card.ability.extra.x_chips,
+          colour = G.C.CHIPS,
         }
       end
     end
@@ -90,7 +91,7 @@ if JokerDisplay then
           break
         end
       end
-      return { x_mult = (real and mod_joker.ability.extra.x_mult ^ JokerDisplay.calculate_joker_triggers(mod_joker) or nil) }
+      return { x_chips = (real and mod_joker.ability.extra.x_chips ^ JokerDisplay.calculate_joker_triggers(mod_joker) or nil) }
     end
   }
 end

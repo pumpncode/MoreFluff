@@ -5,7 +5,7 @@
 --- MOD_AUTHOR: [notmario]
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
---- DEPENDENCIES: [Steamodded>=1.0.0~ALPHA-0909a]
+--- DEPENDENCIES: [Talisman>=2.0.0-beta8, Steamodded>=1.0.0~ALPHA-0909a]
 --- VERSION: 1.0.1e
 
 local current_mod = SMODS.current_mod
@@ -24,6 +24,9 @@ if mf_config["Colour Pack Music"] == nil then
 end
 if mf_config["Achievements"] == nil then
   mf_config["Achievements"] = true
+end
+if mf_config["Unfinished"] == nil then
+  mf_config["Unfinished"] = false
 end
 
 if Cryptid then
@@ -150,6 +153,112 @@ for _, v in ipairs(joker_list) do
   ::continue::
 end
 
+if mf_config["Unfinished"] then
+
+  local ortalab_jokers = {
+    -- common
+    "clintcondition",
+    "sheetsuggestion",
+
+    -- uncommon
+    "devilsknife",
+
+    -- rare
+    "twotrucks"
+  }
+
+  local familiar_jokers = {
+    -- common
+    "jimbojjoker"
+  }
+
+  if not mf_config["Jokers"] then
+    ortalab_jokers = {}
+    familiar_jokers = {}
+  end
+
+  for _, v in ipairs(ortalab_jokers) do
+    print(v)
+    local joker = SMODS.load_file("jokers/ortalab/"..v..".lua")()
+    if not joker then
+      goto eunitnoc
+    end
+    joker.key = v
+    joker.atlas = "mf_srekoj"
+    if not joker.pos then
+      joker.pos = { x = 0, y = 0 }
+    end
+
+    local joker_obj = SMODS.Joker(joker)
+    for k_, v_ in pairs(joker) do
+      if type(v_) == 'function' then
+        joker_obj[k_] = joker[k_]
+      end
+    end
+    joker_obj.jank_force_badge = {
+      name = "ffulF eroM",
+      col = G.C.GREEN
+    }
+
+    ::eunitnoc::
+  end
+
+  for _, v in ipairs(familiar_jokers) do
+    print(v)
+    local joker = SMODS.load_file("jokers/familiar/"..v..".lua")()
+    if not joker then
+      goto continue_fam
+    end
+    joker.key = v
+    joker.atlas = "mf_srekoj"
+    if not joker.pos then
+      joker.pos = { x = 0, y = 0 }
+    end
+    joker.pos.x = joker.pos.x + 10
+
+    local joker_obj = SMODS.Joker(joker)
+    for k_, v_ in pairs(joker) do
+      if type(v_) == 'function' then
+        joker_obj[k_] = joker[k_]
+      end
+    end
+    joker_obj.jank_force_badge = {
+      name = "Ectoplasm",
+      col = G.C.DARK_EDITION
+    }
+
+    ::continue_fam::
+  end
+end
+
+local smods_cmb = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+  if not SMODS.config.no_mod_badges and obj and obj.jank_force_badge then
+    local mod_name = obj.jank_force_badge.name
+    local size = 0.9
+    local font = G.LANG.font
+    local max_text_width = 2 - 2*0.05 - 4*0.03*size - 2*0.03
+    local calced_text_width = 0
+    -- Math reproduced from DynaText:update_text
+    for _, c in utf8.chars(mod_name) do
+        local tx = font.FONT:getWidth(c)*(0.33*size)*G.TILESCALE*font.FONTSCALE + 2.7*1*G.TILESCALE*font.FONTSCALE
+        calced_text_width = calced_text_width + tx/(G.TILESIZE*G.TILESCALE)
+    end
+    local scale_fac =
+        calced_text_width > max_text_width and max_text_width/calced_text_width
+        or 1
+    badges[#badges + 1] = {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.R, config={align = "cm", colour = obj.jank_force_badge.col, r = 0.1, minw = 2, minh = 0.36, emboss = 0.05, padding = 0.03*size}, nodes={
+          {n=G.UIT.B, config={h=0.1,w=0.03}},
+          {n=G.UIT.O, config={object = DynaText({string = mod_name or 'ERROR', colours = {G.C.WHITE},float = true, shadow = true, offset_y = -0.05, silent = true, spacing = 1*scale_fac, scale = 0.33*size*scale_fac})}},
+          {n=G.UIT.B, config={h=0.1,w=0.03}},
+        }}
+      }}
+  else
+    smods_cmb(obj, badges)
+  end
+end
+
 SMODS.Atlas({ 
   key = "mf_jokers", 
   atlas_table = "ASSET_ATLAS", 
@@ -158,9 +267,23 @@ SMODS.Atlas({
   py = 95 
 })
 SMODS.Atlas({ 
+  key = "mf_srekoj", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_srekoj.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
   key = "mf_colours", 
   atlas_table = "ASSET_ATLAS", 
   path = "mf_colours.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
+  key = "mf_oddities", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_oddities.png", 
   px = 71, 
   py = 95 
 })
@@ -210,6 +333,13 @@ else
 
   end
 end
+
+-- maybe another day
+
+-- if OddityAPI then
+--   init_odds = SMODS.load_file("other/oddities.lua")()
+--   init_odds()
+-- end
 
 SMODS.Back({
 	name = "Gros Michel Deck",
@@ -279,7 +409,7 @@ if has(joker_list, "philosophical") then
       unlocked = true,
       loc_vars = function(self)
         local key
-        if self.get_current_deck_name() ~= "Gros Michel Deck" then
+        if self.get_current_deck_name() ~= "Philosophical Deck" then
           key = self.key
         else
           key = self.key .. "_alt"
@@ -704,6 +834,8 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_colour_music"), ref_table = mf_config, ref_value = "Colour Pack Music" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_achievements"), ref_table = mf_config, ref_value = "Achievements" })
+      settings.nodes[#settings.nodes + 1] =
+        create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
 			config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
 			mf_nodes[#mf_nodes + 1] = config
 			return {

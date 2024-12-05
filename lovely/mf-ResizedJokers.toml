@@ -31,6 +31,10 @@ if center.set == "Colour" then
   H = H * 87 / 95
   self.T.h = H
 end
+if center.name == "odd-jimbophone" then 
+  W = W * 57 / 71
+  self.T.w = W
+end
 '''
 match_indent = true
 
@@ -50,6 +54,9 @@ if _center.name == 'Pixel Joker' and (_center.discovered or self.bypass_discover
 end
 if _center.set == 'Colour' then 
   self.children.center.scale.y = self.children.center.scale.y * (87 / 95)
+end
+if _center.name == 'odd-jimbophone' then 
+  self.children.center.scale.x = self.children.center.scale.x * (57 / 71)
 end
 '''
 match_indent = true
@@ -75,5 +82,8 @@ elseif self.config.center.name == "Pixel Joker" then
 elseif self.config.center.set == "Colour" then 
   self.T.h = H*scale*87/95*scale
   self.T.w = W*scale
+elseif self.config.center.name == "odd-jimbophone" then 
+  self.T.h = H*scale
+  self.T.w = W*scale*57/71*scale
 '''
 match_indent = true

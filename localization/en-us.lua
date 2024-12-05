@@ -194,7 +194,7 @@ return {
         text = {
           "All {C:dark_edition}modded{} Jokers",
           "{C:inactive}(and also Jolly Joker){}",
-          "each give {X:mult,C:white} X#1# {} Mult",
+          "each give {X:chips,C:white} X#1# {} Chips",
         }
       },
       j_mf_jester = {
@@ -371,7 +371,50 @@ return {
           "Joker cards when",
           "blind is selected"
         },
-      }
+      },
+      -- ORTALAB SWAPS
+      j_mf_clintcondition = {
+        name = "Clint Condition",
+        text = {
+          "{X:chips,C:white} X#1# {} Chips. {X:chips,C:white} X#2# {} Chips",
+          "instead for {C:chips}Clint{}",
+          "{C:inactive}(Who's Clint?)"
+        }
+      },
+      j_mf_sheetsuggestion = {
+        name = "Sheet Suggestion",
+        text = {
+          "{C:mult,s:1.1}+#1#{} Mult",
+          "{C:inactive}(funny flavour text)"
+        }
+      },
+
+      j_mf_devilsknife = {
+        name = "Devilsknife",
+        text = {
+          "Creates a {C:colourcard}Blue{} and",
+          "a {C:colourcard}Lilac{} {C:colourcard}Colour{} card",
+          "when sold",
+          "{C:inactive}(Must have room)"
+        },
+      },
+
+      j_mf_twotrucks = {
+        name = "Two Trucks",
+        text = {
+          "Gains {X:chips,C:white} X#1# {} Chips for",
+          "each unique pair in played hand",
+          "{C:inactive}(Currently {X:chips,C:white} X#2# {} {C:inactive}Chips)",
+        },
+      },
+
+      -- FAMILIAR SWAPS
+      j_mf_jimbojjoker = {
+        name = "Jimbo J. Joker",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult"
+        }
+      },
     },
     Colour = {
       c_mf_black = {
@@ -553,6 +596,16 @@ return {
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+    },
+    Oddity = {
+      c_mf_jimbophone = {
+        name = "JimboPhone",
+        text = {
+          "Create {C:attention}#1#{} {C:mult}Joker{},",
+          "does not need room",
+          "{C:inactive}(Joker: +4 Mult)"
         },
       },
     },
@@ -745,6 +798,7 @@ return {
       mf_config_colour_cards = "Colour Cards",
       mf_config_colour_music = "Colour Pack Music",
       mf_config_achievements = "Achievements",
+      mf_config_unfinished = "Unfinished Content",
     },
     labels = {
       colour = "Colour"

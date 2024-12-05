@@ -7,6 +7,7 @@ local joker = {
   },
   pos = {x = 9, y = 4},
   soul_pos = {x = 9, y = 5},
+  drama = {x = 5, y = 5},
   rarity = 4,
   cost = 20,
   unlocked = true,
