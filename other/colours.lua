@@ -1,7 +1,7 @@
 function init()
   -- for the funny progress bar.
   function progressbar(val, max)
-    if max >= 20 then
+    if max > 10 then
       return val, "/"..max
     end
     return string.rep("#", val), string.rep("#", max - val)
@@ -804,6 +804,7 @@ function init()
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           play_sound('timpani')
           local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
+          n_card.no_omega = true
           n_card:add_to_deck()
           n_card:set_edition({negative = true}, true)
           G.consumeables:emplace(n_card)
