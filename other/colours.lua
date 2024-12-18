@@ -1102,8 +1102,6 @@ function init()
             _card.ability.partial_rounds = _card.ability.partial_rounds - _card.ability.upgrade_rounds
             
             if _card.ability.name == "col_Yellow" then
-              G.E_MANAGER:add_event(Event({
-                func = function() 
                   _card.ability.extra_value = _card.ability.extra_value + _card.ability.value_per
                   _card:set_cost()
                   card_eval_status_text(_card, 'extra', nil, nil, nil, {
@@ -1111,31 +1109,21 @@ function init()
                     colour = G.C.MONEY,
                     card = _card
                   }) 
-                  return true
-                end}))
             else
-              G.E_MANAGER:add_event(Event({
-                func = function() 
                   card_eval_status_text(_card, 'extra', nil, nil, nil, {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.SECONDARY_SET.ColourCard,
                     card = _card
                   }) 
-                  return true
-                end}))
             end
           end
           if not upgraded then
             local str = _card.ability.partial_rounds..'/'.._card.ability.upgrade_rounds
-            G.E_MANAGER:add_event(Event({
-              func = function()
               card_eval_status_text(_card, 'extra', nil, nil, nil, {
                 message = str,
                 colour = G.C.SECONDARY_SET.ColourCard,
                 card = _card
               }) 
-              return true
-            end }))
           end
         end
       end
