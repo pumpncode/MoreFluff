@@ -319,7 +319,7 @@ if CardSleeves then
     key = "mf_sleeves", 
     atlas_table = "ASSET_ATLAS", 
     path = "mf_sleeves.png", 
-    px = 71, 
+    px = 73, 
     py = 95 
   })
 end
@@ -359,7 +359,7 @@ if CardSleeves then
     unlocked = true,
     loc_vars = function(self)
       local key
-      if self.get_current_deck_name() ~= "Gros Michel Deck" then
+      if self.get_current_deck_key() ~= "b_mf_grosmichel" then
         key = self.key
       else
         key = self.key .. "_alt"
@@ -367,7 +367,7 @@ if CardSleeves then
       return { key = key }
     end,
     apply = function(self)
-      if self.get_current_deck_name() ~= "Gros Michel Deck" then
+      if self.get_current_deck_key() ~= "b_mf_grosmichel" then
         G.E_MANAGER:add_event(Event({
           func = function()
             local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_gros_michel', nil)
@@ -409,7 +409,7 @@ if has(joker_list, "philosophical") then
       unlocked = true,
       loc_vars = function(self)
         local key
-        if self.get_current_deck_name() ~= "Philosophical Deck" then
+        if self.get_current_deck_key() ~= "b_mf_philosophical" then
           key = self.key
         else
           key = self.key .. "_alt"
@@ -451,7 +451,7 @@ if mf_config["Colour Cards"] then
       unlocked = true,
       loc_vars = function(self)
         local key
-        if self.get_current_deck_name() ~= "Rainbow Deck" then
+        if self.get_current_deck_key() ~= "b_mf_rainbow" then
           key = self.key
           self.config = { voucher = 'v_mf_paintroller', consumables = { 'c_mf_white' } }
         else
@@ -482,7 +482,7 @@ if has(joker_list, "blasphemy") then
       unlocked = true,
       loc_vars = function(self)
         local key
-        if self.get_current_deck_name() ~= "Blasphemous Deck" then
+        if self.get_current_deck_key() ~= "b_mf_blasphemy" then
           key = self.key
         else
           key = self.key .. "_alt"
@@ -490,7 +490,7 @@ if has(joker_list, "blasphemy") then
         return { key = key }
       end,
       apply = function(self)
-        if self.get_current_deck_name() ~= "Blasphemous Deck" then
+        if self.get_current_deck_key() ~= "b_mf_blasphemy" then
           G.E_MANAGER:add_event(Event({
             func = function()
               local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_mf_blasphemy', nil)
