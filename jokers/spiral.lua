@@ -20,7 +20,7 @@ local joker = {
     }
   },
   loc_vars = function(self, info_queue, center)
-    local val = center.ability.extra.mult + math.floor(center.ability.extra.coeff * math.cos(math.pi/center.ability.extra.dilation * G.GAME.dollars or 0) + 0.5)
+    local val = center.ability.extra.mult + math.floor(center.ability.extra.coeff * math.cos(math.pi/center.ability.extra.dilation * to_number(G.GAME.dollars) or 0) + 0.5)
     return {
       vars = { center.ability.extra.mult, center.ability.extra.coeff, center.ability.extra.dilation, val }
     }
@@ -28,7 +28,7 @@ local joker = {
 
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and not context.before and not context.after then
-      local val = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * G.GAME.dollars or 0) + 0.5)
+      local val = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * to_number(G.GAME.dollars) or 0) + 0.5)
         return {
           message = localize{type='variable',key='a_mult',vars={val}},
           mult_mod = val
@@ -44,7 +44,7 @@ if JokerDisplay then
       { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT },
     },
     calc_function = function(card)
-      card.joker_display_values.mult = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * G.GAME.dollars or 0) + 0.5)
+      card.joker_display_values.mult = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * to_number(G.GAME.dollars) or 0) + 0.5)
     end,
   }
 end
