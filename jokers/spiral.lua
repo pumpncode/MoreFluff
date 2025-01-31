@@ -1,5 +1,5 @@
 local joker = {
-  name = "Golden Carrot",
+  name = "Spiral Joker",
   config = {
     extra = { mult = 10, coeff = 7, dilation = 8 }
   },
@@ -27,7 +27,7 @@ local joker = {
   end,
 
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.joker_main then
       local val = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * to_number(G.GAME.dollars) or 0) + 0.5)
         return {
           message = localize{type='variable',key='a_mult',vars={val}},
