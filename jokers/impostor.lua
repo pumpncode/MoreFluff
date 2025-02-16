@@ -34,7 +34,7 @@ local joker = {
       end
       card.ability.extra.check = red_suits
     end
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.cardarea == G.jokers and context.joker_main then
       if card.ability.extra.check == 1 then
         return {
           message = localize{type='variable',key='a_xmult',vars={card.ability.extra.x_mult}},

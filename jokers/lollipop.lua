@@ -52,7 +52,7 @@ local joker = {
           colour = G.C.RED
         }
       end
-    elseif context.cardarea == G.jokers and not context.before and not context.after then
+    elseif context.cardarea == G.jokers and context.joker_main then
         return {
           message = localize{type='variable',key='a_xmult',vars={card.ability.x_mult}},
           Xmult_mod = card.ability.x_mult,

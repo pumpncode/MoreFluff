@@ -27,7 +27,7 @@ local joker = {
     return {vars = { center.ability.h_size, center.ability.extra.mult_per, center.ability.extra.thresh } }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after and G.hand.config.card_limit < card.ability.extra.thresh then
+    if context.cardarea == G.jokers and context.joker_main and G.hand.config.card_limit < card.ability.extra.thresh then
       return {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult_per * (card.ability.extra.thresh - G.hand.config.card_limit)}},
         mult_mod = card.ability.extra.mult_per * (card.ability.extra.thresh - G.hand.config.card_limit)
