@@ -26,7 +26,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after and G.GAME.current_round.hands_played == 0 then
+    if context.cardarea == G.jokers and context.joker_main and G.GAME.current_round.hands_played == 0 then
       return {
         message = localize{type='variable',key='a_chips',vars={card.ability.extra.chips}},
         chip_mod = card.ability.extra.chips, 

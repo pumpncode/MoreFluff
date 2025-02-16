@@ -52,7 +52,7 @@ local joker = {
         }
       end
     end
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.cardarea == G.jokers and context.joker_main then
       if card.ability.extra.mult > 0 and card.ability.extra.chips > 0 then
         hand_chips = mod_chips(hand_chips + card.ability.extra.chips)
         update_hand_text({delay = 0}, {chips = hand_chips})
