@@ -12,6 +12,8 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  display_size = { w = 16, h = 16 },
+  pixel_size = { w = 16, h = 16 },
   loc_txt = {
     name = "Pixel Joker",
     text = {

@@ -160,6 +160,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       for k, v in pairs(G.jokers.cards) do
         if v.ability.set == 'Joker' and ((not v.edition) or (v.edition and not v.edition.egative)) then
@@ -221,6 +223,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
@@ -268,6 +272,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -307,6 +313,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
@@ -355,6 +363,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
@@ -413,6 +423,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -452,6 +464,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -491,6 +505,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -530,6 +546,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
@@ -577,6 +595,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
@@ -625,6 +645,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return false
     end,
@@ -652,6 +674,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -691,6 +715,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -730,6 +756,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -769,6 +797,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -796,6 +826,8 @@ function init()
     atlas = "mf_colours",
     unlocked = true,
     discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
     can_use = function(self, card)
       return true
     end,
@@ -837,6 +869,8 @@ function init()
         atlas = "mf_colours",
         unlocked = true,
         discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
         can_use = function(self, card)
           return true
         end,
@@ -878,6 +912,8 @@ function init()
         atlas = "mf_colours",
         unlocked = true,
         discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
         can_use = function(self, card)
           return true
         end,
@@ -916,6 +952,8 @@ function init()
         atlas = "mf_colours",
         unlocked = true,
         discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
         can_use = function(self, card)
           return true
         end,
@@ -955,6 +993,8 @@ function init()
         atlas = "mf_colours",
         unlocked = true,
         discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
         can_use = function(self, card)
           return true
         end,

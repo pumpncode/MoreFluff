@@ -16,6 +16,8 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  display_size = { w = 71, h = 71 },
+  pixel_size = { w = 71, h = 71 },
   loc_txt = {
     name = "Mashup Album",
     text = {
