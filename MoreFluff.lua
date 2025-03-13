@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.1.1~dev, Steamodded>=1.0.0~BETA-0312b-STEAMODDED]
---- VERSION: 1.0.3
+--- VERSION: 1.1.0
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
