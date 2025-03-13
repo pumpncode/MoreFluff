@@ -40,7 +40,7 @@ local joker = {
       end
     end
     
-    if context.cardarea == G.jokers and not context.before and not context.after  then
+    if context.cardarea == G.jokers and context.joker_main  then
       if pseudorandom('lucky_charm_mult') < G.GAME.probabilities.normal/card.ability.extra.mult_chance then
         return {
           message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},

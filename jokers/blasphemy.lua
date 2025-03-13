@@ -31,7 +31,7 @@ local joker = {
     if context.cardarea == G.jokers and context.before and not context.blueprint then
       ease_hands_played(-G.GAME.current_round.hands_left, true)
     end
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.cardarea == G.jokers and context.joker_main then
       return {
         message = localize{type='variable',key='a_xmult',vars={card.ability.extra.xmult}},
         Xmult_mod = card.ability.extra.xmult,

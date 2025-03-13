@@ -25,7 +25,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.cardarea == G.jokers and context.joker_main then
       if string.find(string.lower(G.PROFILES[G.SETTINGS.profile].name), "clint") then
         check_for_unlock({type = 'mf_trigger_paul'})
         return {

@@ -25,7 +25,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after and context.full_hand ~= nil then
+    if context.cardarea == G.jokers and context.joker_main and context.full_hand ~= nil then
       local non_hearts = 0
       for k, v in ipairs(context.full_hand) do
         if not v:is_suit('Hearts', nil, true) then

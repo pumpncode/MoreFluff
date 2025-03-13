@@ -42,7 +42,7 @@ local joker = {
         card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_reset'), colour = G.C.PURPLE})
       end
     end
-    if context.cardarea == G.jokers and not context.before and not context.after then
+    if context.cardarea == G.jokers and context.joker_main then
       return {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult} },
         mult_mod = card.ability.extra.mult

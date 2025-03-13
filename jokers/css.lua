@@ -26,7 +26,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and not context.before and not context.after and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and context.poker_hands then
+    if context.cardarea == G.jokers and context.joker_main and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and context.poker_hands then
       if next(context.poker_hands["Flush"]) then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({
