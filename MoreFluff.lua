@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.1.1~dev, Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.2.0
+--- VERSION: 1.2.1
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
@@ -800,6 +800,10 @@ end
 local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
+  
+  for _, other_card in pairs(G.deck.cards) do
+    SMODS.debuff_card(other_card, false, "brass_card")
+  end
 
   -- thanks feder
   -- does CA even have a 1.0.0 port?

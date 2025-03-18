@@ -99,9 +99,7 @@ function init()
       retriggers = 2
     },
     calculate = function (self, card, context)
-      if
-        context.repetition
-      then
+      if context.before and context.cardarea == G.play then
         for _, other_card in pairs(G.play.cards) do
           if other_card ~= card then
             G.E_MANAGER:add_event(Event({
@@ -110,7 +108,7 @@ function init()
               func = function()
                 other_card:juice_up()
                 card:juice_up()
-                other_card.debuff = true
+                SMODS.debuff_card(other_card, true, "brass_card")
                 play_sound('cancel', 0.8+ (0.9 + 0.2*math.random())*0.2, 1)
                 -- ease_dollars(card.ability.cash)
                 return true
@@ -118,6 +116,10 @@ function init()
             }))
           end
         end
+      end
+      if
+        context.repetition
+      then
         return {
           message = localize("k_again_ex"),
           repetitions = card.ability.retriggers,
