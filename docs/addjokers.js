@@ -20,7 +20,6 @@ let jokers = [
     image_url: "assets/j_mf_clownfish.png",
     rarity: "Common",
     badges: [
-      ["assets/badge-balancebuff.png", "+10 -> +15 chips"],
     ],
   },
   {
@@ -80,7 +79,6 @@ let jokers = [
     image_url: "assets/j_mf_monochrome.png",
     rarity: "Common",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
     ]
   },
   {
@@ -102,7 +100,6 @@ let jokers = [
     image_url: "assets/j_mf_simplified.png",
     rarity: "Common",
     badges: [
-      ["assets/badge-balancebuff.png", "Now triggers on itself"],
     ],
   },
   {
@@ -124,7 +121,6 @@ let jokers = [
     image_url: "assets/j_mf_treasuremap.png",
     rarity: "Common",
     badges: [
-      ["assets/badge-balancerework.png", "3 -> 2 rounds\n$18 -> $13 earned"],
     ],
   },
   {
@@ -135,7 +131,6 @@ let jokers = [
     image_url: "assets/j_mf_pipe.png",
     rarity: "Common",
     badges: [
-      ["assets/badge-balancebuff.png", "Can now be purchased with full joker slots"],
     ],
   },
   {
@@ -149,7 +144,6 @@ let jokers = [
     image_url: "assets/j_mf_badlegaldefence.png",
     rarity: "Uncommon",
     badges: [
-      ["assets/badge-balancenerf.png", "Common -> Uncommon"],
     ],
   },
   {
@@ -222,7 +216,6 @@ let jokers = [
     image_url: "assets/j_mf_couponcatalogue.png",
     rarity: "Uncommon",
     badges: [
-      ["assets/badge-balancerework.png", "+10 -> +15 Mult\nCommon -> Uncommon"],
     ],
   },
   {
@@ -273,7 +266,6 @@ let jokers = [
     image_url: "assets/j_mf_impostor.png",
     rarity: "Uncommon",
     badges: [
-      ["assets/badge-balancebuff.png", "X2 -> X3 Mult"],
     ],
   },
   {
@@ -319,7 +311,6 @@ let jokers = [
     image_url: "assets/j_mf_teacup.png",
     rarity: "Uncommon",
     badges: [
-      ["assets/badge-balancebuff.png", "4 hands -> 5 hands"],
     ],
   },
   {
@@ -375,7 +366,6 @@ let jokers = [
     image_url: "assets/j_mf_cba.png",
     rarity: "Rare",
     badges: [
-      ["assets/badge-balancerework.png", "Effect has been replaced."],
     ],
   },
   {
@@ -409,7 +399,6 @@ let jokers = [
     image_url: "assets/j_mf_jankman.png",
     rarity: "Rare",
     badges: [
-      ["assets/badge-balancebuff.png", "X1.25 -> X1.31 Mult\nNow triggers on itself, and Jolly Jokers"],
     ],
   },
   {
@@ -423,7 +412,6 @@ let jokers = [
     image_url: "assets/j_mf_mouthmoods.png",
     rarity: "Rare",
     badges: [
-      ["assets/badge-balancebuff.png", "Starts at +4 Mult and +15 Chips"],
     ],
   },
   {
@@ -445,7 +433,6 @@ let jokers = [
     image_url: "assets/j_mf_rainbow.png",
     rarity: "Rare",
     badges: [
-      ["assets/badge-balancenerf.png", "X2 -> X1.5 Mult"],
     ],
   },
   {
@@ -479,7 +466,6 @@ let jokers = [
     rarity: "Legendary",
     soul: true,
     badges: [
-      ["assets/badge-new.png", "This is new!"],
     ],
   },
   {
@@ -496,7 +482,6 @@ let jokers = [
     rarity: "Exotic",
     exotic: true,
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ],
   },
@@ -676,7 +661,6 @@ let consumables = [
     image_url: "assets/c_mf_purple.png",
     rarity: "Colour",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ]
   },
@@ -690,7 +674,6 @@ let consumables = [
     image_url: "assets/c_mf_moonstone.png",
     rarity: "Colour",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ]
   },
@@ -704,7 +687,6 @@ let consumables = [
     image_url: "assets/c_mf_gold.png",
     rarity: "Colour",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ]
   },
@@ -718,9 +700,223 @@ let consumables = [
     image_url: "assets/c_mf_ooffoo.png",
     rarity: "Colour",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ]
+  },
+  {
+    name: "The Fool!",
+    text: [
+      "Creates the last",
+      "{C:rotarot}45 Degree Rotated Tarot{} or {C:colourcard}Colour{} ",
+      "card used during this run",
+      "{s:0.8,C:rotarot}The Fool!{s:0.8} excluded"
+    ],
+    image_url: "assets/rotarot/fool.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Magician!",
+    text: [
+      "Enhances {C:attention}2{}",
+      "selected cards to",
+      "{C:attention}Styled Cards"
+    ],
+    image_url: "assets/rotarot/magician.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The High Priestess!",
+    text: [
+      "Creates up to {C:attention}2",
+      "random {C:colourcard}Colour{} cards",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/rotarot/highpriestess.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Empress!",
+    text: [
+      "Enhances {C:attention}2",
+      "selected cards to",
+      "{C:attention}Cult Cards"
+    ],
+    image_url: "assets/rotarot/empress.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Emperor!",
+    text: [
+      "Creates up to {C:attention}2{} random",
+      "{C:rotarot}45 Degree Rotated Tarot{} cards",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/rotarot/emperor.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Hierophant!",
+    text: [
+      "Enhances {C:attention}2",
+      "selected cards to",
+      "{C:attention}Monus Cards"
+    ],
+    image_url: "assets/rotarot/hierophant.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Lovers!",
+    text: [
+      "Enhances {C:attention}2",
+      "selected cards to",
+      "{C:attention}Styled Cards"
+    ],
+    image_url: "assets/rotarot/lovers.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Chariot!",
+    text: [
+      "Enhances {C:attention}1{} selected",
+      "card into a",
+      "{C:attention}Teal Card"
+    ],
+    image_url: "assets/rotarot/chariot.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "Justice!",
+    text: [
+      "Enhances {C:attention}1{} selected",
+      "card into a",
+      "{C:attention}Brass Card"
+    ],
+    image_url: "assets/rotarot/justice.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Hermit!",
+    text: [
+      "Sets money to next",
+      "multiple of {C:money}$25",
+    ],
+    image_url: "assets/rotarot/hermit.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Wheel of Fortune!",
+    text: [
+      "{C:green}1 in 5{} chance to add",
+      "a random {C:negative}edition",
+      "to a random {C:attention}Joker",
+      "{C:inactive}All editions are weighted equally...{}"
+    ],
+    image_url: "assets/rotarot/wheeloffortune.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "Strength!",
+    text: [
+      "Randomises rank of up to",
+      "{C:attention}3{} selected cards",
+    ],
+    image_url: "assets/rotarot/strength.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Hanged Man!",
+    text: [
+      "Destroys {C:attention}3{} random",
+      "cards in hand",
+    ],
+    image_url: "assets/rotarot/hangedman.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "Death!",
+    text: [
+      "Select {C:attention}3{} cards,",
+      "convert {C:attention}all{} selected cards",
+      "into a {C:attention}random{} selected card"
+    ],
+    image_url: "assets/rotarot/death.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "Temperance!",
+    text: [
+      "Add {C:money}$3{} of {C:attention}sell value",
+      "to every {C:attention}Joker{} and",
+      "{C:attention}Consumable{} card",
+    ],
+    image_url: "assets/rotarot/temperance.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Devil!",
+    text: [
+      "Enhances {C:attention}2{}",
+      "selected cards to",
+      "{C:attention}Marigold Cards"
+    ],
+    image_url: "assets/rotarot/devil.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Tower!",
+    text: [
+      "Enhances {C:attention}1{} selected",
+      "card into a",
+      "{C:attention}Gemstone Card"
+    ],
+    image_url: "assets/rotarot/tower.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Star!",
+    text: [
+      "Add {C:attention}3{} random {C:attention}Enhanced",
+      "{C:diamonds}Diamonds{} to your hand"
+    ],
+    image_url: "assets/rotarot/star.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Moon!",
+    text: [
+      "Add {C:attention}3{} random {C:attention}Enhanced",
+      "{C:clubs}Clubs{} to your hand"
+    ],
+    image_url: "assets/rotarot/moon.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The Sun!",
+    text: [
+      "Add {C:attention}3{} random {C:attention}Enhanced",
+      "{C:hearts}Hearts{} to your hand"
+    ],
+    image_url: "assets/rotarot/sun.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "Judgement!",
+    text: [
+      "Creates a random",
+      "{C:dark_edition}modded{C:attention} Joker",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/rotarot/judgement.png",
+    rarity: "45 Degree Rotated Tarot"
+  },
+  {
+    name: "The World!",
+    text: [
+      "Add {C:attention}3{} random {C:attention}Enhanced",
+      "{C:spades}Spades{} to your hand"
+    ],
+    image_url: "assets/rotarot/world.png",
+    rarity: "45 Degree Rotated Tarot"
   },
 ]
 
@@ -760,6 +956,94 @@ let decks = [
     ],
     image_url: "assets/b_mf_blasphemy.png",
     rarity: "Deck"
+  },
+]
+
+let enhancements = [
+  {
+    name: "Monus Card",
+    text: [
+      "{C:chips}+10{} Chips",
+      "per hand level",
+      "{C:inactive}(from {C:attention}The Hierophant!{C:inactive})",
+    ],
+    image_url: "assets/monus.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Cult Card",
+    text: [
+      "{C:mult}+1{} Mult",
+      "per hand level",
+      "{C:inactive}(from {C:attention}The Empress!{C:inactive})",
+    ],
+    image_url: "assets/cult.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Styled Card",
+    text: [
+      "Gains a random {C:attention}Seal{}",
+      "when drawn to hand",
+      "{C:inactive}(from {C:attention}The Lovers!{C:inactive})",
+    ],
+    image_url: "assets/styled.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Brass Card",
+    text: [
+      "{C:attention}Retriggers{} 2 additional",
+      "times when scored, but",
+      "{C:red}debuffs{} all other cards",
+      "{C:inactive}(from {C:attention}Justice!{C:inactive})",
+    ],
+    image_url: "assets/brass.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Teal Card",
+    text: [
+      "{X:chips,C:white} X1.5{} Chips",
+      "while this card",
+      "stays in hand",
+      "{C:inactive}(from {C:attention}The Chariot!{C:inactive})",
+    ],
+    image_url: "assets/teal.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Gemstone Card",
+    text: [
+      "{C:attention}+$3{} when scored",
+      "no rank or suit",
+      "{C:inactive}(from {C:attention}The Tower!{C:inactive})",
+    ],
+    image_url: "assets/gemstone.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Marigold Card",
+    text: [
+      "{C:money}$1{} for each other",
+      "{C:attention}Marigold Card{} when",
+      "this card is held in",
+      "hand at end of round",
+      "{C:inactive}(from {C:attention}The Devil!{C:inactive})",
+    ],
+    image_url: "assets/marigold.png",
+    rarity: "Enhancement"
+  },
+  {
+    name: "Yucky Card",
+    text: [
+      "{C:green}1 in 2{} chance to",
+      "give {C:attention}$1{} and {C:red}destroy{}",
+      "after being scored",
+      "{C:inactive}(from {C:attention}The Magician!{C:inactive})",
+    ],
+    image_url: "assets/yucky.png",
+    rarity: "Enhancement"
   },
 ]
 
@@ -834,7 +1118,6 @@ let packs = [
     image_url: "assets/v_mf_artprogram.png",
     rarity: "Voucher",
     badges: [
-      ["assets/badge-new.png", "This is new!"],
       ["assets/badge-cryptid.png", "This requires Cryptid."],
     ]
   },
@@ -888,6 +1171,8 @@ let cols = {
   VOUCHER: "#fd682b",
   EDITION: "#4ca893",
 
+  ROTAROT: "#8e73d9",
+
   ALCHEMICAL: "#C09D75",
   COLOURCARD: "#8867a5",
   
@@ -918,6 +1203,7 @@ let rarities = {
   "Boss Blind": "#5d5dff",
   "Showdown": "#4584fa",
 
+  "45 Degree Rotated Tarot": "#8e73d9",
   "Colour": "#8867a5",
   "Fusion": "#F7D762",
   "Sleeve": "#9bb6bd",
@@ -1001,6 +1287,9 @@ let add_cards_to_div = (jokers, jokers_div) => {
     if (joker.name == "Mashup Album" || joker.name == "Triangle Joker") {
       joker_div.classList.add("mouthmoods");
     }
+    if (joker.rarity == "45 Degree Rotated Tarot") {
+      joker_div.classList.add("rotarot");
+    }
     if (joker.badges) {
       let badge_div = document.createElement("div");
       badge_div.classList.add("badges")
@@ -1036,6 +1325,13 @@ if (consumables.length === 0) {
 } else {
   let consumables_div = document.querySelector(".consumables");
   add_cards_to_div(consumables, consumables_div);
+}
+
+if (enhancements.length === 0) {
+  document.querySelector(".enhancementsfull").style.display = "none"
+} else {
+  let enhancements_div = document.querySelector(".enhancements");
+  add_cards_to_div(enhancements, enhancements_div);
 }
 
 if (packs.length === 0) {

@@ -98,7 +98,7 @@ h1 {
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 1rem;
 }
-.cards.consumables, .cards.decks, .cards.blinds, .cards.extras, .cards.sleeves {
+.cards.decks, .cards.blinds, .cards.extras, .cards.sleeves, .cards.enhancements {
   width: calc( (100% - 4rem) * 0.8 + 3rem);
   margin: 0 auto;
 }
@@ -157,6 +157,10 @@ h1 {
 .joker.pixeljoker > img {
   height: 32px;
   margin: 79px 55px;
+}
+.joker.rotarot > img {
+  height: 214px !important;
+  width: 214px !important;
 }
 .joker.mouthmoods > img {
   height: 142px;

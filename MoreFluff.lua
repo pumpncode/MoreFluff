@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.1.1~dev, Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.1.0
+--- VERSION: 1.2.0
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
@@ -19,8 +19,11 @@ end
 if mf_config["Colour Cards"] == nil then
   mf_config["Colour Cards"] = true
 end
-if mf_config["Colour Pack Music"] == nil then
-  mf_config["Colour Pack Music"] = true
+if mf_config["Music"] == nil then
+  mf_config["Music"] = true
+end
+if mf_config["45 Degree Rotated Tarot Cards"] == nil then
+  mf_config["45 Degree Rotated Tarot Cards"] = true
 end
 if mf_config["Achievements"] == nil then
   mf_config["Achievements"] = true
@@ -38,12 +41,28 @@ SMODS.Sound({
 	path = "music_colourpack.ogg",
 	select_music_track = function()
 		return (
-      mf_config["Colour Pack Music"] and 
+      mf_config["Music"] and 
       (
         G.pack_cards
         and G.pack_cards.cards
         and G.pack_cards.cards[1]
         and G.pack_cards.cards[1].ability.set == "Colour"
+      )
+    )
+	end,
+})
+
+SMODS.Sound({
+	key = "music_rotarot",
+	path = "music_rotarot.ogg",
+	select_music_track = function()
+		return (
+      mf_config["Music"] and 
+      (
+        G.pack_cards
+        and G.pack_cards.cards
+        and G.pack_cards.cards[1]
+        and G.pack_cards.cards[1].ability.set == "Rotarot"
       )
     )
 	end,
@@ -285,6 +304,20 @@ SMODS.Atlas({
   py = 95 
 })
 SMODS.Atlas({ 
+  key = "mf_rotarots", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_rotarots.png", 
+  px = 107, 
+  py = 107
+})
+SMODS.Atlas({ 
+  key = "mf_rotarotpacks", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_rotarotpacks.png", 
+  px = 106, 
+  py = 106
+})
+SMODS.Atlas({ 
   key = "mf_oddities", 
   atlas_table = "ASSET_ATLAS", 
   path = "mf_oddities.png", 
@@ -336,6 +369,13 @@ else
   function colour_end_of_round_effects()
 
   end
+end
+-- add a way for these to be disabled
+if mf_config["45 Degree Rotated Tarot Cards"] then
+  init_enhancers = SMODS.load_file("other/enhancers.lua")()
+  init_enhancers()
+  init_rotarots = SMODS.load_file("other/rotarots.lua")()
+  init_rotarots()
 end
 
 -- maybe another day
@@ -833,9 +873,9 @@ local morefluffTabs = function() return {
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
       settings.nodes[#settings.nodes + 1] =
-        create_toggle({ label = localize("mf_config_colour_cards"), ref_table = mf_config, ref_value = "Colour Cards" })
+        create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
       settings.nodes[#settings.nodes + 1] =
-        create_toggle({ label = localize("mf_config_colour_music"), ref_table = mf_config, ref_value = "Colour Pack Music" })
+        create_toggle({ label = localize("mf_config_colour_cards"), ref_table = mf_config, ref_value = "Colour Cards" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_achievements"), ref_table = mf_config, ref_value = "Achievements" })
       settings.nodes[#settings.nodes + 1] =
