@@ -994,8 +994,9 @@ let enhancements = [
     name: "Brass Card",
     text: [
       "{C:attention}Retriggers{} 2 additional",
-      "times when scored, but",
-      "{C:red}debuffs{} all other cards",
+      "times when scored",
+      "{C:green}1 in 3{} chance to be",
+      "{C:red}destroyed{} after being scored",
       "{C:inactive}(from {C:attention}Justice!{C:inactive})",
     ],
     image_url: "assets/brass.png",

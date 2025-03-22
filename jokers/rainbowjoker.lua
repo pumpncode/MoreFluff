@@ -27,10 +27,10 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.other_joker and context.other_joker.ability.set == "Colour" then
+    if context.other_consumeable and context.other_consumeable.ability.set == "Colour" then
       G.E_MANAGER:add_event(Event({
         func = function()
-          context.other_joker:juice_up(0.5, 0.5)
+          context.other_consumeable:juice_up(0.5, 0.5)
           return true
         end
       })) 

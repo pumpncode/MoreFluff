@@ -823,8 +823,9 @@ return {
         name = "Brass Card",
         text = {
           "{C:attention}Retriggers{} #1# additional",
-          "time#<s>1# when scored, but",
-          "{C:red}debuffs{} all other cards"
+          "time#<s>1# when scored",
+					"{C:green}#2# in #3#{} chance to be",
+					"{C:red}destroyed{} after being scored",
         }
       },
       m_mf_gemstone = {

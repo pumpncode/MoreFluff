@@ -96,29 +96,12 @@ function init()
     atlas = "mf_enhancers",
     pos = { x = 1, y = 2 },
     config = {
-      retriggers = 2
+      retriggers = 2,
+      chance = 3
     },
     calculate = function (self, card, context)
-      if context.before and context.cardarea == G.play then
-        for _, other_card in pairs(G.play.cards) do
-          if other_card ~= card then
-            G.E_MANAGER:add_event(Event({
-              trigger = "before",
-              delay = 0.1,
-              func = function()
-                other_card:juice_up()
-                card:juice_up()
-                SMODS.debuff_card(other_card, true, "brass_card")
-                play_sound('cancel', 0.8+ (0.9 + 0.2*math.random())*0.2, 1)
-                -- ease_dollars(card.ability.cash)
-                return true
-              end,
-            }))
-          end
-        end
-      end
       if
-        context.repetition
+        context.repetition and context.cardarea == G.play
       then
         return {
           message = localize("k_again_ex"),
@@ -126,12 +109,19 @@ function init()
           card = card,
         }
       end
+      if context.destroying_card and pseudorandom("brass_card") < G.GAME.probabilities.normal/card.ability.chance then
+        return {
+          remove = true
+        }
+      end
     end,
     loc_vars = function(self, info_queue, card)
       -- info_queue[#info_queue + 1] = G.P_CENTERS.m_mf_yucky
   
       return { vars = { 
-        card and card.ability.retriggers or self.config.retriggers
+        card and card.ability.retriggers or self.config.retriggers,
+        card and G.GAME.probabilities.normal,
+        card and card.ability.chance or self.config.chance,
       } }
     end
   })
