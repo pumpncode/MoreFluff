@@ -225,12 +225,10 @@ function init()
     atlas = "mf_enhancers",
     pos = { x = 0, y = 1 },
     config = {
-      chance = 2,
-      cash = 1
+      chance = 2
     },
     calculate = function (self, card, context)
       if context.destroying_card and pseudorandom("yucky") < G.GAME.probabilities.normal/card.ability.chance then
-        ease_dollars(card.ability.cash)
         return {
           remove = true
         }
@@ -241,8 +239,7 @@ function init()
   
       return { vars = { 
         card and G.GAME.probabilities.normal,
-        card and card.ability.chance or self.config.chance,
-        card and card.ability.cash or self.config.cash
+        card and card.ability.chance or self.config.chance
       } }
     end
   })

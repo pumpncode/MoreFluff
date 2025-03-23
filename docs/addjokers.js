@@ -602,9 +602,9 @@ let consumables = [
   {
     name: "Green",
     text: [
-      "Create a {C:green}D6 Tag{} for",
-      "every {C:attention}3{} rounds",
-      "this has been held",
+      "Create a {C:dark_edition}Negative{}",
+      "{C:green}Oops! All 6s{} for every {C:attention}3{}",
+      "rounds this has been held",
     ],
     image_url: "assets/c_mf_green.png",
     rarity: "Colour"
@@ -633,8 +633,7 @@ let consumables = [
     name: "Pink",
     text: [
       "Add {C:attention}1{} round to a random",
-      "{C:colourcard}Colour{} card for every",
-      "{C:attention}2{} rounds this has been held",
+      "{C:colourcard}Colour{} card. Triggers once for every {C:attention}2{} rounds this has been held",
     ],
     image_url: "assets/c_mf_pink.png",
     rarity: "Colour"
@@ -643,7 +642,7 @@ let consumables = [
     name: "Peach",
     text: [
       "Create a {C:dark_edition}Negative{} {C:spectral}Soul{}",
-      "card for every {C:attention}6{}",
+      "card for every {C:attention}7{}",
       "rounds this has been held",
     ],
     image_url: "assets/c_mf_peach.png",
@@ -717,9 +716,9 @@ let consumables = [
   {
     name: "The Magician!",
     text: [
-      "Enhances {C:attention}2{}",
+      "Enhances {C:attention}5{}",
       "selected cards to",
-      "{C:attention}Styled Cards"
+      "{C:attention}Yucky Cards"
     ],
     image_url: "assets/rotarot/magician.png",
     rarity: "45 Degree Rotated Tarot"
@@ -855,7 +854,7 @@ let consumables = [
   {
     name: "The Devil!",
     text: [
-      "Enhances {C:attention}2{}",
+      "Enhances {C:attention}3{}",
       "selected cards to",
       "{C:attention}Marigold Cards"
     ],
@@ -1038,9 +1037,8 @@ let enhancements = [
   {
     name: "Yucky Card",
     text: [
-      "{C:green}1 in 2{} chance to",
-      "give {C:attention}$1{} and {C:red}destroy{}",
-      "after being scored",
+      "{C:green}1 in 2{} chance to be",
+      "{C:red}destroyed{} after being scored",
       "{C:inactive}(from {C:attention}The Magician!{C:inactive})",
     ],
     image_url: "assets/yucky.png",

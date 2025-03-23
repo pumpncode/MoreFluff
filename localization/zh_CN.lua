@@ -315,11 +315,12 @@ return {
         text = {"每{C:attention}#4#{}回合", "{C:attention}售价{}增加{C:money}$#5#{}",
             "{C:inactive}({}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"}
       },
-      c_mf_green = {
-        name = "绿色",
-        text = {"每持有{C:attention}#4#{}回合", "创建一个{C:green}D6标签{}",
-            "{C:inactive}(当前{C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"}
-      },
+      -- effect changed
+      -- c_mf_green = {
+      --   name = "绿色",
+      --   text = {"每持有{C:attention}#4#{}回合", "创建一个{C:green}D6标签{}",
+      --       "{C:inactive}(当前{C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"}
+      -- },
       c_mf_blue = {
         name = "蓝色",
         text = {"每持有{C:attention}#4#{}回合", "创建一张随机的",

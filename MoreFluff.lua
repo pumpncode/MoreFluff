@@ -5,7 +5,7 @@
 --- MOD_AUTHOR: [notmario]
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
---- DEPENDENCIES: [Talisman>=2.1.0, Steamodded>=1.0.0~BETA-0312b]
+--- DEPENDENCIES: [Talisman>=2.0.0, Steamodded>=1.0.0~BETA-0312b]
 --- VERSION: 1.2.3
 
 local current_mod = SMODS.current_mod
@@ -880,6 +880,8 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_colour_cards"), ref_table = mf_config, ref_value = "Colour Cards" })
+      settings.nodes[#settings.nodes + 1] =
+        create_toggle({ label = localize("mf_config_rotarot_cards"), ref_table = mf_config, ref_value = "45 Degree Rotated Tarot Cards" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_achievements"), ref_table = mf_config, ref_value = "Achievements" })
       settings.nodes[#settings.nodes + 1] =

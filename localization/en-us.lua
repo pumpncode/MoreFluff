@@ -519,9 +519,9 @@ return {
       c_mf_green = {
         name = "Green",
         text = {
-          "Create a {C:green}D6 Tag{} for",
-          "every {C:attention}#4#{} rounds",
-          "this has been held",
+          "Create a {C:dark_edition}Negative{}",
+          "{C:green}Oops! All 6s{} for every {C:attention}#4#{}",
+          "rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
@@ -547,7 +547,7 @@ return {
         name = "Pink",
         text = {
           "Add {C:attention}1{} round to a random",
-          "{C:colourcard}Colour{} card for every",
+          "{C:colourcard}Colour{} card. Triggers once for",
           "{C:attention}#4#{} rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },

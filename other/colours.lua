@@ -680,17 +680,16 @@ function init()
       return true
     end,
     use = function(self, card, area, copier)
-      local tag_type = "tag_d_six"
       for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+        play_sound('timpani')
+        local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'j_oops', 'sup')
+        n_card.no_omega = true
+        n_card:add_to_deck()
+        n_card:set_edition({negative = true}, true)
+        G.jokers:emplace(n_card)
+        card:juice_up(0.3, 0.5)
+        return true end }))
       end
       delay(0.6)
     end,
@@ -820,7 +819,7 @@ function init()
     config = {
       val = 0,
       partial_rounds = 0,
-      upgrade_rounds = 6,
+      upgrade_rounds = 7,
     },
     cost = 4,
     atlas = "mf_colours",
