@@ -109,6 +109,7 @@ local joker_list = {
   "teacup",
   "recycling",
   "virtual",
+  "yuckyrat",
 
   -- rare
   "bloodpact",
@@ -125,6 +126,7 @@ local joker_list = {
 
   -- legendary!!
   "triangle",
+  "marigold",
 
   -- epic?????
   -- "fleshpanopticon", -- IT'S IN CRYPTID NOW

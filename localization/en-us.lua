@@ -372,6 +372,23 @@ return {
           "blind is selected"
         },
       },
+      j_mf_marigold = {
+        name = "Marigold",
+        text = {
+          "{C:attention}Retriggers{} played and held",
+          "{C:attention}Marigold Cards{} #1# time#<s>1#"
+        },
+      },
+      j_mf_yuckyrat = { 
+        name = "Yucky Rat",
+        text = {
+          "Played {C:attention}unenhanced{} cards",
+          "are converted to {C:attention}Yucky Cards{}.",
+          "Gains {X:red,C:white} X#1# {} Mult for",
+          "each card converted",
+          "{C:inactive}(Currently {X:red,C:white} X#2# {C:inactive} Mult)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -777,7 +794,7 @@ return {
         name = "Yucky Card",
 				text = {
 					"{C:green}#1# in #2#{} chance to",
-					"give {C:attention}$#3#{} and {C:red}destroy{}",
+					"be {C:red}destroyed{}",
 					"after being scored",
 				},
       },
