@@ -1020,6 +1020,52 @@ function init()
     end
   end
 
+  if SMODS.find_mod("aikoyorisshenanigans") then
+    -- hell yeah 2
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_WordleGreen",
+      key = "wordlegreen",
+      pos = { x = 0, y = 6 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 1,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        local card_type = "Alphabet"
+        local rng_seed = "wordle"
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.consumeables:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      in_pool = function(self, args)
+        return G.GAME.akyrs_character_stickers_enabled and G.GAME.akyrs_wording_enabled
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end
+    })
+  end
   
   SMODS.Voucher({
     object_type = "Voucher",

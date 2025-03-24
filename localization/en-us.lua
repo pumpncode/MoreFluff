@@ -623,6 +623,15 @@ return {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
+      c_mf_wordlegreen = {
+        name = "Wordle Green",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:green}Alphabet{}",
+          "card for every {C:attention}#4#{}",
+          "round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
     },
     Rotarot = {
       c_mf_rot_fool = {
