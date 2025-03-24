@@ -389,6 +389,14 @@ return {
           "{C:inactive}(Currently {X:red,C:white} X#2# {C:inactive} Mult)"
         },
       },
+      j_mf_hyperjimbo = { 
+        name = "Hyperjimbo",
+        text = {
+          "{X:dark_edition,C:white,s:1.4} ^^#1# {s:1.4} Chips",
+          "before scoring if {C:attention}played hand",
+          "contains exactly {C:attention}4{} cards"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

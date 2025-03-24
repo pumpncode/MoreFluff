@@ -14,6 +14,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+	pools = { ["Meme"] = true },
   loc_txt = {
     name = "Blasphemy",
     text = {

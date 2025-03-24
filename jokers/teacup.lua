@@ -19,6 +19,7 @@ local joker = {
       "for the next {C:attention}#1#{} hands",
     },
   },
+	pools = { ["Food"] = true },
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra }

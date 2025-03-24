@@ -14,7 +14,8 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
-  display_size = { w = 142, h = 190 },
+  display_size = { w = 71.0 * 1.5, h = 95 * 1.5 },
+	pools = { ["Meme"] = true },
   loc_txt = {
     name = "Huge Joker",
     text = {

@@ -19,6 +19,7 @@ local joker = {
       "each give {X:chips,C:white} X#1# {} Chips",
     }
   },
+	pools = { ["Meme"] = true },
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra.x_chips }

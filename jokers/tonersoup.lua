@@ -19,6 +19,7 @@ local joker = {
       "{C:inactive}(Must have room)"
     },
   },
+	pools = { ["Food"] = true },
   loc_vars = function(self, info_queue, center)
     return {
       vars = { }

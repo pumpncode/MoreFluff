@@ -117,6 +117,7 @@ local joker_list = {
   "cba",
   "fleshprison",
   "hugejoker",
+  "hyperjimbo",
   "jankman",
   "mashupalbum",
   "pixeljoker",
@@ -164,6 +165,9 @@ for _, v in ipairs(joker_list) do
   end
   joker.key = v
   joker.atlas = "mf_jokers"
+  if v == "hyperjimbo" then
+    joker.atlas = "mf_hyperjimbo"
+  end
   if not joker.pos then
     joker.pos = { x = 0, y = 0 }
   end
@@ -289,6 +293,13 @@ SMODS.Atlas({
   atlas_table = "ASSET_ATLAS", 
   path = "mf_jokers.png", 
   px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
+  key = "mf_hyperjimbo", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_hyperjimbo.png", 
+  px = 95, 
   py = 95 
 })
 SMODS.Atlas({ 
@@ -798,6 +809,28 @@ if Cryptid then
 end
 
 --- hooks
+
+mf_hyperjimbo_dt = 0
+
+local game_updateref = Game.update
+function Game:update(dt)
+  game_updateref(self, dt)
+
+  mf_hyperjimbo_dt = mf_hyperjimbo_dt + dt
+	if G.P_CENTERS and G.P_CENTERS.j_mf_hyperjimbo and mf_hyperjimbo_dt > 0.07 then
+		mf_hyperjimbo_dt = mf_hyperjimbo_dt - 0.07
+		local jimballobj = G.P_CENTERS.j_mf_hyperjimbo
+		if jimballobj.pos.x == 5 and jimballobj.pos.y == 9 then
+			jimballobj.pos.x = 0
+			jimballobj.pos.y = 0
+		elseif jimballobj.pos.x < 5 then
+			jimballobj.pos.x = jimballobj.pos.x + 1
+		elseif jimballobj.pos.y < 9 then
+			jimballobj.pos.x = 0
+			jimballobj.pos.y = jimballobj.pos.y + 1
+		end
+	end
+end
 
 local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
