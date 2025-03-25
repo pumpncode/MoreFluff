@@ -112,6 +112,7 @@ local joker_list = {
   "yuckyrat",
 
   -- rare
+  "allicantdo",
   "bloodpact",
   "bowlingball",
   "brass",
@@ -838,7 +839,7 @@ function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
   
   for _, other_card in pairs(G.deck.cards) do
-    SMODS.debuff_card(other_card, false, "brass_card")
+    SMODS.debuff_card(other_card, false, "allicantdo")
   end
 
   -- thanks feder

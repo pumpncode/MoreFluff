@@ -406,6 +406,15 @@ return {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         }
       },
+      j_mf_allicantdo = {
+        name = "All I Can't Do",
+        text = {
+          "{C:red}Debuffs{} first drawn hand",
+          "Gains {X:red,C:white} X#1# {} Mult for",
+          "each played {C:red}debuffed{} card",
+          "{C:inactive}(Currently {X:red,C:white} X#2# {C:inactive})"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
