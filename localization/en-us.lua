@@ -397,6 +397,15 @@ return {
           "contains exactly {C:attention}4{} cards"
         },
       },
+      j_mf_brass = {
+        name = "Brass Joker",
+        text = {
+          "{C:attention}Retrigger{} the joker",
+          "to the right once for every",
+          "{C:attention}#4# Brass Cards{} destroyed",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
