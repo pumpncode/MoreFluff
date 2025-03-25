@@ -1020,7 +1020,7 @@ function init()
     end
   end
 
-  if SMODS.find_mod("aikoyorisshenanigans") then
+  if next(SMODS.find_mod("aikoyorisshenanigans")) then
     -- hell yeah 2
     SMODS.Consumable({
       object_type = "Consumable",
