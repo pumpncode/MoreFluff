@@ -28,6 +28,9 @@ end
 if mf_config["Achievements"] == nil then
   mf_config["Achievements"] = true
 end
+if mf_config["Huger Joker"] == nil then
+  mf_config["Huger Joker"] = false
+end
 if mf_config["Unfinished"] == nil then
   mf_config["Unfinished"] = false
 end
@@ -923,6 +926,8 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_achievements"), ref_table = mf_config, ref_value = "Achievements" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
+      settings.nodes[#settings.nodes + 1] =
+        create_toggle({ label = localize("mf_config_huger_joker"), ref_table = mf_config, ref_value = "Huger Joker" })
 			config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
 			mf_nodes[#mf_nodes + 1] = config
 			return {

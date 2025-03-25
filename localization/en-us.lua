@@ -1157,6 +1157,7 @@ return {
       mf_config_rotarot_cards = "45 Degree Rotated Tarot Cards",
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
+      mf_config_huger_joker = "Huger Joker",
     },
     labels = {
       colour = "Colour"
