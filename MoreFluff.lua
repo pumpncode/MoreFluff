@@ -112,17 +112,13 @@ local joker_list = {
   "teacup",
   "recycling",
   "virtual",
-  "yuckyrat",
 
   -- rare
-  "allicantdo",
   "bloodpact",
   "bowlingball",
-  "brass",
   "cba",
   "fleshprison",
   "hugejoker",
-  "hyperjimbo",
   "jankman",
   "mashupalbum",
   "pixeljoker",
@@ -132,13 +128,20 @@ local joker_list = {
 
   -- legendary!!
   "triangle",
-  "marigold",
 
   -- epic?????
   -- "fleshpanopticon", -- IT'S IN CRYPTID NOW
 
   -- exotic?!?!
   "colorem",
+
+  -- 1.3
+  "tealjoker",
+  "yuckyrat",
+  "allicantdo",
+  "brass",
+  "hyperjimbo",
+  "marigold",
 }
 
 if not mf_config["Jokers"] then

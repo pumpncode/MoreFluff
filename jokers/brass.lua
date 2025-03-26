@@ -23,6 +23,8 @@ local joker = {
   perishable_compat = false,
   enhancement_gate = "m_mf_brass",
   loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_mf_brass
+
     local val, max = progressbar(center.ability.partial_rounds, center.ability.upgrade_rounds)
     return { vars = {center.ability.retriggers, val, max, center.ability.upgrade_rounds} }
   end,
