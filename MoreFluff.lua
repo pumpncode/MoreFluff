@@ -31,9 +31,9 @@ end
 if mf_config["Huger Joker"] == nil then
   mf_config["Huger Joker"] = false
 end
-if mf_config["Unfinished"] == nil then
-  mf_config["Unfinished"] = false
-end
+-- if mf_config["Unfinished"] == nil then
+--   mf_config["Unfinished"] = false
+-- end
 
 if Cryptid then
   SMODS.load_mod_config(SMODS.Mods.Cryptid)
@@ -136,6 +136,7 @@ local joker_list = {
   "colorem",
 
   -- 1.3
+  "gemstonejoker",
   "tealjoker",
   "yuckyrat",
   "allicantdo",
@@ -190,83 +191,83 @@ for _, v in ipairs(joker_list) do
   ::continue::
 end
 
-if mf_config["Unfinished"] then
+-- if mf_config["Unfinished"] then
 
-  local ortalab_jokers = {
-    -- common
-    "clintcondition",
-    "sheetsuggestion",
+--   local ortalab_jokers = {
+--     -- common
+--     "clintcondition",
+--     "sheetsuggestion",
 
-    -- uncommon
-    "devilsknife",
+--     -- uncommon
+--     "devilsknife",
 
-    -- rare
-    "twotrucks"
-  }
+--     -- rare
+--     "twotrucks"
+--   }
 
-  local familiar_jokers = {
-    -- common
-    "jimbojjoker"
-  }
+--   local familiar_jokers = {
+--     -- common
+--     "jimbojjoker"
+--   }
 
-  if not mf_config["Jokers"] then
-    ortalab_jokers = {}
-    familiar_jokers = {}
-  end
+--   if not mf_config["Jokers"] then
+--     ortalab_jokers = {}
+--     familiar_jokers = {}
+--   end
 
-  for _, v in ipairs(ortalab_jokers) do
-    print(v)
-    local joker = SMODS.load_file("jokers/ortalab/"..v..".lua")()
-    if not joker then
-      goto eunitnoc
-    end
-    joker.key = v
-    joker.atlas = "mf_srekoj"
-    if not joker.pos then
-      joker.pos = { x = 0, y = 0 }
-    end
+--   for _, v in ipairs(ortalab_jokers) do
+--     print(v)
+--     local joker = SMODS.load_file("jokers/ortalab/"..v..".lua")()
+--     if not joker then
+--       goto eunitnoc
+--     end
+--     joker.key = v
+--     joker.atlas = "mf_srekoj"
+--     if not joker.pos then
+--       joker.pos = { x = 0, y = 0 }
+--     end
 
-    local joker_obj = SMODS.Joker(joker)
-    for k_, v_ in pairs(joker) do
-      if type(v_) == 'function' then
-        joker_obj[k_] = joker[k_]
-      end
-    end
-    joker_obj.jank_force_badge = {
-      name = "ffulF eroM",
-      col = G.C.GREEN
-    }
+--     local joker_obj = SMODS.Joker(joker)
+--     for k_, v_ in pairs(joker) do
+--       if type(v_) == 'function' then
+--         joker_obj[k_] = joker[k_]
+--       end
+--     end
+--     joker_obj.jank_force_badge = {
+--       name = "ffulF eroM",
+--       col = G.C.GREEN
+--     }
 
-    ::eunitnoc::
-  end
+--     ::eunitnoc::
+--   end
 
-  for _, v in ipairs(familiar_jokers) do
-    print(v)
-    local joker = SMODS.load_file("jokers/familiar/"..v..".lua")()
-    if not joker then
-      goto continue_fam
-    end
-    joker.key = v
-    joker.atlas = "mf_srekoj"
-    if not joker.pos then
-      joker.pos = { x = 0, y = 0 }
-    end
-    joker.pos.x = joker.pos.x + 10
+--   for _, v in ipairs(familiar_jokers) do
+--     print(v)
+--     local joker = SMODS.load_file("jokers/familiar/"..v..".lua")()
+--     if not joker then
+--       goto continue_fam
+--     end
+--     joker.key = v
+--     joker.atlas = "mf_srekoj"
+--     if not joker.pos then
+--       joker.pos = { x = 0, y = 0 }
+--     end
+--     joker.pos.x = joker.pos.x + 10
 
-    local joker_obj = SMODS.Joker(joker)
-    for k_, v_ in pairs(joker) do
-      if type(v_) == 'function' then
-        joker_obj[k_] = joker[k_]
-      end
-    end
-    joker_obj.jank_force_badge = {
-      name = "Ectoplasm",
-      col = G.C.DARK_EDITION
-    }
+--     local joker_obj = SMODS.Joker(joker)
+--     for k_, v_ in pairs(joker) do
+--       if type(v_) == 'function' then
+--         joker_obj[k_] = joker[k_]
+--       end
+--     end
+--     joker_obj.jank_force_badge = {
+--       name = "Ectoplasm",
+--       col = G.C.DARK_EDITION
+--     }
 
-    ::continue_fam::
-  end
-end
+--     ::continue_fam::
+--   end
+-- end
 
 local smods_cmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
