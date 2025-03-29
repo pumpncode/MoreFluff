@@ -616,9 +616,18 @@ return {
       c_mf_peach = {
         name = "Peach",
         text = {
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:rotarot}45 Degree Rotated Tarot{} card for",
+          "every {C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_new_gold = {
+        name = "Gold",
+        text = {
           "Create a {C:dark_edition}Negative{} {C:spectral}Soul{}",
-          "card for every {C:attention}#4#{}",
-          "rounds this has been held",
+          "card for every {C:attention}#4#{} rounds",
+          "this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
