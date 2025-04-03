@@ -433,6 +433,15 @@ return {
           "{C:inactive}(Currently {C:money}$#2#{C:inactive})"
         }
       },
+      j_mf_top10 = {
+        name = "Top 10 Jokers from One through Ten",
+        text = {
+          "Earn {C:money}$#1#{} at end of round",
+          "for each {C:green}unique digit{} displayed",
+          "in {C:attention}current money{}",
+          "{C:inactive}(They are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.)",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

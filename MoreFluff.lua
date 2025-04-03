@@ -142,6 +142,7 @@ local joker_list = {
   "allicantdo",
   "brass",
   "hyperjimbo",
+  "top10",
   "marigold",
 }
 
