@@ -952,3 +952,46 @@ local morefluffTabs = function() return {
 	},
 } end
 SMODS.current_mod.extra_tabs = morefluffTabs
+
+-- -- thank you mr cryptid
+-- local g_main_menu = Game.main_menu
+-- function Game:main_menu(change_context)
+--   local ret = g_main_menu(self, change_context)
+--   local newcard = Card(
+--     G.title_top.T.x,
+--     G.title_top.T.y,
+--     G.CARD_W,
+--     G.CARD_H,
+--     G.P_CARDS.empty,
+--     G.P_CENTERS.j_mf_philosophical,
+--     { bypass_discovery_center = true }
+--   )
+--   -- recenter the title
+--   G.title_top.T.w = G.title_top.T.w + G.CARD_W * 0.7675 -- uh if i do this again then it gets really big so uh. Manually it is then
+--   G.title_top.T.x = G.title_top.T.x - 0.8
+--   G.title_top:emplace(newcard)
+--   -- make the card look the same way as the title screen Ace of Spades
+--   newcard.T.w = newcard.T.w * 1.1 * 1.2
+--   newcard.T.h = newcard.T.h * 1.1 * 1.2
+--   newcard.no_ui = true
+--   newcard.states.visible = false
+
+--   G.E_MANAGER:add_event(Event({
+--     trigger = "after",
+--     delay = 0,
+--     blockable = false,
+--     blocking = false,
+--     func = function()
+--       if change_context == "splash" then
+--         newcard.states.visible = true
+--         newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, true, 2.5)
+--       else
+--         newcard.states.visible = true
+--         newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, nil, 1.2)
+--       end
+--       return true
+--     end,
+--   }))
+
+--   return ret
+-- end

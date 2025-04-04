@@ -21,9 +21,7 @@ local joker = {
   calc_dollar_bonus = function(self, card)
     local count = 0
     local cashmoney = G.GAME.dollars..""
-    print(cashmoney)
     for i = 0, 9 do
-      print(i)
       if string.match(cashmoney, i .. "") then
         count = count + 1
       end
