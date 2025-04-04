@@ -136,6 +136,7 @@ local joker_list = {
   "colorem",
 
   -- 1.3
+  "junkmail",
   "gemstonejoker",
   "tealjoker",
   "yuckyrat",

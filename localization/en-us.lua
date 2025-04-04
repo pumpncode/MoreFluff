@@ -442,6 +442,14 @@ return {
           "{C:inactive}(They are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.)",
         }
       },
+      j_mf_junkmail = {
+        name = "Junk Mail",
+        text = {
+          "Creates a {C:attention}Voucher{} which",
+          "costs {C:money}#1#x{} as much at",
+          "the start of each Shop",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1165,6 +1173,8 @@ return {
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
       k_rotarot_pack = "45 Degree Rotated Arcana Pack",
+      
+      k_plus_voucher = "+1 Voucher",
 
       k_display_for_paul = "(for Paul)",
       k_display_for_paul_ex = "(for Paul!)",
