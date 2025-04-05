@@ -1102,6 +1102,34 @@ return {
           "cards to be used immediately"
         }
       },
+      p_mf_modded_normal_1 = {
+        name = "Modded Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:dark_edition} Modded Joker{} cards",
+        }
+      },
+      p_mf_modded_normal_2 = {
+        name = "Modded Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:dark_edition} Modded Joker{} cards",
+        }
+      },
+      p_mf_modded_jumbo_1 = {
+        name = "Jumbo Modded Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:dark_edition} Modded Joker{} cards",
+        }
+      },
+      p_mf_modded_mega_1 = {
+        name = "Mega Modded Pack",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:dark_edition} Modded Joker{} cards",
+        }
+      },
     },
     Sleeve = {
       sleeve_mf_grosmichel = {
@@ -1189,6 +1217,8 @@ return {
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
       k_rotarot_pack = "45 Degree Rotated Arcana Pack",
+      
+      k_modded_pack = "Modded Pack",
       
       k_plus_voucher = "+1 Voucher",
 

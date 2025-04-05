@@ -71,6 +71,20 @@ SMODS.Sound({
 	end,
 })
 
+SMODS.Sound({
+  key = "music_modded",
+  path = "music_modded.ogg",
+  select_music_track = function()
+    return (
+      mf_config["Music"] and
+      (
+        (SMODS.OPENED_BOOSTER or {}).ability or {}).modded_pack 
+        and G.booster_pack and not G.booster_pack.REMOVED
+      )
+      and 2
+  end,
+})
+
 -- comment out the shit you dont want
 local joker_list = {
   -- common
@@ -407,6 +421,11 @@ if mf_config["45 Degree Rotated Tarot Cards"] then
   init_rotarots = SMODS.load_file("other/rotarots.lua")()
   init_rotarots()
 end
+
+-- modded pack
+init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
+init_moddedpack()
+
 
 -- maybe another day
 

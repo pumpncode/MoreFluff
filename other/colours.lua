@@ -12,7 +12,7 @@ function init()
     primary_colour = HEX("4f6367"),
     secondary_colour = HEX("4f6367"),
     collection_rows = { 4, 4 },
-    shop_rate = 0.0,
+    shop_rate = 1.0, -- originally it was zero because implementing shop items used to be jank but now it isnt so it isnt
     loc_txt = {},
     default = "c_mf_deepblue",
     can_stack = false,
