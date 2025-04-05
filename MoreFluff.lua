@@ -384,6 +384,12 @@ if CardSleeves then
     py = 95 
   })
 end
+SMODS.Atlas({
+  key = "tags",
+  path = "mf_tags.png",
+  px = 34,
+  py = 34
+})
 
 -- add a way for these to be disabled
 if mf_config["Colour Cards"] then
