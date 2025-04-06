@@ -376,7 +376,7 @@ return {
         name = "Marigold",
         text = {
           "{C:attention}Retriggers{} played and held",
-          "{C:attention}Marigold Cards{} #1# time#<s>1#"
+          "{C:attention}Marigold Cards{} #1# times"
         },
       },
       j_mf_yuckyrat = { 
@@ -919,7 +919,7 @@ return {
         name = "Brass Card",
         text = {
           "{C:attention}Retriggers{} #1# additional",
-          "time#<s>1# when scored",
+          "times when scored",
 					"{C:green}#2# in #3#{} chance to be",
 					"{C:red}destroyed{} after being scored",
         }
