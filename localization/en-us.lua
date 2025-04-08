@@ -450,6 +450,14 @@ return {
           "the start of each Shop",
         }
       },
+      j_mf_stonejokerjoker = {
+        name = "StoneJoker Joker",
+        text = {
+          "Creates a {C:dark_edition}Negative{}",
+          "{C:spectral}Eternal{} {C:attention}Marble Joker{}",
+          "at the end of each Shop",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

@@ -152,6 +152,7 @@ local joker_list = {
   -- 1.3
   "junkmail",
   "gemstonejoker",
+  "stonejokerjoker",
   "tealjoker",
   "yuckyrat",
   "allicantdo",
