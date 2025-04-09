@@ -1210,6 +1210,13 @@ return {
           "Gives a free",
           "{C:rotarot}45 Degree Rotated Mega Arcana Pack"
         }
+      },
+      tag_mf_moddedpack = {
+        name = "Modded Tag",
+        text = {
+          "Gives a free",
+          "{C:dark_edition}Jumbo Modded Pack"
+        }
       }
     },
   },

@@ -415,6 +415,11 @@ else
 
   end
 end
+
+-- modded pack
+init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
+init_moddedpack()
+
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
   init_enhancers = SMODS.load_file("other/enhancers.lua")()
@@ -422,10 +427,6 @@ if mf_config["45 Degree Rotated Tarot Cards"] then
   init_rotarots = SMODS.load_file("other/rotarots.lua")()
   init_rotarots()
 end
-
--- modded pack
-init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
-init_moddedpack()
 
 
 -- maybe another day
