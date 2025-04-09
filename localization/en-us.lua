@@ -458,6 +458,14 @@ return {
           "at the end of each Shop",
         }
       },
+      j_mf_flintandsteel = {
+        name = "Flint and Steel",
+        text = {
+          "Upgrade the level of each",
+          "{C:attention}played hand{} if scored hand contains",
+          "a {C:attention}Stone Card{} and {C:attention}Steel Card{}",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
