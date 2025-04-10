@@ -30,6 +30,6 @@ match_indent = true
 [patches.pattern]
 target = "game.lua"
 pattern = "last_tarot_planet = nil,"
-position = "at"
+position = "after"
 payload = "last_rot_tarot_colour = nil,"
 match_indent = true
