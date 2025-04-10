@@ -1,3 +1,7 @@
+if not Big or not Big.arrow then
+  return nil
+end
+
 local joker = {
   name = "Hyperjimbo",
   config = {

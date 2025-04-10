@@ -1,3 +1,6 @@
+if not mf_config["Colour Cards"] then
+  return nil
+end
 local joker = {
   name = "Monochrome Joker",
   config = {

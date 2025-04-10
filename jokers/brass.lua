@@ -1,3 +1,7 @@
+if not mf_config["45 Degree Rotated Tarot Cards"] then
+  return nil
+end
+
 -- you love to see it
 function progressbar(val, max)
   if max > 10 then
