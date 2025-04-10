@@ -466,6 +466,12 @@ local loc_stuff = {
           "a {C:attention}Stone Card{} and {C:attention}Steel Card{}",
         }
       },
+      j_mf_talljoker = {
+        name = "Tall Joker",
+        text = {
+          "{C:mult,s:1.1}+#1#{} Mult",
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

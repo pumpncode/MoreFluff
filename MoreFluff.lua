@@ -159,8 +159,9 @@ local joker_list = {
   "allicantdo",
   "brass",
   "hyperjimbo",
+  "talljoker",
   "top10",
-  "marigold",
+  -- "marigold", -- later?
 }
 
 if not mf_config["Jokers"] then

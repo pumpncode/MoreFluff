@@ -27,7 +27,7 @@ local joker = {
     if context.cardarea == G.jokers and context.joker_main then
       return {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},
-        mult_modd = card.ability.extra.mult, 
+        mult_mod = card.ability.extra.mult, 
         colour = G.C.MULT
       }
     end
