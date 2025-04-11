@@ -27,6 +27,12 @@ local joker = {
   loc_vars = function(self, info_queue, center)
     if Jen then
       local caption = "...i can talk?"
+      if Jen.sinister then
+        caption = "dear god."
+      end
+      if Jen.gods() then
+        caption = "i see."
+      end
       return {
         vars = { center.ability.extra.x_mult, caption }
       }

@@ -472,6 +472,14 @@ local loc_stuff = {
           "{C:mult,s:1.1}+#1#{} Mult",
         },
       },
+      j_mf_complexitycreep = {
+        name = "Complexity Creep",
+        text = {
+          "Gains a random effect",
+          "when spawned and when",
+          "{C:attention}Boss Blind{} is selected"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1233,8 +1241,219 @@ local loc_stuff = {
         }
       }
     },
+    ComplexityCreep = { -- look having two versions is kind of annoying. oh well
+      cc_plusmult = {
+        name = "Effect",
+        text = {
+          "{C:mult}+#1#{} Mult",
+          "#2#",
+        }
+      },
+      cc_plusmult_if = {
+        name = "Effect",
+        text = {
+          "{C:mult}+#1#{} Mult",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_pluschips = {
+        name = "Effect",
+        text = {
+          "{C:chips}+#1#{} Chips",
+          "#2#",
+        }
+      },
+      cc_pluschips_if = {
+        name = "Effect",
+        text = {
+          "{C:chips}+#1#{} Chips",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_xmult = {
+        name = "Effect",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "#2#",
+        }
+      },
+      cc_xmult_if = {
+        name = "Effect",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_xchips = {
+        name = "Effect",
+        text = {
+          "{X:chips,C:white}X#1#{} Chips",
+          "#2#",
+        }
+      },
+      cc_xchips_if = {
+        name = "Effect",
+        text = {
+          "{X:chips,C:white}X#1#{} Chips",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_emult = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Mult",
+          "#2#",
+        }
+      },
+      cc_emult_if = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Mult",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_echips = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Chips",
+          "#2#",
+        }
+      },
+      cc_echips_if = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Chips",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_eemult = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^^#1#{} Mult",
+          "#2#",
+        }
+      },
+      cc_eemult_if = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^^#1#{} Mult",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_eechips = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^^#1#{} Chips",
+          "#2#",
+        }
+      },
+      cc_eechips_if = {
+        name = "Effect",
+        text = {
+          "{X:dark_edition,C:white}^^#1#{} Chips",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_dollars = {
+        name = "Effect",
+        text = {
+          "Gives {C:money}$#1#{}",
+          "#2#",
+        }
+      },
+      cc_dollars_if = {
+        name = "Effect",
+        text = {
+          "Gives {C:money}$#1#{}",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_swapchipmult = {
+        name = "Effect",
+        text = {
+          "Swaps {C:chips}Chips{} and {C:mult}Mult{}",
+          "#2#",
+        }
+      },
+      cc_swapchipmult_if = {
+        name = "Effect",
+        text = {
+          "Swaps {C:chips}Chips{} and {C:mult}Mult{}",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_createtarot = {
+        name = "Effect",
+        text = {
+          "Creates a {C:tarot}Tarot Card",
+          "#2#",
+        }
+      },
+      cc_createtarot_if = {
+        name = "Effect",
+        text = {
+          "Creates a {C:tarot}Tarot Card",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_createplanet = {
+        name = "Effect",
+        text = {
+          "Creates a {C:planet}Planet Card",
+          "#2#",
+        }
+      },
+      cc_createplanet_if = {
+        name = "Effect",
+        text = {
+          "Creates a {C:planet}Planet Card",
+          "#2#",
+          "#3#",
+        }
+      },
+      cc_copyconsumeable = {
+        name = "Effect",
+        text = {
+          "Creates a {C:dark_edition}Negative{} copy of",
+          "{C:attention}1{} random {C:attention}consumable{}",
+          "card in your possession",
+          "#2#",
+        }
+      },
+      cc_copyconsumeable_if = {
+        name = "Effect",
+        text = {
+          "Creates a {C:dark_edition}Negative{} copy of",
+          "{C:attention}1{} random {C:attention}consumable{}",
+          "card in your possession",
+          "#2#",
+          "#3#",
+        }
+      },
+    },
   },
   misc = {
+    v_dictionary = { -- uh is this right
+      cc_mf_joker_trigger = { "every hand" },
+      cc_mf_card_trigger = { "when a card is scored" },
+      cc_mf_first_card_trigger = { "when the first card is scored" },
+      cc_mf_face_card_trigger = { "when a face card is scored" },
+      cc_mf_endofround = { "at end of round" },
+
+      cc_mf_handtype = { "if hand contains a #3#" },
+      cc_mf_odds = { "if a #4# in #3# chance passes" },
+    },
     dictionary = {
       k_colour = "Colour",
       b_colour_cards = "Colour Cards",
@@ -1242,6 +1461,7 @@ local loc_stuff = {
       k_plus_colour = "+1 Colour",
       b_take = "TAKE",
       k_death_caps = "DEATH",
+      k_effect_added_ex = "Effect added!",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",

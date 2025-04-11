@@ -158,6 +158,7 @@ local joker_list = {
   "yuckyrat",
   "allicantdo",
   "brass",
+  "complexitycreep",
   "hyperjimbo",
   "talljoker",
   "top10",

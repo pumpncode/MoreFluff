@@ -12,8 +12,8 @@ local joker = {
     }
   },
   pos = {x = 3, y = 3},
-  rarity = 3,
-  cost = 6,
+  rarity = 2,
+  cost = 9,
   unlocked = true,
   discovered = true,
   blueprint_compat = true,
