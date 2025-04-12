@@ -495,6 +495,20 @@ local loc_stuff = {
           "when blind is selected"
         }
       },
+      j_mf_rot_cartomancer = {
+        name = "Cartomancer!",
+        text = {
+          "Create a {C:rotarot}45 Degree Rotated Tarot{} card",
+          "when {C:attention}Blind{} is selected",
+          "{C:inactive}(Must have room)"
+        },
+      },
+      j_mf_widejoker = {
+        name = "Wide Joker",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Mult",
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1476,6 +1490,7 @@ local loc_stuff = {
       b_colour_cards = "Colour Cards",
       k_colour_pack = "Colour Pack",
       k_plus_colour = "+1 Colour",
+      k_plus_rotarot = "+1 45 Degree Rotated Tarot Card",
       b_take = "TAKE",
       k_death_caps = "DEATH",
       k_effect_added_ex = "Effect added!",

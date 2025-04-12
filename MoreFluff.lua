@@ -144,20 +144,22 @@ local joker_list = {
   "triangle",
 
   -- 1.3
-  "flintandsteel",
   "junkmail",
+  "flintandsteel",
   "gemstonejoker",
   "missingjoker",
+  "rot_cartomancer",
   -- "selfinsert", -- cut this one for now
   "stonejokerjoker",
+  "talljoker",
   "tealjoker",
   "yuckyrat",
   "allicantdo",
   "brass",
   "complexitycreep",
   "hyperjimbo",
-  "talljoker",
   "top10",
+  "widejoker",
   -- "marigold", -- later?
 
   -- busted shit
@@ -195,6 +197,9 @@ for _, v in ipairs(joker_list) do
   joker.atlas = "mf_jokers"
   if v == "hyperjimbo" then
     joker.atlas = "mf_hyperjimbo"
+  end
+  if v == "rot_cartomancer" then
+    joker.atlas = "mf_rot_cartomancer"
   end
   if not joker.pos then
     joker.pos = { x = 0, y = 0 }
@@ -336,6 +341,13 @@ SMODS.Atlas({
   path = "mf_srekoj.png", 
   px = 71, 
   py = 95 
+})
+SMODS.Atlas({ 
+  key = "mf_rot_cartomancer", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_rot_cartomancer.png", 
+  px = 112, 
+  py = 112
 })
 SMODS.Atlas({ 
   key = "mf_colours", 
