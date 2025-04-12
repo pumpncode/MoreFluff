@@ -469,6 +469,192 @@ let jokers = [
     ],
   },
   {
+    name: "Junk Mail",
+    text: [
+      "Creates a {C:attention}Voucher{} which",
+      "costs {C:money}1.5x{} as much at",
+      "the start of each Shop",
+    ],
+    image_url: "assets/j_mf_junkmail.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Flint and Steel",
+    text: [
+      "Upgrade the level of each",
+      "{C:attention}played hand{} if scored hand contains a {C:attention}Stone Card{} and {C:attention}Steel Card{}",
+    ],
+    image_url: "assets/j_mf_flintandsteel.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Gemstone Joker",
+    text: [
+      "Earn {C:money}$1{} at end of round",
+      "for each {C:attention}Gemstone Card{}",
+      "in your {C:attention}full deck{}",
+    ],
+    image_url: "assets/j_mf_gemstonejoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Missing Texture",
+    text: [
+      "Transforms into a",
+      "{C:dark_edition}random joker{} for",
+      "the duration of the blind",
+      "when blind is selected"
+    ],
+    image_url: "assets/j_mf_missingtexture.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Cartomancer!",
+    text: [
+      "Create a {C:rotarot}45 Degree Rotated Tarot{} card",
+      "when {C:attention}Blind{} is selected",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_rot_cartomancer.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "StoneJoker Joker",
+    text: [
+      "Creates a {C:dark_edition}Negative{}",
+      "{C:spectral}Eternal{} {C:attention}Marble Joker{}",
+      "at the end of each Shop",
+    ],
+    image_url: "assets/j_mf_stonejokerjoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Tall Joker",
+    text: [
+      "{C:mult,s:1.1}+44{} Mult",
+    ],
+    image_url: "assets/jimbo.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Teal Joker",
+    text: [
+      "Gives {X:chips,C:white} X0.2{} Chips",
+      "for each {C:attention}Teal Card",
+      "in your {C:attention}full deck",
+    ],
+    image_url: "assets/j_mf_tealjoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Yucky Rat",
+    text: [
+      "Played {C:attention}unenhanced{} cards",
+      "are converted to {C:attention}Yucky Cards{}. Gains {X:red,C:white} X0.05{} Mult for each card converted",
+    ],
+    image_url: "assets/j_mf_yuckyrat.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "All I Can't Do",
+    text: [
+      "{C:red}Debuffs{} first drawn hand",
+      "Gains {X:red,C:white} X0.1{} Mult for each",
+      "played {C:red}debuffed{} card",
+    ],
+    image_url: "assets/j_mf_allicantdo.png",
+    rarity: "Rare",
+    soul: true,
+    badges: [
+    ],
+  },
+  {
+    name: "Brass Joker",
+    text: [
+      "{C:attention}Retrigger{} the joker",
+      "to the right once for every {C:attention}2 Brass Cards{} destroyed",
+    ],
+    image_url: "assets/j_mf_brass.png",
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
+    name: "Complexity Creep",
+    text: [
+      "Gains a random effect",
+      "when spawned and when",
+      "{C:attention}Boss Blind{} is selected"
+    ],
+    image_url: "assets/j_mf_complexitycreep.png",
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
+    name: "Hyperjimbo",
+    text: [
+      "{X:dark_edition,C:white,s:1.4} ^^1.04{s:1.4} Chips",
+      "before scoring if {C:attention}played hand contains exactly {C:attention}4{} cards",
+    ],
+    image_url: "assets/j_mf_hyperjimbo.gif",
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
+    name: "Top 10 Jokers from One through Ten",
+    text: [
+      "Earn {C:money}$5{} at end of round",
+      "for each {C:green}unique digit{} displayed in {C:attention}current money{}",
+    ],
+    image_url: "assets/j_mf_top10.png",
+    soul: true,
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
+    name: "Wide Joker",
+    text: [
+      "{X:dark_edition,C:white}^1.14{} Mult",
+    ],
+    image_url: "assets/jimbo.png",
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
+    name: "Marigold",
+    text: [
+      "{C:attention}Retriggers{} played and held",
+      "{C:attention}Marigold Cards{} 2 times"
+    ],
+    image_url: "assets/j_mf_marigold.png",
+    soul: true,
+    rarity: "Legendary",
+    badges: [
+    ],
+  },
+  {
     name: "Colorem",
     text: [
       "When a {C:colourcard}Colour{} card is",
@@ -1279,6 +1465,12 @@ let add_cards_to_div = (jokers, jokers_div) => {
     }
     if (joker.name == "Huge Joker" || joker.name == "Huge Stuntman") {
       joker_div.classList.add("hugejoker");
+    }
+    if (joker.name == "Tall Joker") {
+      joker_div.classList.add("talljoker");
+    }
+    if (joker.name == "Wide Joker") {
+      joker_div.classList.add("widejoker");
     }
     if (joker.name == "Pixel Joker") {
       joker_div.classList.add("pixeljoker");

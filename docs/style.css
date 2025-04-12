@@ -154,6 +154,14 @@ h1 {
 .joker.hugejoker > img {
   height: 285px;
 }
+.joker.talljoker > img {
+  width: 71px;
+  height: 285px;
+}
+.joker.widejoker > img {
+  width: 213px;
+  height: 95px;
+}
 .joker.pixeljoker > img {
   height: 32px;
   margin: 79px 55px;
