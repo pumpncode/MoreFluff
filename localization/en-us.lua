@@ -480,6 +480,21 @@ local loc_stuff = {
           "{C:attention}Boss Blind{} is selected"
         },
       },
+      j_mf_selfinsert = {
+        name = "Self Insert",
+        text = {
+          "effect customisable in settings..."
+        }
+      },
+      j_mf_missingjoker = {
+        name = "Missing Texture",
+        text = {
+          "Transforms into a",
+          "{C:dark_edition}random joker{} for",
+          "the duration of the blind",
+          "when blind is selected"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1450,6 +1465,8 @@ local loc_stuff = {
       cc_mf_first_card_trigger = { "when the first card is scored" },
       cc_mf_face_card_trigger = { "when a face card is scored" },
       cc_mf_endofround = { "at end of round" },
+      cc_mf_cardsold = { "when a card is sold" },
+      cc_mf_shoproll = { "when shop is rerolled" },
 
       cc_mf_handtype = { "if hand contains a #3#" },
       cc_mf_odds = { "if a #4# in #3# chance passes" },
@@ -1499,6 +1516,8 @@ local loc_stuff = {
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
+      
+      mf_config_maj = "My Awesome Joker",
     },
     labels = {
       colour = "Colour"

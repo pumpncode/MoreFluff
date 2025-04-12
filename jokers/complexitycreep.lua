@@ -178,6 +178,22 @@ local joker = {
             effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
           end
         end
+      elseif effect[3] == "cardsold" then
+        if context.selling_card then
+          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          if not effect[5] then guard = true end
+          if guard then
+            effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
+          end
+        end
+      elseif effect[3] == "shoproll" then
+        if context.reroll_shop then
+          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          if not effect[5] then guard = true end
+          if guard then
+            effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
+          end
+        end
       end
     end
 
@@ -329,15 +345,9 @@ function grow_complexity_creep (effects)
       {"odds", {2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 10, 100}, "cc_mf_odds"},
     }
     local trigger_pool = { -- effect, values, loc
-      -- {"cardscored", {"chicken jockey"}, "cc_mf_card_trigger"},
-      -- {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
-      -- {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
-      -- {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
-      -- {"facescored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
-      -- {"facescored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
-      -- {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
-      -- {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
       {"endofround", {"chicken jockey"}, "cc_mf_endofround"},
+      {"cardsold", {"chicken jockey"}, "cc_mf_cardsold"},
+      {"shoproll", {"chicken jockey"}, "cc_mf_shoproll"},
     }
     local chosen_effect = pseudorandom_element(effect_pool, pseudoseed("ccreep_grow"))
 

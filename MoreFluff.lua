@@ -143,16 +143,12 @@ local joker_list = {
   -- legendary!!
   "triangle",
 
-  -- epic?????
-  -- "fleshpanopticon", -- IT'S IN CRYPTID NOW
-
-  -- exotic?!?!
-  "colorem",
-
   -- 1.3
   "flintandsteel",
   "junkmail",
   "gemstonejoker",
+  "missingjoker",
+  -- "selfinsert", -- cut this one for now
   "stonejokerjoker",
   "tealjoker",
   "yuckyrat",
@@ -163,6 +159,9 @@ local joker_list = {
   "talljoker",
   "top10",
   -- "marigold", -- later?
+
+  -- busted shit
+  "colorem",
 }
 
 if not mf_config["Jokers"] then
@@ -910,6 +909,13 @@ function Game:update_round_eval(dt)
     end
     G.bladedance_temp_ids = {}
   end
+  if G.missingjoker_revert then
+    for _, joker in pairs(G.missingjoker_revert) do
+      joker:set_ability(G.P_CENTERS["j_mf_missingjoker"])
+      joker:juice_up()
+    end
+    G.missingjoker_revert = {}
+  end
   if G.do_colour_end_of_round_stuff then
     colour_end_of_round_effects()
 
@@ -981,6 +987,26 @@ local morefluffTabs = function() return {
 			}
 		end,
 	},
+  -- {
+  --   label = localize("mf_config_maj"),
+  --   chosen = true,
+	-- 	tab_definition_function = function()
+	-- 		local mynodes = {}
+	-- 		return {
+	-- 			n = G.UIT.ROOT,
+	-- 			config = {
+	-- 				emboss = 0.05,
+	-- 				minh = 6,
+	-- 				r = 0.1,
+	-- 				minw = 10,
+	-- 				align = "cm",
+	-- 				padding = 0.2,
+	-- 				colour = G.C.BLACK,
+	-- 			},
+	-- 			nodes = mynodes,
+	-- 		}
+	-- 	end,
+  -- },
 } end
 SMODS.current_mod.extra_tabs = morefluffTabs
 
