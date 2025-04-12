@@ -552,6 +552,18 @@ local loc_stuff = {
           "{X:mult,C:white} X#1# {} Mult"
         }
       },
+
+      -- and very last
+      j_mf_shattered_prism = {
+        name = "The {C:edition}Shattered{} {C:colourcard}Prism",
+        text = {
+          "Played cards each give {X:jen_RGB,C:white,s:1.5} ^^#1# {} Mult",
+          "when scored if played hand is",
+          "a {C:attention}Three of a Kind",
+          "{C:caption,s:0.7,E:1}THIS IS THE ONLY WAY IT COULD HAVE ENDED",
+          "{C:caption,s:0.7,E:1}THIS IS THE ONLY WAY IT SHOULD HAVE ENDED",
+        },
+      },
     },
     Colour = {
       c_mf_black = {

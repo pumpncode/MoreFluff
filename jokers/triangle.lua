@@ -8,6 +8,8 @@ local joker = {
   pos = {x = 9, y = 4},
   soul_pos = {x = 9, y = 5},
   drama = {x = 5, y = 5},
+	sinis = { x = 8, y = 4 },
+  fusable = true,
   rarity = 4,
   cost = 20,
   unlocked = true,
@@ -31,7 +33,7 @@ local joker = {
         caption = "dear god."
       end
       if Jen.gods() then
-        caption = "i see."
+        caption = "what the FUCK is that."
       end
       return {
         vars = { center.ability.extra.x_mult, caption }

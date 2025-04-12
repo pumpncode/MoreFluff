@@ -2,7 +2,7 @@ if not mf_config["45 Degree Rotated Tarot Cards"] then
   return nil
 end
 local joker = {
-  name = "Triangle",
+  name = "Marigold",
   config = {
     extra = {
       retriggers = 2,
