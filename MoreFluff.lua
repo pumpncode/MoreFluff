@@ -807,30 +807,6 @@ end
 
 -- cryptid pool additions
 if Cryptid then
-  -- check if we are running against an older version of cryptid
-  if Cryptid.food then
-    local food_jokers = {
-      "j_mf_lollipop",
-      "j_mf_goldencarrot",
-      "j_mf_teacup",
-    }
-    for i = 1, #food_jokers do
-      Cryptid.food[#Cryptid.food+1] = food_jokers[i]
-    end
-  end
-  if Cryptid.memepack then
-    local meme_jokers = {
-      "j_mf_basepaulcard", -- Paul
-      "j_mf_blasphemy", -- it can instakill you that's funny right
-      "j_mf_cba", -- Chess Battle Advanced
-      "j_mf_hugejoker", -- it's huge
-      "j_mf_jankman", -- Love That Janker
-      "j_mf_impostor", -- Sus
-    }
-    for i = 1, #meme_jokers do
-      Cryptid.memepack[#Cryptid.memepack+1] = meme_jokers[i]
-    end
-  end
   if Cryptid.aliases then
     local aliases = {
       paul = "basepaul card",
@@ -866,6 +842,25 @@ if Cryptid then
       toner = "i sip toner soup",
       tonersoup = "i sip toner soup",
       isiptonersoup = "i sip toner soup",
+      junkmail = "junk mail",
+      flintandsteel = "flint and steel",
+      firestarter = "flint and steel",
+      peakcinema = "flint and steel",
+      gemstone = "gemstone joker",
+      missingtexture = "missing texture",
+      rot_cartomancer = "cartomancer!",
+      stonejokerjoker = "stonejoker joker",
+      sjj = "stonejoker joker",
+      tall = "tall joker",
+      teal = "teal joker",
+      yucky = "yucky rat", 
+      judas = "all i can't do",
+      brass = "brass joker",
+      complexitycreep = "complexity creep",
+      averagebalatromod = "complexity creep",
+      topten = "top 10 jokers from one through ten",
+      clickbait = "top 10 jokers from one through ten",
+      wide = "wide joker",
     }
     for k, v in pairs(aliases) do
       Cryptid.aliases[k] = v
