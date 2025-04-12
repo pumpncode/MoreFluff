@@ -8,7 +8,7 @@ local joker = {
   },
   pos = { x = 0, y = 0 },
   soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 }},
-  rarity = 'jen_transcendent',
+  rarity = 'jen_ritualistic',
   cost = 333,
   unlocked = true,
   discovered = true,
@@ -25,6 +25,21 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
+    if context.repetition and context.cardarea == G.play then
+      local count = 0
+      for _, card in pairs(G.consumeables.cards) do
+        if card.ability.set == "Colour" then
+          count = count + 1
+        end
+      end
+      if count > 0 then
+        return {
+          message = localize('k_again_ex'),
+          repetitions = count,
+          card = card
+        }
+      end
+    end
     if context.individual and context.cardarea == G.play then
       local text, disp_text, poker_hands, scoring_hand, non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
       if non_loc_disp_text == "Three of a Kind" then

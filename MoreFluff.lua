@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.0.0, Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.3.0
+--- VERSION: 1.3.1
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
@@ -1039,7 +1039,7 @@ local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
   if Jen and Jen.fusions then
     Jen.add_fusion(
-      'Shatter Triangle',3333,
+      'Fracture Triangle',3333,
       "j_mf_shattered_prism",
       'j_mf_triangle',
       'j_jen_godsmarble'
