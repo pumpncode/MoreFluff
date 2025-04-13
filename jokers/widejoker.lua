@@ -29,7 +29,7 @@ local joker = {
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
       return {
-        emult = card.ability.powmult
+        emult = card.ability.extra.powmult
       }
     end
   end
