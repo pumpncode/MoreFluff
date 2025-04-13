@@ -622,7 +622,7 @@ function init()
     key = "rot_wheel",
     pos = { x = 2, y = 1 },
     config = {
-      chance = 1
+      chance = 5
     },
     cost = 4,
     atlas = "mf_rotarots",
