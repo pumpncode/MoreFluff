@@ -17,6 +17,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  enhancement_gate = "m_mf_marigold",
   loc_txt = {
     name = "Marigold",
     text = {
