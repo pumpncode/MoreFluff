@@ -10,10 +10,7 @@ function init()
       if context.main_scoring and context.cardarea == G.play then
         local text, disp_text, poker_hands, scoring_hand, non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
         local level = to_number(G.GAME.hands[text].level)
-        local chip_return = 0 -- uh. ???
-        for i = 1, level do
-          chip_return = chip_return + card.ability.per_level
-        end
+        local chip_return = card.ability.per_level * level
         return {
           chips = chip_return
         }
@@ -38,10 +35,7 @@ function init()
       if context.main_scoring and context.cardarea == G.play then
         local text, disp_text, poker_hands, scoring_hand, non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.play.cards)
         local level = to_number(G.GAME.hands[text].level)
-        local chip_return = 0 -- uh. ???
-        for i = 1, level do
-          chip_return = chip_return + card.ability.per_level
-        end
+        local chip_return = card.ability.per_level * level
         return {
           mult = chip_return
         }
