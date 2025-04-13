@@ -97,7 +97,9 @@ local effect_evals = {
           G.consumeables:emplace(card) 
           return true
         end}))
-      card_eval_status_text(context.blueprint_card or self, 'extra', nil, nil, nil, {message = localize('k_duplicated_ex')})
+      return {
+        message = localize{message = localize('k_duplicated_ex')}
+      }
     end
   end,
 }
