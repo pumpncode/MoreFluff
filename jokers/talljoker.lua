@@ -35,7 +35,7 @@ local joker = {
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
       return {
-        mult = card.ability.mult
+        mult = card.ability.extra.mult
       }
     end
   end
