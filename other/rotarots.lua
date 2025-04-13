@@ -610,6 +610,10 @@ function init()
     end
   })
 
+  local blacklisted_editions = {
+    "e_jen_bloodfoil", "e_jen_blood", "e_jen_moire", -- "e_jen_unreal"
+  }
+
   -- wheel of fortune
   SMODS.Consumable({
     object_type = "Consumable",
@@ -618,7 +622,7 @@ function init()
     key = "rot_wheel",
     pos = { x = 2, y = 1 },
     config = {
-      chance = 5
+      chance = 1
     },
     cost = 4,
     atlas = "mf_rotarots",
@@ -644,7 +648,17 @@ function init()
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           local over = false
           local eligible_card = pseudorandom_element(card.eligible_strength_jokers, pseudoseed("evil_wheel_roll"))
-          local edition = pseudorandom_element(G.P_CENTER_POOLS["Edition"], pseudoseed("evil_wheel_roll")).key
+          local edition_pool = {}
+          for _, ed in pairs(G.P_CENTER_POOLS["Edition"]) do
+            for _, bl_ed in pairs(blacklisted_editions) do
+              if ed.key == bl_ed then
+                goto wof_continue
+              end
+            end
+            edition_pool[#edition_pool] = ed.key
+            ::wof_continue::
+          end
+          local edition = pseudorandom_element(edition_pool, pseudoseed("evil_wheel_roll"))
           eligible_card:set_edition(edition, true)
           check_for_unlock({type = 'have_edition'})
           used_tarot:juice_up(0.3, 0.5)
@@ -670,7 +684,13 @@ function init()
     end,
     loc_vars = function(self, info_queue, card)
       for _, thing in pairs(G.P_CENTER_POOLS["Edition"]) do
+        for _, bl_ed in pairs(blacklisted_editions) do
+          if thing.key == bl_ed then
+            goto wof_loc_continue
+          end
+        end
         info_queue[#info_queue + 1] = thing
+        ::wof_loc_continue::
       end
       return { vars = {
         G.GAME.probabilities.normal,
