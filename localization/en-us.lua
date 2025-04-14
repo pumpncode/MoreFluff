@@ -1538,6 +1538,7 @@ local loc_stuff = {
 
       mf_config_features = "Features",
 
+      mf_config_progart = "Art Pack (requires restart, WIP!!)",
       mf_config_jokers = "Jokers",
       mf_config_music = "Music",
       mf_config_colour_cards = "Colour Cards",
@@ -1545,6 +1546,8 @@ local loc_stuff = {
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
+      
+      mf_credits = "Credits",
       
       mf_config_maj = "My Awesome Joker",
     },

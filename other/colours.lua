@@ -22,7 +22,7 @@ function init()
   SMODS.UndiscoveredSprite({
     key = "Colour",
     atlas = "mf_colours",
-    path = "mf_colours.png",
+    path = "mf_colours_refresh.png", -- uh. 
     pos = { x = 0, y = 0 },
     px = 71,
     py = 95,

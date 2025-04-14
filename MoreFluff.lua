@@ -2,7 +2,7 @@
 --- MOD_NAME: More Fluff
 --- MOD_ID: MoreFluff
 --- PREFIX: mf
---- MOD_AUTHOR: [notmario]
+--- MOD_AUTHOR: [notmario, CHECK CREDITS IN MOD TAB]
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.0.0, Steamodded>=1.0.0~BETA-0312b]
@@ -30,6 +30,9 @@ if mf_config["Achievements"] == nil then
 end
 if mf_config["Huger Joker"] == nil then
   mf_config["Huger Joker"] = false
+end
+if mf_config["Programmer Art"] == nil then
+  mf_config["Programmer Art"] = false
 end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
@@ -325,6 +328,9 @@ function SMODS.create_mod_badges(obj, badges)
   end
 end
 
+local artpack_suffix = "_refresh.png"
+if mf_config["Programmer Art"] then artpack_suffix = ".png" end
+
 SMODS.Atlas({ 
   key = "mf_jokers", 
   atlas_table = "ASSET_ATLAS", 
@@ -356,7 +362,7 @@ SMODS.Atlas({
 SMODS.Atlas({ 
   key = "mf_colours", 
   atlas_table = "ASSET_ATLAS", 
-  path = "mf_colours.png", 
+  path = "mf_colours" .. artpack_suffix, 
   px = 71, 
   py = 95 
 })
@@ -969,6 +975,10 @@ end
 
 -- config menu
 
+G.FUNCS.mf_change_artpack = function(args)
+  mf_config["Programmer Art"] = (args.to_val == "Programmer")
+end
+
 local morefluffTabs = function() return {
 	{
 		label = localize("mf_config_features"),
@@ -976,6 +986,8 @@ local morefluffTabs = function() return {
 		tab_definition_function = function()
 			mf_nodes = {}
 			settings = { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} }
+      settings.nodes[#settings.nodes + 1] =
+        create_option_cycle({label = localize('mf_config_progart'), scale = 0.8, options = {"Refreshed", "Programmer"}, opt_callback = 'mf_change_artpack', current_option = (mf_config["Programmer Art"] and 2 or 1)})
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
       settings.nodes[#settings.nodes + 1] =
@@ -1004,6 +1016,45 @@ local morefluffTabs = function() return {
 					colour = G.C.BLACK,
 				},
 				nodes = mf_nodes,
+			}
+		end,
+	},
+	{
+		label = localize("mf_credits"),
+		chosen = false,
+		tab_definition_function = function()
+      local text_scale = 0.8
+      local mf_cred_nodes = {n=G.UIT.ROOT, config={align = "cm", padding = 0.2, colour = G.C.BLACK, minh = 6, minw = 6}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "developer / music / programmer art: notmario", scale = text_scale*0.6, colour = G.C.SECONDARY_SET.Colour, shadow = true}},
+            }},
+          }},
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "Art Contributors (Refresh)", scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'Multi / MVBit: Colour Cards', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+          }}
+        }}
+			return {
+				n = G.UIT.ROOT,
+				config = {
+					emboss = 0.05,
+					minh = 6,
+					r = 0.1,
+					minw = 10,
+					align = "cm",
+					-- padding = 0.2,
+					colour = G.C.BLACK,
+				},
+				nodes = { mf_cred_nodes },
 			}
 		end,
 	},
