@@ -723,7 +723,7 @@ local loc_stuff = {
       },
       
       c_mf_purple = {
-        name = "Purple",
+        name = "Magenta",
         text = {
           "Create an {C:cry_epic}Epic Tag{} for",
           "every {C:attention}#4#{} rounds",
