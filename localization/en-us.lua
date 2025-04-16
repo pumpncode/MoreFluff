@@ -230,7 +230,8 @@ local loc_stuff = {
         text = {
           "{X:mult,C:white} X#1# {} Mult",
           "{X:mult,C:white} -X#2# {} Mult per",
-          "round played"
+          "round played",
+          art_credit("gudusername_53951"),
         }
       },
       j_mf_luckycharm = {
@@ -339,6 +340,7 @@ local loc_stuff = {
           "Upgrade the level of",
           "each {C:attention}played hand{}",
           "for the next {C:attention}#1#{} hands",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_the_solo = {
