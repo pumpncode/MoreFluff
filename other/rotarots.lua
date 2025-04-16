@@ -622,7 +622,7 @@ function init()
     key = "rot_wheel",
     pos = { x = 2, y = 1 },
     config = {
-      chance = 1
+      chance = 5
     },
     cost = 4,
     atlas = "mf_rotarots",
@@ -655,7 +655,7 @@ function init()
                 goto wof_continue
               end
             end
-            edition_pool[#edition_pool] = ed.key
+            edition_pool[#edition_pool + 1] = ed.key
             ::wof_continue::
           end
           local edition = pseudorandom_element(edition_pool, pseudoseed("evil_wheel_roll"))

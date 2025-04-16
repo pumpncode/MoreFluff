@@ -2,6 +2,11 @@
 -- language, they will still be called "Colour" cards.
 -- ha ha ha.
 
+local art_credit = function (name)
+  if mf_config["Programmer Art"] then return nil end
+  return "{s:0.8,C:inactive}Art by: "..name
+end
+
 local loc_stuff = {
   descriptions = {
     Joker = {
@@ -28,7 +33,8 @@ local loc_stuff = {
           "Adds {C:attention}#1#{} temporary",
           "{C:attention}Steel Cards{}",
           "to your deck when",
-          "blind is selected"
+          "blind is selected",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_blasphemy = {   
@@ -36,7 +42,8 @@ local loc_stuff = {
         text = {
           "{X:red,C:white} X#1# {} Mult",
           "{C:blue}-#2#{} hands",
-          "when hand is played"
+          "when hand is played",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_bloodpact = {
@@ -53,7 +60,8 @@ local loc_stuff = {
           "Played {C:attention}3s{}",
           "give {C:chips}+#1#{} Chips",
           "and {C:mult}+#2#{} Mult",
-          "when scored"
+          "when scored",
+          art_credit("footlongdingledong"),
         }
       },
       j_mf_cba = {
@@ -104,14 +112,16 @@ local loc_stuff = {
         text = {
           "{C:chips}+#1#{} Chips",
           "for the first hand",
-          "of each round"
+          "of each round",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_dropkick = {
         name = "Dropkick",
         text = {
           "{C:blue}+#1#{} hand when hand",
-          "contains a {C:attention}Straight"
+          "contains a {C:attention}Straight",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_expansion_pack = {
@@ -128,7 +138,8 @@ local loc_stuff = {
           "{C:red}X#1#{} {C:attention}Boss Blind{} size",
           "When {C:attention}Boss Blind{} is defeated,",
           "{C:red}self destructs{}, and creates",
-          "a {C:dark_edition}Negative{} {C:spectral}The Soul{} card"
+          "a {C:dark_edition}Negative{} {C:spectral}The Soul{} card",
+          art_credit("gudusername_53951"),
         }
       },
       j_mf_fleshpanopticon = {
@@ -153,7 +164,8 @@ local loc_stuff = {
           "Earn {C:money}$#1#{} at",
           "end of round",
           "{C:money}-$#2#{} given",
-          "per hand played"
+          "per hand played",
+          art_credit("gudusername_53951"),
         }
       },
       j_mf_hallofmirrors = {
@@ -178,7 +190,8 @@ local loc_stuff = {
         text = {
           "{X:red,C:white} X#1# {} Mult",
           "{C:attention}Lose all discards",
-          "when {C:attention}Blind{} is selected"
+          "when {C:attention}Blind{} is selected",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_impostor = {
@@ -217,7 +230,8 @@ local loc_stuff = {
         text = {
           "{X:mult,C:white} X#1# {} Mult",
           "{X:mult,C:white} -X#2# {} Mult per",
-          "round played"
+          "round played",
+          art_credit("gudusername_53951"),
         }
       },
       j_mf_luckycharm = {
@@ -274,7 +288,8 @@ local loc_stuff = {
         name = "Rainbow Joker",
         text = {
           "{C:colourcard}Colour{} cards give",
-          "{X:mult,C:white} X#1#{} Mult"
+          "{X:mult,C:white} X#1#{} Mult",
+          art_credit("footlongdingledong"),
         },
       },
       j_mf_recycling = {
@@ -325,6 +340,7 @@ local loc_stuff = {
           "Upgrade the level of",
           "each {C:attention}played hand{}",
           "for the next {C:attention}#1#{} hands",
+          art_credit("gudusername_53951"),
         },
       },
       j_mf_the_solo = {
@@ -509,6 +525,15 @@ local loc_stuff = {
           "{X:dark_edition,C:white}^#1#{} Mult",
         },
       },
+      j_mf_monochrome = {
+        name = "Monochrome Joker",
+        text = {
+          "{C:mult}+#1#{} Mult per round",
+          "without a {C:colourcard}Colour Card",
+          "{C:inactive}(Currently {C:mult}+#2#{C:inactive})",
+          art_credit("footlongdingledong"),
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -574,7 +599,8 @@ local loc_stuff = {
           "Add {C:dark_edition}Negative{} to a",
           "random {C:attention}Joker{} for every",
           "{C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_deepblue = {
@@ -583,7 +609,8 @@ local loc_stuff = {
           "Converts a random card in",
           "hand to {C:spades}Spades{} for every",
           "{C:attention}#4#{} round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_crimson = {
@@ -592,7 +619,8 @@ local loc_stuff = {
           "Create a {C:red}Rare Tag{} for",
           "every {C:attention}#4#{} rounds",
           "this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_seaweed = {
@@ -601,7 +629,8 @@ local loc_stuff = {
           "Converts a random card in",
           "hand to {C:clubs}Clubs{} for every",
           "{C:attention}#4#{} round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_brown = {
@@ -610,7 +639,8 @@ local loc_stuff = {
           "Destroys a random card in",
           "hand and gives {C:attention}$#5#{} for every",
           "{C:attention}#4#{} round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_grey = {
@@ -619,7 +649,8 @@ local loc_stuff = {
           "Create a {C:attention}Double Tag{} for",
           "every {C:attention}#4#{} rounds",
           "this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_silver = {
@@ -628,7 +659,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Polychrome Tag{} for",
           "every {C:attention}#4#{} rounds",
           "this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_white = {
@@ -637,7 +669,8 @@ local loc_stuff = {
           "Create a random {C:dark_edition}Negative{}",
           "{C:colourcard}Colour{} card for every",
           "{C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_red = {
@@ -646,7 +679,8 @@ local loc_stuff = {
           "Converts a random card in",
           "hand to {C:hearts}Hearts{} for every",
           "{C:attention}#4#{} round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_orange = {
@@ -655,7 +689,8 @@ local loc_stuff = {
           "Converts a random card in",
           "hand to {C:diamonds}Diamonds{} for every",
           "{C:attention}#4#{} round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_yellow = {
@@ -664,7 +699,8 @@ local loc_stuff = {
           "Gains {C:money}$#5#{} of",
           "{C:attention}sell value{}",
           "every {C:attention}#4# rounds",
-          "{C:inactive}({}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}({}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_green = {
@@ -673,7 +709,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Negative{}",
           "{C:green}Oops! All 6s{} for every {C:attention}#4#{}",
           "rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_blue = {
@@ -682,7 +719,8 @@ local loc_stuff = {
           "Create a random {C:dark_edition}Negative{}",
           "{C:planet}Planet{} card for every",
           "{C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_lilac = {
@@ -691,7 +729,8 @@ local loc_stuff = {
           "Create a random {C:dark_edition}Negative{}",
           "{C:tarot}Tarot{} card for every",
           "{C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_pink = {
@@ -700,7 +739,8 @@ local loc_stuff = {
           "Add {C:attention}1{} round to a random",
           "{C:colourcard}Colour{} card. Triggers once for",
           "{C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_peach = {
@@ -709,7 +749,8 @@ local loc_stuff = {
           "Create a random {C:dark_edition}Negative{}",
           "{C:rotarot}45 Degree Rotated Tarot{} card for",
           "every {C:attention}#4#{} rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_new_gold = {
@@ -718,17 +759,19 @@ local loc_stuff = {
           "Create a {C:dark_edition}Negative{} {C:spectral}Soul{}",
           "card for every {C:attention}#4#{} rounds",
           "this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       
       c_mf_purple = {
-        name = "Purple",
+        name = "Magenta",
         text = {
           "Create an {C:cry_epic}Epic Tag{} for",
           "every {C:attention}#4#{} rounds",
           "this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_moonstone = {
@@ -737,7 +780,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Jolly Joker{}",
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_gold = {
@@ -746,7 +790,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Negative{} {C:cry_exotic}Gateway{}",
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_ooffoo = {
@@ -755,7 +800,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Negative{} {C:cry_code}Code{}",
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
       c_mf_wordlegreen = {
@@ -764,7 +810,8 @@ local loc_stuff = {
           "Create a {C:dark_edition}Negative{} {C:green}Alphabet{}",
           "card for every {C:attention}#4#{}",
           "round this has been held",
-          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
         },
       },
     },
@@ -821,7 +868,7 @@ local loc_stuff = {
       c_mf_rot_lovers = {
         name = "The Lovers!",
         text = {
-          "Enhances {C:attention}#1#{} select",
+          "Enhances {C:attention}#1#{}",
           "selected cards to",
           "{C:attention}#2#s"
         }
@@ -1282,6 +1329,13 @@ local loc_stuff = {
           "Gives a free",
           "{C:dark_edition}Jumbo Modded Pack"
         }
+      },
+      tag_mf_clutch = {
+        name = "Clutch Tag",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "for the next {C:attention}Blind"
+        }
       }
     },
     ComplexityCreep = { -- look having two versions is kind of annoying. oh well
@@ -1538,6 +1592,7 @@ local loc_stuff = {
 
       mf_config_features = "Features",
 
+      mf_config_progart = "Art Pack (requires restart, WIP!!)",
       mf_config_jokers = "Jokers",
       mf_config_music = "Music",
       mf_config_colour_cards = "Colour Cards",
@@ -1545,6 +1600,8 @@ local loc_stuff = {
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
+      
+      mf_credits = "Credits",
       
       mf_config_maj = "My Awesome Joker",
     },

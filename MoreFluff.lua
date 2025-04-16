@@ -2,11 +2,11 @@
 --- MOD_NAME: More Fluff
 --- MOD_ID: MoreFluff
 --- PREFIX: mf
---- MOD_AUTHOR: [notmario]
+--- MOD_AUTHOR: [notmario, CHECK CREDITS IN MOD TAB]
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Talisman>=2.0.0, Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.3.2
+--- VERSION: 1.3.3
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
@@ -30,6 +30,9 @@ if mf_config["Achievements"] == nil then
 end
 if mf_config["Huger Joker"] == nil then
   mf_config["Huger Joker"] = false
+end
+if mf_config["Programmer Art"] == nil then
+  mf_config["Programmer Art"] = false
 end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
@@ -325,12 +328,26 @@ function SMODS.create_mod_badges(obj, badges)
   end
 end
 
+local artpack_suffix = "_refresh.png"
+if mf_config["Programmer Art"] then artpack_suffix = ".png" end
+
 SMODS.Atlas({ 
   key = "mf_jokers", 
   atlas_table = "ASSET_ATLAS", 
-  path = "mf_jokers.png", 
+  path = "mf_jokers" .. artpack_suffix, 
   px = 71, 
   py = 95 
+})
+SMODS.Atlas({ 
+  key = "mf_mv", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_mv.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Shader({
+  key="dissolvegreen",
+  path="dissolvegreen.fs"
 })
 SMODS.Atlas({ 
   key = "mf_hyperjimbo", 
@@ -356,7 +373,7 @@ SMODS.Atlas({
 SMODS.Atlas({ 
   key = "mf_colours", 
   atlas_table = "ASSET_ATLAS", 
-  path = "mf_colours.png", 
+  path = "mf_colours" .. artpack_suffix, 
   px = 71, 
   py = 95 
 })
@@ -454,6 +471,32 @@ if mf_config["45 Degree Rotated Tarot Cards"] then
   init_rotarots = SMODS.load_file("other/rotarots.lua")()
   init_rotarots()
 end
+
+-- clutch tag
+SMODS.Tag({
+  key = "clutch",
+  atlas = "mf_tags",
+  config = {
+    extra = 4
+  },
+  pos = { x = 1, y = 1 },
+  unlocked = true,
+  discovered = true,
+  loc_vars = function(self, info_queue)
+    return { vars = { self.config.extra } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == "final_scoring_step" then
+      SMODS.calculate_effect({xmult=4}, tag)
+    end
+    if context.type == "eval" then
+      tag:yep("X", G.C.RED, function()
+        return true
+      end)
+      tag.triggered = true
+    end
+  end,
+})
 
 
 -- maybe another day
@@ -870,6 +913,58 @@ end
 
 --- hooks
 
+SMODS.DrawStep({
+	key = "spire_mv",
+	order = -5,
+	func = function(self)
+    if not G.mf_mv_spr then return nil end
+    local my_key = self.config.center.key
+
+    if 
+      my_key ~= "j_mf_dramaticentrance" and
+      my_key ~= "j_mf_dropkick" and
+      my_key ~= "j_mf_bladedance" and
+      my_key ~= "j_mf_hyperbeam" and
+      my_key ~= "j_mf_blasphemy"
+    then
+      return nil
+    end
+
+    G.mf_mv_spr.role.draw_major = self
+
+    local cost = math.floor(
+      self.cost +
+      (self.ability.extra_value or 0) * 2 +
+      0.5
+    )
+
+    local base_cost = ({
+      j_mf_dramaticentrance = 6,
+      j_mf_dropkick = 8,
+      j_mf_bladedance = 8,
+      j_mf_hyperbeam = 8,
+      j_mf_blasphemy = 5,
+    })[my_key]
+
+    local shader = "dissolve"
+    if cost ~= base_cost then shader = "mf_dissolvegreen" end
+
+    if cost > 99 then
+      G.mf_mv_spr:set_sprite_pos({x=0, y=3})
+      G.mf_mv_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+    elseif cost <= 9 then
+      G.mf_mv_spr:set_sprite_pos({x=cost, y=0})
+      G.mf_mv_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+    else
+      G.mf_mv_spr:set_sprite_pos({x=math.floor(cost/10), y=1})
+      G.mf_mv_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+      G.mf_mv_spr:set_sprite_pos({x=cost%10, y=2})
+      G.mf_mv_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+    end
+	end,
+	conditions = { vortex = false, facing = "front" },
+})
+
 mf_hyperjimbo_dt = 0
 
 local game_updateref = Game.update
@@ -969,6 +1064,10 @@ end
 
 -- config menu
 
+G.FUNCS.mf_change_artpack = function(args)
+  mf_config["Programmer Art"] = (args.to_val == "Programmer")
+end
+
 local morefluffTabs = function() return {
 	{
 		label = localize("mf_config_features"),
@@ -976,6 +1075,8 @@ local morefluffTabs = function() return {
 		tab_definition_function = function()
 			mf_nodes = {}
 			settings = { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} }
+      settings.nodes[#settings.nodes + 1] =
+        create_option_cycle({label = localize('mf_config_progart'), scale = 0.8, options = {"Refreshed", "Programmer"}, opt_callback = 'mf_change_artpack', current_option = (mf_config["Programmer Art"] and 2 or 1)})
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
       settings.nodes[#settings.nodes + 1] =
@@ -1004,6 +1105,58 @@ local morefluffTabs = function() return {
 					colour = G.C.BLACK,
 				},
 				nodes = mf_nodes,
+			}
+		end,
+	},
+	{
+		label = localize("mf_credits"),
+		chosen = false,
+		tab_definition_function = function()
+      local text_scale = 0.85
+      local mf_cred_nodes = {n=G.UIT.ROOT, config={align = "cm", padding = 0.2, colour = G.C.BLACK, minh = 6, minw = 6}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "developer / music / programmer art: notmario", scale = text_scale*0.6, colour = G.C.SECONDARY_SET.Colour, shadow = true}},
+            }},
+          }},
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "Art Contributors (Refresh)", scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'Multi / MVBit: Colour Cards', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'Jokers (individual credits are listed on Jokers):', scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "gudusername_53951", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
+            }},
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "footlongdingledong", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
+            }},
+          }}
+        }}
+			return {
+				n = G.UIT.ROOT,
+				config = {
+					emboss = 0.05,
+					minh = 6,
+					r = 0.1,
+					minw = 10,
+					align = "cm",
+					-- padding = 0.2,
+					colour = G.C.BLACK,
+				},
+				nodes = { mf_cred_nodes },
 			}
 		end,
 	},
@@ -1041,6 +1194,9 @@ Game.main_menu = function(change_context)
     )
     --print("Fusions successfully applied!")
   end
+  G.mf_mv_spr = Sprite(
+    0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
+  ) -- im dumb and stupide
   local ret = mainmenuref2(change_context)
   return ret
 end

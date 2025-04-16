@@ -4,7 +4,8 @@ local joker = {
     extra = {
       hands = 1,
       current_triggers = 0,
-    }
+    },
+    base_cost = 8,
   },
   pos = {x = 4, y = 2},
   rarity = 2,

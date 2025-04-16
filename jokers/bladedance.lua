@@ -2,7 +2,8 @@
 local joker = {
   name = "Dramatic Entrance",
   config = {
-    extra = 2
+    extra = 2,
+    base_cost = 8,
   },
   pos = {x = 5, y = 2},
   rarity = 2,

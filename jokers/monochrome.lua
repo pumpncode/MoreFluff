@@ -17,14 +17,6 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
-  loc_txt = {
-    name = "Monochrome Joker",
-    text = {
-      "{C:mult}+#1#{} Mult per round",
-      "without a {C:colourcard}Colour Card",
-      "{C:inactive}(Currently {C:mult}+#2#{C:inactive})"
-    }
-  },
   loc_vars = function(self, info_queue, center)
     return {vars = { center.ability.extra.mult_per, center.ability.extra.mult } }
   end,

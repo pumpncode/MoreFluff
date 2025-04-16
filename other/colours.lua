@@ -22,7 +22,7 @@ function init()
   SMODS.UndiscoveredSprite({
     key = "Colour",
     atlas = "mf_colours",
-    path = "mf_colours.png",
+    path = "mf_colours_refresh.png", -- uh. 
     pos = { x = 0, y = 0 },
     px = 71,
     py = 95,
@@ -904,7 +904,7 @@ function init()
       partial_rounds = 0,
       upgrade_rounds = 4,
     },
-    hidden = (Jen ~= nil),
+    hidden = not Jen,
     cost = 4,
     atlas = "mf_colours",
     unlocked = true,
@@ -1031,7 +1031,7 @@ function init()
           partial_rounds = 0,
           upgrade_rounds = 9,
         },
-        hidden = (Jen ~= nil),
+        hidden = not Jen,
         cost = 4,
         atlas = "mf_colours",
         unlocked = true,
