@@ -864,7 +864,7 @@ local loc_stuff = {
       c_mf_rot_lovers = {
         name = "The Lovers!",
         text = {
-          "Enhances {C:attention}#1#{} select",
+          "Enhances {C:attention}#1#{}",
           "selected cards to",
           "{C:attention}#2#s"
         }
