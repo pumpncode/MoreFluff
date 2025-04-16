@@ -1326,6 +1326,13 @@ local loc_stuff = {
           "Gives a free",
           "{C:dark_edition}Jumbo Modded Pack"
         }
+      },
+      tag_mf_clutch = {
+        name = "Clutch Tag",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult",
+          "for the next {C:attention}Blind"
+        }
       }
     },
     ComplexityCreep = { -- look having two versions is kind of annoying. oh well

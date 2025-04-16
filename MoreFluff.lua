@@ -472,6 +472,32 @@ if mf_config["45 Degree Rotated Tarot Cards"] then
   init_rotarots()
 end
 
+-- clutch tag
+SMODS.Tag({
+  key = "clutch",
+  atlas = "mf_tags",
+  config = {
+    extra = 4
+  },
+  pos = { x = 1, y = 1 },
+  unlocked = true,
+  discovered = true,
+  loc_vars = function(self, info_queue)
+    return { vars = { self.config.extra } }
+  end,
+  apply = function(self, tag, context)
+    if context.type == "final_scoring_step" then
+      SMODS.calculate_effect({xmult=4}, tag)
+    end
+    if context.type == "eval" then
+      tag:yep("X", G.C.RED, function()
+        return true
+      end)
+      tag.triggered = true
+    end
+  end,
+})
+
 
 -- maybe another day
 
