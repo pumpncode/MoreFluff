@@ -164,7 +164,8 @@ local loc_stuff = {
           "Earn {C:money}$#1#{} at",
           "end of round",
           "{C:money}-$#2#{} given",
-          "per hand played"
+          "per hand played",
+          art_credit("gudusername_53951"),
         }
       },
       j_mf_hallofmirrors = {
