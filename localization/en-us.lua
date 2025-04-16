@@ -60,7 +60,8 @@ local loc_stuff = {
           "Played {C:attention}3s{}",
           "give {C:chips}+#1#{} Chips",
           "and {C:mult}+#2#{} Mult",
-          "when scored"
+          "when scored",
+          art_credit("footlongdingledong"),
         }
       },
       j_mf_cba = {

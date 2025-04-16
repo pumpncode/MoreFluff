@@ -1107,9 +1107,15 @@ local morefluffTabs = function() return {
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Credits for Jokers are listed on the Jokers', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'Jokers (individual credits are listed on Jokers):', scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
+            }},
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "gudusername_53951", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
+            }},
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "footlongdingledong", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
             }},
           }}
         }}
