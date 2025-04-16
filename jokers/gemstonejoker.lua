@@ -33,7 +33,7 @@ local joker = {
     }
   end,
   calc_dollar_bonus = function(self, card)
-    if center.ability.extra.gemstone_tally > 0 then return center.ability.extra.dollars_per * center.ability.extra.gemstone_tally end
+    if card.ability.extra.gemstone_tally > 0 then return card.ability.extra.dollars_per * card.ability.extra.gemstone_tally end
   end,
   draw = function(self, card, layer)
     local notilt = nil
