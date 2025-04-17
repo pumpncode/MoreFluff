@@ -34,7 +34,6 @@ local loc_stuff = {
           "{C:attention}Steel Cards{}",
           "to your deck when",
           "blind is selected",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_blasphemy = {   
@@ -43,7 +42,6 @@ local loc_stuff = {
           "{X:red,C:white} X#1# {} Mult",
           "{C:blue}-#2#{} hands",
           "when hand is played",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_bloodpact = {
@@ -113,7 +111,6 @@ local loc_stuff = {
           "{C:chips}+#1#{} Chips",
           "for the first hand",
           "of each round",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_dropkick = {
@@ -121,7 +118,6 @@ local loc_stuff = {
         text = {
           "{C:blue}+#1#{} hand when hand",
           "contains a {C:attention}Straight",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_expansion_pack = {
@@ -139,7 +135,6 @@ local loc_stuff = {
           "When {C:attention}Boss Blind{} is defeated,",
           "{C:red}self destructs{}, and creates",
           "a {C:dark_edition}Negative{} {C:spectral}The Soul{} card",
-          art_credit("gudusername_53951"),
         }
       },
       j_mf_fleshpanopticon = {
@@ -165,7 +160,6 @@ local loc_stuff = {
           "end of round",
           "{C:money}-$#2#{} given",
           "per hand played",
-          art_credit("gudusername_53951"),
         }
       },
       j_mf_hallofmirrors = {
@@ -191,7 +185,6 @@ local loc_stuff = {
           "{X:red,C:white} X#1# {} Mult",
           "{C:attention}Lose all discards",
           "when {C:attention}Blind{} is selected",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_impostor = {
@@ -231,7 +224,6 @@ local loc_stuff = {
           "{X:mult,C:white} X#1# {} Mult",
           "{X:mult,C:white} -X#2# {} Mult per",
           "round played",
-          art_credit("gudusername_53951"),
         }
       },
       j_mf_luckycharm = {
@@ -340,7 +332,6 @@ local loc_stuff = {
           "Upgrade the level of",
           "each {C:attention}played hand{}",
           "for the next {C:attention}#1#{} hands",
-          art_credit("gudusername_53951"),
         },
       },
       j_mf_the_solo = {

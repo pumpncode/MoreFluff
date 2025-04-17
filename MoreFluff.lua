@@ -918,6 +918,7 @@ SMODS.DrawStep({
 	order = -5,
 	func = function(self)
     if not G.mf_mv_spr then return nil end
+    if mf_config["Programmer Art"] then return nil end
     local my_key = self.config.center.key
 
     if 
@@ -1136,9 +1137,6 @@ local morefluffTabs = function() return {
                   {n=G.UIT.T, config={text = 'Jokers (individual credits are listed on Jokers):', scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
-            }},
-            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
-              {n=G.UIT.T, config={text = "gudusername_53951", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
             }},
             {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
               {n=G.UIT.T, config={text = "footlongdingledong", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
