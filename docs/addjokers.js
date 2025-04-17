@@ -827,15 +827,14 @@ let consumables = [
   {
     name: "Peach",
     text: [
-      "Create a {C:dark_edition}Negative{} {C:spectral}Soul{}",
-      "card for every {C:attention}7{}",
-      "rounds this has been held",
+      "Create a random {C:dark_edition}Negative{}",
+      "{C:rotarot}45 Degree Rotated Tarot{} card for every {C:attention}2{} rounds this has been held",
     ],
     image_url: "assets/c_mf_peach.png",
     rarity: "Colour"
   },
   {
-    name: "Purple",
+    name: "Magenta",
     text: [
       "Create an {C:cry_epic}Epic Tag{} for",
       "every {C:attention}4{} rounds",
