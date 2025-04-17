@@ -918,7 +918,7 @@ end
 
 SMODS.DrawStep({
 	key = "spire_mv",
-	order = -5,
+	order = 25,
 	func = function(self)
     if not G.mf_mv_spr then return nil end
     if mf_config["Programmer Art"] then return nil end
