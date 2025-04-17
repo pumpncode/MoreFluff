@@ -49,7 +49,8 @@ local loc_stuff = {
         text = {
           "{X:mult,C:white} X#1# {} Mult",
           "{C:red}Self destructs{} if you play",
-          "a non-{C:hearts}Hearts{} card"
+          "a non-{C:hearts}Hearts{} card",
+          art_credit("footlongdingledong"),
         }
       },
       j_mf_bowlingball = {
