@@ -34,6 +34,9 @@ end
 if mf_config["Programmer Art"] == nil then
   mf_config["Programmer Art"] = false
 end
+if mf_config["Disable Art Credits"] == nil then
+  mf_config["Disable Art Credits"] = false
+end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -1079,6 +1082,8 @@ local morefluffTabs = function() return {
       settings.nodes[#settings.nodes + 1] =
         create_option_cycle({label = localize('mf_config_progart'), scale = 0.8, options = {"Refreshed", "Programmer"}, opt_callback = 'mf_change_artpack', current_option = (mf_config["Programmer Art"] and 2 or 1)})
       settings.nodes[#settings.nodes + 1] =
+        create_toggle({ label = localize("mf_config_disablecred"), ref_table = mf_config, ref_value = "Disable Art Credits" })
+      settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
@@ -1134,12 +1139,9 @@ local morefluffTabs = function() return {
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Jokers (individual credits are listed on Jokers):', scale = text_scale*0.7, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'Some Jokers by footlongdingledong', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
-            }},
-            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
-              {n=G.UIT.T, config={text = "footlongdingledong", scale = text_scale*0.4, colour = G.C.UI.WHITE, shadow = true}},
             }},
           }}
         }}

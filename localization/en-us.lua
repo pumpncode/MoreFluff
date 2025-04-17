@@ -4,6 +4,7 @@
 
 local art_credit = function (name)
   if mf_config["Programmer Art"] then return nil end
+  if mf_config["Disable Art Credits"] then return nil end
   return "{s:0.8,C:inactive}Art by: "..name
 end
 
@@ -1584,7 +1585,8 @@ local loc_stuff = {
 
       mf_config_features = "Features",
 
-      mf_config_progart = "Art Pack (requires restart, WIP!!)",
+      mf_config_progart = "Art Pack (requires restart)",
+      mf_config_disablecred = "Disble Art Credits on cards",
       mf_config_jokers = "Jokers",
       mf_config_music = "Music",
       mf_config_colour_cards = "Colour Cards",
