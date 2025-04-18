@@ -64,17 +64,4 @@ local joker = {
   end
 }
 
-if JokerDisplay then
-  JokerDisplay.Definitions["j_mf_lollipop"] = {
-    text = {
-      {
-        border_nodes = {
-          { text = "X" },
-          { ref_table = "card.ability", ref_value = "x_mult", retrigger_type = "exp" },
-        },
-      }
-    }
-  }
-end
-
 return joker

@@ -57,4 +57,26 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_yuckyrat"] = {
+    text = {
+      {
+        border_nodes = {
+          { text = "X" },
+          { ref_table = "card.ability.extra", ref_value = "x_mult", retrigger_type = "exp" },
+        },
+      }
+    },
+    reminder_text = {
+      {
+        ref_table = "card.joker_display_values", ref_value = "reminder_text",
+        colour = G.C.RED,
+      },
+    },
+    calc_function = function(card)
+      card.joker_display_values.reminder_text = localize("k_display_yucky")
+    end,
+  }
+end
+
 return joker

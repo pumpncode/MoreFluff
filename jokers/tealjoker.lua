@@ -41,4 +41,21 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_tealjoker"] = {
+    text = {
+      {
+        border_nodes = {
+          { text = "X" },
+          { ref_table = "card.joker_display_values", ref_value = "xchips", retrigger_type = "exp" },
+        },
+        border_colour = G.C.CHIPS
+      }
+    },
+    calc_function = function(card)
+      card.joker_display_values.xchips = 1 + card.ability.extra.teal_tally * card.ability.extra.x_chips_per
+    end,
+  }
+end
+
 return joker

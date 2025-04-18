@@ -57,4 +57,16 @@ local joker = {
   end,
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_gemstonejoker"] = {
+    text = {
+      { text = "$", colour = G.C.MONEY },
+      { ref_table = "card.joker_display_values", ref_value = "gain", retrigger_type = "mult", colour = G.C.MONEY  },
+    },
+    calc_function = function(card)
+      card.joker_display_values.gain = card.ability.extra.gemstone_tally * card.ability.extra.dollars_per
+    end,
+  }
+end
+
 return joker

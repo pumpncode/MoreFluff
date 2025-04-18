@@ -82,10 +82,15 @@ local joker = {
 }
 
 if JokerDisplay then
-	JokerDisplay.Definitions["j_mf_cba"] = {
+	JokerDisplay.Definitions["j_mf_brass"] = {
 		text = {
-			{ text = "x" },
-			{ ref_table = "card.joker_display_values", ref_value = "num_retriggers" },
+			{ text = "x", colour = G.C.ORANGE },
+			{ ref_table = "card.ability", ref_value = "retriggers", colour = G.C.ORANGE },
+		},
+		reminder_text = {
+			{ ref_table = "card.ability", ref_value = "partial_rounds" },
+			{ text = "/", colour = G.C.INACTIVE },
+			{ ref_table = "card.ability", ref_value = "upgrade_rounds" },
 		},
 		calc_function = function(card)
 			card.joker_display_values.num_retriggers = 1
