@@ -5,8 +5,8 @@
 --- MOD_AUTHOR: [notmario, CHECK CREDITS IN MOD TAB]
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
---- DEPENDENCIES: [Talisman>=2.0.0, Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.4.1
+--- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
+--- VERSION: 1.4.2
 
 local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path

@@ -43,9 +43,7 @@ local joker = {
           end
         })) 
         return {
-          message = localize{type='variable',key='a_xchips',vars={card.ability.extra.x_chips}},
-          Xchip_mod = card.ability.extra.x_chips,
-          colour = G.C.CHIPS,
+          xchips = card.ability.extra.x_chips,
         }
       end
     end

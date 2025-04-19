@@ -28,9 +28,17 @@ local joker = {
   end,
   calculate = function(self, card, context)
     if context.cardarea == G.jokers and context.joker_main then
-      return {
-        emult = card.ability.extra.powmult
-      }
+      if Talisman then
+        return {
+          emult = card.ability.extra.powmult
+        }
+      else
+        return {
+          Xmult_mod = mult ^ (card.ability.extra.powmult - 1),
+          message = "^"..card.ability.extra.powmult.." Mult",
+          colour = G.C.DARK_EDITION
+        }
+      end
     end
   end
 }

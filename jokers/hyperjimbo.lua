@@ -1,7 +1,3 @@
-if not Big or not Big.arrow then
-  return nil
-end
-
 local joker = {
   name = "Hyperjimbo",
   config = {
@@ -30,9 +26,17 @@ local joker = {
   end,
   calculate = function(self, card, context)
     if context.mf_before_cards and #G.play.cards == 4 then
-      return {
-        eechips = card.ability.val
-      }
+      if Talisman and Big and Big.arrow then
+        return {
+          eechips = card.ability.val
+        }
+      else
+        return {
+          Xchip_mod = hand_chips ^ (hand_chips ^ 0.04 - 1),
+          message = "^^1.04 Chips",
+          colour = G.C.DARK_EDITION
+        }
+      end
     end
   end
 }
