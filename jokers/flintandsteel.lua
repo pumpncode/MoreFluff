@@ -38,4 +38,47 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_flintandsteel"] = {
+    text = {
+      {
+        ref_table = "card.joker_display_values", ref_value = "inactive_text",
+        colour = G.C.UI.TEXT_INACTIVE,
+      },
+      {
+        ref_table = "card.joker_display_values", ref_value = "active_text",
+        colour = G.C.ORANGE,
+      }
+    },
+    reminder_text = {
+      {
+        ref_table = "card.joker_display_values", ref_value = "reminder_text",
+      },
+    },
+    calc_function = function(card)
+      card.joker_display_values.reminder_text = localize("k_display_flint_and_steel")
+      local flint = false
+      local steel = false
+
+      if G.play then
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+          for _, scoring_card in pairs(scoring_hand) do
+            if SMODS.has_enhancement(scoring_card, "m_stone") then flint = true end
+            if SMODS.has_enhancement(scoring_card, "m_steel") then steel = true end
+          end
+        end
+      end
+
+      if flint and steel then -- PEAK CINEMA
+        card.joker_display_values.inactive_text = ""
+        card.joker_display_values.active_text = localize("k_display_upgrade_ex")
+      else
+        card.joker_display_values.inactive_text = localize("k_display_inactive")
+        card.joker_display_values.active_text = ""
+      end
+    end,
+  }
+end
+
 return joker

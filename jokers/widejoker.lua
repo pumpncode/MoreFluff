@@ -35,4 +35,26 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_widejoker"] = {
+    text = {
+      {
+        border_nodes = {
+          { text = "^" },
+          { ref_table = "card.ability.extra", ref_value = "powmult",
+            retrigger_type = function (base_number, triggers)
+                local num = base_number
+                for i=1, triggers-1 do
+                    num = num ^ base_number
+                end
+                return num
+            end
+          },
+        },
+        border_colour = G.C.DARK_EDITION
+      }
+    },
+  }
+end
+
 return joker

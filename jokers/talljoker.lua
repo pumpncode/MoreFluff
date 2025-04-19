@@ -41,4 +41,13 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_talljoker"] = {
+    text = {
+      { text = "+", colour = G.C.MULT },
+      { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT },
+    },
+  }
+end
+
 return joker

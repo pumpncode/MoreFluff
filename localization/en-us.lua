@@ -1582,6 +1582,13 @@ local loc_stuff = {
       k_display_hand_size = "Hand Size",
       k_display_joker_slot = "Joker Slot",
       k_display_pack_skipped = "(Pack skipped)",
+      k_display_play_debuffed = "(Play debuffed)",
+      k_display_flint_and_steel = "(Flint and Steel!)",
+      k_display_inactive = "(inactive)",
+      k_display_upgrade_ex = "Upgrade!",
+      k_display_four_cards = "(Four cards)",
+      k_display_marigold_card = "(Marigold cards)",
+      k_display_yucky = "(Yucky.)",
 
       mf_config_features = "Features",
 

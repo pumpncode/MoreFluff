@@ -43,4 +43,21 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_marigold"] = {
+    reminder_text = {
+      {
+        ref_table = "card.joker_display_values", ref_value = "reminder_text",
+      },
+    },
+    calc_function = function(card)
+      card.joker_display_values.reminder_text = localize("k_display_marigold_card")
+    end,
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+      if playing_card.config.center.key ~= "m_mf_marigold" then return 0 end
+      return playing_card:is_face() and joker_card.ability.extra.retriggers * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+    end
+  }
+end
+
 return joker

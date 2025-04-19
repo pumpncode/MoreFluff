@@ -37,4 +37,37 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_hyperjimbo"] = {
+    text = {
+      {
+        border_nodes = {
+          { text = "^^" },
+          { ref_table = "card.joker_display_values", ref_value = "tetr" },
+        },
+        border_colour = G.C.DARK_EDITION
+      }
+    },
+    reminder_text = {
+      {
+        ref_table = "card.joker_display_values", ref_value = "reminder_text",
+      },
+    },
+    calc_function = function(card)
+      card.joker_display_values.reminder_text = localize("k_display_four_cards")
+
+      if G.play then
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if #scoring_hand == 4 then
+          card.joker_display_values.tetr = 1.04
+        else
+          card.joker_display_values.tetr = 1
+        end
+      else
+        card.joker_display_values.tetr = 1.04
+      end
+    end,
+  }
+end
+
 return joker

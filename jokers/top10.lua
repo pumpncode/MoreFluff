@@ -32,4 +32,23 @@ local joker = {
   end
 }
 
+if JokerDisplay then
+  JokerDisplay.Definitions["j_mf_top10"] = {
+    text = {
+      { text = "$", colour = G.C.MONEY },
+      { ref_table = "card.joker_display_values", ref_value = "money", colour = G.C.MONEY },
+    },
+    calc_function = function(card)
+      local count = 0
+      local cashmoney = G.GAME.dollars..""
+      for i = 0, 9 do
+        if string.match(cashmoney, i .. "") then
+          count = count + 1
+        end
+      end
+      card.joker_display_values.money = card.ability.cash_per * count
+    end,
+  }
+end
+
 return joker

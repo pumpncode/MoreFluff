@@ -1383,6 +1383,49 @@ function init()
     end
     return G_UIDEF_use_and_sell_buttons_ref(card)
   end
+
+  -- Joker Display
+
+  if JokerDisplay then
+    local cols = {
+      "c_mf_black",
+      "c_mf_deepblue",
+      "c_mf_crimson",
+      "c_mf_seaweed",
+      "c_mf_brown",
+      "c_mf_grey",
+      "c_mf_silver",
+      "c_mf_white",
+      "c_mf_red",
+      "c_mf_orange",
+      "c_mf_yellow",
+      "c_mf_green",
+      "c_mf_blue",
+      "c_mf_lilac",
+      "c_mf_pink",
+      "c_mf_peach",
+      "c_mf_purple",
+      "c_mf_moonstone",
+      "c_mf_gold",
+      "c_mf_ooffoo",
+      "c_mf_new_gold",
+    }
+
+    for _, col in pairs(cols) do
+      if JokerDisplay then
+        JokerDisplay.Definitions[col] = {
+          text = {
+            { ref_table = "card.ability", ref_value = "val", colour = G.C.DARK_EDITION  },
+            { text = " (", colour = G.C.UI.TEXT_INACTIVE },
+            { ref_table = "card.ability", ref_value = "partial_rounds", colour = G.C.UI.TEXT_INACTIVE },
+            { text = "/", colour = G.C.UI.TEXT_INACTIVE },
+            { ref_table = "card.ability", ref_value = "upgrade_rounds", colour = G.C.UI.TEXT_INACTIVE },
+            { text = ")", colour = G.C.UI.TEXT_INACTIVE },
+          }
+        }
+      end
+    end
+  end
 end
 
 return init

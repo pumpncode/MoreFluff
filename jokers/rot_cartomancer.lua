@@ -35,23 +35,4 @@ local joker = {
   end
 }
 
-if JokerDisplay then
-  JokerDisplay.Definitions["j_mf_clipart"] = {
-    text = {
-      {
-        ref_table = "card.joker_display_values", ref_value = "colour",
-      }
-    },
-    reminder_text = {
-      {
-        ref_table = "card.joker_display_values", ref_value = "reminder_text"
-      }
-    },
-    calc_function = function(card)
-      card.joker_display_values.colour = localize("k_plus_colour")
-      card.joker_display_values.reminder_text = localize("k_display_per_round")
-    end,
-  }
-end
-
 return joker
