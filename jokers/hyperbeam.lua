@@ -40,7 +40,7 @@ local joker = {
 }
 
 if JokerDisplay then
-  JokerDisplay.Definitions["j_mf_hugejoker"] = {
+  JokerDisplay.Definitions["j_mf_hyperbeam"] = {
     text = {
       {
         border_nodes = {
