@@ -23,6 +23,7 @@ local joker = {
     },
   },
   loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
     return {
       vars = { center.ability.extra }
     }
@@ -33,7 +34,7 @@ local joker = {
         G.bladedance_temp_ids = {}
       end
       G.E_MANAGER:add_event(Event({
-        trigger = 'after',
+        trigger = 'before',
         delay = 0.7,
         func = function() 
           local cards = {}
