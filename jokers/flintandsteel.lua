@@ -11,6 +11,8 @@ local joker = {
   perishable_compat = true,
 	pools = { ["Meme"] = true },
   loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+    info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
     return {
       vars = { }
     }

@@ -22,6 +22,7 @@ local joker = {
     }
   },
   loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue+1] = { key = "tetr_explainer", set="Other", specific_vars = { center.ability.val, center.ability.val - 1 } }
     return {vars = { center.ability.val } }
   end,
   calculate = function(self, card, context)

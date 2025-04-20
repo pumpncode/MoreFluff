@@ -10,6 +10,7 @@ local joker = {
   eternal_compat = true,
   perishable_compat = true,
   loc_vars = function(self, info_queue, center)
+    info_queue[#info_queue + 1] = G.P_CENTERS.j_marble
     return {
       vars = { }
     }

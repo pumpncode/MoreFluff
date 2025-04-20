@@ -1243,6 +1243,14 @@ local loc_stuff = {
           "{C:attention}#2#{C:dark_edition} Modded Joker{} cards",
         }
       },
+      tetr_explainer = {
+        name = "Explanation",
+        text = {
+          "{X:dark_edition,C:white}^^n{} represents {C:attention}Tetration",
+          "In this case, {X:dark_edition,C:white}n^^#1#{} can be",
+          "calculated using {X:dark_edition,C:white}n^^#1# = n^n^#2#{}"
+        }
+      }
     },
     Sleeve = {
       sleeve_mf_grosmichel = {
