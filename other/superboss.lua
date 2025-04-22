@@ -1,4 +1,17 @@
 function init()
+  G.get_new_superboss = function()
+    local superboss_pool = {}
+    for k, v in pairs(G.P_BLINDS) do
+      if v.debuff.superboss or v.debuff.akyrs_blind_difficulty == "expert" then
+        if k ~= "bl_akyrs_expert_inflation" then
+          superboss_pool[k] = true
+        end
+      end
+    end
+
+    local _, boss = pseudorandom_element(superboss_pool, pseudoseed('boss'))
+  end
+
   SMODS.Voucher {
     key = "superboss_ticket",
     atlas = "mf_vouchers",
@@ -34,19 +47,7 @@ function init()
 
       G.GAME.round_resets.blind_choices.Small = "bl_mf_bigger_blind"
       G.GAME.round_resets.blind_choices.Big = get_new_boss()
-
-      local superboss_pool = {}
-      for k, v in pairs(G.P_BLINDS) do
-        if v.debuff.superboss or v.debuff.akyrs_blind_difficulty == "expert" then
-          if k ~= "bl_akyrs_expert_inflation" then
-            superboss_pool[k] = true
-          end
-        end
-      end
-
-      local _, boss = pseudorandom_element(superboss_pool, pseudoseed('boss'))
-
-      G.GAME.round_resets.blind_choices.Boss = boss
+      G.GAME.round_resets.blind_choices.Boss = G.get_new_superboss()
 
       ease_background_colour_blind(G.STATE, 'Small Blind')
     end,

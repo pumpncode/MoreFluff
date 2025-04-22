@@ -160,3 +160,15 @@ payload = '''if G.GAME.blind.name == 'The Serpent DX' and
     if #G.hand.cards > 0 then hand_space = 0 end
 end'''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
+position = "after"
+payload = '''if G.GAME.superboss_active then
+  G.GAME.round_resets.blind_choices.Small = "bl_mf_bigger_blind"
+  G.GAME.round_resets.blind_choices.Big = get_new_boss()
+  G.GAME.round_resets.blind_choices.Boss = G.get_new_superboss()
+end'''
+match_indent = true
