@@ -360,42 +360,44 @@ function init()
   })
 
   -- high priestess
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Rotarot",
-    name = "rot_HighPriestess",
-    key = "rot_high_priestess",
-    pos = { x = 2, y = 0 },
-    config = {
-      val = 2,
-    },
-    cost = 4,
-    atlas = "mf_rotarots",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 107, h = 107 },
-    can_use = function(self, card)
-      return #G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables
-    end,
-    use = function(self, card, area, copier)
-      local used_tarot = copier or card
-      for i = 1, math.min(card.ability.val, G.consumeables.config.card_limit - #G.consumeables.cards) do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          if G.consumeables.config.card_limit > #G.consumeables.cards then
-            play_sound('timpani')
-            local card = create_card("Colour", G.consumeables, nil, nil, nil, nil, nil, "pri")
-            card:add_to_deck()
-            G.consumeables:emplace(card)
-            used_tarot:juice_up(0.3, 0.5)
-          end
-          return true end }))
+  if mf_config["Colour Cards"] then
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Rotarot",
+      name = "rot_HighPriestess",
+      key = "rot_high_priestess",
+      pos = { x = 2, y = 0 },
+      config = {
+        val = 2,
+      },
+      cost = 4,
+      atlas = "mf_rotarots",
+      unlocked = true,
+      discovered = true,
+      display_size = { w = 107, h = 107 },
+      can_use = function(self, card)
+        return #G.consumeables.cards < G.consumeables.config.card_limit or card.area == G.consumeables
+      end,
+      use = function(self, card, area, copier)
+        local used_tarot = copier or card
+        for i = 1, math.min(card.ability.val, G.consumeables.config.card_limit - #G.consumeables.cards) do
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            if G.consumeables.config.card_limit > #G.consumeables.cards then
+              play_sound('timpani')
+              local card = create_card("Colour", G.consumeables, nil, nil, nil, nil, nil, "pri")
+              card:add_to_deck()
+              G.consumeables:emplace(card)
+              used_tarot:juice_up(0.3, 0.5)
+            end
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      loc_vars = function(self, info_queue, card)
+        return { vars = {card.ability.val} }
       end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      return { vars = {card.ability.val} }
-    end
-  })
+    })
+  end
 
   -- empress
   SMODS.Consumable({

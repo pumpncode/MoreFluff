@@ -37,6 +37,9 @@ end
 if mf_config["Disable Art Credits"] == nil then
   mf_config["Disable Art Credits"] = false
 end
+if mf_config["Superboss"] == nil then
+  mf_config["Superboss"] = true
+end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -88,6 +91,18 @@ SMODS.Sound({
         and G.booster_pack and not G.booster_pack.REMOVED
       )
       and 2
+  end,
+})
+
+SMODS.Sound({
+  key = "music_duelzone",
+  path = "music_duelzone.ogg",
+  sync = false,
+  pitch = 1,
+  select_music_track = function()
+    return
+      mf_config["Music"] and G.GAME.superboss_active
+      and 6 -- notably lower than jimball (Funny)
   end,
 })
 
@@ -443,6 +458,14 @@ SMODS.Atlas({
   px = 34,
   py = 34
 })
+SMODS.Atlas({
+	key = "mf_blinds",
+	atlas_table = "ANIMATION_ATLAS",
+	path = "mf_blinds.png",
+	px = 34,
+	py = 34,
+	frames = 21,
+})
 if Jen then
   SMODS.Atlas({ 
     key = "almanactriangle", 
@@ -473,6 +496,11 @@ if mf_config["45 Degree Rotated Tarot Cards"] then
   init_enhancers()
   init_rotarots = SMODS.load_file("other/rotarots.lua")()
   init_rotarots()
+end
+
+if mf_config["Superboss"] then
+  init_superboss = SMODS.load_file("other/superboss.lua")()
+  init_superboss()
 end
 
 -- clutch tag
@@ -1072,6 +1100,10 @@ G.FUNCS.mf_change_artpack = function(args)
   mf_config["Programmer Art"] = (args.to_val == "Programmer")
 end
 
+G.FUNCS.duelzone_ver2_link = function(e)
+  love.system.openURL( "https://www.youtube.com/watch?v=F-Dm3ayqwkI" )
+end
+
 local morefluffTabs = function() return {
 	{
 		label = localize("mf_config_features"),
@@ -1085,6 +1117,8 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_disablecred"), ref_table = mf_config, ref_value = "Disable Art Credits" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
+      settings.nodes[#settings.nodes + 1] =
+        create_toggle({ label = localize("mf_config_superboss"), ref_table = mf_config, ref_value = "Superboss" })
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
       settings.nodes[#settings.nodes + 1] =
@@ -1143,7 +1177,15 @@ local morefluffTabs = function() return {
                 }},
               }},
             }},
-          }}
+          }},
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+              {n=G.UIT.T, config={text = "Superboss Music: DUEL ZONE (VER. 2) - SiIvaGunner", scale = text_scale*0.6, colour = G.C.UI.WHITE, shadow = true}},
+              G.F_EXTERNAL_LINKS and {n=G.UIT.C, config={padding = 0.1}, nodes={
+                UIBox_button({label = {'Youtube'}, button = 'duelzone_ver2_link'})
+              }} or nil,
+            }},
+          }},
         }}
 			return {
 				n = G.UIT.ROOT,
