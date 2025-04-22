@@ -712,6 +712,21 @@ function init()
     end
   }
 
+  SMODS.Challenge {
+    key = "superboss_always",
+    rules = {
+      custom = {
+        { id = "mf_superboss_active" },
+      },
+      modifiers = {
+        { id = "dollars", value = 14 },
+      },
+    },
+    consumeables = {
+      { id = "c_judgement" },
+    },
+  }
+
   if Jen then -- so it's like actually difficult(?)
     local smods_get_blind_amt = SMODS.get_blind_amount
     function SMODS.get_blind_amount(ante)

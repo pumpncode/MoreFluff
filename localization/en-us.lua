@@ -1675,6 +1675,9 @@ local loc_stuff = {
       cc_mf_handtype = { "if hand contains a #3#" },
       cc_mf_odds = { "if a #4# in #3# chance passes" },
     },
+    v_text = {
+      ch_c_mf_superboss_active = { "Superboss is always active" },
+    },
     dictionary = {
       k_colour = "Colour",
       b_colour_cards = "Colour Cards",
@@ -1754,6 +1757,9 @@ local loc_stuff = {
       ach_mf_dropkick_ten_hands = "Trigger Dropkick 5 times in one round",
       ach_mf_negative_philosophical = "Have a Negative Philosophical Joker",
       ach_mf_huge_and_pixel = "Have a Pixel Joker and a Huge Joker",
+    },
+    challenge_names = {
+      c_mf_superboss_always = "Better Balatro II",
     },
   }
 }
