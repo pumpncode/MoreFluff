@@ -258,8 +258,6 @@ function init()
     defeat = function(self)
       if not self.disabled then
         G.hand:change_size(3)
-        
-        G.FUNCS.draw_from_deck_to_hand(3)
       end
     end,
 
