@@ -10,6 +10,8 @@ function init()
     end
 
     local _, boss = pseudorandom_element(superboss_pool, pseudoseed('boss'))
+
+    return boss
   end
 
   SMODS.Voucher {
