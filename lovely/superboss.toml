@@ -187,6 +187,18 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''G.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
+position = "after"
+payload = '''if G.GAME.superboss_active then
+  G.GAME.round_resets.blind_choices.Small = "bl_mf_bigger_blind"
+  G.GAME.round_resets.blind_choices.Big = get_new_boss()
+  G.GAME.round_resets.blind_choices.Boss = G.get_new_superboss()
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
 target="game.lua"
 pattern = '''for k, v in ipairs(_ch.rules.custom) do'''
 position = "after"

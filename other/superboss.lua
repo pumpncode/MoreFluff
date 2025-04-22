@@ -725,6 +725,7 @@ function init()
     rules = {
       custom = {
         { id = "mf_superboss_active" },
+        { id = "scaling", value = 4 },
       },
       modifiers = {
         { id = "dollars", value = 14 },
