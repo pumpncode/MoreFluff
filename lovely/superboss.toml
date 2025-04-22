@@ -163,7 +163,7 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
-target = "functions/state_events.lua"
+target = "game.lua"
 pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
 payload = '''if G.GAME.superboss_active then
