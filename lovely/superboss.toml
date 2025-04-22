@@ -176,7 +176,7 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"
-pattern = '''self.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
+pattern = '''G.GAME.round_resets.blind_choices.Boss = get_new_boss()'''
 position = "after"
 payload = '''if G.GAME.superboss_active then
   G.GAME.round_resets.blind_choices.Small = "bl_mf_bigger_blind"
