@@ -1180,7 +1180,7 @@ local morefluffTabs = function() return {
           }},
           {n=G.UIT.R, config={align = "cm", padding = 0.1, r = 0.1}, nodes={
             {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
-              {n=G.UIT.T, config={text = "Superboss Music: DUEL ZONE (VER. 2) - SiIvaGunner", scale = text_scale*0.6, colour = G.C.UI.WHITE, shadow = true}},
+              {n=G.UIT.T, config={text = "Superboss Music: DUEL ZONE (VER. 2) - dante, Geshtro", scale = text_scale*0.6, colour = G.C.UI.WHITE, shadow = true}},
               G.F_EXTERNAL_LINKS and {n=G.UIT.C, config={padding = 0.1}, nodes={
                 UIBox_button({label = {'Youtube'}, button = 'duelzone_ver2_link'})
               }} or nil,
