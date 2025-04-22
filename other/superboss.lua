@@ -344,15 +344,6 @@ function init()
       akyrs_cannot_be_disabled = true,
     },
 
-    recalc_debuff = function(self, card, from_blind)
-      if not G.GAME.blind.disabled and card.area ~= G.jokers then
-        if card.ability.mf_played_this_game then
-          return true
-        end
-      end
-      return false
-    end,
-
     boss = {
       min=9, max=10, showdown = true
     },
