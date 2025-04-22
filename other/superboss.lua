@@ -255,6 +255,14 @@ function init()
       end
     end,
 
+    defeat = function(self)
+      if not self.disabled then
+        G.hand:change_size(3)
+        
+        G.FUNCS.draw_from_deck_to_hand(3)
+      end
+    end,
+
     set_blind = function(self)
       G.hand:change_size(-3)
     end,
