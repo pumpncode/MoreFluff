@@ -551,6 +551,12 @@ local loc_stuff = {
           "before scoring",
         },
       },
+      j_mf_blahaj = { 
+        name = "Blahaj",
+        text = {
+          "Swaps {C:chips}Chips{} and {C:mult}Mult{}"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1712,6 +1718,7 @@ local loc_stuff = {
       k_death_caps = "DEATH",
       k_effect_added_ex = "Effect added!",
       k_merged_ex = "Merged!",
+      k_swap_ex = "Swap!",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
