@@ -121,11 +121,11 @@ local joker_list = {
   "simplified",
   "spiral",
   "treasuremap",
+  "unregisteredhypercam",
   "philosophical",
 
   -- uncommon
   "badlegaldefence",
-  "clipart",
 
   -- uncommon (spire) - these should be together in the collection and in class order
   "dropkick",
@@ -136,6 +136,7 @@ local joker_list = {
 
   -- other uncommons
   "broomcloset",
+  "clipart",
   "coupon_catalogue",
   "css",
   "flintandsteel",

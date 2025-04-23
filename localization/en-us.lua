@@ -544,6 +544,13 @@ local loc_stuff = {
           "{C:inactive}(Currently #2#)"
         },
       },
+      j_mf_unregisteredhypercam = { 
+        name = "Unregistered Hypercam 2",
+        text = {
+          "{X:dark_edition,C:white,s:1.4} ^^#1# {s:1.4} Mult",
+          "before scoring",
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
