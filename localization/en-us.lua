@@ -527,6 +527,15 @@ local loc_stuff = {
           art_credit("footlongdingledong"),
         }
       },
+      j_mf_farmmerge = {
+        name = "Joke Merge Valley",
+        text = {
+          "Discarding exactly {C:attention}3 cards",
+          "with the same rank {C:dark_edition}Merges",
+          "them all with the {C:attention}rightmost",
+          "discarded card"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1687,6 +1696,7 @@ local loc_stuff = {
       b_take = "TAKE",
       k_death_caps = "DEATH",
       k_effect_added_ex = "Effect added!",
+      k_merged_ex = "Merged!",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",

@@ -137,51 +137,52 @@ local joker_list = {
   -- other uncommons
   "coupon_catalogue",
   "css",
+  "flintandsteel",
+  "gemstonejoker",
   "globe",
   "goldencarrot",
   "hallofmirrors",
   "impostor",
+  "farmmerge",
+  "junkmail",
   "tonersoup",
   "loadeddisk",
+  "missingjoker",
+  "rot_cartomancer",
   "stylemeter",
+  "stonejokerjoker",
+  "talljoker",
   "teacup",
+  "tealjoker",
   "recycling",
   "virtual",
+  "yuckyrat",
 
   -- rare
+  "allicantdo",
   "bloodpact",
+  "brass",
   "bowlingball",
   "cba",
+  "complexitycreep",
   "fleshprison",
   "hugejoker",
+  "hyperjimbo",
   "jankman",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",
   "rosetinted",
   "the_solo",
-
-  -- legendary!!
-  "triangle",
-
-  -- 1.3
-  "junkmail",
-  "flintandsteel",
-  "gemstonejoker",
-  "missingjoker",
-  "rot_cartomancer",
-  -- "selfinsert", -- cut this one for now
-  "stonejokerjoker",
-  "talljoker",
-  "tealjoker",
-  "yuckyrat",
-  "allicantdo",
-  "brass",
-  "complexitycreep",
-  "hyperjimbo",
   "top10",
   "widejoker",
+  
+  -- legendary!!
+  "triangle",
   "marigold",
+
+  -- 1.3
+  -- "selfinsert", -- cut this one for now
 
   -- busted shit
   "colorem",
