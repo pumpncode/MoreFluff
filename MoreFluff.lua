@@ -143,6 +143,7 @@ local joker_list = {
   "goldencarrot",
   "hallofmirrors",
   "impostor",
+  "farmmerge",
   "junkmail",
   "tonersoup",
   "loadeddisk",
