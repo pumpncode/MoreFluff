@@ -536,6 +536,14 @@ local loc_stuff = {
           "discarded card"
         },
       },
+      j_mf_broomcloset = {
+        name = "The Broom Closet",
+        text = {
+          "{X:mult,C:white}X#1#{} Mult if no purchases",
+          "were made in the last {C:attention}Shop{}",
+          "{C:inactive}(Currently #2#)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

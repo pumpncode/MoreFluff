@@ -135,6 +135,7 @@ local joker_list = {
   "dramaticentrance",
 
   -- other uncommons
+  "broomcloset",
   "coupon_catalogue",
   "css",
   "flintandsteel",
