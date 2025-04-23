@@ -1,7 +1,7 @@
 local joker = {
   name = "Unregisted Hypercam 2",
   config = {
-    val = 1.1
+    val = 1.04
   },
   pos = {x = 7, y = 6},
   rarity = 1,
@@ -23,8 +23,8 @@ local joker = {
         }
       else
         return {
-          Xmult_mod = mult ^ (mult ^ 0.1 - 1),
-          message = "^^1.1 Mult",
+          Xmult_mod = mult ^ (mult ^ 0.04 - 1),
+          message = "^^1.04 Mult",
           colour = G.C.DARK_EDITION
         }
       end
