@@ -100,8 +100,8 @@ function init()
     },
 
     disable = function(self)
-      self.chips = self.chips/8
-      self.chip_text = number_format(self.chips)
+      G.GAME.blind.chips = G.GAME.blind.chips/8
+      G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
     end,
 
     in_pool = function(self) 
@@ -155,7 +155,7 @@ function init()
         for _, card in pairs(G.hand.cards) do
           cb_dx_pool[#cb_dx_pool + 1] = card
         end
-        for _ = 1,self.debuff.force_select_count do
+        for _ = 1, self.debuff.force_select_count do
           if #cb_dx_pool == 0 then break end
           local forced_card = pseudorandom_element(cb_dx_pool, pseudoseed('cerulean_bell_dx'))
           -- table.remove(cb_dx_pool, forced_card)
@@ -204,17 +204,17 @@ function init()
     },
 
     disable = function(self)
-      ease_hands_played(self.hands_sub)
-      ease_discard(self.discards_sub)
-      G.GAME.current_round.discards_used = G.GAME.current_round.discards_used - self.discards_sub
+      ease_hands_played(G.GAME.blind.hands_sub)
+      ease_discard(G.GAME.blind.discards_sub)
+      G.GAME.current_round.discards_used = G.GAME.current_round.discards_used - G.GAME.blind.discards_sub
     end,
 
     set_blind = function(self)
-      self.hands_sub = G.GAME.round_resets.hands - 1
-      ease_hands_played(-self.hands_sub)
-      self.discards_sub = G.GAME.round_resets.discards - 1
-      ease_discard(-self.discards_sub)
-      G.GAME.current_round.discards_used = G.GAME.current_round.discards_used + self.discards_sub
+      G.GAME.blind.hands_sub = G.GAME.round_resets.hands - 1
+      ease_hands_played(-G.GAME.blind.hands_sub)
+      G.GAME.blind.discards_sub = G.GAME.round_resets.discards - 1
+      ease_discard(-G.GAME.blind.discards_sub)
+      G.GAME.current_round.discards_used = G.GAME.current_round.discards_used + G.GAME.blind.discards_sub
     end,
 
     boss = {
@@ -248,7 +248,7 @@ function init()
     },
 
     disable = function(self)
-      if not self.disabled then
+      if not G.GAME.blind.disabled then
         G.hand:change_size(3)
         
         G.FUNCS.draw_from_deck_to_hand(3)
@@ -256,7 +256,7 @@ function init()
     end,
 
     defeat = function(self)
-      if not self.disabled then
+      if not G.GAME.blind.disabled then
         G.hand:change_size(3)
       end
     end,
@@ -533,10 +533,10 @@ function init()
     },
 
     debuff_hand = function(self, cards, hand, handname, check)
-      if self.disabled then return end
-      self.triggered = false
+      if G.GAME.blind.disabled then return end
+      G.GAME.blind.triggered = false
       if to_number(G.GAME.hands[handname].level) > 0 then
-        self.triggered = true
+        G.GAME.blind.triggered = true
         if not check then
           level_up_hand(nil, handname, nil, -G.GAME.hands[handname].level)
         end
@@ -574,7 +574,7 @@ function init()
     },
 
     stay_flipped = function(self, area, card)
-      if not self.disabled then
+      if not G.GAME.blind.disabled then
         if area == G.hand then
           for _, other_card in pairs(G.hand.cards) do
             if other_card.facing == "front" then
@@ -617,13 +617,13 @@ function init()
     },
 
     drawn_to_hand = function(self)
-      if not self.has_discarded then
+      if not G.GAME.blind.has_discarded then
         for _, v in ipairs(G.hand.cards) do
           G.hand.highlighted[#G.hand.highlighted+1] = v
           v:highlight(true)
         end
         G.FUNCS.discard_cards_from_highlighted(nil, true)
-        self.has_discarded = true
+        G.GAME.blind.has_discarded = true
       end
     end,
 
@@ -690,18 +690,18 @@ function init()
     },
 
     drawn_to_hand = function(self)
-      if self.should_discard then
+      if G.GAME.blind.should_discard then
         for _, v in ipairs(G.hand.cards) do
           G.hand.highlighted[#G.hand.highlighted+1] = v
           v:highlight(true)
         end
         G.FUNCS.discard_cards_from_highlighted(nil, true)
-        self.should_discard = false
+        G.GAME.blind.should_discard = false
       end
     end,
 
     press_play = function(self)
-      self.should_discard = true
+      G.GAME.blind.should_discard = true
     end,
 
     in_pool = function(self) 
