@@ -110,6 +110,7 @@ SMODS.Sound({
 local joker_list = {
   -- common
   "basepaul_card",
+  "blahaj",
   "clownfish",
   "expansion_pack",
   "hollow",
