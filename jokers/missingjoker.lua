@@ -4,6 +4,8 @@ local joker = {
   pos = {x = 0, y = 0},
   rarity = 2,
   cost = 7,
+  display_size = { w = 71, h = 95 },
+  pixel_size = { w = 71, h = 95 },
   unlocked = true,
   discovered = true,
   blueprint_compat = false,

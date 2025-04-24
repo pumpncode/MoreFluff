@@ -557,6 +557,13 @@ local loc_stuff = {
           "Swaps {C:chips}Chips{} and {C:mult}Mult{}"
         },
       },
+      j_mf_wilddrawfour = { 
+        name = "Wild Draw Four",
+        text = {
+          "Each {C:attention}Wild Card{} held",
+          "in hand gives {C:attention}+#1#{} hand size"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
