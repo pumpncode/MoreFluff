@@ -90,6 +90,7 @@ if JokerDisplay then
           break
         end
       end
+      if card.ability.set ~= "Joker" then real = false end
       return { x_chips = (real and mod_joker.ability.extra.x_chips ^ JokerDisplay.calculate_joker_triggers(mod_joker) or nil) }
     end
   }
