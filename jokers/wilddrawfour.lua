@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = true,
   perishable_compat = true,
+  enhancement_gate = "m_wild",
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.h_size, center.ability.extra }
