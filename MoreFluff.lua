@@ -9,6 +9,11 @@
 --- VERSION: 1.4.2
 
 local current_mod = SMODS.current_mod
+
+current_mod.optional_features = {
+  retrigger_joker = true,
+}
+
 local mod_path = SMODS.current_mod.path
 mf_config = SMODS.current_mod.config
 local folder = string.match(mod_path, "[Mm]ods.*")

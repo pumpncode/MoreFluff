@@ -119,7 +119,7 @@ if G.GAME.round_resets.ante == G.GAME.win_ante and (
   G.GAME.won = true
 
   G.GAME.superboss_active = false
-  G.GAME.modifiers.scaling = G.GAME.modifiers.scaling - 4
+  G.GAME.modifiers.scaling = math.max((G.GAME.modifiers.scaling - G.GAME.modifiers.bonus_scaling), 1)
   G.GAME.modifiers.bonus_scaling = 0
 
   G.GAME.round_resets.blind_choices.Small = "bl_small"

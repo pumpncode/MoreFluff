@@ -38,8 +38,8 @@ function init()
       G.GAME.superboss_active = true
 
       -- Increase ante scaling
-      G.GAME.modifiers.scaling = G.GAME.modifiers.scaling or 0
-      G.GAME.modifiers.bonus_scaling = 4
+      G.GAME.modifiers.scaling = G.GAME.modifiers.scaling or 1
+      G.GAME.modifiers.bonus_scaling = 3
 
       if Jen then
         G.GAME.modifiers.bonus_scaling = 99 -- additionally increased elsewhere

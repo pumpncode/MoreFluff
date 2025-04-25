@@ -2,7 +2,7 @@ local joker = {
   name = "Hall of Mirrors",
   config = {
     h_size = 0,
-    extra = 2,
+    extra = 3,
   },
   pos = {x = 1, y = 4},
   rarity = 2,

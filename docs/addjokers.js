@@ -249,7 +249,7 @@ let jokers = [
   {
     name: "Hall of Mirrors",
     text: [
-      "{C:attention}+2{} hand size for",
+      "{C:attention}+3{} hand size for",
       "each {C:attention}6{} scored in",
       "the current round",
     ],

@@ -560,8 +560,10 @@ local loc_stuff = {
       j_mf_wilddrawfour = { 
         name = "Wild Draw Four",
         text = {
-          "Each {C:attention}Wild Card{} held",
-          "in hand gives {C:attention}+#1#{} hand size"
+          "{C:attention}+#2#{} hand size for",
+          "each {C:attention}Wild Card{} scored",
+          "in the current round",
+          "{C:inactive}(Currently {C:attention}+#1#{C:inactive} cards)"
         },
       },
       -- ORTALAB SWAPS
