@@ -161,6 +161,7 @@ local joker_list = {
   "unpleasantcard",
   "loadeddisk",
   "missingjoker",
+  "paintcan",
   "rot_cartomancer",
   "stylemeter",
   "stonejokerjoker",
