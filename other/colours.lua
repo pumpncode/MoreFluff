@@ -434,6 +434,7 @@ function init()
             else
               card:start_dissolve(nil, i == #destroyed_cards)
             end
+            card:remove_from_deck()
           end
           return true end }))
       delay(0.5)
@@ -1258,6 +1259,13 @@ function init()
       local base_count = 1
       if G.GAME.used_vouchers.v_mf_paintroller and pseudorandom('paintroller') > 0.5 then
         base_count = base_count + 1
+      end
+
+      -- it's back !!
+      for _, jkr in pairs(SMODS.find_card("j_mf_paintcan")) do
+        if pseudorandom('paintcan') > G.GAME.probabilities.normal/jkr.ability.extra.odds then
+          base_count = base_count + 1
+        end
       end
 
       for j=1, base_count do

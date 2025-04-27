@@ -45,6 +45,12 @@ end
 if mf_config["Superboss"] == nil then
   mf_config["Superboss"] = true
 end
+if mf_config["Other Tags"] == nil then
+  mf_config["Other Tags"] = true
+end
+if mf_config["Other Packs"] == nil then
+  mf_config["Other Packs"] = true
+end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -152,8 +158,10 @@ local joker_list = {
   "farmmerge",
   "junkmail",
   "tonersoup",
+  "unpleasantcard",
   "loadeddisk",
   "missingjoker",
+  "paintcan",
   "rot_cartomancer",
   "stylemeter",
   "stonejokerjoker",
@@ -494,9 +502,11 @@ else
   end
 end
 
--- modded pack
-init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
-init_moddedpack()
+if mf_config["Other Packs"] then
+  -- modded pack
+  init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
+  init_moddedpack()
+end
 
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
@@ -511,31 +521,33 @@ if mf_config["Superboss"] then
   init_superboss()
 end
 
--- clutch tag
-SMODS.Tag({
-  key = "clutch",
-  atlas = "mf_tags",
-  config = {
-    extra = 4
-  },
-  pos = { x = 1, y = 1 },
-  unlocked = true,
-  discovered = true,
-  loc_vars = function(self, info_queue)
-    return { vars = { self.config.extra } }
-  end,
-  apply = function(self, tag, context)
-    if context.type == "final_scoring_step" then
-      SMODS.calculate_effect({xmult=4}, tag)
-    end
-    if context.type == "eval" then
-      tag:yep("X", G.C.RED, function()
-        return true
-      end)
-      tag.triggered = true
-    end
-  end,
-})
+if mf_config["Other Tags"] then
+  -- clutch tag
+  SMODS.Tag({
+    key = "clutch",
+    atlas = "mf_tags",
+    config = {
+      extra = 4
+    },
+    pos = { x = 1, y = 1 },
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue)
+      return { vars = { self.config.extra } }
+    end,
+    apply = function(self, tag, context)
+      if context.type == "final_scoring_step" then
+        SMODS.calculate_effect({xmult=4}, tag)
+      end
+      if context.type == "eval" then
+        tag:yep("X", G.C.RED, function()
+          return true
+        end)
+        tag.triggered = true
+      end
+    end,
+  })
+end
 
 
 -- maybe another day
@@ -1123,22 +1135,45 @@ local morefluffTabs = function() return {
         create_option_cycle({label = localize('mf_config_progart'), scale = 0.8, options = {"Refreshed", "Programmer"}, opt_callback = 'mf_change_artpack', current_option = (mf_config["Programmer Art"] and 2 or 1)})
       settings.nodes[#settings.nodes + 1] =
         create_toggle({ label = localize("mf_config_disablecred"), ref_table = mf_config, ref_value = "Disable Art Credits" })
-      settings.nodes[#settings.nodes + 1] =
+
+      local leftside_nodes = {}
+      leftside_nodes[#leftside_nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
-      settings.nodes[#settings.nodes + 1] =
-        create_toggle({ label = localize("mf_config_superboss"), ref_table = mf_config, ref_value = "Superboss" })
-      settings.nodes[#settings.nodes + 1] =
-        create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
-      settings.nodes[#settings.nodes + 1] =
+      leftside_nodes[#leftside_nodes + 1] =
         create_toggle({ label = localize("mf_config_colour_cards"), ref_table = mf_config, ref_value = "Colour Cards" })
-      settings.nodes[#settings.nodes + 1] =
+      leftside_nodes[#leftside_nodes + 1] =
         create_toggle({ label = localize("mf_config_rotarot_cards"), ref_table = mf_config, ref_value = "45 Degree Rotated Tarot Cards" })
-      settings.nodes[#settings.nodes + 1] =
+      leftside_nodes[#leftside_nodes + 1] =
+        create_toggle({ label = localize("mf_config_superboss"), ref_table = mf_config, ref_value = "Superboss" })
+
+      local rightside_nodes = {}
+      rightside_nodes[#rightside_nodes + 1] =
+        create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
+      rightside_nodes[#rightside_nodes + 1] =
+        create_toggle({ label = localize("mf_config_other_tags"), ref_table = mf_config, ref_value = "Other Tags" })
+      rightside_nodes[#rightside_nodes + 1] =
+        create_toggle({ label = localize("mf_config_other_packs"), ref_table = mf_config, ref_value = "Other Packs" })
+      rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_achievements"), ref_table = mf_config, ref_value = "Achievements" })
       -- settings.nodes[#settings.nodes + 1] =
       --   create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
-      settings.nodes[#settings.nodes + 1] =
+      rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_huger_joker"), ref_table = mf_config, ref_value = "Huger Joker" })
+
+      for _, n in pairs(leftside_nodes) do
+        n.config.align = "cr"
+      end
+      for _, n in pairs(rightside_nodes) do
+        n.config.align = "cl"
+      end
+
+      local t = {n=G.UIT.R, config={align = "cm",padding = 0.2, minw = 7}, nodes={
+        {n=G.UIT.C, config={align = "cl", padding = 0.15}, nodes = leftside_nodes },
+        {n=G.UIT.C, config={align = "cr", padding = 0.15}, nodes = rightside_nodes }
+      }}
+
+      settings.nodes[#settings.nodes + 1] = t
+
 			config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
 			mf_nodes[#mf_nodes + 1] = config
 			return {

@@ -822,6 +822,7 @@ function init()
             else
               card:start_dissolve(nil, i == #destroyed_cards)
             end
+            card:remove_from_deck()
           end
           return true end }))
       delay(0.5)

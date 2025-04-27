@@ -552,7 +552,7 @@ local loc_stuff = {
         },
       },
       j_mf_blahaj = { 
-        name = "Blahaj",
+        name = "Blåhaj",
         text = {
           "Swaps {C:chips}Chips{} and {C:mult}Mult{}"
         },
@@ -564,6 +564,14 @@ local loc_stuff = {
           "each {C:attention}Wild Card{} scored",
           "in the current round",
           "{C:inactive}(Currently {C:attention}+#1#{C:inactive} cards)"
+        },
+      },
+      j_mf_unpleasantcard = { 
+        name = "Unpleasant Card",
+        text = {
+          "{X:chips,C:white} X#1# {} Chips",
+          "{C:attention}Booster Packs{} are",
+          "automatically skipped"
         },
       },
       -- ORTALAB SWAPS
@@ -1775,6 +1783,8 @@ local loc_stuff = {
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
       mf_config_superboss = "Superboss",
+      mf_config_other_tags = "Other Tags",
+      mf_config_other_packs = "Other Packs",
       
       mf_credits = "Credits",
       
