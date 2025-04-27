@@ -1135,7 +1135,6 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_disablecred"), ref_table = mf_config, ref_value = "Disable Art Credits" })
 
       local leftside_nodes = {}
-      local rightside_nodes = {}
       leftside_nodes[#leftside_nodes + 1] =
         create_toggle({ label = localize("mf_config_jokers"), ref_table = mf_config, ref_value = "Jokers" })
       leftside_nodes[#leftside_nodes + 1] =
@@ -1144,6 +1143,8 @@ local morefluffTabs = function() return {
         create_toggle({ label = localize("mf_config_rotarot_cards"), ref_table = mf_config, ref_value = "45 Degree Rotated Tarot Cards" })
       leftside_nodes[#leftside_nodes + 1] =
         create_toggle({ label = localize("mf_config_superboss"), ref_table = mf_config, ref_value = "Superboss" })
+
+      local rightside_nodes = {}
       rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_music"), ref_table = mf_config, ref_value = "Music" })
       rightside_nodes[#rightside_nodes + 1] =
