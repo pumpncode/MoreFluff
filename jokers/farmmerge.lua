@@ -67,6 +67,7 @@ local joker = {
         if v ~= last_card then 
           destroyed_cards[#destroyed_cards + 1] = v
           v:start_dissolve({HEX("57ecab")}, nil, 1.6)
+          v:remove_from_deck()
         end
       end
       
