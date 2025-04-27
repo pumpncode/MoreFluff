@@ -574,6 +574,13 @@ local loc_stuff = {
           "automatically skipped"
         },
       },
+      j_mf_slotmachine = { 
+        name = "Slot Machine",
+        text = {
+          "{C:green}#1# in #2#{} chance to retrigger",
+          "scored {C:attention}7{} cards {C:attention}#3#{} times",
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

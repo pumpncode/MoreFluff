@@ -1263,7 +1263,7 @@ function init()
 
       -- it's back !!
       for _, jkr in pairs(SMODS.find_card("j_mf_paintcan")) do
-        if pseudorandom('paintcan') > G.GAME.probabilities.normal/jkr.ability.extra.odds then
+        if pseudorandom('paintcan') < G.GAME.probabilities.normal/jkr.ability.extra.odds then
           base_count = base_count + 1
         end
       end
