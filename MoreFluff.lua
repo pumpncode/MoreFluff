@@ -163,6 +163,7 @@ local joker_list = {
   "missingjoker",
   "paintcan",
   "rot_cartomancer",
+  "snake",
   "slotmachine",
   "stylemeter",
   "stonejokerjoker",

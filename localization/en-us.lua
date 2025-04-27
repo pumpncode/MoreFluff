@@ -588,6 +588,13 @@ local loc_stuff = {
           "{C:dark_edition}-#2#{} Joker Slot"
         },
       },
+      j_mf_snake = {
+        name = "Snake",
+        text = {
+          "After {C:attention}play{} or {C:attention}discard{},",
+          "always draw {C:attention}#1#{} cards"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
