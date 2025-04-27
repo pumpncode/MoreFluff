@@ -566,6 +566,14 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}+#1#{C:inactive} cards)"
         },
       },
+      j_mf_unpleasantcard = { 
+        name = "Unpleasant Card",
+        text = {
+          "{X:chips,C:white} X#1# {} Chips",
+          "{C:attention}Booster Packs{} are",
+          "automatically skipped"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

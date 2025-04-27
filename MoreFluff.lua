@@ -158,6 +158,7 @@ local joker_list = {
   "farmmerge",
   "junkmail",
   "tonersoup",
+  "unpleasantcard",
   "loadeddisk",
   "missingjoker",
   "rot_cartomancer",
