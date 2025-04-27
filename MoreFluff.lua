@@ -185,6 +185,7 @@ local joker_list = {
   "hugejoker",
   "hyperjimbo",
   "jankman",
+  -- "lessfluff",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",

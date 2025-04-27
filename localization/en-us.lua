@@ -581,6 +581,13 @@ local loc_stuff = {
           "scored {C:attention}7{} cards {C:attention}#3#{} times",
         },
       },
+      j_mf_lessfluff = {
+        name = "Less Fluff",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult",
+          "{C:dark_edition}-#2#{} Joker Slot"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
