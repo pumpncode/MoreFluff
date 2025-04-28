@@ -190,7 +190,6 @@ local joker_list = {
   "hugejoker",
   "hyperjimbo",
   "jankman",
-  -- "lessfluff",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",
@@ -198,6 +197,7 @@ local joker_list = {
   "the_solo",
   "top10",
   "widejoker",
+  "lessfluff",
   
   -- legendary!!
   "triangle",

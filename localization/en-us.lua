@@ -581,13 +581,6 @@ local loc_stuff = {
           "scored {C:attention}7{} cards {C:attention}#3#{} times",
         },
       },
-      j_mf_lessfluff = {
-        name = "Less Fluff",
-        text = {
-          "{X:mult,C:white} X#1# {} Mult",
-          "{C:dark_edition}-#2#{} Joker Slot"
-        },
-      },
       j_mf_snake = {
         name = "Snake",
         text = {
@@ -628,6 +621,16 @@ local loc_stuff = {
           "one hand, create a",
           "random {C:spectral}Spectral{} card",
           "{C:inactive}(Must have room)"
+        },
+      },
+      j_mf_lessfluff = {
+        name = "Less Fluff",
+        text = {
+          "Destroys all other {C:dark_edition}Modded{} {C:attention}Jokers{}",
+          "at the start of each {C:attention}Blind{}", 
+          "and gains {X:mult,C:white} X#2# {} Mult for each",
+          "{C:attention}Joker{} that was destroyed",
+          "{C:inactive}(Currently {X:red,C:white} X#1# {C:inactive})"
         },
       },
       -- ORTALAB SWAPS
