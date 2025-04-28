@@ -604,6 +604,15 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#, must have room)"
         },
       },
+      j_mf_cueball = {
+        name = "Cue Ball",
+        text = {
+          "{C:green}#1# in #2#{} chance for each played",
+          "{C:attention}rankless card{} to create a",
+          "{C:rotarot}45 Degree Rotated Tarot{} card when scored",
+          "{C:inactive}(Must have room)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

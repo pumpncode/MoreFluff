@@ -149,6 +149,7 @@ local joker_list = {
   "clipart",
   "coupon_catalogue",
   "css",
+  "cueball",
   "flintandsteel",
   "gemstonejoker",
   "globe",
