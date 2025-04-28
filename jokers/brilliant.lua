@@ -17,7 +17,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.end_of_round and not context.individual then
+    if context.end_of_round and context.cardarea == G.jokers then
       if G.GAME.current_round.hands_played <= 1 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({
