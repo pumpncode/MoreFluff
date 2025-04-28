@@ -613,6 +613,23 @@ local loc_stuff = {
           "{C:inactive}(Must have room)"
         },
       },
+      j_mf_blunder = {
+        name = "Blunder",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult",
+          "Forces one card",
+          "to be selected"
+        },
+      },
+      j_mf_brilliant = {
+        name = "Brilliant",
+        text = {
+          "If blind was beaten in",
+          "one hand, create a",
+          "random {C:spectral}Spectral{} card",
+          "{C:inactive}(Must have room)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

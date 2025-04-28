@@ -145,6 +145,8 @@ local joker_list = {
 
   -- other uncommons
   "badlegaldefence",
+  "blunder",
+  "brilliant",
   "broomcloset",
   "clipart",
   "coupon_catalogue",
