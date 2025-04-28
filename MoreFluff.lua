@@ -178,6 +178,7 @@ local joker_list = {
   -- rare
   "allicantdo",
   "bloodpact",
+  "bookmove",
   "brass",
   "bowlingball",
   "cba",

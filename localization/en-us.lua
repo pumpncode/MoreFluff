@@ -595,6 +595,15 @@ local loc_stuff = {
           "always draw {C:attention}#1#{} cards"
         }
       },
+      j_mf_bookmove = {
+        name = "Book Move",
+        text = {
+          "After {C:attention}#2#{} rounds,",
+          "sell this card to create",
+          "{C:attention}Hanging Chad{} and {C:attention}Photograph",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#, must have room)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
