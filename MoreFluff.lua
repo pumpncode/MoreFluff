@@ -145,10 +145,13 @@ local joker_list = {
 
   -- other uncommons
   "badlegaldefence",
+  "blunder",
+  "brilliant",
   "broomcloset",
   "clipart",
   "coupon_catalogue",
   "css",
+  "cueball",
   "flintandsteel",
   "gemstonejoker",
   "globe",
@@ -163,6 +166,8 @@ local joker_list = {
   "missingjoker",
   "paintcan",
   "rot_cartomancer",
+  "snake",
+  "slotmachine",
   "stylemeter",
   "stonejokerjoker",
   "talljoker",
@@ -176,6 +181,7 @@ local joker_list = {
   -- rare
   "allicantdo",
   "bloodpact",
+  "bookmove",
   "brass",
   "bowlingball",
   "cba",
@@ -191,6 +197,7 @@ local joker_list = {
   "the_solo",
   "top10",
   "widejoker",
+  "lessfluff",
   
   -- legendary!!
   "triangle",
@@ -218,10 +225,10 @@ function has(table, elem)
 end
 
 -- I don't think these are needed anymore since Talisman is a dependency but idk lol -- Jevonn
-local to_big = to_big or function(num)
+to_big = to_big or function(num)
   return num
 end
-local to_number = to_number or function(jevonn_was_here)
+to_number = to_number or function(jevonn_was_here)
   return jevonn_was_here
 end
 

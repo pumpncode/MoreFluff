@@ -907,7 +907,7 @@ function init()
       partial_rounds = 0,
       upgrade_rounds = 4,
     },
-    hidden = not Jen,
+    hidden = true,
     cost = 4,
     atlas = "mf_colours",
     unlocked = true,
@@ -1034,13 +1034,13 @@ function init()
           partial_rounds = 0,
           upgrade_rounds = 9,
         },
-        hidden = not Jen,
+        hidden = true,
         cost = 4,
         atlas = "mf_colours",
         unlocked = true,
         discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+        display_size = { w = 71, h = 87 },
+        pixel_size = { w = 71, h = 87 },
         can_use = function(self, card)
           return true
         end,
@@ -1263,7 +1263,7 @@ function init()
 
       -- it's back !!
       for _, jkr in pairs(SMODS.find_card("j_mf_paintcan")) do
-        if pseudorandom('paintcan') > G.GAME.probabilities.normal/jkr.ability.extra.odds then
+        if pseudorandom('paintcan') < G.GAME.probabilities.normal/jkr.ability.extra.odds then
           base_count = base_count + 1
         end
       end

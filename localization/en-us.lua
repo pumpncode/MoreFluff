@@ -574,6 +574,65 @@ local loc_stuff = {
           "automatically skipped"
         },
       },
+      j_mf_slotmachine = { 
+        name = "Slot Machine",
+        text = {
+          "{C:green}#1# in #2#{} chance to retrigger",
+          "scored {C:attention}7{} cards {C:attention}#3#{} times",
+        },
+      },
+      j_mf_snake = {
+        name = "Snake",
+        text = {
+          "After {C:attention}play{} or {C:attention}discard{},",
+          "always draw {C:attention}#1#{} cards"
+        }
+      },
+      j_mf_bookmove = {
+        name = "Book Move",
+        text = {
+          "After {C:attention}#2#{} rounds,",
+          "sell this card to create",
+          "{C:attention}Hanging Chad{} and {C:attention}Photograph",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}/#2#, must have room)"
+        },
+      },
+      j_mf_cueball = {
+        name = "Cue Ball",
+        text = {
+          "{C:green}#1# in #2#{} chance for each played",
+          "{C:attention}rankless card{} to create a",
+          "{C:rotarot}45 Degree Rotated Tarot{} card when scored",
+          "{C:inactive}(Must have room)"
+        },
+      },
+      j_mf_blunder = {
+        name = "Blunder",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult",
+          "Forces one card",
+          "to be selected"
+        },
+      },
+      j_mf_brilliant = {
+        name = "Brilliant",
+        text = {
+          "If blind was beaten in",
+          "one hand, create a",
+          "random {C:spectral}Spectral{} card",
+          "{C:inactive}(Must have room)"
+        },
+      },
+      j_mf_lessfluff = {
+        name = "Less Fluff",
+        text = {
+          "Destroys all other {C:dark_edition}Modded{} {C:attention}Jokers{}",
+          "at the start of each {C:attention}Blind{}", 
+          "and gains {X:mult,C:white} X#2# {} Mult for each",
+          "{C:attention}Joker{} that was destroyed",
+          "{C:inactive}(Currently {X:red,C:white} X#1# {C:inactive})"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1774,7 +1833,7 @@ local loc_stuff = {
       mf_config_features = "Features",
 
       mf_config_progart = "Art Pack (requires restart)",
-      mf_config_disablecred = "Disble Art Credits on cards",
+      mf_config_disablecred = "Disable Art Credits on cards",
       mf_config_jokers = "Jokers",
       mf_config_music = "Music",
       mf_config_colour_cards = "Colour Cards",

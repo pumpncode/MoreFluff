@@ -1,21 +1,19 @@
 local joker = {
-  name = "Paint Can",
+  name = "Snake",
   config = {
-    extra = {
-      odds = 2
-    }
+    extra = 3
   },
-  pos = {x = 1, y = 7},
+  pos = {x = 3, y = 7},
   rarity = 2,
-  cost = 6,
+  cost = 7,
   unlocked = true,
   discovered = true,
-  blueprint_compat = false,
+  blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
   loc_vars = function(self, info_queue, center)
     return {
-      vars = { G.GAME.probabilities.normal, center.ability.extra.odds }
+      vars = { center.ability.extra }
     }
   end,
   calculate = function(self, card, context)
