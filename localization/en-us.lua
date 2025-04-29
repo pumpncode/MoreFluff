@@ -1833,7 +1833,7 @@ local loc_stuff = {
       mf_config_features = "Features",
 
       mf_config_progart = "Art Pack (requires restart)",
-      mf_config_disablecred = "Disble Art Credits on cards",
+      mf_config_disablecred = "Disable Art Credits on cards",
       mf_config_jokers = "Jokers",
       mf_config_music = "Music",
       mf_config_colour_cards = "Colour Cards",
