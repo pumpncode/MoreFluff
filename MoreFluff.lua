@@ -225,10 +225,10 @@ function has(table, elem)
 end
 
 -- I don't think these are needed anymore since Talisman is a dependency but idk lol -- Jevonn
-local to_big = to_big or function(num)
+to_big = to_big or function(num)
   return num
 end
-local to_number = to_number or function(jevonn_was_here)
+to_number = to_number or function(jevonn_was_here)
   return jevonn_was_here
 end
 
