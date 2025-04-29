@@ -1128,10 +1128,10 @@ local loc_stuff = {
       m_mf_marigold = {
         name = "Marigold Card",
         text = {
+          "Earn {C:money}$#1#{} at",
+          "end of round, plus",
           "{C:money}$#1#{} for each other",
-          "{C:attention}Marigold Card{} when",
-          "this card is held in",
-          "hand at end of round"
+          "{C:attention}Marigold Card{}",
         }
       },
       m_mf_brass = {
