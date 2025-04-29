@@ -1131,7 +1131,7 @@ local loc_stuff = {
           "Earn {C:money}$#1#{} at",
           "end of round, plus",
           "{C:money}$#1#{} for each other",
-          "{C:attention}Marigold Card{}",
+          "{C:attention}Marigold Card{} in hand",
         }
       },
       m_mf_brass = {
