@@ -1165,7 +1165,7 @@ local loc_stuff = {
       v_mf_paintroller = {
         name = "Paint Roller",
         text = {
-          "{C:green}1 in 2{} chance to add",
+          "{C:green}#1# in 2{} chance to add",
           "{C:attention}1{} round to {C:colourcard}Colour Cards{}",
           "when they gain a round"
         },

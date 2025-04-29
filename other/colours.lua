@@ -1163,7 +1163,7 @@ function init()
     unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue)
-      return { vars = {} }
+      return { vars = { G.GAME.probabilities.normal} }
     end,
   })
   SMODS.Voucher({
@@ -1257,7 +1257,7 @@ function init()
     if _card.ability.set == "Colour" then
 
       local base_count = 1
-      if G.GAME.used_vouchers.v_mf_paintroller and pseudorandom('paintroller') > 0.5 then
+      if G.GAME.used_vouchers.v_mf_paintroller and pseudorandom('paintroller') < G.GAME.probabilities.normal/2 then
         base_count = base_count + 1
       end
 
