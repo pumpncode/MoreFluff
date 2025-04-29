@@ -1267,6 +1267,8 @@ function init()
           base_count = base_count + 1
         end
       end
+      
+      base_count = base_count + #SMODS.find_card("j_akyrs_aikoyori")
 
       for j=1, base_count do
         -- all of them that go up over time
