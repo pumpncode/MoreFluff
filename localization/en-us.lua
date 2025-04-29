@@ -1128,10 +1128,10 @@ local loc_stuff = {
       m_mf_marigold = {
         name = "Marigold Card",
         text = {
+          "Earn {C:money}$#1#{} at",
+          "end of round, plus",
           "{C:money}$#1#{} for each other",
-          "{C:attention}Marigold Card{} when",
-          "this card is held in",
-          "hand at end of round"
+          "{C:attention}Marigold Card{} in hand",
         }
       },
       m_mf_brass = {
@@ -1165,7 +1165,7 @@ local loc_stuff = {
       v_mf_paintroller = {
         name = "Paint Roller",
         text = {
-          "{C:green}1 in 2{} chance to add",
+          "{C:green}#1# in 2{} chance to add",
           "{C:attention}1{} round to {C:colourcard}Colour Cards{}",
           "when they gain a round"
         },

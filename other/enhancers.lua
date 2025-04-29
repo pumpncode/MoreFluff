@@ -182,7 +182,7 @@ function init()
     },
     calculate = function (self, card, context)
       if context.playing_card_end_of_round and context.cardarea == G.hand then
-        local c = 0
+        local c = 1
         for _, other_card in pairs(G.hand.cards) do
           if other_card ~= card and other_card.config.center_key == card.config.center_key then
             c = c + 1

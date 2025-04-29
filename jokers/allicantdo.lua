@@ -21,7 +21,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.first_hand_drawn then
+    if context.first_hand_drawn and not context.blueprint then
       for _, c in pairs(G.hand.cards) do
         G.E_MANAGER:add_event(Event({
           trigger = "before",
@@ -37,7 +37,7 @@ local joker = {
         }))
       end
     end
-    if context.before then
+    if context.before and not context.blueprint then
       local mod = 0
       for _, c in pairs(G.play.cards) do
         if c.debuff then
