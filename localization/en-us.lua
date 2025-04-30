@@ -1432,13 +1432,6 @@ local loc_stuff = {
           "are debuffed"
         }
       },
-      bl_mf_goad_dx = {
-        name = "The Goad DX",
-        text = {
-          "All non-Spades cards",
-          "are debuffed"
-        }
-      },
       bl_mf_window_dx = {
         name = "The Window DX",
         text = {

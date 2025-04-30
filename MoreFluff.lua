@@ -198,14 +198,16 @@ local joker_list = {
   "the_solo",
   "top10",
   "widejoker",
-  "lessfluff",
   
   -- legendary!!
   "triangle",
   "marigold",
+  
+  -- rare, but it goes last (Unless Cryptid...)
+  "lessfluff",
 
   -- 1.3
-  -- "selfinsert", -- cut this one for now
+  -- "selfinsert", -- cut this one for now (its not happening)
 
   -- busted shit
   "colorem",
