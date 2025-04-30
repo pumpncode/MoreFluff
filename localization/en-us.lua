@@ -1002,6 +1002,7 @@ local loc_stuff = {
         text = {
           "Sets money to next",
           "multiple of {C:money}$#1#",
+          "{C:inactive}(No effect on multiples of {C:money}$#1#{C:inactive})"
         },
       },
       c_mf_rot_wheel = {
