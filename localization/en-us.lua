@@ -636,9 +636,9 @@ local loc_stuff = {
       j_mf_sudoku = {
         name = "Sudoku Joker",
         text = {
-          "{X:mult,C:white} X#1# {} Mult if each",
-          "rank from {C:attention}A-9{} has been",
-          "{C:attention}scored{} in the {C:attention}current round{}",
+          "{X:mult,C:white} X#1# {} Mult if each rank from {C:attention}A-9{}",
+          "has been {C:attention}scored{}, resets when",
+          "a {C:attention}Boss Blind{} is {C:red}defeated",
           "{C:inactive}(Currently {V:1}A{C:inactive}, {V:2}2{C:inactive}, {V:3}3{C:inactive}, {V:4}4{C:inactive}, {V:5}5{C:inactive}, {V:6}6{C:inactive}, {V:7}7{C:inactive}, {V:8}8{C:inactive}, {V:9}9{C:inactive})"
         },
       },

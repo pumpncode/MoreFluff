@@ -1,13 +1,13 @@
 local joker = {
   name = "Sudoku",
   config = {
-    my_x_mult = 9, -- if i just have x_mult smods automatically picks it up. thanks smods!
+    my_x_mult = 5, -- if i just have x_mult smods automatically picks it up. thanks smods!
     extra = {
       0, 0, 0, 0, 0, 0, 0, 0, 0
     }
   },
   pos = {x = 8, y = 7},
-  rarity = 3,
+  rarity = 2,
   cost = 9,
   unlocked = true,
   discovered = true,
@@ -17,7 +17,7 @@ local joker = {
   loc_vars = function(self, info_queue, center)
     local funny = function(val) return (val > 0) and G.C.FILTER or G.C.UI.TEXT_INACTIVE end
     return {
-      vars = { center.ability.x_mult,
+      vars = { center.ability.my_x_mult,
         colours = {
           funny(center.ability.extra[1]),funny(center.ability.extra[2]),funny(center.ability.extra[3]),
           funny(center.ability.extra[4]),funny(center.ability.extra[5]),funny(center.ability.extra[6]),
@@ -27,7 +27,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.repetition then
+    if context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.repetition and G.GAME.blind.boss then
       card.ability.extra = {0,0,0,0,0,0,0,0,0}
       return {
         message = localize('k_reset'),
