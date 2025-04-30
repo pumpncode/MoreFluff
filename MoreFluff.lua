@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.4.2
+--- VERSION: 1.5.0
 
 local current_mod = SMODS.current_mod
 
@@ -194,6 +194,7 @@ local joker_list = {
   "pixeljoker",
   "rainbowjoker",
   "rosetinted",
+  "sudoku",
   "the_solo",
   "top10",
   "widejoker",
