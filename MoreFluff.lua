@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.4.2
+--- VERSION: 1.5.0
 
 local current_mod = SMODS.current_mod
 
@@ -170,6 +170,7 @@ local joker_list = {
   "slotmachine",
   "stylemeter",
   "stonejokerjoker",
+  "sudoku",
   "talljoker",
   "teacup",
   "tealjoker",
@@ -197,14 +198,16 @@ local joker_list = {
   "the_solo",
   "top10",
   "widejoker",
-  "lessfluff",
   
   -- legendary!!
   "triangle",
   "marigold",
+  
+  -- rare, but it goes last (Unless Cryptid...)
+  "lessfluff",
 
   -- 1.3
-  -- "selfinsert", -- cut this one for now
+  -- "selfinsert", -- cut this one for now (its not happening)
 
   -- busted shit
   "colorem",

@@ -134,27 +134,25 @@ let jokers = [
     ],
   },
   {
-    name: "Bad Legal Defence",
+    name: "Blåhaj",
     text: [
-      "Create a {C:attention}Death{} {C:tarot}Tarot{}",
-      "when {C:attention}Boss Blind{}",
-      "is selected",
-      "{C:inactive}(Must have room)"
+      "Swaps {C:chips}Chips{} and {C:mult}Mult{}"
     ],
-    image_url: "assets/j_mf_badlegaldefence.png",
-    rarity: "Uncommon",
+    image_url: "assets/j_mf_blahaj.png",
+    rarity: "Common",
     badges: [
     ],
   },
   {
-    name: "Clipart Joker",
+    name: "Unregistered Hypercam 2",
     text: [
-      "Create a {C:colourcard}Colour{} card",
-      "when {C:attention}Blind{} is selected",
-      "{C:inactive}(Must have room)"
+      "{X:dark_edition,C:white,s:1.4} ^^1.04{s:1.4} Mult",
+      "before scoring",
     ],
-    image_url: "assets/j_mf_clipart.png",
-    rarity: "Uncommon",
+    image_url: "assets/j_mf_hypercam.png",
+    rarity: "Common",
+    badges: [
+    ],
   },
   {
     name: "Dropkick",
@@ -204,6 +202,29 @@ let jokers = [
       "of each round"
     ],
     image_url: "assets/j_mf_dramaticentrance.png",
+    rarity: "Uncommon",
+  },
+  {
+    name: "Bad Legal Defence",
+    text: [
+      "Create a {C:attention}Death{} {C:tarot}Tarot{}",
+      "when {C:attention}Boss Blind{}",
+      "is selected",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_badlegaldefence.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Clipart Joker",
+    text: [
+      "Create a {C:colourcard}Colour{} card",
+      "when {C:attention}Blind{} is selected",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_clipart.png",
     rarity: "Uncommon",
   },
   {
@@ -337,6 +358,237 @@ let jokers = [
     rarity: "Uncommon",
   },
   {
+    name: "Junk Mail",
+    text: [
+      "Creates a {C:attention}Voucher{} which",
+      "costs {C:money}1.5x{} as much at",
+      "the start of each Shop",
+    ],
+    image_url: "assets/j_mf_junkmail.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Flint and Steel",
+    text: [
+      "Upgrade the level of each",
+      "{C:attention}played hand{} if scored hand contains a {C:attention}Stone Card{} and {C:attention}Steel Card{}",
+    ],
+    image_url: "assets/j_mf_flintandsteel.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Gemstone Joker",
+    text: [
+      "Earn {C:money}$1{} at end of round",
+      "for each {C:attention}Gemstone Card{}",
+      "in your {C:attention}full deck{}",
+    ],
+    image_url: "assets/j_mf_gemstonejoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Missing Texture",
+    text: [
+      "Transforms into a",
+      "{C:dark_edition}random joker{} for",
+      "the duration of the blind",
+      "when blind is selected"
+    ],
+    image_url: "assets/j_mf_missingtexture.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Cartomancer!",
+    text: [
+      "Create a {C:rotarot}45 Degree Rotated Tarot{} card",
+      "when {C:attention}Blind{} is selected",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_rot_cartomancer.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "StoneJoker Joker",
+    text: [
+      "Creates a {C:dark_edition}Negative{}",
+      "{C:spectral}Eternal{} {C:attention}Marble Joker{}",
+      "at the end of each Shop",
+    ],
+    image_url: "assets/j_mf_stonejokerjoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Tall Joker",
+    text: [
+      "{C:mult,s:1.1}+44{} Mult",
+    ],
+    image_url: "assets/jimbo.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Teal Joker",
+    text: [
+      "Gives {X:chips,C:white} X0.2{} Chips",
+      "for each {C:attention}Teal Card",
+      "in your {C:attention}full deck",
+    ],
+    image_url: "assets/j_mf_tealjoker.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Yucky Rat",
+    text: [
+      "Played {C:attention}unenhanced{} cards",
+      "are converted to {C:attention}Yucky Cards{}. Gains {X:red,C:white} X0.05{} Mult for each card converted",
+    ],
+    image_url: "assets/j_mf_yuckyrat.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Blunder",
+    text: [
+      "{X:mult,C:white} X3{} Mult",
+      "Forces one card",
+      "to be selected"
+    ],
+    image_url: "assets/j_mf_blunder.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Brilliant",
+    text: [
+      "If blind was beaten in",
+      "one hand, create a",
+      "random {C:spectral}Spectral{} card",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_brilliant.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "The Broom Closet",
+    text: [
+      "{X:mult,C:white}X4{} Mult if no purchases",
+      "were made in the last {C:attention}Shop{}",
+    ],
+    image_url: "assets/j_mf_broomcloset.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Cue Ball",
+    text: [
+      "{C:green}1 in 2{} chance for each played {C:attention}rankless card{} to create a {C:rotarot}45 Degree Rotated Tarot{} card when scored",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_cueball.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Joke Merge Valley",
+    text: [
+      "Discarding exactly {C:attention}3{} cards with the same rank {C:dark_edition}Merges{} them all with the {C:attention}rightmost{} discarded card"
+    ],
+    image_url: "assets/j_mf_jokemergevalley.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Unpleasant Card",
+    text: [
+      "{X:chips,C:white} X2.7{} Chips",
+      "{C:attention}Booster Packs{} are",
+      "automatically skipped"
+    ],
+    image_url: "assets/j_mf_unpleasantcard.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Paint Can",
+    text: [
+      "{C:green}1 in 2{} chance to add",
+      "a round to {C:colourcard}Colour Cards{}",
+      "when they gain a round",
+    ],
+    image_url: "assets/j_mf_paintcan.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Snake",
+    text: [
+      "After {C:attention}play{} or {C:attention}discard{},",
+      "always draw {C:attention}3{} cards"
+    ],
+    image_url: "assets/j_mf_snake.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Slot Machine",
+    text: [
+      "{C:green}1 in 7{} chance to retrigger",
+      "scored {C:attention}7{} cards {C:attention}7{} times",
+    ],
+    image_url: "assets/j_mf_slotmachine.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Sudoku Joker",
+    text: [
+      "{X:mult,C:white} X5{} Mult if each rank from {C:attention}A-9{} has been {C:attention}scored{},",
+      "resets when a {C:attention}Boss Blind{} is {C:red}defeated",
+    ],
+    image_url: "assets/j_mf_sudoku.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
+    name: "Wild Draw Four",
+    text: [
+      "{C:attention}+4{} hand size for",
+      "each {C:attention}Wild Card{} scored",
+      "in the current round",
+    ],
+    image_url: "assets/j_mf_wilddrawfour.png",
+    rarity: "Uncommon",
+    badges: [
+    ],
+  },
+  {
     name: "Blood Pact",
     text: [
       "{X:mult,C:white} X5{} Mult",
@@ -455,125 +707,6 @@ let jokers = [
     rarity: "Rare",
   },
   {
-    name: "Triangle",
-    text: [
-      "Played cards each give",
-      "{X:mult,C:white} X3{} Mult when scored",
-      "if played hand is",
-      "a {C:attention}Three of a Kind"
-    ],
-    image_url: "assets/j_mf_triangle.png",
-    rarity: "Legendary",
-    soul: true,
-    badges: [
-    ],
-  },
-  {
-    name: "Junk Mail",
-    text: [
-      "Creates a {C:attention}Voucher{} which",
-      "costs {C:money}1.5x{} as much at",
-      "the start of each Shop",
-    ],
-    image_url: "assets/j_mf_junkmail.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Flint and Steel",
-    text: [
-      "Upgrade the level of each",
-      "{C:attention}played hand{} if scored hand contains a {C:attention}Stone Card{} and {C:attention}Steel Card{}",
-    ],
-    image_url: "assets/j_mf_flintandsteel.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Gemstone Joker",
-    text: [
-      "Earn {C:money}$1{} at end of round",
-      "for each {C:attention}Gemstone Card{}",
-      "in your {C:attention}full deck{}",
-    ],
-    image_url: "assets/j_mf_gemstonejoker.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Missing Texture",
-    text: [
-      "Transforms into a",
-      "{C:dark_edition}random joker{} for",
-      "the duration of the blind",
-      "when blind is selected"
-    ],
-    image_url: "assets/j_mf_missingtexture.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Cartomancer!",
-    text: [
-      "Create a {C:rotarot}45 Degree Rotated Tarot{} card",
-      "when {C:attention}Blind{} is selected",
-      "{C:inactive}(Must have room)"
-    ],
-    image_url: "assets/j_mf_rot_cartomancer.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "StoneJoker Joker",
-    text: [
-      "Creates a {C:dark_edition}Negative{}",
-      "{C:spectral}Eternal{} {C:attention}Marble Joker{}",
-      "at the end of each Shop",
-    ],
-    image_url: "assets/j_mf_stonejokerjoker.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Tall Joker",
-    text: [
-      "{C:mult,s:1.1}+44{} Mult",
-    ],
-    image_url: "assets/jimbo.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Teal Joker",
-    text: [
-      "Gives {X:chips,C:white} X0.2{} Chips",
-      "for each {C:attention}Teal Card",
-      "in your {C:attention}full deck",
-    ],
-    image_url: "assets/j_mf_tealjoker.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
-    name: "Yucky Rat",
-    text: [
-      "Played {C:attention}unenhanced{} cards",
-      "are converted to {C:attention}Yucky Cards{}. Gains {X:red,C:white} X0.05{} Mult for each card converted",
-    ],
-    image_url: "assets/j_mf_yuckyrat.png",
-    rarity: "Uncommon",
-    badges: [
-    ],
-  },
-  {
     name: "All I Can't Do",
     text: [
       "{C:red}Debuffs{} first drawn hand",
@@ -643,6 +776,19 @@ let jokers = [
     ],
   },
   {
+    name: "Book Move",
+    text: [
+      "After {C:attention}3{} rounds,",
+      "sell this card to create",
+      "{C:attention}Hanging Chad{} and {C:attention}Photograph",
+      "{C:inactive}(Must have room)"
+    ],
+    image_url: "assets/j_mf_bookmove.png",
+    rarity: "Rare",
+    badges: [
+    ],
+  },
+  {
     name: "Marigold",
     text: [
       "{C:attention}Retriggers{} played and held",
@@ -651,6 +797,30 @@ let jokers = [
     image_url: "assets/j_mf_marigold.png",
     soul: true,
     rarity: "Legendary",
+    badges: [
+    ],
+  },
+  {
+    name: "Triangle",
+    text: [
+      "Played cards each give",
+      "{X:mult,C:white} X3{} Mult when scored",
+      "if played hand is",
+      "a {C:attention}Three of a Kind"
+    ],
+    image_url: "assets/j_mf_triangle.png",
+    rarity: "Legendary",
+    soul: true,
+    badges: [
+    ],
+  },
+  {
+    name: "Less Fluff",
+    text: [
+      "Destroys all other {C:dark_edition}Modded{} {C:attention}Jokers{} at the start of each {C:attention}Blind{} and gains {X:mult,C:white} X0.2{} Mult for each {C:attention}Joker{} that was destroyed",
+    ],
+    image_url: "assets/j_mf_lessfluff.png",
+    rarity: "Rare",
     badges: [
     ],
   },
@@ -1308,6 +1478,153 @@ let packs = [
 ]
 
 let blinds = [
+  {
+    name: "Violet Vessel DX",
+    text: [
+      "{C:inactive}(24x Blind Size)",
+      "EXTREMELY large blind",
+    ],
+    image_url: "assets/blind/bl_vvdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "Cerulean Bell DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Forces 3 cards to",
+      "always be selected"
+    ],
+    image_url: "assets/blind/bl_cbdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Needle DX",
+    text: [
+      "{C:inactive}(1x Blind Size)",
+      "Play only 1 hand,",
+      "start with 1 discard"
+    ],
+    image_url: "assets/blind/bl_needledx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Manacle DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "-3 Hand Size"
+    ],
+    image_url: "assets/blind/bl_manacledx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Pillar DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Half of all cards played",
+      "this run are debuffed"
+    ],
+    image_url: "assets/blind/bl_pillardx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Serpent DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Only redraw cards when",
+      "hand is empty"
+    ],
+    image_url: "assets/blind/bl_serpentdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Club DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "All non-Club cards",
+      "are debuffed"
+    ],
+    image_url: "assets/blind/bl_clubdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Goad DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "All non-Spades cards",
+      "are debuffed"
+    ],
+    image_url: "assets/blind/bl_goaddx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Window DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "All non-Diamonds cards",
+      "are debuffed"
+    ],
+    image_url: "assets/blind/bl_windowdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Head DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "All non-Hearts cards",
+      "are debuffed"
+    ],
+    image_url: "assets/blind/bl_headdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Arm DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Set level of played",
+      "poker hand to 0"
+    ],
+    image_url: "assets/blind/bl_armdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Wheel DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Only one card is",
+      "drawn face up"
+    ],
+    image_url: "assets/blind/bl_wheeldx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The House DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "First drawn hand",
+      "is discarded"
+    ],
+    image_url: "assets/blind/bl_housedx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Psychic DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "Must not play 5 cards"
+    ],
+    image_url: "assets/blind/bl_psychicdx.png",
+    rarity: "DX Blind"
+  },
+  {
+    name: "The Hook DX",
+    text: [
+      "{C:inactive}(3x Blind Size)",
+      "After hand is played,",
+      "discard hand after draw"
+    ],
+    image_url: "assets/blind/bl_hookdx.png",
+    rarity: "DX Blind"
+  },
 ]
 
 let shop_items = [
@@ -1386,6 +1703,7 @@ let rarities = {
   "Sticker": "#5d5dff",
   "Boss Blind": "#5d5dff",
   "Showdown": "#4584fa",
+  "DX Blind": "#ac3232",
 
   "45 Degree Rotated Tarot": "#8e73d9",
   "Colour": "#8867a5",
@@ -1503,12 +1821,12 @@ if (jokers.length === 0) {
   add_cards_to_div(jokers, jokers_div);
 }
 
-// if (blinds.length === 0) {
-//   document.querySelector(".blindsfull").style.display = "none"
-// } else {
-//   let blinds_div = document.querySelector(".blinds");
-//   add_cards_to_div(blinds, blinds_div);
-// }
+if (blinds.length === 0) {
+  document.querySelector(".blindsfull").style.display = "none"
+} else {
+  let blinds_div = document.querySelector(".blinds");
+  add_cards_to_div(blinds, blinds_div);
+}
 
 if (consumables.length === 0) {
   document.querySelector(".consumablesfull").style.display = "none"

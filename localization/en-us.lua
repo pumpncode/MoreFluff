@@ -633,6 +633,15 @@ local loc_stuff = {
           "{C:inactive}(Currently {X:red,C:white} X#1# {C:inactive})"
         },
       },
+      j_mf_sudoku = {
+        name = "Sudoku Joker",
+        text = {
+          "{X:mult,C:white} X#1# {} Mult if each rank from {C:attention}A-9{}",
+          "has been {C:attention}scored{}, resets when",
+          "a {C:attention}Boss Blind{} is {C:red}defeated",
+          "{C:inactive}(Currently {V:1}A{C:inactive}, {V:2}2{C:inactive}, {V:3}3{C:inactive}, {V:4}4{C:inactive}, {V:5}5{C:inactive}, {V:6}6{C:inactive}, {V:7}7{C:inactive}, {V:8}8{C:inactive}, {V:9}9{C:inactive})"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -993,6 +1002,7 @@ local loc_stuff = {
         text = {
           "Sets money to next",
           "multiple of {C:money}$#1#",
+          "{C:inactive}(No effect on multiples of {C:money}$#1#{C:inactive})"
         },
       },
       c_mf_rot_wheel = {
@@ -1378,7 +1388,7 @@ local loc_stuff = {
       bl_mf_cerulean_bell_dx = {
         name = "Cerulean Bell DX",
         text = {
-          "Forces 5 cards to",
+          "Forces 3 cards to",
           "always be selected"
         }
       },
@@ -1413,13 +1423,6 @@ local loc_stuff = {
         name = "The Club DX",
         text = {
           "All non-Club cards",
-          "are debuffed"
-        }
-      },
-      bl_mf_goad_dx = {
-        name = "The Goad DX",
-        text = {
-          "All non-Spades cards",
           "are debuffed"
         }
       },
@@ -1795,6 +1798,7 @@ local loc_stuff = {
       k_effect_added_ex = "Effect added!",
       k_merged_ex = "Merged!",
       k_swap_ex = "Swap!",
+      k_noted_ex = "Noted!",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
