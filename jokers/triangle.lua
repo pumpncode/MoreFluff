@@ -98,7 +98,7 @@ if Jen then
       'Legend of Kosmos',
       'notmario'
     }
-  },
+  }
 end
 
 return joker
