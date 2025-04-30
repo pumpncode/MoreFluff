@@ -24,6 +24,14 @@ local joker = {
       vars = { 1.333 }
     }
   end,
+  misc_badge = {
+    colour = G.C.polterworx,
+    text_colour = G.C.CRY_VERDANT,
+    text = {
+      'Legend of Kosmos',
+      'notmario'
+    }
+  },
   calculate = function(self, card, context)
     if context.repetition and context.cardarea == G.play then
       local count = 0

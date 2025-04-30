@@ -1387,7 +1387,7 @@ local loc_stuff = {
       bl_mf_cerulean_bell_dx = {
         name = "Cerulean Bell DX",
         text = {
-          "Forces 5 cards to",
+          "Forces 3 cards to",
           "always be selected"
         }
       },

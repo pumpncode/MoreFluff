@@ -129,7 +129,7 @@ function init()
       akyrs_blind_difficulty = "dx",
       akyrs_cannot_be_disabled = true,
 
-      force_select_count = 5,
+      force_select_count = 3,
     },
 
     loc_vars = function(self)
