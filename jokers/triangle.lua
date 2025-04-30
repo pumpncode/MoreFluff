@@ -8,7 +8,6 @@ local joker = {
   pos = {x = 9, y = 4},
   soul_pos = {x = 9, y = 5},
   drama = {x = 5, y = 5},
-	sinis = { x = 8, y = 4 },
   fusable = true,
   rarity = 4,
   cost = 20,
@@ -88,6 +87,18 @@ if JokerDisplay then
       card.joker_display_values.hand = localize("Three of a Kind", 'poker_hands')
     end,
   }
+end
+
+-- .....
+if Jen then
+  joker.misc_badge = {
+    colour = G.C.polterworx,
+    text_colour = G.C.CRY_VERDANT,
+    text = {
+      'Legend of Kosmos',
+      'notmario'
+    }
+  },
 end
 
 return joker
