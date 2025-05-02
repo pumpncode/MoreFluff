@@ -6,9 +6,10 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.5.0
+--- VERSION: 1.5.1
 
 local current_mod = SMODS.current_mod
+MoreFluff = SMODS.current_mod
 
 current_mod.optional_features = {
   retrigger_joker = true,
