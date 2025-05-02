@@ -922,6 +922,16 @@ local loc_stuff = {
           art_credit("Multi")
         },
       },
+      c_mf_pastelpink = {
+        name = "Pastel Pink",
+        text = {
+          "Create a {C:dark_edition}Negative{} {V:1}Silly{}",
+          "card for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
     },
     Rotarot = {
       c_mf_rot_fool = {
