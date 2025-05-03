@@ -715,6 +715,7 @@ function init()
       custom = {
         { id = "mf_superboss_active" },
         { id = "scaling", value = 4 },
+        { id = "bonus_scaling", value = 4 },
       },
       modifiers = {
         { id = "dollars", value = 14 },
