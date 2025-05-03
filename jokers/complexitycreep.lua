@@ -126,7 +126,7 @@ local joker = {
   discovered = true,
   blueprint_compat = true,
   eternal_compat = true,
-  perishable_compat = true,
+  perishable_compat = false,
   set_ability = function(self, card, initial, delay_sprites)
     card.ability.effects = {}
     grow_complexity_creep(card.ability.effects)

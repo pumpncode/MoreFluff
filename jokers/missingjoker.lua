@@ -22,6 +22,8 @@ local joker = {
 					if
 						v.unlocked == true
 						and (not Cryptid or not Cryptid.no(v, "doe", k))
+            and v.perishable_compat
+            and v.eternal_compat
 						and not (G.GAME.banned_keys[v.key] or (G.GAME.cry_banished_keys and G.GAME.cry_banished_keys[v.key]))
 					then
 						joker_pool[#joker_pool + 1] = v.key

@@ -12,7 +12,7 @@ local joker = {
   cost = 8,
   unlocked = true,
   discovered = true,
-  blueprint_compat = false,
+  blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
   loc_txt = {
@@ -31,7 +31,7 @@ local joker = {
     if context.setting_blind then
       card.ability.extra.current_triggers = 0
     end
-    if context.after and context.cardarea == G.jokers and next(context.poker_hands['Straight']) and not context.blueprint then
+    if context.after and context.cardarea == G.jokers and next(context.poker_hands['Straight']) then
       card.ability.extra.current_triggers = card.ability.extra.current_triggers + 1
       if card.ability.extra.current_triggers >= 5 then
         check_for_unlock({type = 'mf_dropkick_ten_hands'})

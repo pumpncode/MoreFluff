@@ -13,7 +13,7 @@ local joker = {
   discovered = true,
   blueprint_compat = true,
   eternal_compat = true,
-  perishable_compat = true,
+  perishable_compat = false,
   enhancement_gate = "m_mf_teal",
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then
