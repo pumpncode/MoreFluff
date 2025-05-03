@@ -1297,6 +1297,46 @@ Game.main_menu = function(change_context)
   return ret
 end
 
+--debugplus stuff
+local success, dpAPI = pcall(require, "debugplus-api")
+
+local logger = { -- Placeholder logger, for when DebugPlus isn't available
+    log = print,
+    debug = print,
+    info = print,
+    warn = print,
+    error = print
+}
+
+if success and dpAPI.isVersionCompatible(1) then
+    local debugplus = dpAPI.registerID("morefluff")
+    logger = debugplus.logger -- Provides the logger object
+
+    debugplus.addCommand({ -- register a command
+      name = "add_colour_rounds",
+      shortDesc = "Add rounds to Colour Cards",
+      desc = "Adds <arg1> rounds to all held Colour Cards when run. Only works in game. Defaults to 1 round.",
+      exec = function (args, rawArgs, dp)
+        local rounds = nil
+        if #args == 0 then
+          rounds = 1
+        else
+          rounds = args[1]
+        end
+        if G.consumeables and G.consumeables.cards then
+          for i = 1, rounds do
+            colour_end_of_round_effects()
+          end
+
+          return "Added to event queue!"
+        else
+          return "add_colour_rounds only works in game!", "ERROR"
+        end
+      end
+    })
+end
+
+
 -- -- thank you mr cryptid
 -- local g_main_menu = Game.main_menu
 -- function Game:main_menu(change_context)

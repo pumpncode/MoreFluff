@@ -1244,16 +1244,23 @@ function init()
         return true
       end,
       use = function(self, card, area, copier)
-        local card_type = "Silly"
-        local rng_seed = "pastel"
         for i = 1, card.ability.val do
+          local key = nil
           if jl.chance('sealspectralpack_legendary', 20, true) then
-            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+            key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed('sealspectrals'))
           elseif jl.chance('sealspectralpack_epic', 5, true) then
-            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+            key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed('sealspectrals'))
           else
-            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+            key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals'))
           end
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.consumeables:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
         end
         delay(0.6)
       end,
@@ -1529,11 +1536,15 @@ function init()
       "c_mf_lilac",
       "c_mf_pink",
       "c_mf_peach",
+      "c_mf_new_gold",
+
       "c_mf_purple",
       "c_mf_moonstone",
       "c_mf_gold",
       "c_mf_ooffoo",
-      "c_mf_new_gold",
+      "c_mf_wordlegreen",
+      "c_mf_pastelpink",
+      "c_mf_royalblue",
     }
 
     for _, col in pairs(cols) do
