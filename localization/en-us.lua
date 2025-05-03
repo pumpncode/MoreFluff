@@ -932,6 +932,47 @@ local loc_stuff = {
           art_credit("Multi")
         },
       },
+      c_mf_royalblue = {
+        name = "Royal Blue",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:spectral}Seal Spectral{}",
+          "card for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
+      c_mf_teal = {
+        name = "Teal",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:spectral}Splash{}",
+          "for every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
+      c_mf_blank = {
+        name = "Blank",
+        text = {
+          "Create a {C:dark_edition}Negative{}",
+          "{C:spectral}Joker Studio: Basic{}",
+          "for every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
+      c_mf_amber = {
+        name = "Amber",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:G.SP.C.travel_1}Travel{}",
+          "card for every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
     },
     Rotarot = {
       c_mf_rot_fool = {
