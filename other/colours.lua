@@ -1219,6 +1219,56 @@ function init()
       end,
     })
   end
+
+  if next(SMODS.find_mod("sillyseals")) then
+    -- the rest of them are still hell yeahs i just cant be bothered writing it every time
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_RoyalBlue",
+      key = "royalblue",
+      pos = { x = 3, y = 6 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 4,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      hidden = true,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        local card_type = "Silly"
+        local rng_seed = "pastel"
+        for i = 1, card.ability.val do
+          if jl.chance('sealspectralpack_legendary', 20, true) then
+            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+          elseif jl.chance('sealspectralpack_epic', 5, true) then
+            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+          else
+            return {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals')), key_append = "spe"}
+          end
+        end
+        delay(0.6)
+      end,
+      in_pool = function(self, args)
+        return G.GAME.akyrs_character_stickers_enabled and G.GAME.akyrs_wording_enabled
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end,
+      set_badges = function (self, card, badges)
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("sillyseals")[1] }, badges)
+      end,
+    })
+  end
   
   SMODS.Voucher({
     object_type = "Voucher",
