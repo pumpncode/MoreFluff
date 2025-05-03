@@ -11,7 +11,7 @@ local joker = {
   discovered = true,
   blueprint_compat = false,
   eternal_compat = true,
-  perishable_compat = true,
+  perishable_compat = false,
   enhancement_gate = "m_wild",
   loc_vars = function(self, info_queue, center)
     return {

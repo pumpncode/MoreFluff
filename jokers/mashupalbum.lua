@@ -15,7 +15,7 @@ local joker = {
   discovered = true,
   blueprint_compat = true,
   eternal_compat = true,
-  perishable_compat = true,
+  perishable_compat = false,
   display_size = { w = 71, h = 71 },
   pixel_size = { w = 71, h = 71 },
   loc_txt = {
