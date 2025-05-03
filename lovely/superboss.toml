@@ -205,5 +205,5 @@ position = "after"
 payload = '''
 if v.id == "mf_superboss_active" then
   G.GAME.superboss_active = true
-end
+end'''
 match_indent = true
