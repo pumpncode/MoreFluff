@@ -1276,6 +1276,51 @@ function init()
       end,
     })
   end
+
+  if next(SMODS.find_mod("Tsunami")) then
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_Teal",
+      key = "teal",
+      pos = { x = 0, y = 7 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 2,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      hidden = true,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(nil,G.jokers, nil, nil, nil, nil, 'j_splash', 'sup')
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.jokers:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end,
+      set_badges = function (self, card, badges)
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("Tsunami")[1]  }, badges)
+      end,
+    })
+  end
   
   SMODS.Voucher({
     object_type = "Voucher",
@@ -1545,6 +1590,7 @@ function init()
       "c_mf_wordlegreen",
       "c_mf_pastelpink",
       "c_mf_royalblue",
+      "c_mf_teal",
     }
 
     for _, col in pairs(cols) do
