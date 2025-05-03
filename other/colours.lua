@@ -1207,9 +1207,6 @@ function init()
         end
         delay(0.6)
       end,
-      in_pool = function(self, args)
-        return G.GAME.akyrs_character_stickers_enabled and G.GAME.akyrs_wording_enabled
-      end,
       loc_vars = function(self, info_queue, card)
         local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
         return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds, colours = {HEX("ff98e2")}} }
@@ -1263,9 +1260,6 @@ function init()
             return true end }))
         end
         delay(0.6)
-      end,
-      in_pool = function(self, args)
-        return G.GAME.akyrs_character_stickers_enabled and G.GAME.akyrs_wording_enabled
       end,
       loc_vars = function(self, info_queue, card)
         local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
@@ -1363,6 +1357,52 @@ function init()
       end,
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("egjs")[1]  }, badges)
+      end,
+    })
+  end
+
+  if next(SMODS.find_mod("sarcpot")) then
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_Amber",
+      key = "amber",
+      pos = { x = 2, y = 7 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 3,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        local card_type = "Travel"
+        local rng_seed = "amber"
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.consumeables:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end,
+      set_badges = function (self, card, badges)
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("sarcpot")[1] }, badges)
       end,
     })
   end
@@ -1637,6 +1677,7 @@ function init()
       "c_mf_royalblue",
       "c_mf_teal",
       "c_mf_blank",
+      "c_mf_amber",
     }
 
     for _, col in pairs(cols) do
