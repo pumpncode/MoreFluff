@@ -1280,7 +1280,7 @@ function init()
       config = {
         val = 0,
         partial_rounds = 0,
-        upgrade_rounds = 9,
+        upgrade_rounds = 12,
       },
       cost = 4,
       atlas = "mf_colours",
