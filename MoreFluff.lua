@@ -423,6 +423,13 @@ SMODS.Atlas({
   py = 95 
 })
 SMODS.Atlas({ 
+  key = "mf_shapes", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_shapes.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
   key = "mf_rotarots", 
   atlas_table = "ASSET_ATLAS", 
   path = "mf_rotarots.png", 
@@ -507,6 +514,11 @@ end
 if mf_config["Colour Cards"] then
   init_cols = SMODS.load_file("other/colours.lua")()
   init_cols()
+
+  if Entropy then
+    init_shapes = SMODS.load_file("other/shapes.lua")()
+    init_shapes()
+  end
 else
   function colour_end_of_round_effects()
 
