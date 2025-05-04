@@ -729,6 +729,34 @@ function init()
         }
       end
     end
+
+    local inversions = {
+      ["c_mf_black"] = "c_mf_cloud",
+      -- ["c_mf_deepblue"] = "c_mf_spade",
+      ["c_mf_crimson"] = "c_mf_omega",
+      -- ["c_mf_seaweed"] = "c_mf_club",
+      ["c_mf_brown"] = "c_mf_rectangle",
+      ["c_mf_grey"] = "c_mf_squircle",
+      ["c_mf_silver"] = "c_mf_arrow",
+      ["c_mf_white"] = "c_mf_circle",
+      -- ["c_mf_red"] = "c_mf_heart",
+      -- ["c_mf_orange"] = "c_mf_orange",
+      -- ["c_mf_yellow"] = "c_mf_dollar",
+      -- ["c_mf_green"] = "c_mf_cog",
+      ["c_mf_blue"] = "c_mf_star",
+      -- ["c_mf_lilac"] = "c_mf_pentagon",
+      -- ["c_mf_pink"] = "c_mf_pause",
+      ["c_mf_peach"] = "c_mf_curved_arrow",
+      ["c_mf_new_gold"] = "c_mf_gem",
+      ["c_mf_purple"] = "c_mf_house",
+      ["c_mf_moonstone"] = "c_mf_loss",
+      ["c_mf_gold"] = "c_mf_prism",
+      ["c_mf_ooffoo"] = "c_mf_brackets",
+    }
+
+    for k, v in pairs(inversions) do
+      Entropy.FlipsideInversions[k] = v
+    end
   end
 end
 
