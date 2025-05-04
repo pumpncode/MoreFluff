@@ -288,7 +288,7 @@ function init()
     key = "rot_fool",
     pos = { x = 0, y = 0 },
     config = {},
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -341,7 +341,7 @@ function init()
       max_highlighted = 5,
       mod_conv = "m_mf_yucky"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -370,7 +370,7 @@ function init()
       config = {
         val = 2,
       },
-      cost = 4,
+      cost = 3,
       atlas = "mf_rotarots",
       unlocked = true,
       discovered = true,
@@ -410,7 +410,7 @@ function init()
       max_highlighted = 2,
       mod_conv = "m_mf_cult"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -438,7 +438,7 @@ function init()
     config = {
       val = 2,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -477,7 +477,7 @@ function init()
       max_highlighted = 2,
       mod_conv = "m_mf_monus"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -506,7 +506,7 @@ function init()
       max_highlighted = 2,
       mod_conv = "m_mf_styled"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -535,7 +535,7 @@ function init()
       max_highlighted = 1,
       mod_conv = "m_mf_teal"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -564,7 +564,7 @@ function init()
       max_highlighted = 1,
       mod_conv = "m_mf_brass"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -592,7 +592,7 @@ function init()
     config = {
       val = 25,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -626,7 +626,7 @@ function init()
     config = {
       chance = 5
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -711,7 +711,7 @@ function init()
     config = {
       max_highlighted = 3,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -790,7 +790,7 @@ function init()
     config = {
       val = 3,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -846,7 +846,7 @@ function init()
     config = {
       max_highlighted = 3,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -923,7 +923,7 @@ function init()
     config = {
       val = 3,
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -982,7 +982,7 @@ function init()
       max_highlighted = 3,
       mod_conv = "m_mf_marigold"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1011,7 +1011,7 @@ function init()
       max_highlighted = 1,
       mod_conv = "m_mf_gemstone"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1066,7 +1066,7 @@ function init()
       val = 3,
       suit = "D"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1093,7 +1093,7 @@ function init()
       val = 3,
       suit = "C"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1120,7 +1120,7 @@ function init()
       val = 3,
       suit = "H"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1144,7 +1144,7 @@ function init()
     key = "rot_judgement",
     pos = { x = 4, y = 2 },
     config = {},
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
@@ -1207,7 +1207,7 @@ function init()
       val = 3,
       suit = "S"
     },
-    cost = 4,
+    cost = 3,
     atlas = "mf_rotarots",
     unlocked = true,
     discovered = true,
