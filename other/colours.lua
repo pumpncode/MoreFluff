@@ -1235,6 +1235,7 @@ function init()
       unlocked = true,
       discovered = true,
       hidden = true,
+      soul_rate = 0.03,
       display_size = { w = 71, h = 87 },
       pixel_size = { w = 71, h = 87 },
       can_use = function(self, card)
@@ -1250,6 +1251,51 @@ function init()
           else
             key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals'))
           end
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.consumeables:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end,
+      set_badges = function (self, card, badges)
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("sillyseals")[1] }, badges)
+      end,
+    })
+    
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_RespicePerPrisma",
+      key = "respiceperprisma",
+      pos = { x = 3, y = 7 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 12,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      hidden = true,
+      soul_rate = 0.0003,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        for i = 1, card.ability.val do
+          local key = "c_sillyseals_ringularity"
           G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('timpani')
             local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
@@ -1287,7 +1333,6 @@ function init()
       atlas = "mf_colours",
       unlocked = true,
       discovered = true,
-      hidden = true,
       display_size = { w = 71, h = 87 },
       pixel_size = { w = 71, h = 87 },
       can_use = function(self, card)
@@ -1332,7 +1377,6 @@ function init()
       atlas = "mf_colours",
       unlocked = true,
       discovered = true,
-      hidden = true,
       display_size = { w = 71, h = 87 },
       pixel_size = { w = 71, h = 87 },
       can_use = function(self, card)
@@ -1675,6 +1719,7 @@ function init()
       "c_mf_wordlegreen",
       "c_mf_pastelpink",
       "c_mf_royalblue",
+      "c_mf_respiceperprisma",
       "c_mf_teal",
       "c_mf_blank",
       "c_mf_amber",
