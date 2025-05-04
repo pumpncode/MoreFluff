@@ -1287,7 +1287,6 @@ function init()
       atlas = "mf_colours",
       unlocked = true,
       discovered = true,
-      hidden = true,
       display_size = { w = 71, h = 87 },
       pixel_size = { w = 71, h = 87 },
       can_use = function(self, card)
@@ -1332,7 +1331,6 @@ function init()
       atlas = "mf_colours",
       unlocked = true,
       discovered = true,
-      hidden = true,
       display_size = { w = 71, h = 87 },
       pixel_size = { w = 71, h = 87 },
       can_use = function(self, card)
