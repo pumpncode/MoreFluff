@@ -13,7 +13,7 @@ payload = """if G.consumeables then
     for _, card in pairs(G.consumeables.cards) do
       print("wow!")
       print(card.ability.set)
-      if card.ability.set == "Colour" then
+      if card.ability.set == "Colour" or card.ability.set == "Shape" then
         card:update_joker_display(force_update, force_reload, _from)
       end
     end
@@ -30,7 +30,7 @@ payload = """if G.consumeables then
     for _, card in pairs(G.consumeables.cards) do
       print("wow!")
       print(card.ability.set)
-      if card.ability.set == "Colour" then
+      if card.ability.set == "Colour" or card.ability.set == "Shape" then
         card:update_joker_display(false, true, "config_update")
       end
     end
@@ -44,7 +44,7 @@ target = '''=[SMODS JokerDisplay "src/display_functions.lua"]'''
 pattern = """
     if self.ability and self.ability.set == 'Joker' then"""
 position = "at"
-payload = """if self.ability and (self.ability.set == 'Joker' or self.ability.set == 'Colour') then"""
+payload = """if self.ability and (self.ability.set == 'Joker' or self.ability.set == 'Colour' or self.ability.set == "Shape") then"""
 overwrite = true
 match_indent = true
 

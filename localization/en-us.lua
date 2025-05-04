@@ -1158,6 +1158,198 @@ local loc_stuff = {
         }
       },
     },
+    Shape = {
+      c_mf_cloud = {
+        name = "Cloud",
+        text = {
+          "Create a {C:dark_edition}Negative{}",
+          "{C:spectral}Philosophical Joker{} for every",
+          "{C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_deepblue = {
+        name = "Deep Blue",
+        text = {
+          "Converts a random card in",
+          "hand to {C:spades}Spades{} for every",
+          "{C:attention}#4#{} round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_omega = {
+        name = "Omega",
+        text = {
+          "Create an {C:dark_edition}Absolute Tag{} for",
+          "every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_seaweed = {
+        name = "Seaweed",
+        text = {
+          "Converts a random card in",
+          "hand to {C:clubs}Clubs{} for every",
+          "{C:attention}#4#{} round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_rectangle = {
+        name = "Rectangle",
+        text = {
+          "Adds a random {C:dark_edition}playing{}",
+          "{C:dark_edition}card{} to hand for every",
+          "{C:attention}#4#{} round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_squircle = {
+        name = "Squirecle",
+        text = {
+          "Create a {C:dark_edition}random{} {C:attention}Tag{} for",
+          "every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_arrow = {
+        name = "Arrow",
+        text = {
+          "Create a {C:dark_edition}Solar Tag{} for",
+          "every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_circle = {
+        name = "Circle",
+        text = {
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:shape}Shape{} card for every",
+          "{C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_red = {
+        name = "Red",
+        text = {
+          "Converts a random card in",
+          "hand to {C:hearts}Hearts{} for every",
+          "{C:attention}#4#{} round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_orange = {
+        name = "Orange",
+        text = {
+          "Converts a random card in",
+          "hand to {C:diamonds}Diamonds{} for every",
+          "{C:attention}#4#{} round this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_yellow = {
+        name = "Yellow",
+        text = {
+          "Gains {C:money}$#5#{} of",
+          "{C:attention}sell value{}",
+          "every {C:attention}#4# rounds",
+          "{C:inactive}({}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_green = {
+        name = "Green",
+        text = {
+          "Create a {C:dark_edition}Negative{}",
+          "{C:green}Oops! All 6s{} for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_star = {
+        name = "Star",
+        text = {
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:rplanbet}Star?{} card for every",
+          "{C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_lilac = {
+        name = "Lilac",
+        text = {
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:tarot}Tarot{} card for every",
+          "{C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_pink = {
+        name = "Pink",
+        text = {
+          "Add {C:attention}1{} round to a random",
+          "{C:colourcard}Colour{} card. Triggers once for",
+          "{C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_peach = {
+        name = "Peach",
+        text = {
+          "Create a random {C:dark_edition}Negative{}",
+          "{C:rotarot}45 Degree Rotated Tarot{} card for",
+          "every {C:attention}#4#{} rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_gem = {
+        name = "Gold",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:spectral}Fervour{}",
+          "card for every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+        },
+      },
+      
+      c_mf_house = {
+        name = "House",
+        text = {
+          "Create a {C:dark_edition}Reference{}",
+          "{C:dark_edition}Tag{} for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_loss = {
+        name = "Loss",
+        text = {
+          "Create a {C:dark_edition}Loss{}",
+          "for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_prism = {
+        name = "Prism",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:cry_exotic}Beyond{}",
+          "card for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+      c_mf_brackets = {
+        name = "Brackets",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:cry_code}Code?{}",
+          "card for every {C:attention}#4#{}",
+          "rounds this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
+        },
+      },
+    },
     Enhanced = {
       m_mf_yucky = {
         name = "Yucky Card",
@@ -1628,7 +1820,14 @@ local loc_stuff = {
           "{X:mult,C:white}X#1#{} Mult",
           "for the next {C:attention}Blind"
         }
-      }
+      },
+      tag_mf_absolute = {
+        name = "Absolute Tag",
+        text = {
+          "Next shop Joker is free",
+          "and becomes {C:dark_edition}Absolute"
+        }
+      },
     },
     ComplexityCreep = { -- look having two versions is kind of annoying. oh well
       cc_plusmult = {
@@ -1861,6 +2060,9 @@ local loc_stuff = {
       k_swap_ex = "Swap!",
       k_noted_ex = "Noted!",
       
+      k_shape = "Shape?",
+      b_shape_cards = "Shape? Cards",
+      
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
       k_rotarot_pack = "45 Degree Rotated Arcana Pack",
@@ -1915,7 +2117,8 @@ local loc_stuff = {
       mf_config_maj = "My Awesome Joker",
     },
     labels = {
-      colour = "Colour"
+      colour = "Colour",
+      shape = "Shape",
     },
     achievement_names = {
       ach_mf_ten_colour_rounds = "10-ted",
