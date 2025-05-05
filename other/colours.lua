@@ -1595,6 +1595,7 @@ function init()
   end
 
   function trigger_colour_end_of_round(_card)
+    if _card.ability.mf_halted then return false end
     if _card.ability.set == "Colour" or _card.ability.set == "Shape" then
 
       local base_count = 1

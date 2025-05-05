@@ -154,7 +154,71 @@ function init()
     end,
   })
 
-  -- spade goes here
+  local full_deck_suit_stuff = function (card, copier, suit)
+    local used_tarot = copier or card
+
+    local destroyed_cards = {}
+
+    for i = 1, (card.ability.val*2) do
+      if #G.playing_cards == 0 then break end
+      local conv_card = pseudorandom_element(G.playing_cards, pseudoseed("shape_card"))
+
+      if conv_card:is_suit(suit, nil, true) then
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.1,
+          func = function() 
+            conv_card:start_dissolve(nil, i == #destroyed_cards)
+            conv_card:remove_from_deck()
+            return true end }))
+        destroyed_cards[#destroyed_cards + 1] = conv_card
+      else
+        if conv_card.area ~= G.discard and conv_card.area.config.type ~= 'deck' then
+          G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() conv_card:flip();play_sound('card1', 1);conv_card:juice_up(0.3, 0.3);return true end }))
+          G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() conv_card:flip();play_sound('tarot2', percent);conv_card:change_suit(suit);return true end }))
+        else
+          conv_card:change_suit(suit)
+        end
+      end
+    end
+    if #destroyed_cards > 1 then
+      for i = 1, #G.jokers.cards do
+        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
+      end
+    end
+  end
+
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Spade",
+    key = "spade",
+    pos = { x = 1, y = 1 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 1,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      full_deck_suit_stuff(card, copier, "Spades")
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
 
   SMODS.Consumable({
     object_type = "Consumable",
@@ -200,7 +264,37 @@ function init()
     end,
   })
 
-  -- club goes here
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Club",
+    key = "club",
+    pos = { x = 3, y = 1 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 1,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      full_deck_suit_stuff(card, copier, "Clubs")
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
 
   SMODS.Consumable({
     object_type = "Consumable",
@@ -384,11 +478,142 @@ function init()
     end
   })
 
-  -- heart goes here
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Heart",
+    key = "heart",
+    pos = { x = 0, y = 3 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 1,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      full_deck_suit_stuff(card, copier, "Hearts")
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
 
-  -- diamond goes here
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Diamond",
+    key = "diamond",
+    pos = { x = 1, y = 3 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 1,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      full_deck_suit_stuff(card, copier, "Diamonds")
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
 
-  -- dollar goes here
+
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Dollar",
+    key = "dollar",
+    pos = { x = 2, y = 3 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 1,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      local sell_pool = {}
+      for _, c in pairs(G.jokers.cards) do
+        if not c.cry_absolute then sell_pool[#sell_pool + 1] = c end
+      end
+      for _, c in pairs(G.consumeables.cards) do
+        if not c.cry_absolute then sell_pool[#sell_pool + 1] = c end
+      end
+
+      if #sell_pool == 0 then
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+          attention_text({
+            text = localize('k_nope_ex'),
+            scale = 1.3, 
+            hold = 1.4,
+            major = card,
+            backdrop_colour = G.C.SECONDARY_SET.Tarot,
+            align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and 'tm' or 'cm',
+            offset = {x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK) and -0.2 or 0},
+            silent = true
+            })
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.06*G.SETTINGS.GAMESPEED, blockable = false, blocking = false, func = function()
+              play_sound('tarot2', 0.76, 0.4);return true end}))
+            play_sound('tarot2', 1, 0.4)
+            card:juice_up(0.3, 0.5)
+        return true end }))
+      else
+        local sell_card = pseudorandom_element(sell_pool, pseudoseed("dollar"))
+        
+        sell_card.ability.eternal = false
+        
+        sell_card.bonus_cost = (sell_card.cost) * (card.ability.val - 1)
+        sell_card:set_cost()
+        
+        G.FUNCS.sell_card (
+          {
+            config = {
+              ref_table = sell_card -- love that janker
+            }
+          }
+        )
+      end
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
 
   -- cog goes here
   
@@ -435,7 +660,70 @@ function init()
 
   -- pentagon goes here
 
-  -- pause goes here
+  SMODS.Sticker {
+    key = "halted",
+    atlas = "mf_stickers",
+    pos = { x = 0, y = 0 },
+    badge_colour = HEX("1b4484"),
+    no_sticker_sheet = true,
+    should_apply = function(self, card, center, area, bypass_roll)
+      return false
+    end,
+    draw = function(self, card) --don't draw shine
+      local notilt = nil
+      if card.area and card.area.config.type == "deck" then
+        notilt = true
+      end
+
+      G.shared_stickers[self.key].role.draw_major = card
+
+      G.shared_stickers[self.key]:draw_shader("dissolve", nil, nil, notilt, card.children.center)
+    end,
+  }
+  
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Pause",
+    key = "pause",
+    pos = { x = 2, y = 4 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 2,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      for i = 1, card.ability.val do
+        colour_end_of_round_effects()
+      end
+      for _, v in pairs(G.consumeables.cards) do
+        if v.ability.set == "Shape" or v.ability.set == "Colour" then
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            v.ability["mf_halted"] = true
+            v:juice_up(0.5, 0.5)
+            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+            return true end }))
+        end
+      end
+      delay(0.6)
+    end,
+    loc_vars = function(self, info_queue, card)
+      info_queue[#info_queue + 1] = {key = "mf_halted", set="Other"}
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end
+  })
   
   -- curved arrow goes here
 
@@ -658,36 +946,6 @@ function init()
     end
   })
 
-  function colour_end_of_round_effects()
-    for i=1, #G.consumeables.cards do
-      local _card = G.consumeables.cards[i]
-      if Jen then
-        local repetitions = Jen.hv('colour', 9) and 3 or 1
-        if Jen.hv('colour', 7) and _card.ability.partial_rounds then
-          repetitions = repetitions * (_card.ability.partial_rounds + 1)
-        end
-        if Jen.hv('colour', 8) and _card.ability.upgrade_rounds then
-          repetitions = repetitions * math.max(1, _card.ability.upgrade_rounds)
-        end
-        for rep = 1, repetitions do
-         if Jen.hv('colour', 5) and _card.ability.partial_rounds then
-          for ii = 1, _card.ability.partial_rounds do
-            trigger_colour_end_of_round(_card)
-          end
-         end
-         if Jen.hv('colour', 6) and _card.ability.upgrade_rounds then
-          for ii = 1, _card.ability.upgrade_rounds do
-            trigger_colour_end_of_round(_card)
-          end
-         end
-         trigger_colour_end_of_round(_card)
-        end
-      else
-       trigger_colour_end_of_round(_card)
-      end
-    end
-  end
-
   -- Joker Display
 
   if JokerDisplay then
@@ -732,21 +990,21 @@ function init()
 
     local inversions = {
       ["c_mf_black"] = "c_mf_cloud",
-      -- ["c_mf_deepblue"] = "c_mf_spade",
+      ["c_mf_deepblue"] = "c_mf_spade",
       ["c_mf_crimson"] = "c_mf_omega",
-      -- ["c_mf_seaweed"] = "c_mf_club",
+      ["c_mf_seaweed"] = "c_mf_club",
       ["c_mf_brown"] = "c_mf_rectangle",
       ["c_mf_grey"] = "c_mf_squircle",
       ["c_mf_silver"] = "c_mf_arrow",
       ["c_mf_white"] = "c_mf_circle",
-      -- ["c_mf_red"] = "c_mf_heart",
-      -- ["c_mf_orange"] = "c_mf_orange",
-      -- ["c_mf_yellow"] = "c_mf_dollar",
+      ["c_mf_red"] = "c_mf_heart",
+      ["c_mf_orange"] = "c_mf_diamond",
+      ["c_mf_yellow"] = "c_mf_dollar",
       -- ["c_mf_green"] = "c_mf_cog",
       ["c_mf_blue"] = "c_mf_star",
       -- ["c_mf_lilac"] = "c_mf_pentagon",
-      -- ["c_mf_pink"] = "c_mf_pause",
-      ["c_mf_peach"] = "c_mf_curved_arrow",
+      ["c_mf_pink"] = "c_mf_pause",
+      -- ["c_mf_peach"] = "c_mf_curved_arrow",
       ["c_mf_new_gold"] = "c_mf_gem",
       ["c_mf_purple"] = "c_mf_house",
       ["c_mf_moonstone"] = "c_mf_loss",

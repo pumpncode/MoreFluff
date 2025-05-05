@@ -430,6 +430,13 @@ SMODS.Atlas({
   py = 95 
 })
 SMODS.Atlas({ 
+  key = "mf_stickers", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_stickers.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
   key = "mf_rotarots", 
   atlas_table = "ASSET_ATLAS", 
   path = "mf_rotarots.png", 
@@ -509,6 +516,13 @@ if Jen then
     py = 95 
   })
 end
+SMODS.Atlas({ 
+  key = "mf_watermark", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "watermark.png", 
+  px = 336, 
+  py = 32 
+})
 
 -- add a way for these to be disabled
 if mf_config["Colour Cards"] then
@@ -1062,6 +1076,15 @@ function Game:update(dt)
 	end
 end
 
+local game_drawref = Game.draw
+function Game:draw()
+  game_drawref(self)
+
+  if next(SMODS.find_card("j_mf_unregisteredhypercam")) then
+    love.graphics.draw(G.ASSET_ATLAS["mf_watermark"].image, 0, 0)
+  end
+end
+
 local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
@@ -1313,39 +1336,39 @@ end
 local success, dpAPI = pcall(require, "debugplus-api")
 
 local logger = { -- Placeholder logger, for when DebugPlus isn't available
-    log = print,
-    debug = print,
-    info = print,
-    warn = print,
-    error = print
+  log = print,
+  debug = print,
+  info = print,
+  warn = print,
+  error = print
 }
 
 if success and dpAPI.isVersionCompatible(1) then
-    local debugplus = dpAPI.registerID("morefluff")
-    logger = debugplus.logger -- Provides the logger object
+  local debugplus = dpAPI.registerID("morefluff")
+  logger = debugplus.logger -- Provides the logger object
 
-    debugplus.addCommand({ -- register a command
-      name = "add_colour_rounds",
-      shortDesc = "Add rounds to Colour Cards",
-      desc = "Adds <arg1> rounds to all held Colour Cards when run. Only works in game. Defaults to 1 round.",
-      exec = function (args, rawArgs, dp)
-        local rounds = nil
-        if #args == 0 then
-          rounds = 1
-        else
-          rounds = args[1]
-        end
-        if G.consumeables and G.consumeables.cards then
-          for i = 1, rounds do
-            colour_end_of_round_effects()
-          end
-
-          return "Added to event queue!"
-        else
-          return "add_colour_rounds only works in game!", "ERROR"
-        end
+  debugplus.addCommand({ -- register a command
+    name = "add_colour_rounds",
+    shortDesc = "Add rounds to Colour Cards",
+    desc = "Adds <arg1> rounds to all held Colour Cards when run. Only works in game. Defaults to 1 round.",
+    exec = function (args, rawArgs, dp)
+      local rounds = nil
+      if #args == 0 then
+        rounds = 1
+      else
+        rounds = args[1]
       end
-    })
+      if G.consumeables and G.consumeables.cards then
+        for i = 1, rounds do
+          colour_end_of_round_effects()
+        end
+
+        return "Added to event queue!"
+      else
+        return "add_colour_rounds only works in game!", "ERROR"
+      end
+    end
+  })
 end
 
 
