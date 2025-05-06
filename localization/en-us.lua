@@ -1319,7 +1319,7 @@ local loc_stuff = {
         },
       },
       c_mf_gem = {
-        name = "Gold",
+        name = "Gem",
         text = {
           "Create a {C:dark_edition}Negative{} {C:spectral}Fervour{}",
           "card for every {C:attention}#4#{} rounds",
