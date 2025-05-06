@@ -983,6 +983,16 @@ local loc_stuff = {
           art_credit("astralightsky")
         },
       },
+      c_mf_moss = {
+        name = "Moss",
+        text = {
+          "Create a {C:dark_edition}Negative{} {C:myth_light}Myth{}",
+          "card for every {C:attention}#4#{} rounds",
+          "this has been held",
+          "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
+          art_credit("Multi")
+        },
+      },
     },
     Rotarot = {
       c_mf_rot_fool = {
@@ -1168,12 +1178,13 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_deepblue = {
-        name = "Deep Blue",
+      c_mf_spade = {
+        name = "Spade",
         text = {
-          "Converts a random card in",
-          "hand to {C:spades}Spades{} for every",
-          "{C:attention}#4#{} round this has been held",
+          "Converts a random card in {C:dark_edition}full deck{}",
+          "to {C:spades}Spades{}. If it was already {C:spades}Spades{},",
+          "{C:red}destroy{} the card instead. Triggers {C:attention}twice",
+          "for every {C:attention}#4#{} round this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
@@ -1186,12 +1197,13 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_seaweed = {
-        name = "Seaweed",
+      c_mf_club = {
+        name = "Club",
         text = {
-          "Converts a random card in",
-          "hand to {C:clubs}Clubs{} for every",
-          "{C:attention}#4#{} round this has been held",
+          "Converts a random card in {C:dark_edition}full deck{}",
+          "to {C:club}Clubs{}. If it was already {C:club}Clubs{},",
+          "{C:red}destroy{} the card instead. Triggers {C:attention}twice",
+          "for every {C:attention}#4#{} round this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
@@ -1205,7 +1217,7 @@ local loc_stuff = {
         },
       },
       c_mf_squircle = {
-        name = "Squirecle",
+        name = "Squircle",
         text = {
           "Create a {C:dark_edition}random{} {C:attention}Tag{} for",
           "every {C:attention}#4#{} rounds",
@@ -1231,30 +1243,33 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_red = {
-        name = "Red",
+      c_mf_heart = {
+        name = "Heart",
         text = {
-          "Converts a random card in",
-          "hand to {C:hearts}Hearts{} for every",
-          "{C:attention}#4#{} round this has been held",
+          "Converts a random card in {C:dark_edition}full deck{}",
+          "to {C:hearts}Hearts{}. If it was already {C:hearts}Hearts{},",
+          "{C:red}destroy{} the card instead. Triggers {C:attention}twice",
+          "for every {C:attention}#4#{} round this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_orange = {
-        name = "Orange",
+      c_mf_diamond = {
+        name = "Diamond",
         text = {
-          "Converts a random card in",
-          "hand to {C:diamonds}Diamonds{} for every",
-          "{C:attention}#4#{} round this has been held",
+          "Converts a random card in {C:dark_edition}full deck{}",
+          "to {C:diamond}Diamonds{}. If it was already {C:diamond}Diamonds{},",
+          "{C:red}destroy{} the card instead. Triggers {C:attention}twice",
+          "for every {C:attention}#4#{} round this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_yellow = {
-        name = "Yellow",
+      c_mf_dollar = {
+        name = "Dollar",
         text = {
-          "Gains {C:money}$#5#{} of",
-          "{C:attention}sell value{}",
-          "every {C:attention}#4# rounds",
+          "{C:red}Forcefully{} {C:money}sell{} a random {C:attention}Joker{} or",
+          "{C:attention}consumable{} for {C:money}#1#x sell value{},",
+          "increases by {C:money}1x{} every {C:attention}#4#{} round",
+          "{C:inactive}(Forcefully selling bypasses Eternal){}",
           "{C:inactive}({}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
@@ -1285,12 +1300,12 @@ local loc_stuff = {
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_pink = {
-        name = "Pink",
+      c_mf_pause = {
+        name = "Pause",
         text = {
-          "Add {C:attention}1{} round to a random",
-          "{C:colourcard}Colour{} card. Triggers once for",
-          "{C:attention}#4#{} rounds this has been held",
+          "Add {C:attention}1{} round to a all {C:colourcard}Colour{}",
+          "cards for every {C:attention}#4#{} rounds this",
+          "has been held, then {C:red}Halt{} them all",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
@@ -1626,7 +1641,13 @@ local loc_stuff = {
           "In this case, {X:dark_edition,C:white}n^^#1#{} can be",
           "calculated using {X:dark_edition,C:white}n^^#1# = n^n^#2#{}"
         }
-      }
+      },
+			mf_halted = {
+				name = "Halted",
+				text = {
+					"Cannot gain any more {C:attention}Rounds{}"
+				},
+			},
     },
     Blind = {
       bl_mf_bigger_blind = {
@@ -2119,6 +2140,7 @@ local loc_stuff = {
     labels = {
       colour = "Colour",
       shape = "Shape",
+      mf_halted = "Halted",
     },
     achievement_names = {
       ach_mf_ten_colour_rounds = "10-ted",
