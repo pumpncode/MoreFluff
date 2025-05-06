@@ -19,6 +19,22 @@ end
 
 --#region All I Can't Do
 Balatest.TestPlay {
+  name = "allicantdo_debuffs_hand",
+  requires = {},
+  category = "allicantdo",
+
+  jokers = {"j_mf_allicantdo"},
+  execute = function()
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    for i = 1,52 do
+      Balatest.assert(G.hand.cards[i].debuff)
+    end
+  end,
+}
+
+Balatest.TestPlay {
   name = "allicantdo_one_high_card",
   requires = {},
   category = "allicantdo",
@@ -375,6 +391,10 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_bookmove"},
 
+  deck = { cards = { 
+    { r = 'A', s = 'S' }
+  } }, -- for brevity
+
   execute = function()
     Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
     Balatest.wait_for_input()
@@ -390,6 +410,10 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' }
+  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -408,6 +432,10 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' }
+  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -429,6 +457,10 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker","j_joker"},
 
+  deck = { cards = { 
+    { r = 'A', s = 'S' }
+  } }, -- for brevity
+
   execute = function()
     Balatest.next_round()
     Balatest.next_round()
@@ -448,6 +480,10 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' }
+  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -624,6 +660,10 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_broomcloset"},
 
+  deck = { cards = { 
+    { r = 'A', s = 'H' }
+  } }, -- for brevity
+
   dollars = 99999,
 
   execute = function()
@@ -645,6 +685,10 @@ Balatest.TestPlay {
   category = "broomcloset",
 
   jokers = {"j_mf_broomcloset"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'H' }
+  } }, -- for brevity
 
   dollars = 99999,
 
@@ -844,6 +888,10 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_coupon_catalogue"},
 
+  deck = { cards = { 
+    { r = 'A', s = 'H' }
+  } }, -- for brevity
+
   dollars = 99999,
 
   execute = function()
@@ -866,6 +914,10 @@ Balatest.TestPlay {
   category = "couponcatalogue",
 
   jokers = {"j_mf_coupon_catalogue"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'H' }
+  } }, -- for brevity
 
   dollars = 99999,
 
@@ -1883,5 +1935,258 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+
+-- #region Less Fluff
+
+Balatest.TestPlay {
+  name = "lessfluff_vanilla",
+  requires = {},
+  category = "lessfluff",
+
+  jokers = {"j_mf_lessfluff", "j_joker", "j_joker"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * 9 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lessfluff_modded",
+  requires = {},
+  category = "lessfluff",
+
+  jokers = {"j_mf_lessfluff", "j_mf_jester", "j_mf_jester"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * 22 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lessfluff_mixed",
+  requires = {},
+  category = "lessfluff",
+
+  jokers = {"j_joker", "j_joker", "j_mf_lessfluff", "j_mf_jester", "j_mf_jester"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 201 )
+  end,
+}
+
+-- #region Loaded Disk
+
+Balatest.TestPlay {
+  name = "loadeddisk_sell",
+  requires = {},
+  category = "loadeddisk",
+
+  jokers = {"j_mf_loadeddisk"},
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 2)
+    Balatest.assert(G.consumeables.cards[1].config.center.key == "c_mf_pink")
+    Balatest.assert(G.consumeables.cards[2].config.center.key == "c_mf_yellow")
+  end,
+}
+
+Balatest.TestPlay {
+  name = "loadeddisk_sell_one_remaining",
+  requires = {},
+  category = "loadeddisk",
+
+  jokers = {"j_mf_loadeddisk"},
+  consumeables = {"c_death"},
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 2)
+    Balatest.assert(G.consumeables.cards[1].config.center.key == "c_death")
+    Balatest.assert(G.consumeables.cards[2].config.center.key == "c_mf_pink")
+  end,
+}
+
+Balatest.TestPlay {
+  name = "loadeddisk_sell_no_slots",
+  requires = {},
+  category = "loadeddisk",
+
+  jokers = {"j_mf_loadeddisk"},
+  consumeables = {"c_death","c_death"},
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 2)
+    Balatest.assert(G.consumeables.cards[1].config.center.key == "c_death")
+    Balatest.assert(G.consumeables.cards[2].config.center.key == "c_death")
+  end,
+}
+
+-- #region Lollipop
+
+Balatest.TestPlay {
+  name = "lollipop_base_x_mult",
+  requires = {},
+  category = "lollipop",
+
+  jokers = {"j_mf_lollipop"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 28 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lollipop_two_rounds_after",
+  requires = {},
+  category = "lollipop",
+
+  jokers = {"j_mf_lollipop"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } }, -- for brevity
+
+  execute = function()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 23 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lollipop_eaten",
+  requires = {},
+  category = "lollipop",
+
+  jokers = {"j_mf_lollipop"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } }, -- for brevity
+
+  execute = function()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 )
+    Balatest.assert_eq(#G.jokers.cards, 0)
+  end,
+}
+
+-- #region Lucky Charm
+
+Balatest.TestPlay {
+  name = "lucky_charm_nope_mult",
+  requires = {},
+  category = "luckycharm",
+  dollars = 0,
+  jokers = {"j_mf_luckycharm"},
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 )
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lucky_charm_nope_cash",
+  requires = {},
+  category = "luckycharm",
+  dollars = 0,
+  jokers = {"j_mf_luckycharm"},
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    Balatest.end_round()
+    Balatest.cash_out()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "lucky_charm_yep",
+  requires = {},
+  category = "luckycharm",
+  dollars = 0,
+  jokers = {"j_mf_luckycharm"},
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16*21 )
+    Balatest.assert_eq(G.GAME.dollars, 20)
+  end,
+}
+
+-- #region Marigold
+
+Balatest.TestPlay {
+  name = "marigold_doesnt_retrigger_not_marigold",
+  requires = {},
+  category = "marigold",
+  dollars = 0,
+  jokers = {"j_mf_marigold", "j_photograph"},
+  consumeables = {"c_devil"},
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.play_hand { 'AS', 'KS', 'QS', 'JS', 'TS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (100 + 11 + 10 + 10 + 10 + 10) * 8 * 2 )
+    Balatest.assert_eq(G.GAME.dollars, 3)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "marigold_retriggers_marigold",
+  requires = {},
+  category = "marigold",
+  dollars = 0,
+  jokers = {"j_mf_marigold", "j_photograph"},
+  consumeables = {"c_mf_rot_devil","c_mf_rot_devil"},
+  execute = function()
+    Balatest.highlight { '2S', 'AS', 'KS' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.highlight { 'QS', 'JS', 'TS' }
+    Balatest.use(G.consumeables.cards[2])
+    Balatest.play_hand { 'AS', 'KS', 'QS', 'JS', 'TS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (100 + (11 + 10 + 10 + 10 + 10) * 3) * 8 * 8 )
+    Balatest.assert_eq(G.GAME.dollars, 3)
   end,
 }
