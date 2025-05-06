@@ -1414,3 +1414,7 @@ end
 
 --   return ret
 -- end
+
+if Balatest then
+  assert(SMODS.load_file("other/tests.lua"))()
+end
