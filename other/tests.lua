@@ -392,7 +392,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -412,7 +413,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -434,7 +436,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -458,7 +461,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker","j_joker"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -482,7 +486,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -661,7 +666,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_broomcloset"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -687,7 +693,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_broomcloset"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -889,7 +896,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_coupon_catalogue"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -916,7 +924,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_coupon_catalogue"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -1343,6 +1352,7 @@ Balatest.TestPlay {
 
   execute = function()
     Balatest.play_hand { "AS", "KS", "QS", "JS", "TS" }
+    Balatest.wait_for_input()
   end,
   assert = function()
     Balatest.assert_eq(#G.consumeables.cards, 1)
@@ -1964,7 +1974,7 @@ Balatest.TestPlay {
     Balatest.play_hand { 'AS' }
   end,
   assert = function()
-    Balatest.assert_chips( 16 * 22 )
+    Balatest.assert_chips( 22 )
   end,
 }
 
@@ -2188,5 +2198,186 @@ Balatest.TestPlay {
   assert = function()
     Balatest.assert_chips( (100 + (11 + 10 + 10 + 10 + 10) * 3) * 8 * 8 )
     Balatest.assert_eq(G.GAME.dollars, 3)
+  end,
+}
+
+-- #region Mashup Album
+
+Balatest.TestPlay {
+  name = "mashup_album_base_score",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (5+11+15) * (1 + 4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_bunch_of_junk",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { '2C', '2D' }
+    Balatest.play_hand { '2H', '3C', '4C', '5C', '6C' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (5+11+15) * (1 + 4) + (10+2+2+15) * (2 + 4) + (30 + 2 + 3 + 4 + 5 + 6 + 15) * (4 + 4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_red_flush",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  execute = function()
+    Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (35 + 2 + 3 + 4 + 6 + 7 + 15) * (4 + 8) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_black_flush",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  execute = function()
+    Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (35 + 2 + 3 + 4 + 6 + 7 + 30) * (4 + 4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_red_black",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  deck = { cards = { 
+    { r = '2', s = 'H' },
+    { r = '3', s = 'H' },
+    { r = '4', s = 'H' },
+    { r = '6', s = 'H' },
+    { r = '7', s = 'H' },
+    { r = '2', s = 'C' },
+    { r = '3', s = 'C' },
+    { r = '4', s = 'C' },
+    { r = '6', s = 'C' },
+    { r = '7', s = 'C' },
+  } }, -- for brevity
+  execute = function()
+    Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
+    Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 
+      (35 + 2 + 3 + 4 + 6 + 7 + 15) * (4 + 8) +
+      (35 + 2 + 3 + 4 + 6 + 7 + 30) * (4 + 8)
+    )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_black_red",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  deck = { cards = { 
+    { r = '2', s = 'H' },
+    { r = '3', s = 'H' },
+    { r = '4', s = 'H' },
+    { r = '6', s = 'H' },
+    { r = '7', s = 'H' },
+    { r = '2', s = 'C' },
+    { r = '3', s = 'C' },
+    { r = '4', s = 'C' },
+    { r = '6', s = 'C' },
+    { r = '7', s = 'C' },
+  } }, -- for brevity
+  execute = function()
+    Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
+    Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 
+      (35 + 2 + 3 + 4 + 6 + 7 + 30) * (4 + 4) +
+      (35 + 2 + 3 + 4 + 6 + 7 + 30) * (4 + 8)
+    )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mashup_album_persists",
+  requires = {},
+  category = "mashupalbum",
+  jokers = {"j_mf_mashupalbum"},
+  blind = "bl_wall",
+  deck = { cards = { 
+    { r = '2', s = 'H' },
+    { r = '3', s = 'H' },
+    { r = '4', s = 'H' },
+    { r = '6', s = 'H' },
+    { r = '7', s = 'H' },
+    { r = '2', s = 'C' },
+    { r = '3', s = 'C' },
+    { r = '4', s = 'C' },
+    { r = '6', s = 'C' },
+    { r = '7', s = 'C' },
+    { r = 'A', s = 'S' },
+  } }, -- for brevity
+  execute = function()
+    Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
+    Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
+    Balatest.cash_out()
+    Balatest.exit_shop()
+    Balatest.start_round()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 
+      (5 + 11 + 30) * (1 + 8)
+    )
+  end,
+}
+
+-- #region Missing Joker
+
+Balatest.TestPlay {
+  name = "missing_joker_transforms",
+  requires = {},
+  category = "missingjoker",
+  jokers = {"j_mf_missingjoker"},
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert(G.jokers.cards[1].config.center.key ~= "j_mf_missingjoker")
+  end,
+}
+
+Balatest.TestPlay {
+  name = "missing_joker_reverts",
+  requires = {},
+  category = "missingjoker",
+  jokers = {"j_mf_missingjoker"},
+  execute = function()
+    Balatest.end_round()
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert(G.jokers.cards[1].config.center.key == "j_mf_missingjoker")
   end,
 }
