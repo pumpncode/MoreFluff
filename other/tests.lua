@@ -392,7 +392,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -412,7 +413,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -434,7 +436,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -458,7 +461,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker","j_joker"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -482,7 +486,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker"},
 
   deck = { cards = { 
-    { r = 'A', s = 'S' }
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   execute = function()
@@ -661,7 +666,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_broomcloset"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -687,7 +693,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_broomcloset"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -889,7 +896,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_coupon_catalogue"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
@@ -916,7 +924,8 @@ Balatest.TestPlay {
   jokers = {"j_mf_coupon_catalogue"},
 
   deck = { cards = { 
-    { r = 'A', s = 'H' }
+    { r = 'A', s = 'H' },
+    { r = 'A', s = 'S' },
   } }, -- for brevity
 
   dollars = 99999,
