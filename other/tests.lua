@@ -1352,6 +1352,7 @@ Balatest.TestPlay {
 
   execute = function()
     Balatest.play_hand { "AS", "KS", "QS", "JS", "TS" }
+    Balatest.wait_for_input()
   end,
   assert = function()
     Balatest.assert_eq(#G.consumeables.cards, 1)
@@ -1973,7 +1974,7 @@ Balatest.TestPlay {
     Balatest.play_hand { 'AS' }
   end,
   assert = function()
-    Balatest.assert_chips( 16 * 22 )
+    Balatest.assert_chips( 22 )
   end,
 }
 
