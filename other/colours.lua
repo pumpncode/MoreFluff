@@ -1495,7 +1495,55 @@ function init()
       end,
     })
   end
-  
+
+  if next(SMODS.find_mod("sdm0sstuff")) then
+    if SDM_0s_Stuff_Config and SDM_0s_Stuff_Config.sdm_bakery then
+      SMODS.Consumable({
+        object_type = "Consumable",
+        set = "Colour",
+        name = "col_Caramel",
+        key = "caramel",
+        pos = { x = 1, y = 8 },
+        config = {
+          val = 0,
+          partial_rounds = 0,
+          upgrade_rounds = 3,
+        },
+        cost = 4,
+        atlas = "mf_colours",
+        unlocked = true,
+        discovered = true,
+        display_size = { w = 71, h = 87 },
+        pixel_size = { w = 71, h = 87 },
+        can_use = function(self, card)
+          return true
+        end,
+        use = function(self, card, area, copier)
+          local card_type = "Bakery"
+          local rng_seed = "caramel"
+          for i = 1, card.ability.val do
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+              play_sound('timpani')
+              local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+              n_card:add_to_deck()
+              n_card:set_edition({negative = true}, true)
+              G.consumeables:emplace(n_card)
+              card:juice_up(0.3, 0.5)
+              return true end }))
+          end
+          delay(0.6)
+        end,
+        loc_vars = function(self, info_queue, card)
+          local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+          return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+        end,
+        set_badges = function (self, card, badges)
+          SMODS.create_mod_badges({ mod = SMODS.find_mod("sdm0sstuff")[1] }, badges)
+        end,
+      })
+    end
+  end
+
   SMODS.Voucher({
     object_type = "Voucher",
     key = "paintroller",
