@@ -1346,7 +1346,7 @@ Balatest.TestPlay {
   requires = {},
   category = "fleshprison",
 
-  jokers = {"j_mf_fleshprison"},
+  jokers = {"j_mf_fleshprison", "j_cavendish", "j_cavendish", "j_cavendish", "j_cavendish"},
 
   blind = "bl_psychic",
 
@@ -1356,8 +1356,8 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_eq(#G.consumeables.cards, 1)
-    Balatest.assert_(G.consumeables.cards[1].config.center.key == "c_soul")
-    Balatest.assert_eq(#G.jokers.cards, 0)
+    Balatest.assert(G.consumeables.cards[1].config.center.key == "c_soul")
+    Balatest.assert_eq(#G.jokers.cards, 4)
   end
 }
 
@@ -2594,5 +2594,606 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_eq(G.jokers.config.card_limit, 6)
+  end,
+}
+
+-- #region Pixel Joker
+
+Balatest.TestPlay {
+  name = "pixel_joker_junk",
+  requires = {},
+  category = "pixeljoker",
+  jokers = {"j_mf_pixeljoker"},
+  blind = "bl_wall",
+  execute = function()
+    Balatest.play_hand { '2S' }
+    Balatest.play_hand { '2C', '2D' }
+    Balatest.play_hand { '3H', '3C', '5S', '5C', '5D' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 
+      (5 + 2) + (10 + 2 + 2) * 2 + (3 + 3 + 5 + 5 + 5 + 35) * 4
+    )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "pixel_joker_fullhouse",
+  requires = {},
+  category = "pixeljoker",
+  jokers = {"j_mf_pixeljoker"},
+  blind = "bl_wall",
+  execute = function()
+    Balatest.play_hand { '9H', '9C', '9D', 'AS', 'AH' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 
+      math.floor((35 + 9 + 9 + 9 + 11 + 11) * (4 * 1.5 * 1.5 * 1.5 * 1.5 * 1.5))
+    )
+  end,
+}
+
+-- #region Rainbow Joker
+
+Balatest.TestPlay {
+  name = "rainbow_no_colours",
+  requires = {},
+  category = "rainbowjoker",
+  jokers = {"j_mf_rainbowjoker"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "rainbow_two_colours",
+  requires = {},
+  category = "rainbowjoker",
+  jokers = {"j_mf_rainbowjoker"},
+  consumeables = {"c_mf_white", "c_mf_white"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 36 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "rainbow_ten_colours",
+  requires = {},
+  category = "rainbowjoker",
+  jokers = {"j_mf_rainbowjoker"},
+  consumeables = {"c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 922 )
+  end,
+}
+
+-- #region Recycling
+
+Balatest.TestPlay {
+  name = "recycling_skip",
+  requires = {},
+  category = "recycling",
+  jokers = {"j_mf_recycling"},
+  no_auto_start = true,
+  execute = function()
+    Balatest.skip_blind("tag_mf_colour")
+    Balatest.wait_for_input()
+    Balatest.q(function() G.FUNCS.skip_booster() end)
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.consumeables.cards, 1 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "recycling_no_overflow",
+  requires = {},
+  category = "recycling",
+  jokers = {"j_mf_recycling"},
+  consumeables = {"c_ouija","c_ouija"},
+  no_auto_start = true,
+  execute = function()
+    Balatest.skip_blind("tag_mf_colour")
+    Balatest.wait_for_input()
+    Balatest.q(function() G.FUNCS.skip_booster() end)
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 2)
+    Balatest.assert(G.consumeables.cards[1].ability.set ~= "Planet", "should not have a planet")
+    Balatest.assert(G.consumeables.cards[1].ability.set ~= "Tarot", "should not have a tarot")
+    Balatest.assert(G.consumeables.cards[2].ability.set ~= "Planet", "should not have a planet")
+    Balatest.assert(G.consumeables.cards[2].ability.set ~= "Tarot", "should not have a tarot")
+  end,
+}
+
+-- #region Rose-Tinted Glasses
+
+Balatest.TestPlay {
+  name = "rosetinted_one_two",
+  requires = {},
+  category = "rosetinted",
+  jokers = {"j_mf_rosetinted"},
+  execute = function()
+    Balatest.play_hand { "2S" } 
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.GAME.tags, 1 )
+    Balatest.assert_eq( G.GAME.tags[1].key == "tag_double" )
+    Balatest.assert_eq(#G.playing_cards, 51)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "rosetinted_random_hand",
+  requires = {},
+  category = "rosetinted",
+  jokers = {"j_mf_rosetinted"},
+  execute = function()
+    Balatest.play_hand { "3S" } 
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.GAME.tags, 0 )
+    Balatest.assert_eq(#G.playing_cards, 52)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "rosetinted_two_on_second",
+  requires = {},
+  category = "rosetinted",
+  jokers = {"j_mf_rosetinted"},
+  execute = function()
+    Balatest.play_hand { "3S" } 
+    Balatest.play_hand { "2S" } 
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.GAME.tags, 0 )
+    Balatest.assert_eq(#G.playing_cards, 52)
+  end,
+}
+
+-- #region Cartomancer!
+
+Balatest.TestPlay {
+  name = "rot_cartomancer_creates",
+  requires = {},
+  category = "rot_cartomancer",
+
+  jokers = {"j_mf_rot_cartomancer"},
+
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 1, "created one")
+  end,
+}
+
+-- #region Simplified Joker
+
+Balatest.TestPlay {
+  name = "simplified_solo",
+  requires = {},
+  category = "simplified",
+
+  jokers = {"j_mf_simplified"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * 5 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "simplified_two",
+  requires = {},
+  category = "simplified",
+
+  jokers = {"j_mf_simplified","j_mf_simplified"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4*4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "simplified_other_commons",
+  requires = {},
+  category = "simplified",
+
+  jokers = {"j_mf_simplified","j_mf_clownfish","j_mf_clownfish","j_mf_clownfish","j_mf_clownfish"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4*5) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "simplified_other_uncommons",
+  requires = {},
+  category = "simplified",
+
+  jokers = {"j_mf_simplified","j_mf_globe","j_mf_globe","j_mf_globe","j_mf_globe"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "simplified_five_copies",
+  requires = {},
+  category = "simplified",
+
+  jokers = {"j_mf_simplified","j_mf_simplified","j_mf_simplified","j_mf_simplified","j_mf_simplified"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4*25) )
+  end,
+}
+
+-- #region Slot Machine
+
+Balatest.TestPlay {
+  name = "slotmachine_rigged_off",
+  requires = {},
+  category = "slotmachine",
+
+  jokers = {"j_mf_slotmachine","j_pareidolia","j_photograph"},
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    Balatest.play_hand { '7S' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * 2 )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "slotmachine_rigged_on",
+  requires = {},
+  category = "slotmachine",
+
+  jokers = {"j_mf_slotmachine","j_pareidolia","j_photograph"},
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    Balatest.play_hand { '7S' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * 128 )
+  end,
+}
+
+-- #region Snake
+
+Balatest.TestPlay {
+  name = "snake_discard_one",
+  requires = {},
+  category = "snake",
+
+  jokers = {"j_mf_snake"},
+  hand_size = 5,
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.discard { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.hand.cards, 7)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "snake_discard_five",
+  requires = {},
+  category = "snake",
+
+  jokers = {"j_mf_snake"},
+  hand_size = 5,
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.discard { 'AS','AS','AS','AS','AS' }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.hand.cards, 3)
+  end,
+}
+
+-- #region Spiral Joker
+
+Balatest.TestPlay {
+  name = "spiral_zero_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 0,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+17) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_one_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 1,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+16) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_two_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 2,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+15) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_three_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 3,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+13) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_four_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 4,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+10) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_five_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 5,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+7) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_six_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 6,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+5) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_seven_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 7,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_eight_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 8,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+3) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_nine_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 9,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+4) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_ten_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 10,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+5) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_eleven_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 11,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+7) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_twelve_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 12,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+10) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_thirteen_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 13,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+13) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_fourteen_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 14,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+15) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_fifteen_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 15,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+16) )
+  end,
+}
+
+Balatest.TestPlay {
+  name = "spiral_sixteen_money",
+  requires = {},
+  category = "spiral",
+
+  jokers = {"j_mf_spiral"},
+  dollars = 16,
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 * (1+17) )
   end,
 }
