@@ -2381,3 +2381,218 @@ Balatest.TestPlay {
     Balatest.assert(G.jokers.cards[1].config.center.key == "j_mf_missingjoker")
   end,
 }
+
+-- #region Monochrome Joker
+
+Balatest.TestPlay {
+  name = "monochrome_joker_one_round",
+  requires = {},
+  category = "monochrome",
+  jokers = {"j_mf_monochrome"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 5)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "monochrome_joker_three_rounds",
+  requires = {},
+  category = "monochrome",
+  jokers = {"j_mf_monochrome"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } }, -- for brevity
+
+  execute = function()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * (1 + 8))
+  end,
+}
+
+Balatest.TestPlay {
+  name = "monochrome_joker_resets_rounds",
+  requires = {},
+  category = "monochrome",
+  jokers = {"j_mf_monochrome"},
+
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } }, -- for brevity
+
+  execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.next_round()
+    Balatest.end_round()
+    Balatest.cash_out()
+    Balatest.buy(function() return G.shop_jokers.cards[1] end)
+    Balatest.exit_shop()
+    Balatest.start_round()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * (1 + 2))
+  end,
+}
+
+-- #region MS Paint Joker
+
+Balatest.TestPlay {
+  name = "mspaint_joker_initial_handsize",
+  requires = {},
+  category = "mspaint",
+  jokers = {"j_mf_mspaint"},
+
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.hand.config.card_limit, 52 + 4)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mspaint_joker_second_hand",
+  requires = {},
+  category = "mspaint",
+  jokers = {"j_mf_mspaint"},
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.hand.config.card_limit, 52)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "mspaint_joker_goes_back_up",
+  requires = {},
+  category = "mspaint",
+  jokers = {"j_mf_mspaint"},
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.next_round()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.hand.config.card_limit, 56)
+  end,
+}
+
+-- #region Paint Can
+
+Balatest.TestPlay {
+  name = "paintcan_one_rigged_off",
+  requires = {},
+  category = "paintcan",
+  jokers = {"j_mf_paintcan"},
+  consumeables = {"c_mf_black"},
+
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    Balatest.end_round()
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.consumeables.cards[1].ability.partial_rounds, 1)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "paintcan_one_rigged_on",
+  requires = {},
+  category = "paintcan",
+  jokers = {"j_mf_paintcan"},
+  consumeables = {"c_mf_black"},
+
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    Balatest.end_round()
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.consumeables.cards[1].ability.partial_rounds, 2)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "paintcan_three_rigged_on",
+  requires = {},
+  category = "paintcan",
+  jokers = {"j_mf_paintcan","j_mf_paintcan","j_mf_paintcan"},
+  consumeables = {"c_mf_black"},
+
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    Balatest.end_round()
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.consumeables.cards[1].ability.partial_rounds, 0)
+    Balatest.assert_eq(G.consumeables.cards[1].ability.val, 1)
+  end,
+}
+
+-- #region Philosophical Joker
+
+Balatest.TestPlay {
+  name = "philosophical_joker_slots",
+  requires = {},
+  category = "philosophical",
+  jokers = {"j_mf_philosophical"},
+
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.jokers.config.card_limit, 6)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "philosophical_joker_sell",
+  requires = {},
+  category = "philosophical",
+  jokers = {"j_mf_philosophical"},
+
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.jokers.config.card_limit, 5)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "philosophical_buy_with_full_slots",
+  requires = {},
+  category = "philosophical",
+  jokers = {"j_joker","j_joker","j_joker","j_joker","j_joker"},
+
+  execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'j_mf_philosophical', ...)
+    end)
+    Balatest.end_round()
+    Balatest.cash_out()
+    Balatest.buy(function() return G.shop_jokers.cards[1] end)
+  end,
+  assert = function()
+    Balatest.assert_eq(G.jokers.config.card_limit, 6)
+  end,
+}
