@@ -1,5 +1,3 @@
-print("loading tests")
-
 local pseudorandom_pick_first = function(orig, _t, ...)
   if seed then math.randomseed(seed) end
   local keys = {}
@@ -4201,7 +4199,7 @@ Balatest.TestPlay {
   requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
-  consumables = {"c_lovers"},
+  consumeables = {"c_lovers"},
   execute = function()
     Balatest.highlight { '6S' }
     Balatest.use(G.consumeables.cards[1])
@@ -4217,7 +4215,7 @@ Balatest.TestPlay {
   requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
-  consumables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
+  consumeables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
   execute = function()
     Balatest.highlight { '6S' }
     Balatest.use(G.consumeables.cards[1])
@@ -4242,7 +4240,7 @@ Balatest.TestPlay {
   requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
-  consumables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
+  consumeables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
   execute = function()
     Balatest.highlight { '6S' }
     Balatest.use(G.consumeables.cards[1])
