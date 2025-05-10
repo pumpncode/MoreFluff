@@ -391,11 +391,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_bookmove"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   execute = function()
     Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
     Balatest.wait_for_input()
@@ -411,11 +406,6 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -434,11 +424,6 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -460,11 +445,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker","j_joker"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   execute = function()
     Balatest.next_round()
     Balatest.next_round()
@@ -484,11 +464,6 @@ Balatest.TestPlay {
   category = "bookmove",
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -665,11 +640,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_broomcloset"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'H' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   dollars = 99999,
 
   execute = function()
@@ -694,11 +664,6 @@ Balatest.TestPlay {
   category = "broomcloset",
 
   jokers = {"j_mf_broomcloset"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'H' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   dollars = 99999,
 
@@ -1363,11 +1328,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_coupon_catalogue"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'H' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   dollars = 99999,
 
   execute = function()
@@ -1390,11 +1350,6 @@ Balatest.TestPlay {
   category = "couponcatalogue",
 
   jokers = {"j_mf_coupon_catalogue"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'H' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   dollars = 99999,
 
@@ -2538,11 +2493,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_lollipop"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   execute = function()
     Balatest.next_round()
     Balatest.next_round()
@@ -2559,11 +2509,6 @@ Balatest.TestPlay {
   category = "lollipop",
 
   jokers = {"j_mf_lollipop"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -2734,18 +2679,6 @@ Balatest.TestPlay {
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
-  deck = { cards = { 
-    { r = '2', s = 'H' },
-    { r = '3', s = 'H' },
-    { r = '4', s = 'H' },
-    { r = '6', s = 'H' },
-    { r = '7', s = 'H' },
-    { r = '2', s = 'C' },
-    { r = '3', s = 'C' },
-    { r = '4', s = 'C' },
-    { r = '6', s = 'C' },
-    { r = '7', s = 'C' },
-  } }, -- for brevity
   execute = function()
     Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
     Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
@@ -2764,18 +2697,6 @@ Balatest.TestPlay {
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
-  deck = { cards = { 
-    { r = '2', s = 'H' },
-    { r = '3', s = 'H' },
-    { r = '4', s = 'H' },
-    { r = '6', s = 'H' },
-    { r = '7', s = 'H' },
-    { r = '2', s = 'C' },
-    { r = '3', s = 'C' },
-    { r = '4', s = 'C' },
-    { r = '6', s = 'C' },
-    { r = '7', s = 'C' },
-  } }, -- for brevity
   execute = function()
     Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
     Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
@@ -2794,19 +2715,6 @@ Balatest.TestPlay {
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
-  deck = { cards = { 
-    { r = '2', s = 'H' },
-    { r = '3', s = 'H' },
-    { r = '4', s = 'H' },
-    { r = '6', s = 'H' },
-    { r = '7', s = 'H' },
-    { r = '2', s = 'C' },
-    { r = '3', s = 'C' },
-    { r = '4', s = 'C' },
-    { r = '6', s = 'C' },
-    { r = '7', s = 'C' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
   execute = function()
     Balatest.play_hand { '2C', '3C', '4C', '6C', '7C' }
     Balatest.play_hand { '2H', '3H', '4H', '6H', '7H' }
@@ -2871,11 +2779,6 @@ Balatest.TestPlay {
   category = "monochrome",
   jokers = {"j_mf_monochrome"},
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   execute = function()
     Balatest.next_round()
     Balatest.next_round()
@@ -2891,11 +2794,6 @@ Balatest.TestPlay {
   requires = {},
   category = "monochrome",
   jokers = {"j_mf_monochrome"},
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
@@ -3981,11 +3879,6 @@ Balatest.TestPlay {
 
   dollars = 1,
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   jokers = {"j_mf_top10"},
 
   execute = function()
@@ -4003,11 +3896,6 @@ Balatest.TestPlay {
   category = "top10",
 
   dollars = 10,
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   jokers = {"j_mf_top10"},
 
@@ -4027,11 +3915,6 @@ Balatest.TestPlay {
 
   dollars = 123,
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   jokers = {"j_mf_top10"},
 
   execute = function()
@@ -4050,11 +3933,6 @@ Balatest.TestPlay {
 
   dollars = 111,
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   jokers = {"j_mf_top10"},
 
   execute = function()
@@ -4072,11 +3950,6 @@ Balatest.TestPlay {
   category = "top10",
 
   dollars = 1234,
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   jokers = {"j_mf_top10"},
 
@@ -4099,11 +3972,6 @@ Balatest.TestPlay {
   jokers = {"j_mf_treasuremap"},
   dollars = 0,
 
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
-
   execute = function()
     Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
     Balatest.wait_for_input()
@@ -4120,11 +3988,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_treasuremap"},
   dollars = 0,
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
@@ -4143,11 +4006,6 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_treasuremap"},
   dollars = 0,
-
-  deck = { cards = { 
-    { r = 'A', s = 'S' },
-    { r = 'A', s = 'S' },
-  } }, -- for brevity
 
   execute = function()
     Balatest.next_round()
