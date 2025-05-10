@@ -3151,10 +3151,15 @@ Balatest.TestPlay {
   requires = {},
   category = "recycling",
   jokers = {"j_mf_recycling"},
-  no_auto_start = true,
   execute = function()
-    Balatest.skip_blind("tag_mf_colour")
-    Balatest.wait_for_input()
+    Balatest.hook(_G, 'get_pack', function() return { key = 'p_buffoon_normal_1' } end)
+    Balatest.hook(_G, 'create_card', function(orig, set, a, l, r, k, s, f, ...)
+        return set == 'Joker' and orig(set, a, l, r, k, s, 'j_joker', ...) or orig(set, a, l, r, k, s, f, ...)
+    end)
+    Balatest.hook(_G, 'poll_edition', function() end)
+    Balatest.end_round()
+    Balatest.cash_out()
+    Balatest.use(function() return G.shop_booster.cards[2] end)
     Balatest.q(function() G.FUNCS.skip_booster() end)
   end,
   assert = function()
@@ -3168,10 +3173,15 @@ Balatest.TestPlay {
   category = "recycling",
   jokers = {"j_mf_recycling"},
   consumeables = {"c_ouija","c_ouija"},
-  no_auto_start = true,
   execute = function()
-    Balatest.skip_blind("tag_mf_colour")
-    Balatest.wait_for_input()
+    Balatest.hook(_G, 'get_pack', function() return { key = 'p_buffoon_normal_1' } end)
+    Balatest.hook(_G, 'create_card', function(orig, set, a, l, r, k, s, f, ...)
+        return set == 'Joker' and orig(set, a, l, r, k, s, 'j_joker', ...) or orig(set, a, l, r, k, s, f, ...)
+    end)
+    Balatest.hook(_G, 'poll_edition', function() end)
+    Balatest.end_round()
+    Balatest.cash_out()
+    Balatest.use(function() return G.shop_booster.cards[2] end)
     Balatest.q(function() G.FUNCS.skip_booster() end)
   end,
   assert = function()
