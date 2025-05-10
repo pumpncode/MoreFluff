@@ -283,13 +283,13 @@ function grow_complexity_creep (effects)
     }
     local trigger_pool = { -- effect, values, loc
       {"cardscored", {"chicken jockey"}, "cc_mf_card_trigger"},
-      {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
-      {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
-      {"firstcard", {"chicken jockey"}, "cc_mf_first_card_trigger"},
+      {"firstscored", {"chicken jockey"}, "cc_mf_first_card_trigger"},
+      {"firstscored", {"chicken jockey"}, "cc_mf_first_card_trigger"},
+      {"firstscored", {"chicken jockey"}, "cc_mf_first_card_trigger"},
       {"facescored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
       {"facescored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
-      {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
-      {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
+      -- {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
+      -- {"lowcardscored", {"chicken jockey"}, "cc_mf_face_card_trigger"},
       -- {"rankscored", {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, "cc_mf_rank_trigger"},
     }
     local chosen_effect = pseudorandom_element(effect_pool, pseudoseed("ccreep_grow"))

@@ -673,6 +673,9 @@ Balatest.TestPlay {
   dollars = 99999,
 
   execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
@@ -700,6 +703,9 @@ Balatest.TestPlay {
   dollars = 99999,
 
   execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
@@ -869,7 +875,469 @@ Balatest.TestPlay {
 
 --#region Complexity Creep
 
--- later. dear god.
+Balatest.TestPlay {
+  name = "complexitycreep_initial_effect",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert_eq(#(G.jokers.cards[1].ability.effects), 1)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_grows",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+  blind = "bl_wheel",
+
+  execute = function()
+  end,
+  assert = function()
+    Balatest.assert_eq(#(G.jokers.cards[1].ability.effects), 2)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_plusmult",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"plusmult", 4, "joker", nil, nil, nil, "cc_plusmult", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * (1 + 4))
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_pluschips",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"pluschips", 50, "joker", nil, nil, nil, "cc_pluschips", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(66)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_xmult",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"xmult", 2, "joker", nil, nil, nil, "cc_xmult", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(32)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_xchips",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"xchips", 2, "joker", nil, nil, nil, "cc_xchips", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(32)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_emult",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_joker","j_mf_complexitycreep"},
+
+  blind = "bl_wall",
+
+  execute = function()
+    G.jokers.cards[2].ability.effects = {{"emult", 2, "joker", nil, nil, nil, "cc_emult", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(16*25)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_echips",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"echips", 2, "joker", nil, nil, nil, "cc_echips", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(16*16)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_dollars",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "joker", nil, nil, nil, "cc_dollars", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_swapchipmult",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep","j_joker"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"swapchipmult", 0, "joker", nil, nil, nil, "cc_swapchipmult", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_chips(20)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_createtarot",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"createtarot", 0, "joker", nil, nil, nil, "cc_createtarot", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 1, "should have a consumeable")
+    Balatest.assert(G.consumeables.cards[1].ability.set == "Tarot", "should have a tarot")
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_createplanet",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"createplanet", 0, "joker", nil, nil, nil, "cc_createplanet", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 1, "should have a consumeable")
+    Balatest.assert(G.consumeables.cards[1].ability.set == "Planet", "should have a planet")
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_copyconsumeable",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+  consumeables = {"c_mf_black"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"copyconsumeable", 0, "joker", nil, nil, nil, "cc_copyconsumeable", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 2, "should have a consumeable")
+    Balatest.assert(G.consumeables.cards[2].config.center.key == "c_mf_black")
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_copyconsumeable_empty",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"copyconsumeable", 0, "joker", nil, nil, nil, "cc_copyconsumeable", nil, "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 0)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "complexitycreep_handtype_off",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "joker", nil, "handtype", "Pair", "cc_dollars", "cc_mf_handtype", "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_handtype_on",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "joker", nil, "handtype", "Pair", "cc_dollars", "cc_mf_handtype", "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH", "AS" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_odds_off",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "joker", nil, "odds", 2, "cc_dollars", "cc_mf_odds", "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_odds_on",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "joker", nil, "odds", 2, "cc_dollars", "cc_mf_odds", "cc_mf_joker_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "complexitycreep_cardscored_one",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "cardscored", "chicken jockey", nil, nil, "cc_dollars", nil, "cc_mf_card_trigger" }}
+    Balatest.play_hand { "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_cardscored_two",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "cardscored", "chicken jockey", nil, nil, "cc_dollars", nil, "cc_mf_card_trigger" }}
+    Balatest.play_hand { "AH", "AS" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 10)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_cardscored_one_fake",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "cardscored", "chicken jockey", nil, nil, "cc_dollars", nil, "cc_mf_card_trigger" }}
+    Balatest.play_hand { "AH", "TS" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_firstcard",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "firstscored", "chicken jockey", nil, nil, "cc_dollars", nil, "cc_mf_first_card_trigger" }}
+    Balatest.play_hand { "AH", "AS" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_facecard_one",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "facescored", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_face_card_trigger" }}
+    Balatest.play_hand { "KS" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_facecard_two",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "facescored", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_face_card_trigger" }}
+    Balatest.play_hand { "KS", "KH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 10)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_facecard_none",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "facescored", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_face_card_trigger" }}
+    Balatest.play_hand { "AS", "AH" }
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_end_round",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "endofround", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_endofround" }}
+    Balatest.next_round()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_cardsold",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep", "j_joker"},
+
+  dollars = 0,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "cardsold", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_cardsold" }}
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 1 + 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "complexitycreep_shoproll",
+  requires = {},
+  category = "complexitycreep",
+
+  jokers = {"j_mf_complexitycreep"},
+
+  dollars = 6,
+
+  execute = function()
+    G.jokers.cards[1].ability.effects = {{"dollars", 5, "shoproll", "chicken jockey", nil, "cc_dollars", nil, nil, "cc_mf_shoproll" }}
+    Balatest.end_round()
+    Balatest.cash_out()
+    Balatest.q(function() G.FUNCS.reroll_shop() end)
+    Balatest.wait_for_input()
+    Balatest.q(function() G.FUNCS.reroll_shop() end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(G.GAME.dollars, 5)
+  end,
+}
 
 --#region Coupon Catalogue
 
