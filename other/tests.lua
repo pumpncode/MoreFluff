@@ -673,6 +673,9 @@ Balatest.TestPlay {
   dollars = 99999,
 
   execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
@@ -700,6 +703,9 @@ Balatest.TestPlay {
   dollars = 99999,
 
   execute = function()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
