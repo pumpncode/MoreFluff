@@ -36,7 +36,7 @@ local joker = {
       }
     end
     if context.individual and context.cardarea == G.play and not context.blueprint and not context.repetition then
-      local rank = context.other_card.base.nominal
+      local rank = context.other_card:get_id()
       if rank == 14 then rank = 1 end
 
       if rank >= 1 and rank <= 9 then

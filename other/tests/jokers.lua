@@ -3619,9 +3619,9 @@ Balatest.TestPlay {
 Balatest.TestPlay {
   name = "stylemeter_no_skips",
   requires = {},
-  category = "stonejokerjoker",
+  category = "stylemeter",
 
-  jokers = {"j_mf_stonejokerjoker"},
+  jokers = {"j_mf_stylemeter"},
   dollars = 0,
   execute = function()
     Balatest.next_round()
@@ -3632,11 +3632,11 @@ Balatest.TestPlay {
 }
 
 Balatest.TestPlay {
-  name = "stylemeter_no_skips",
+  name = "stylemeter_two_skips",
   requires = {},
-  category = "stonejokerjoker",
+  category = "stylemeter",
 
-  jokers = {"j_mf_stonejokerjoker"},
+  jokers = {"j_mf_stylemeter"},
   dollars = 0,
   no_auto_start = true,
   execute = function()
@@ -3674,7 +3674,7 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_sudoku"},
   execute = function()
-    Balatest.play_hand { "2S", "3S", "4S", "5S", "6C" }
+    Balatest.play_hand { "AS", "2S", "3S", "4S", "5C" }
     Balatest.play_hand { "6S", "7S", "8S", "9S", "TC" }
     Balatest.cash_out()
     Balatest.exit_shop()
@@ -3694,7 +3694,7 @@ Balatest.TestPlay {
   jokers = {"j_mf_sudoku"},
   blind = "bl_wheel",
   execute = function()
-    Balatest.play_hand { "2S", "3S", "4S", "5S", "6C" }
+    Balatest.play_hand { "AS", "2S", "3S", "4S", "5C" }
     Balatest.play_hand { "6S", "7S", "8S", "9S", "TC" }
     Balatest.cash_out()
     Balatest.exit_shop()
