@@ -615,6 +615,7 @@ function init()
   })
 
   local blacklisted_editions = {
+    "e_base", -- oops
     "e_jen_bloodfoil", "e_jen_blood", "e_jen_moire", -- "e_jen_unreal"
   }
 
