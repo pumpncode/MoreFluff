@@ -1416,6 +1416,6 @@ end
 -- end
 
 if Balatest then
-  -- assert(SMODS.load_file("other/tests/jokers.lua"))()
+  assert(SMODS.load_file("other/tests/jokers.lua"))()
   assert(SMODS.load_file("other/tests/colours.lua"))()
 end
