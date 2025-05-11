@@ -299,15 +299,17 @@ function init()
     end,
     use = function(self, card, area, copier)
       local used_tarot = copier or card
-      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        if G.consumeables.config.card_limit > #G.consumeables.cards then
-          play_sound('timpani')
-          local card = create_card('Rot_Tarot_Colour', G.consumeables, nil, nil, nil, nil, G.GAME.last_rot_tarot_colour, 'fool')
-          card:add_to_deck()
-          G.consumeables:emplace(card)
-          used_tarot:juice_up(0.3, 0.5)
-        end
-        return true end }))
+      if G.GAME.last_rot_tarot_colour and G.GAME.last_rot_tarot_colour ~= "c_mf_rot_fool" then
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+          if G.consumeables.config.card_limit > #G.consumeables.cards then
+            play_sound('timpani')
+            local card = create_card('Rot_Tarot_Colour', G.consumeables, nil, nil, nil, nil, G.GAME.last_rot_tarot_colour, 'fool')
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+            used_tarot:juice_up(0.3, 0.5)
+          end
+          return true end }))
+      end
       delay(0.6)
     end,
     loc_vars = function(self, info_queue, card)
