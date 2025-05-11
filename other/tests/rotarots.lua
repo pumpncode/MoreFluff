@@ -408,7 +408,7 @@ Balatest.TestPlay {
 }
 
 Balatest.TestPlay {
-  name = "chariot_xchips",
+  name = "teal_xchips",
   requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_chariot"},
@@ -419,6 +419,68 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_chips( 15 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_justice",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_justice"},
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.highlight { '2S' }
+  end,
+  assert = function()
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[1], "m_mf_brass") )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_brass_retriggers",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_justice"},
+  execute = function()
+    Balatest.highlight { '5S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.play_hand { '5S' }
+  end,
+  assert = function()
+    Balatest.assert_chips(20)
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_brass_destroy_rigged_off",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_justice"},
+  execute = function()
+    G.GAME.probabilities.normal = 0
+    Balatest.highlight { '5S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.play_hand { '5S' }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.discard.cards, 1)
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_brass_destroy_rigged_on",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_justice"},
+  execute = function()
+    G.GAME.probabilities.normal = 9999
+    Balatest.highlight { '5S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.play_hand { '5S' }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.discard.cards, 0)
   end
 }
 
@@ -519,5 +581,332 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert( G.jokers.cards[1].edition ~= nil )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_strength_one",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_strength"},
+  deck = { cards = { 
+    { r = '5', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.highlight { '5S' }
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert_eq( G.hand.cards[1]:get_id(), 10 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_strength_three",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_strength"},
+  deck = { cards = { 
+    { r = '5', s = 'S' },
+    { r = '5', s = 'S' },
+    { r = '5', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.highlight { '5S','5S','5S' }
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert_eq( G.hand.cards[1]:get_id(), 10 )
+    Balatest.assert_eq( G.hand.cards[2]:get_id(), 10 )
+    Balatest.assert_eq( G.hand.cards[3]:get_id(), 10 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_hanged_man",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_hanged_man"},
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.hand.cards, 49 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_death",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_death"},
+  deck = { cards = { 
+    { r = '5', s = 'S' },
+    { r = '6', s = 'S' },
+    { r = '7', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.highlight { '5S','6S','7S' }
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert_eq( G.hand.cards[1]:get_id(), 5 )
+    Balatest.assert_eq( G.hand.cards[2]:get_id(), 5 )
+    Balatest.assert_eq( G.hand.cards[3]:get_id(), 5 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_temperance_joker",
+  requires = {},
+  category = "rotarot",
+  jokers = {"j_joker"},
+  consumeables = {"c_mf_rot_temperance"},
+  execute = function()
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 4 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_temperance_consumeable",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_temperance","c_mf_rot_temperance"},
+  execute = function()
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.consumeables.cards[1] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 4 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_temperance_many_things",
+  requires = {},
+  category = "rotarot",
+  jokers = {"j_joker","j_joker"},
+  consumeables = {"c_mf_rot_temperance","c_mf_rot_temperance","c_mf_rot_temperance"},
+  execute = function()
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[1] } } end)
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.consumeables.cards[1] } } end)
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.consumeables.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 16 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_devil_one",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_devil"},
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.highlight { '2S' }
+  end,
+  assert = function()
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[1], "m_mf_marigold") )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_devil_three",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_devil"},
+  execute = function()
+    Balatest.highlight { '2S', '3S', '4S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.highlight { '2S', '3S', '4S' }
+  end,
+  assert = function()
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[1], "m_mf_marigold") )
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[2], "m_mf_marigold") )
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[3], "m_mf_marigold") )
+  end
+}
+
+Balatest.TestPlay {
+  name = "marigold_one",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_devil"},
+  dollars = 0,
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.end_round()
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 1 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "marigold_three",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_devil"},
+  dollars = 0,
+  execute = function()
+    Balatest.highlight { '2S', '3S', '4S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.end_round()
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 9 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_tower",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_tower"},
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.highlight { '2S' }
+  end,
+  assert = function()
+    Balatest.assert( SMODS.has_enhancement(G.hand.highlighted[1], "m_mf_gemstone") )
+  end
+}
+
+Balatest.TestPlay {
+  name = "gemstone_money_and_chips",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_tower"},
+  dollars = 0,
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.play_hand { '2S' }
+  end,
+  assert = function()
+    Balatest.assert_eq( G.GAME.dollars, 3 )
+    Balatest.assert_chips( 5 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_star",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_star"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert( G.hand.cards[2]:is_suit("Diamonds") )
+    Balatest.assert( G.hand.cards[2].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[3]:is_suit("Diamonds") )
+    Balatest.assert( G.hand.cards[3].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[4]:is_suit("Diamonds") )
+    Balatest.assert( G.hand.cards[4].config.center ~= G.P_CENTERS.c_base )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_moon",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_moon"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert( G.hand.cards[2]:is_suit("Clubs") )
+    Balatest.assert( G.hand.cards[2].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[3]:is_suit("Clubs") )
+    Balatest.assert( G.hand.cards[3].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[4]:is_suit("Clubs") )
+    Balatest.assert( G.hand.cards[4].config.center ~= G.P_CENTERS.c_base )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_sun",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_sun"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert( G.hand.cards[2]:is_suit("Hearts") )
+    Balatest.assert( G.hand.cards[2].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[3]:is_suit("Hearts") )
+    Balatest.assert( G.hand.cards[3].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[4]:is_suit("Hearts") )
+    Balatest.assert( G.hand.cards[4].config.center ~= G.P_CENTERS.c_base )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_judgement",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_judgement"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+  } },
+  execute = function()
+    -- Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first) -- this is commented out because it hangs. it probably tries continuously picking jimbo or smth
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert_eq( #G.jokers.cards, 1 )
+  end
+}
+
+Balatest.TestPlay {
+  name = "rotarot_world",
+  requires = {},
+  category = "rotarot",
+  consumeables = {"c_mf_rot_world"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+  } },
+  execute = function()
+    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
+    Balatest.use(G.consumeables.cards[1])
+  end,
+  assert = function()
+    Balatest.assert( G.hand.cards[2]:is_suit("Spades") )
+    Balatest.assert( G.hand.cards[2].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[3]:is_suit("Spades") )
+    Balatest.assert( G.hand.cards[3].config.center ~= G.P_CENTERS.c_base )
+    Balatest.assert( G.hand.cards[4]:is_suit("Spades") )
+    Balatest.assert( G.hand.cards[4].config.center ~= G.P_CENTERS.c_base )
   end
 }

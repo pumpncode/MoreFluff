@@ -313,7 +313,6 @@ Balatest.TestPlay {
     Balatest.wait_for_input()
   end,
   assert = function()
-    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
     Balatest.assert_eq( #G.hand.cards, 51 )
     Balatest.assert_eq( G.GAME.dollars, 2 )
   end
@@ -331,7 +330,6 @@ Balatest.TestPlay {
     Balatest.wait_for_input()
   end,
   assert = function()
-    Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
     Balatest.assert_eq( #G.hand.cards, 49 )
     Balatest.assert_eq( G.GAME.dollars, 6 )
   end
