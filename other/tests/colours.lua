@@ -15,6 +15,11 @@ local pseudorandom_pick_first = function(orig, _t, ...)
   return _t[key], key 
 end
 
+local add_colour_rounds = function(n)
+  for i = 1, n do
+    colour_end_of_round_effects()
+  end
+end
 --#region Colour Card Base
 
 Balatest.TestPlay {
@@ -80,10 +85,7 @@ Balatest.TestPlay {
   jokers = {"j_joker"},
   consumeables = {"c_mf_black"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -99,14 +101,7 @@ Balatest.TestPlay {
   jokers = {"j_joker","j_joker"},
   consumeables = {"c_mf_black"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(8) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -122,14 +117,7 @@ Balatest.TestPlay {
   jokers = {"j_joker"},
   consumeables = {"c_mf_black"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(8) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -162,7 +150,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -194,10 +182,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -218,9 +203,7 @@ Balatest.TestPlay {
   category = "colour_crimson",
   consumeables = {"c_mf_crimson"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -236,12 +219,7 @@ Balatest.TestPlay {
   category = "colour_crimson",
   consumeables = {"c_mf_crimson"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -276,7 +254,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -308,10 +286,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -333,7 +308,7 @@ Balatest.TestPlay {
   consumeables = {"c_mf_brown"},
   dollars = 0,
   execute = function()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -351,9 +326,7 @@ Balatest.TestPlay {
   consumeables = {"c_mf_brown"},
   dollars = 0,
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -372,9 +345,7 @@ Balatest.TestPlay {
   category = "colour_grey",
   consumeables = {"c_mf_grey"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -390,12 +361,7 @@ Balatest.TestPlay {
   category = "colour_grey",
   consumeables = {"c_mf_grey"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -414,9 +380,7 @@ Balatest.TestPlay {
   category = "colour_silver",
   consumeables = {"c_mf_silver"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -432,12 +396,7 @@ Balatest.TestPlay {
   category = "colour_silver",
   consumeables = {"c_mf_silver"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -456,9 +415,7 @@ Balatest.TestPlay {
   category = "colour_white",
   consumeables = {"c_mf_white"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -475,12 +432,10 @@ Balatest.TestPlay {
   category = "colour_white",
   consumeables = {"c_mf_white"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_white', ...)
+    end)
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -517,7 +472,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -549,10 +504,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -589,7 +541,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -621,10 +573,7 @@ Balatest.TestPlay {
   execute = function()
     Balatest.hook(_G, 'pseudorandom_element', pseudorandom_pick_first)
 
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -645,9 +594,7 @@ Balatest.TestPlay {
   category = "colour_yellow",
   consumeables = {"c_mf_yellow"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.consumeables.cards[1] } } end)
     Balatest.wait_for_input()
   end,
@@ -662,12 +609,7 @@ Balatest.TestPlay {
   category = "colour_yellow",
   consumeables = {"c_mf_yellow"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.consumeables.cards[1] } } end)
     Balatest.wait_for_input()
   end,
@@ -684,9 +626,7 @@ Balatest.TestPlay {
   category = "colour_green",
   consumeables = {"c_mf_green"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -702,12 +642,7 @@ Balatest.TestPlay {
   category = "colour_green",
   consumeables = {"c_mf_green"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(6) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -726,8 +661,7 @@ Balatest.TestPlay {
   category = "colour_blue",
   consumeables = {"c_mf_blue"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(2) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -744,10 +678,10 @@ Balatest.TestPlay {
   category = "colour_blue",
   consumeables = {"c_mf_blue"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_pluto', ...)
+    end)
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -766,8 +700,7 @@ Balatest.TestPlay {
   category = "colour_lilac",
   consumeables = {"c_mf_lilac"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(2) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -784,10 +717,10 @@ Balatest.TestPlay {
   category = "colour_lilac",
   consumeables = {"c_mf_lilac"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_death', ...)
+    end)
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -809,7 +742,7 @@ Balatest.TestPlay {
     Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
       return orig(t, a, l, r, k, s, 'c_mf_white', ...)
     end)
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(1) end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
@@ -830,9 +763,7 @@ Balatest.TestPlay {
     Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
       return orig(t, a, l, r, k, s, 'c_mf_white', ...)
     end)
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(3) end)
     Balatest.end_round()
     Balatest.cash_out()
     Balatest.buy(function() return G.shop_jokers.cards[1] end)
@@ -850,8 +781,7 @@ Balatest.TestPlay {
   category = "colour_peach",
   consumeables = {"c_mf_peach"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(2) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -868,10 +798,10 @@ Balatest.TestPlay {
   category = "colour_peach",
   consumeables = {"c_mf_peach"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.hook(_G, 'create_card', function(orig, t, a, l, r, k, s, forced_key, ...)
+      return orig(t, a, l, r, k, s, 'c_mf_rot_death', ...)
+    end)
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -890,10 +820,7 @@ Balatest.TestPlay {
   category = "colour_gold",
   consumeables = {"c_mf_new_gold"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(4) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
@@ -910,14 +837,7 @@ Balatest.TestPlay {
   category = "colour_gold",
   consumeables = {"c_mf_new_gold"},
   execute = function()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
-    Balatest.next_round()
+    Balatest.q(function() return add_colour_rounds(8) end)
     Balatest.use(G.consumeables.cards[1])
     Balatest.wait_for_input()
   end,
