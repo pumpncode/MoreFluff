@@ -2976,7 +2976,7 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_chips( 
-      (5 + 2) + (10 + 2 + 2) * 2 + (3 + 3 + 5 + 5 + 5 + 35) * 4
+      (5 + 2) + (10 + 2 + 2) * 2 + (3 + 3 + 5 + 5 + 5 + 40) * 4
     )
   end,
 }
@@ -2992,7 +2992,7 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_chips( 
-      math.floor((35 + 9 + 9 + 9 + 11 + 11) * (4 * 1.5 * 1.5 * 1.5 * 1.5 * 1.5))
+      math.floor((40 + 9 + 9 + 9 + 11 + 11) * (4 * 1.5 * 1.5 * 1.5 * 1.5 * 1.5))
     )
   end,
 }
@@ -3236,7 +3236,7 @@ Balatest.TestPlay {
     Balatest.play_hand { '7S' }
   end,
   assert = function()
-    Balatest.assert_chips( 16 * 2 )
+    Balatest.assert_chips( 12 * 2 )
   end,
 }
 
@@ -3251,7 +3251,7 @@ Balatest.TestPlay {
     Balatest.play_hand { '7S' }
   end,
   assert = function()
-    Balatest.assert_chips( 16 * 128 )
+    Balatest.assert_chips( (5+7*8) * 2^8 )
   end,
 }
 
@@ -3619,9 +3619,9 @@ Balatest.TestPlay {
 Balatest.TestPlay {
   name = "stylemeter_no_skips",
   requires = {},
-  category = "stonejokerjoker",
+  category = "stylemeter",
 
-  jokers = {"j_mf_stonejokerjoker"},
+  jokers = {"j_mf_stylemeter"},
   dollars = 0,
   execute = function()
     Balatest.next_round()
@@ -3632,11 +3632,11 @@ Balatest.TestPlay {
 }
 
 Balatest.TestPlay {
-  name = "stylemeter_no_skips",
+  name = "stylemeter_two_skips",
   requires = {},
-  category = "stonejokerjoker",
+  category = "stylemeter",
 
-  jokers = {"j_mf_stonejokerjoker"},
+  jokers = {"j_mf_stylemeter"},
   dollars = 0,
   no_auto_start = true,
   execute = function()
@@ -3674,7 +3674,7 @@ Balatest.TestPlay {
 
   jokers = {"j_mf_sudoku"},
   execute = function()
-    Balatest.play_hand { "2S", "3S", "4S", "5S", "6C" }
+    Balatest.play_hand { "AS", "2S", "3S", "4S", "5C" }
     Balatest.play_hand { "6S", "7S", "8S", "9S", "TC" }
     Balatest.cash_out()
     Balatest.exit_shop()
@@ -3694,7 +3694,7 @@ Balatest.TestPlay {
   jokers = {"j_mf_sudoku"},
   blind = "bl_wheel",
   execute = function()
-    Balatest.play_hand { "2S", "3S", "4S", "5S", "6C" }
+    Balatest.play_hand { "AS", "2S", "3S", "4S", "5C" }
     Balatest.play_hand { "6S", "7S", "8S", "9S", "TC" }
     Balatest.cash_out()
     Balatest.exit_shop()
@@ -3816,21 +3816,20 @@ Balatest.TestPlay {
 }
 
 Balatest.TestPlay {
-  name = "thesolo_five_highcards",
+  name = "thesolo_four_highcards",
   requires = {},
   category = "thesolo",
 
   jokers = {"j_mf_the_solo"},
 
   execute = function()
-    Balatest.play_hand { "TS" }
-    Balatest.play_hand { "TD" }
-    Balatest.play_hand { "TH" }
-    Balatest.play_hand { "TC" }
-    Balatest.play_hand { "JC" }
+    Balatest.play_hand { "5S" }
+    Balatest.play_hand { "5D" }
+    Balatest.play_hand { "5H" }
+    Balatest.play_hand { "5C" }
   end,
   assert = function()
-    Balatest.assert_chips( 11 + 12 + 13 + 14 + 15 )
+    Balatest.assert_chips( 11 + 12 + 13 + 14 )
   end,
 }
 
@@ -4156,7 +4155,7 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_chips( 45 )
-    Balatest.assert( G.jokers[1].facing == "back" )
+    Balatest.assert( G.jokers.cards[1].facing == "back" )
   end,
 }
 
@@ -4188,7 +4187,7 @@ Balatest.TestPlay {
     Balatest.play_hand { 'AS', 'KS', 'QS', 'JS', 'TS' }
   end,
   assert = function()
-    Balatest.assert_chips( 1337 )
+    Balatest.assert_chips( 1616 )
   end,
 }
 

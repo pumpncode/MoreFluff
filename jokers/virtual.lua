@@ -27,20 +27,18 @@ local joker = {
   end,
   calculate = function(self, card, context)
     if context.setting_blind and not self.getting_sliced and not (context.blueprint_card or card).getting_sliced and not context.blueprint then
-      if #G.jokers.cards > 1 then 
-        G.jokers:unhighlight_all()
-        for k, v in ipairs(G.jokers.cards) do
-          v:flip()
-        end
-        G.E_MANAGER:add_event(Event({ trigger = 'after', delay = 0.2, func = function() 
-          G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 0.85);return true end })) 
-          delay(0.15)
-          G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 1.15);return true end })) 
-          delay(0.15)
-          G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 1);return true end })) 
-          delay(0.5)
-        return true end })) 
+      G.jokers:unhighlight_all()
+      for k, v in ipairs(G.jokers.cards) do
+        v:flip()
       end
+      G.E_MANAGER:add_event(Event({ trigger = 'after', delay = 0.2, func = function() 
+        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 0.85);return true end })) 
+        delay(0.15)
+        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 1.15);return true end })) 
+        delay(0.15)
+        G.E_MANAGER:add_event(Event({ func = function() G.jokers:shuffle('aajk'); play_sound('cardSlide1', 1);return true end })) 
+        delay(0.5)
+      return true end })) 
     end
     if context.cardarea == G.jokers and context.joker_main then
       return {
