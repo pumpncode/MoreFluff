@@ -688,13 +688,14 @@ local loc_stuff = {
 
       -- and very last
       j_mf_shattered_prism = {
-        name = "The {C:edition}Fractured{} {C:colourcard}Prism",
+        name = "The {C:edition}Enlightened{} {C:colourcard}Prism",
         text = {
-          "Played cards each give {X:jen_RGB,C:white,s:1.5} ^^#1# {} Mult",
+          "Played cards each give {X:jen_RGB,C:white,s:1.5} ^^^1.333 {} Mult",
           "when scored if played hand is",
           "a {C:attention}Three of a Kind",
-          "{C:attention}Retriggers{} all scored cards once",
+          "{C:attention}Retriggers{} all scored cards thrice",
           "for every held {C:colourcard}Colour Card{}",
+          "{X:green,C:white,s:0.75}#2#{s:0.75} Glop",
           "{C:caption,s:0.7,E:1}THIS IS THE ONLY WAY IT COULD HAVE ENDED",
           "{C:caption,s:0.7,E:1}THIS IS THE ONLY WAY IT SHOULD HAVE ENDED",
         },
