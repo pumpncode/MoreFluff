@@ -1420,4 +1420,5 @@ if Balatest then
   assert(SMODS.load_file("other/tests/decks.lua"))()
   assert(SMODS.load_file("other/tests/colours.lua"))()
   assert(SMODS.load_file("other/tests/rotarots.lua"))()
+  assert(SMODS.load_file("other/tests/superboss.lua"))()
 end
