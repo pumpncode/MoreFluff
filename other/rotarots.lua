@@ -1225,6 +1225,11 @@ function init()
       return { vars = {card.ability.val} }
     end
   })
+
+  if next(SMODS.find_mod("Yahimod")) then
+    init_rotarots = SMODS.load_file("other/misc/yahi_rotarots.lua")()
+    init_rotarots()
+  end
 end
 
 return init
