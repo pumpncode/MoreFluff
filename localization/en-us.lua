@@ -1873,6 +1873,10 @@ local loc_stuff = {
           "All shop items are {C:dark_edition}Absolute"
         }
       },
+			tag_mf_emoddedpack = {
+				name = "{C:gold}Modded Tag{}",
+				text = { "Gives a free Editioned", "{C:dark_edition}Jumbo Modded Pack" },
+			},
     },
     ComplexityCreep = { -- look having two versions is kind of annoying. oh well
       cc_plusmult = {
