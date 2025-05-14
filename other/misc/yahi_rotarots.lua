@@ -73,6 +73,7 @@ function init()
     cost = 3,
 
     use = function(self, card, area, copier)
+      local used_tarot = copier or card
       for k, v in ipairs(G.jokers.cards) do
         if v.set_cost then 
           G.E_MANAGER:add_event(Event({
@@ -120,6 +121,117 @@ function init()
 
     use = function(self, card, area, copier)
       ease_dollars(math.floor(G.GAME.dollars / 5))
+    end,
+
+    can_use = function(self, card)
+      return true
+    end,
+  })
+
+  SMODS.Consumable({
+    key = "rot_fish",
+    set = "Rotarot",
+    name = "rot_fish",
+    loc_txt = {
+      name = "Fish!",
+      text={
+        "Fish...",
+      },
+    },
+    
+    config = {},
+    pos = {x=3, y= 0},
+
+    unlocked = true,
+    discovered = true,
+    
+    atlas = "mf_yahi_rotarots",
+    display_size = { w = 107, h = 107 },
+    cost = 3,
+
+    use = function(self, card, area, copier)
+      G.showfish = 4000
+      play_sound("yahimod_fish")
+    end,
+
+    can_use = function(self, card)
+      return true
+    end,
+  })
+
+  SMODS.Consumable({
+    key = "rot_cardboardbox",
+    set = "Rotarot",
+    name = "rot_cardboardbox",
+    loc_txt = {
+      name = "Cardboardbox!",
+      text={
+        "Duplicates your held",
+        "{C:attention}Cat Jokers{}",
+        "{C:inactive}(does not require room){}",
+      },
+    },
+    
+    config = {},
+    pos = {x=0, y= 1},
+
+    unlocked = true,
+    discovered = true,
+    
+    atlas = "mf_yahi_rotarots",
+    display_size = { w = 107, h = 107 },
+    cost = 3,
+
+    use = function(self, card, area, copier)
+      for i = 1, #G.jokers.cards do
+        if G.jokers.cards[i].config.center.pools and G.jokers.cards[i].config.center.pools.Cat then
+          local card = create_card("Cat", G.Jokers, nil, nil, nil, nil, G.jokers.cards[i].config.center.key, 'cardboardbox')
+          card:add_to_deck()
+          G.jokers:emplace(card)
+          play_sound("yahimod_mariopaintmeow")
+        end
+      end
+      G.GAME.joker_buffer = 0
+    end,
+
+    can_use = function(self, card)
+      return true
+    end,
+  })
+
+  SMODS.Consumable({
+    key = "rot_yahiworld",
+    set = "Rotarot",
+    name = "rot_yahiworld",
+    loc_txt = {
+      name = "Yahiworld!",
+      text={
+        "Duplicates your held",
+        "{C:attention}Yahimod Jokers{}",
+        "{C:inactive}(does not require room){}",
+      },
+    },
+    
+    config = {},
+    pos = {x=1, y= 1},
+
+    unlocked = true,
+    discovered = true,
+    
+    atlas = "mf_yahi_rotarots",
+    display_size = { w = 107, h = 107 },
+    cost = 3,
+
+    use = function(self, card, area, copier)
+      for i = 1, #G.jokers.cards do
+        if G.jokers.cards[i].config.center.pools and G.jokers.cards[i].config.center.pools.Yahimodaddition then
+          local card = create_card("Yahimodaddition", G.Jokers, nil, nil, nil, nil, G.jokers.cards[i].config.center.key, 'cardboardbox')
+          card:add_to_deck()
+          G.jokers:emplace(card)
+          play_sound("yahimod_mariopaintmeow")
+        end
+      end
+      G.GAME.joker_buffer = 0
     end,
 
     can_use = function(self, card)
