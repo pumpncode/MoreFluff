@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.5.2
+--- VERSION: 1.5.3
 
 local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
@@ -422,13 +422,22 @@ SMODS.Atlas({
   px = 71, 
   py = 95 
 })
-SMODS.Atlas({ 
-  key = "mf_shapes", 
-  atlas_table = "ASSET_ATLAS", 
-  path = "mf_shapes.png", 
-  px = 71, 
-  py = 95 
-})
+if Entropy then
+  SMODS.Atlas({ 
+    key = "mf_shapes", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_shapes.png", 
+    px = 71, 
+    py = 95 
+  })
+  SMODS.Atlas({ 
+    key = "mf_ascendant_tags", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_ascendant_tags.png", 
+    px = 34, 
+    py = 34 
+  })
+end
 SMODS.Atlas({ 
   key = "mf_stickers", 
   atlas_table = "ASSET_ATLAS", 
@@ -584,6 +593,34 @@ if mf_config["Other Tags"] then
       end
     end,
   })
+  if Entropy then
+    SMODS.Tag({
+      key = "eclutch",
+      atlas = "mf_ascendant_tags",
+      config = {
+        extra = 4
+      },
+      pos = { x = 1, y = 1 },
+      unlocked = true,
+      discovered = true,
+      loc_vars = function(self, info_queue)
+        return { vars = { self.config.extra } }
+      end,
+      apply = function(self, tag, context)
+        if context.type == "final_scoring_step" then
+          SMODS.calculate_effect({emult=4}, tag)
+        end
+        if context.type == "eval" then
+          tag:yep("X", G.C.RED, function()
+            return true
+          end)
+          tag.triggered = true
+        end
+      end,
+    })
+
+    Entropy.AscendedTags["tag_mf_clutch"] = "tag_mf_eclutch"
+  end
 end
 
 
@@ -1318,7 +1355,7 @@ local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
   if Jen and Jen.fusions then
     Jen.add_fusion(
-      'Fracture Triangle',3333,
+      'Enlighten Triangle',3333,
       "j_mf_shattered_prism",
       'j_mf_triangle',
       'j_jen_godsmarble'

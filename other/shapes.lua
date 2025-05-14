@@ -111,6 +111,42 @@ function init()
     end,
   })
 
+  SMODS.Tag({
+    key = "eabsolute",
+    atlas = "mf_ascendant_tags",
+    pos = { x = 2, y = 0 },
+    unlocked = true,
+    discovered = true,
+    loc_vars = function(self, info_queue)
+      info_queue[#info_queue + 1] = { set = "Other", key = "cry_absolute" }
+      return { vars = {} }
+    end,
+    config = { type = "store_joker_modify", sticker = "cry_absolute" },
+    apply = function(self, tag, context)
+      if context.type == "store_joker_modify" then
+        if not context.card.temp_edition and context.card.ability.set == "Joker" then
+          tag:yep("+", G.C.RARITY[colour], function()
+            for i, v in pairs(G.shop_jokers.cards) do
+              v.cry_absolute = true
+            end
+            for i, v in pairs(G.shop_booster.cards) do
+              v.cry_absolute = true
+            end
+            for i, v in pairs(G.shop_vouchers.cards) do
+              v.cry_absolute = true
+            end
+            return true
+          end)
+          tag.triggered = true
+        end
+      end
+    end,
+    set_badges = function (self, card, badges)
+      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+    end,
+  })
+  
+  Entropy.AscendedTags["tag_mf_absolute"] = "tag_mf_eabsolute"
 
   SMODS.Consumable({
     object_type = "Consumable",
