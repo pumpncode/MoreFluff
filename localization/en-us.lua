@@ -1860,6 +1860,19 @@ local loc_stuff = {
           "and becomes {C:dark_edition}Absolute"
         }
       },
+      tag_mf_eclutch = {
+        name = "{C:gold}Clutch Tag{}",
+        text = {
+          "{X:dark_edition,C:white}^#1#{} Mult",
+          "for the next {C:attention}Blind"
+        }
+      },
+      tag_mf_eabsolute = {
+        name = "{C:gold}Absolute Tag{}",
+        text = {
+          "All shop items are {C:dark_edition}Absolute"
+        }
+      },
     },
     ComplexityCreep = { -- look having two versions is kind of annoying. oh well
       cc_plusmult = {

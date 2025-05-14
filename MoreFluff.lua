@@ -422,13 +422,22 @@ SMODS.Atlas({
   px = 71, 
   py = 95 
 })
-SMODS.Atlas({ 
-  key = "mf_shapes", 
-  atlas_table = "ASSET_ATLAS", 
-  path = "mf_shapes.png", 
-  px = 71, 
-  py = 95 
-})
+if Entropy then
+  SMODS.Atlas({ 
+    key = "mf_shapes", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_shapes.png", 
+    px = 71, 
+    py = 95 
+  })
+  SMODS.Atlas({ 
+    key = "mf_ascendant_tags", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_ascendant_tags.png", 
+    px = 34, 
+    py = 34 
+  })
+end
 SMODS.Atlas({ 
   key = "mf_stickers", 
   atlas_table = "ASSET_ATLAS", 
@@ -584,6 +593,34 @@ if mf_config["Other Tags"] then
       end
     end,
   })
+  if Entropy then
+    SMODS.Tag({
+      key = "eclutch",
+      atlas = "mf_ascendant_tags",
+      config = {
+        extra = 4
+      },
+      pos = { x = 1, y = 1 },
+      unlocked = true,
+      discovered = true,
+      loc_vars = function(self, info_queue)
+        return { vars = { self.config.extra } }
+      end,
+      apply = function(self, tag, context)
+        if context.type == "final_scoring_step" then
+          SMODS.calculate_effect({emult=4}, tag)
+        end
+        if context.type == "eval" then
+          tag:yep("X", G.C.RED, function()
+            return true
+          end)
+          tag.triggered = true
+        end
+      end,
+    })
+
+    Entropy.AscendedTags["tag_mf_clutch"] = "tag_mf_eclutch"
+  end
 end
 
 

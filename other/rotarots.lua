@@ -280,6 +280,10 @@ function init()
     end,
   })
 
+  if Entropy then
+    Entropy.AscendedTags["tag_mf_rotarot"] = "tag_entr_ascendant_twisted_tag"
+  end
+
   -- fool
   SMODS.Consumable({
     object_type = "Consumable",
