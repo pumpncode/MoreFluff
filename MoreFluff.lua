@@ -1318,7 +1318,7 @@ local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
   if Jen and Jen.fusions then
     Jen.add_fusion(
-      'Fracture Triangle',3333,
+      'Enlighten Triangle',3333,
       "j_mf_shattered_prism",
       'j_mf_triangle',
       'j_jen_godsmarble'
