@@ -1038,6 +1038,10 @@ function init()
 
   function do_suit_shit(card, copier)
     local used_tarot = copier or card
+    local target_area = G.hand
+    if G.STATE == G.STATES.BLIND_SELECT or G.STATE == G.STATES.ROUND_EVAL then
+      target_area = G.deck
+    end
     G.E_MANAGER:add_event(Event({
       trigger = 'after',
       delay = 0.7,
@@ -1056,7 +1060,7 @@ function init()
               cen_pool[#cen_pool+1] = v
             end
           end
-          create_playing_card({front = G.P_CARDS[_suit..'_'.._rank], center = pseudorandom_element(cen_pool, pseudoseed('suitarot'))}, G.hand, nil, i ~= 1, {G.C.SECONDARY_SET.Rotarot})
+          create_playing_card({front = G.P_CARDS[_suit..'_'.._rank], center = pseudorandom_element(cen_pool, pseudoseed('suitarot'))}, target_area, nil, i ~= 1, {G.C.SECONDARY_SET.Rotarot})
         end
         playing_card_joker_effects(cards)
         return true end }))
@@ -1079,7 +1083,7 @@ function init()
     discovered = true,
     display_size = { w = 107, h = 107 },
     can_use = function(self, card)
-      return #G.hand.cards >= 1 -- uh. 
+      return true
     end,
     use = function(self, card, area, copier)
       do_suit_shit(card, copier)
@@ -1106,7 +1110,7 @@ function init()
     discovered = true,
     display_size = { w = 107, h = 107 },
     can_use = function(self, card)
-      return #G.hand.cards >= 1 -- uh. 
+      return true
     end,
     use = function(self, card, area, copier)
       do_suit_shit(card, copier)
@@ -1133,7 +1137,7 @@ function init()
     discovered = true,
     display_size = { w = 107, h = 107 },
     can_use = function(self, card)
-      return #G.hand.cards >= 1 -- uh. 
+      return true
     end,
     use = function(self, card, area, copier)
       do_suit_shit(card, copier)
@@ -1220,7 +1224,7 @@ function init()
     discovered = true,
     display_size = { w = 107, h = 107 },
     can_use = function(self, card)
-      return #G.hand.cards >= 1 -- uh. 
+      return true
     end,
     use = function(self, card, area, copier)
       do_suit_shit(card, copier)
