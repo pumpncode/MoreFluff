@@ -6,7 +6,7 @@
 --- MOD_DESCRIPTION: Back, despite popular demand
 --- BADGE_COLOR: 814BA8
 --- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.5.3
+--- VERSION: 1.5.5
 
 local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
@@ -212,7 +212,6 @@ local joker_list = {
 
   -- busted shit
   "colorem",
-  "shattered_prism",
 }
 
 if not mf_config["Jokers"] then
@@ -249,9 +248,6 @@ for _, v in ipairs(joker_list) do
   end
   if v == "rot_cartomancer" then
     joker.atlas = "mf_rot_cartomancer"
-  end
-  if v == "shattered_prism" then
-    joker.atlas = "almanactriangle"
   end
   if not joker.pos then
     joker.pos = { x = 0, y = 0 }
@@ -516,15 +512,6 @@ SMODS.Atlas({
 	py = 34,
 	frames = 21,
 })
-if Jen then
-  SMODS.Atlas({ 
-    key = "almanactriangle", 
-    atlas_table = "ASSET_ATLAS", 
-    path = "almanactriangle.png", 
-    px = 71, 
-    py = 95 
-  })
-end
 SMODS.Atlas({ 
   key = "mf_watermark", 
   atlas_table = "ASSET_ATLAS", 
@@ -603,6 +590,7 @@ if mf_config["Other Tags"] then
       pos = { x = 1, y = 1 },
       unlocked = true,
       discovered = true,
+	    in_pool = function() return false end or nil,
       loc_vars = function(self, info_queue)
         return { vars = { self.config.extra } }
       end,
@@ -1122,6 +1110,28 @@ function Game:draw()
   end
 end
 
+-- pulled from Entropy. thanks ruby!
+local e_round = end_round
+function end_round()
+  e_round()
+  local remove_temp = {}
+  for i, v in pairs({G.jokers, G.hand, G.consumeables, G.discard, G.deck}) do
+    for ind, card in pairs(v.cards) do
+      if card.ability then
+        if card.ability.mf_temporary then
+          if card.area ~= G.hand and card.area ~= G.play and card.area ~= G.jokers and card.area ~= G.consumeables then card.states.visible = false end
+          card:remove_from_deck()
+          card:start_dissolve()
+          if card.ability.mf_temporary then remove_temp[#remove_temp+1]=card end
+        end
+      end
+    end
+  end
+  if #remove_temp > 0 then
+    SMODS.calculate_context({remove_playing_cards = true, removed=remove_temp})
+  end
+end
+
 local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
@@ -1130,35 +1140,6 @@ function Game:update_round_eval(dt)
     SMODS.debuff_card(other_card, false, "allicantdo")
   end
 
-  -- thanks feder
-  -- does CA even have a 1.0.0 port?
-  if G.bladedance_temp_ids then
-    for _, remove_id in ipairs(G.bladedance_temp_ids) do
-      for k, card in ipairs(G.playing_cards) do
-        if card.unique_val == remove_id then
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-            func = function()
-            G.deck:remove_card(card)
-            G.hand:remove_card(card)
-            G.discard:remove_card(card)
-            card:start_dissolve(nil, false)
-            card = nil
-          return true; end})) 
-        end
-      end
-      -- for k, card in ipairs(G.hand.cards) do
-      --     if card.unique_val == remove_id then
-      --         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-      --             func = function()
-      --             G.hand:remove_card(card)
-      --             hand:remove()
-      --             card = nil
-      --         return true; end})) 
-      --     end
-      -- end
-    end
-    G.bladedance_temp_ids = {}
-  end
   if G.missingjoker_revert then
     for _, joker in pairs(G.missingjoker_revert) do
       joker:set_ability(G.P_CENTERS["j_mf_missingjoker"])
@@ -1353,15 +1334,6 @@ SMODS.current_mod.extra_tabs = morefluffTabs
 
 local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
-  if Jen and Jen.fusions then
-    Jen.add_fusion(
-      'Enlighten Triangle',3333,
-      "j_mf_shattered_prism",
-      'j_mf_triangle',
-      'j_jen_godsmarble'
-    )
-    --print("Fusions successfully applied!")
-  end
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
   ) -- im dumb and stupide

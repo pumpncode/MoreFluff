@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Simplified Joker",
     text = {
@@ -35,6 +36,9 @@ local joker = {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},
         mult_mod = card.ability.extra.mult
       }
+    end
+    if context.forcetrigger then
+      return { mult = card.ability.extra.mult}
     end
   end
 }

@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Loaded Disk",
     text = {
@@ -29,7 +30,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.selling_self then
+    if context.selling_self or context.forcetrigger then
       if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({

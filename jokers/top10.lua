@@ -12,11 +12,28 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
 
     return {
       vars = { center.ability.cash_per }
     }
+  end,
+  calculate = function(self, card, context)
+    if context.forcetrigger then
+      local count = 0
+      local cashmoney = G.GAME.dollars..""
+      for i = 0, 9 do
+        if string.match(cashmoney, i .. "") then
+          count = count + 1
+        end
+      end
+      if count > 0 then
+        return {
+          dollars = card.ability.cash_per * count
+        }
+      end
+    end
   end,
   calc_dollar_bonus = function(self, card)
     local count = 0

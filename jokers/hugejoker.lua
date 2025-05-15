@@ -20,6 +20,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   display_size = { w = 71.0 * scale, h = 95 * scale },
 	pools = { ["Meme"] = true },
   loc_txt = {
@@ -36,7 +37,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main then
+    if context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
       return {
         message = localize{type='variable',key='a_xmult',vars={card.ability.extra.x_mult}},
         Xmult_mod = card.ability.extra.x_mult,

@@ -16,6 +16,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = false,
+  demicoloncompat = true,
   display_size = { w = 71, h = 71 },
   pixel_size = { w = 71, h = 71 },
   loc_txt = {
@@ -77,6 +78,14 @@ local joker = {
           chip_mod = card.ability.extra.chips,
         }
       end
+    end
+    if context.forcetrigger then
+      card.ability.extra.mult = card.ability.extra.mult + 4
+      card.ability.extra.chips = card.ability.extra.chips + 15
+      return {
+        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult,
+      }
     end
   end
 }

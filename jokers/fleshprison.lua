@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Flesh Prison",
     text = {
@@ -70,6 +71,18 @@ local joker = {
         })) 
       end
       card.gone = true
+    end
+    if context.forcetrigger then
+      G.E_MANAGER:add_event(Event({
+        trigger = 'before',
+        delay = 0.0,
+        func = (function()
+            local card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
+            card:set_edition({negative = true}, true)
+            card:add_to_deck()
+            G.consumeables:emplace(card)
+          return true
+        end)}))
     end
   end
 }

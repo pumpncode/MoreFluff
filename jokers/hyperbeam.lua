@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Hyper Beam",
     text = {
@@ -30,7 +31,7 @@ local joker = {
         ease_discard(-G.GAME.current_round.discards_left, nil, true)
       return true end }))
     end
-    if context.cardarea == G.jokers and context.joker_main then
+    if context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
       return {
         message = localize{type='variable',key='a_xmult',vars={card.ability.extra}},
         Xmult_mod = card.ability.extra,

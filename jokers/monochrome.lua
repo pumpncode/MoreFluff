@@ -17,6 +17,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     return {vars = { center.ability.extra.mult_per, center.ability.extra.mult } }
   end,
@@ -38,6 +39,13 @@ local joker = {
       end
     end
     if context.cardarea == G.jokers and context.joker_main then
+      return {
+        message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult} },
+        mult_mod = card.ability.extra.mult
+      }
+    end
+    if context.forcetrigger then
+      card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_per
       return {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult} },
         mult_mod = card.ability.extra.mult

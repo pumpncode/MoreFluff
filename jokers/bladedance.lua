@@ -13,6 +13,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Blade Dance",
     text = {
@@ -29,10 +30,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.setting_blind and not card.getting_sliced and not (context.blueprint_card or card).getting_sliced then
-      if not G.bladedance_temp_ids then
-        G.bladedance_temp_ids = {}
-      end
+    if (context.forcetrigger or (context.setting_blind and not card.getting_sliced)) and not (context.blueprint_card or card).getting_sliced then
       G.E_MANAGER:add_event(Event({
         trigger = 'before',
         delay = 0.7,
@@ -45,7 +43,7 @@ local joker = {
             _suit = pseudorandom_element(SMODS.Suits, pseudoseed('bladedance_create')).card_key
             local card = create_playing_card({front = G.P_CARDS[_suit..'_'.._rank], center = G.P_CENTERS.m_steel
             }, G.hand, nil, i ~= 1, {G.C.SECONDARY_SET.Spectral})
-            table.insert(G.bladedance_temp_ids, card.unique_val)
+            card.ability.mf_temporary = true
           end
           playing_card_joker_effects(cards)
           return true end }))

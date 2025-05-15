@@ -1,5 +1,5 @@
 local joker = {
-  name = "Basepaul Card",
+  name = "Lollipop",
   config = { Xmult = 1.75, extra = 0.15 },
   pos = {x = 7, y = 1},
   rarity = 1,
@@ -9,6 +9,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Lollipop",
     text = {
@@ -53,7 +54,7 @@ local joker = {
           colour = G.C.RED
         }
       end
-    elseif context.cardarea == G.jokers and context.joker_main then
+    elseif context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
         return {
           message = localize{type='variable',key='a_xmult',vars={card.ability.x_mult}},
           Xmult_mod = card.ability.x_mult,

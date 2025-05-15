@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Jankman",
     text = {
@@ -46,6 +47,11 @@ local joker = {
           xchips = card.ability.extra.x_chips,
         }
       end
+    end
+    if context.forcetrigger then
+      return {
+        xchips = card.ability.extra.x_chips,
+      }
     end
   end
 }

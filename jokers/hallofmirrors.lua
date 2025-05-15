@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = true,
   perishable_compat = false,
+  demicoloncompat = true,
   loc_txt = {
     name = "Hall of Mirrors",
     text = {
@@ -27,7 +28,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.individual and context.cardarea == G.play and context.other_card:get_id() == 6 and not context.blueprint then
+    if context.forcetrigger or (context.individual and context.cardarea == G.play and context.other_card:get_id() == 6 and not context.blueprint) then
       card.ability.h_size = card.ability.h_size + card.ability.extra
       G.hand:change_size(card.ability.extra)
       

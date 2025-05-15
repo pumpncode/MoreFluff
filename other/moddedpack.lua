@@ -241,6 +241,7 @@ function init()
         info_queue[#info_queue + 1] = { set = "Other", key = "p_mf_modded_jumbo_1", specific_vars = { 1, 4 } }
         return { vars = {} }
       end,
+	    in_pool = function() return false end or nil,
       apply = function(self, tag, context)
         if context.type == "new_blind_choice" then
           tag:yep("+", G.C.SECONDARY_SET.Code, function()

@@ -11,13 +11,14 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   immutable = true,
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue+1] = { key = "tetr_explainer", set="Other", specific_vars = { center.ability.val, center.ability.val - 1 } }
     return {vars = { center.ability.val } }
   end,
   calculate = function(self, card, context)
-    if context.mf_before_cards  then
+    if context.forcetrigger or context.mf_before_cards then
       if Talisman and Big and Big.arrow then
         return {
           eemult = card.ability.val

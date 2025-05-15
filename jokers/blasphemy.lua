@@ -15,6 +15,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
 	pools = { ["Meme"] = true },
   loc_txt = {
     name = "Blasphemy",
@@ -33,7 +34,7 @@ local joker = {
     if context.cardarea == G.jokers and context.before and not context.blueprint then
       ease_hands_played(-G.GAME.current_round.hands_left, true)
     end
-    if context.cardarea == G.jokers and context.joker_main then
+    if context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
       return {
         message = localize{type='variable',key='a_xmult',vars={card.ability.extra.xmult}},
         Xmult_mod = card.ability.extra.xmult,

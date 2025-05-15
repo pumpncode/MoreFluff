@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra, center.ability.active and "active!" or "inactive" }
@@ -32,6 +33,11 @@ local joker = {
       }
     end
     if context.cardarea == G.jokers and context.joker_main and card.ability.active then
+      return {
+        xmult = card.ability.extra
+      }
+    end
+    if context.forcetrigger then
       return {
         xmult = card.ability.extra
       }

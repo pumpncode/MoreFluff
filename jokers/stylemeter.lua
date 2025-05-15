@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Style Meter",
     text = {
@@ -26,6 +27,11 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      return {
+        dollars = card.ability.extra.per * G.GAME.skips
+      }
+    end
     if context.skip_blind and not context.blueprint then
       G.E_MANAGER:add_event(Event({
         func = function() 

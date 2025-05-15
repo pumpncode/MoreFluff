@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = false,
+  demicoloncompat = true,
   loc_txt = {
     name = "The Solo",
     text = {
@@ -39,6 +40,12 @@ local joker = {
           card.ability.extra.x_mult
         }}),
         Xmult_mod = card.ability.extra.x_mult,
+      }
+    end
+    if context.forcetrigger then
+      card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.x_mult_gain
+      return {
+        xmult = card.ability.extra.x_mult,
       }
     end
   end

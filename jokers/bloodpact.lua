@@ -62,6 +62,12 @@ local joker = {
         }
       end
     end
+    if context.forcetrigger then
+      return {
+        message = localize{type='variable',key='a_xmult',vars={card.ability.extra}},
+        Xmult_mod = card.ability.extra,
+      }
+    end
   end
 }
 

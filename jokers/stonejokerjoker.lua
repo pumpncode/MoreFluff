@@ -9,6 +9,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS.j_marble
     return {
@@ -16,7 +17,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.ending_shop and not card.getting_sliced and not (context.blueprint_card or card).getting_sliced then
+    if (context.ending_shop or context.forcetrigger) and not card.getting_sliced and not (context.blueprint_card or card).getting_sliced then
         local jokers_to_create = 1
         G.E_MANAGER:add_event(Event({
             func = function() 

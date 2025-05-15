@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Globe",
     text = {
@@ -24,7 +25,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.reroll_shop and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+    if (context.forcetrigger or context.reroll_shop) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
 local jokers_to_create = math.floor(math.min(card.ability.extra, G.consumeables.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer)))      
 for i = 1,jokers_to_create do
       G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
