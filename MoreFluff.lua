@@ -603,6 +603,7 @@ if mf_config["Other Tags"] then
       pos = { x = 1, y = 1 },
       unlocked = true,
       discovered = true,
+	    in_pool = function() return false end or nil,
       loc_vars = function(self, info_queue)
         return { vars = { self.config.extra } }
       end,

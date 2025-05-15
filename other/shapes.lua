@@ -81,6 +81,7 @@ function init()
       info_queue[#info_queue + 1] = { set = "Other", key = "cry_absolute" }
       return { vars = {} }
     end,
+    in_pool = function() return false end or nil,
     config = { type = "store_joker_modify", sticker = "cry_absolute" },
     apply = function(self, tag, context)
       if context.type == "store_joker_modify" then
@@ -122,6 +123,7 @@ function init()
       return { vars = {} }
     end,
     config = { type = "store_joker_modify", sticker = "cry_absolute" },
+    in_pool = function() return false end or nil,
     apply = function(self, tag, context)
       if context.type == "store_joker_modify" then
         if not context.card.temp_edition and context.card.ability.set == "Joker" then
