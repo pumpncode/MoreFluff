@@ -26,19 +26,6 @@ local joker = {
     },
   },
   loc_vars = function(self, info_queue, center)
-    if Jen then
-      local caption = "...i can talk?"
-      if Jen.sinister then
-        caption = "dear god."
-      end
-      if Jen.gods() then
-        caption = "what the FUCK is that."
-      end
-      return {
-        vars = { center.ability.extra.x_mult, caption }
-      }
-    end
-
     return {
       vars = { center.ability.extra.x_mult }
     }
@@ -86,18 +73,6 @@ if JokerDisplay then
       card.joker_display_values.x_mult = mult
       card.joker_display_values.hand = localize("Three of a Kind", 'poker_hands')
     end,
-  }
-end
-
--- .....
-if Jen then
-  joker.misc_badge = {
-    colour = G.C.polterworx,
-    text_colour = G.C.CRY_VERDANT,
-    text = {
-      'Legend of Kosmos',
-      'notmario'
-    }
   }
 end
 

@@ -41,10 +41,6 @@ function init()
       G.GAME.modifiers.scaling = G.GAME.modifiers.scaling or 1
       G.GAME.modifiers.bonus_scaling = 3
 
-      if Jen then
-        G.GAME.modifiers.bonus_scaling = 99 -- additionally increased elsewhere
-      end
-
       G.GAME.modifiers.scaling = G.GAME.modifiers.scaling + G.GAME.modifiers.bonus_scaling
 
       G.GAME.round_resets.blind_choices.Small = "bl_mf_bigger_blind"
@@ -725,19 +721,6 @@ function init()
       { id = "c_judgement" },
     },
   }
-
-  if Jen then -- so it's like actually difficult(?)
-    local smods_get_blind_amt = SMODS.get_blind_amount
-    function SMODS.get_blind_amount(ante)
-      local amount = smods_get_blind_amt(ante)
-      
-      if G.GAME.superboss_active then
-        amount = amount:tetrate(3)
-      end
-
-      return amount
-    end
-  end
 end
 
 return init

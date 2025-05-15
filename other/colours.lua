@@ -1602,31 +1602,7 @@ function init()
 
   function colour_end_of_round_effects()
     for i=1, #G.consumeables.cards do
-      local _card = G.consumeables.cards[i]
-      if Jen then
-        local repetitions = Jen.hv('colour', 9) and 3 or 1
-        if Jen.hv('colour', 7) and _card.ability.partial_rounds then
-          repetitions = repetitions * (_card.ability.partial_rounds + 1)
-        end
-        if Jen.hv('colour', 8) and _card.ability.upgrade_rounds then
-          repetitions = repetitions * math.max(1, _card.ability.upgrade_rounds)
-        end
-        for rep = 1, repetitions do
-         if Jen.hv('colour', 5) and _card.ability.partial_rounds then
-          for ii = 1, _card.ability.partial_rounds do
-            trigger_colour_end_of_round(_card)
-          end
-         end
-         if Jen.hv('colour', 6) and _card.ability.upgrade_rounds then
-          for ii = 1, _card.ability.upgrade_rounds do
-            trigger_colour_end_of_round(_card)
-          end
-         end
-         trigger_colour_end_of_round(_card)
-        end
-      else
-       trigger_colour_end_of_round(_card)
-      end
+      trigger_colour_end_of_round(G.consumeables.cards[i])
     end
   end
 

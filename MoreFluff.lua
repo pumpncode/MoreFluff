@@ -212,7 +212,6 @@ local joker_list = {
 
   -- busted shit
   "colorem",
-  "shattered_prism",
 }
 
 if not mf_config["Jokers"] then
@@ -249,9 +248,6 @@ for _, v in ipairs(joker_list) do
   end
   if v == "rot_cartomancer" then
     joker.atlas = "mf_rot_cartomancer"
-  end
-  if v == "shattered_prism" then
-    joker.atlas = "almanactriangle"
   end
   if not joker.pos then
     joker.pos = { x = 0, y = 0 }
@@ -516,15 +512,6 @@ SMODS.Atlas({
 	py = 34,
 	frames = 21,
 })
-if Jen then
-  SMODS.Atlas({ 
-    key = "almanactriangle", 
-    atlas_table = "ASSET_ATLAS", 
-    path = "almanactriangle.png", 
-    px = 71, 
-    py = 95 
-  })
-end
 SMODS.Atlas({ 
   key = "mf_watermark", 
   atlas_table = "ASSET_ATLAS", 
@@ -1354,15 +1341,6 @@ SMODS.current_mod.extra_tabs = morefluffTabs
 
 local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
-  if Jen and Jen.fusions then
-    Jen.add_fusion(
-      'Enlighten Triangle',3333,
-      "j_mf_shattered_prism",
-      'j_mf_triangle',
-      'j_jen_godsmarble'
-    )
-    --print("Fusions successfully applied!")
-  end
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
   ) -- im dumb and stupide
