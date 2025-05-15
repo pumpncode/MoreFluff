@@ -24,6 +24,9 @@ function init()
       } }
     end
   })
+
+  Entropy.EnhancementPoints["m_mf_monus"] = 3.15
+
   SMODS.Enhancement({
     key = "cult",
     atlas = "mf_enhancers",
@@ -49,6 +52,8 @@ function init()
       } }
     end
   })
+
+  Entropy.EnhancementPoints["m_mf_cult"] = 3.25
   
   SMODS.Enhancement({
     key = "styled",
@@ -84,6 +89,8 @@ function init()
       end
     end,
   })
+
+  Entropy.EnhancementPoints["m_mf_styled"] = 4.1
   
   SMODS.Enhancement({
     key = "brass",
@@ -119,6 +126,8 @@ function init()
       } }
     end
   })
+
+  Entropy.EnhancementPoints["m_mf_brass"] = 8.1
   
   SMODS.Enhancement({
     key = "teal",
@@ -133,6 +142,8 @@ function init()
       } }
     end
   })
+
+  Entropy.EnhancementPoints["m_mf_teal"] = 6.6
   
   SMODS.Enhancement({
     key = "gemstone",
@@ -172,6 +183,8 @@ function init()
       )
     end,
   })
+
+  Entropy.EnhancementPoints["m_mf_gemstone"] = 5.4
 
   SMODS.Enhancement({
     key = "marigold",
@@ -214,6 +227,8 @@ function init()
     end
   })
 
+  Entropy.EnhancementPoints["m_mf_gemstone"] = 6.4
+
   SMODS.Enhancement({
     key = "yucky",
     atlas = "mf_enhancers",
@@ -237,6 +252,8 @@ function init()
       } }
     end
   })
+
+  Entropy.EnhancementPoints["m_mf_gemstone"] = 1.5
 end
 
 return init
