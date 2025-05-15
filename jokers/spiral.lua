@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Spiral Joker",
     text = {
@@ -27,7 +28,7 @@ local joker = {
   end,
 
   calculate = function(self, card, context)
-    if context.joker_main then
+    if context.joker_main or context.forcetrigger then
       local val = card.ability.extra.mult + math.floor(card.ability.extra.coeff * math.cos(math.pi/card.ability.extra.dilation * to_number(G.GAME.dollars) or 0) + 0.5)
         return {
           message = localize{type='variable',key='a_mult',vars={val}},

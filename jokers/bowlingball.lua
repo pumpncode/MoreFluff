@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Bowling Ball",
     text = {
@@ -35,6 +36,13 @@ local joker = {
           card = card
         }
       end
+    end
+    if context.forcetrigger then
+      return {
+        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult,
+        card = card
+      }
     end
   end
 }

@@ -16,6 +16,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Triangle",
     text = {
@@ -40,6 +41,11 @@ local joker = {
           card = card
         }
       end
+    end
+    if context.forcetrigger then
+      return {
+        xmult = card.ability.extra.x_mult,
+      }
     end
   end
 }

@@ -14,6 +14,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     local funny = function(val) return (val > 0) and G.C.FILTER or G.C.UI.TEXT_INACTIVE end
     return {
@@ -61,6 +62,11 @@ local joker = {
           xmult = card.ability.my_x_mult,
         }
       end
+    end
+    if context.forcetrigger then
+      return {
+        xmult = card.ability.my_x_mult,
+      }
     end
   end
 }

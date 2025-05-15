@@ -13,6 +13,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Dramatic Entrance",
     text = {
@@ -31,6 +32,11 @@ local joker = {
       return {
         message = localize{type='variable',key='a_chips',vars={card.ability.extra.chips}},
         chip_mod = card.ability.extra.chips, 
+      }
+    end
+    if context.forcetrigger then
+      return {
+        chips = card.ability.extra.chips
       }
     end
   end

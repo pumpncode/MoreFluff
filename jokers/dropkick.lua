@@ -15,6 +15,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Dropkick",
     text = {
@@ -32,6 +33,14 @@ local joker = {
       card.ability.extra.current_triggers = 0
     end
     if context.after and context.cardarea == G.jokers and next(context.poker_hands['Straight']) then
+      card.ability.extra.current_triggers = card.ability.extra.current_triggers + 1
+      if card.ability.extra.current_triggers >= 5 then
+        check_for_unlock({type = 'mf_dropkick_ten_hands'})
+      end
+      ease_hands_played(card.ability.extra.hands)
+      card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "+"..card.ability.extra.hands.." Hand"})
+    end
+    if context.forcetrigger then
       card.ability.extra.current_triggers = card.ability.extra.current_triggers + 1
       if card.ability.extra.current_triggers >= 5 then
         check_for_unlock({type = 'mf_dropkick_ten_hands'})

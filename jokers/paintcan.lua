@@ -16,12 +16,16 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     return {
       vars = { G.GAME.probabilities.normal, center.ability.extra.odds }
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      colour_end_of_round_effects()
+    end 
   end
 }
 

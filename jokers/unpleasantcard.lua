@@ -13,6 +13,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
 	pools = { ["Meme"] = true },
   loc_vars = function(self, info_queue, center)
     return {
@@ -20,7 +21,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main then
+    if context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
       return {
         xchips = card.ability.extra.x_chips
       }

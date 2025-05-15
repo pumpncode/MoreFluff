@@ -1110,6 +1110,28 @@ function Game:draw()
   end
 end
 
+-- pulled from Entropy. thanks ruby!
+local e_round = end_round
+function end_round()
+  e_round()
+  local remove_temp = {}
+  for i, v in pairs({G.jokers, G.hand, G.consumeables, G.discard, G.deck}) do
+    for ind, card in pairs(v.cards) do
+      if card.ability then
+        if card.ability.mf_temporary then
+          if card.area ~= G.hand and card.area ~= G.play and card.area ~= G.jokers and card.area ~= G.consumeables then card.states.visible = false end
+          card:remove_from_deck()
+          card:start_dissolve()
+          if card.ability.mf_temporary then remove_temp[#remove_temp+1]=card end
+        end
+      end
+    end
+  end
+  if #remove_temp > 0 then
+    SMODS.calculate_context({remove_playing_cards = true, removed=remove_temp})
+  end
+end
+
 local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
@@ -1118,35 +1140,6 @@ function Game:update_round_eval(dt)
     SMODS.debuff_card(other_card, false, "allicantdo")
   end
 
-  -- thanks feder
-  -- does CA even have a 1.0.0 port?
-  if G.bladedance_temp_ids then
-    for _, remove_id in ipairs(G.bladedance_temp_ids) do
-      for k, card in ipairs(G.playing_cards) do
-        if card.unique_val == remove_id then
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-            func = function()
-            G.deck:remove_card(card)
-            G.hand:remove_card(card)
-            G.discard:remove_card(card)
-            card:start_dissolve(nil, false)
-            card = nil
-          return true; end})) 
-        end
-      end
-      -- for k, card in ipairs(G.hand.cards) do
-      --     if card.unique_val == remove_id then
-      --         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.3, blockable = false,
-      --             func = function()
-      --             G.hand:remove_card(card)
-      --             hand:remove()
-      --             card = nil
-      --         return true; end})) 
-      --     end
-      -- end
-    end
-    G.bladedance_temp_ids = {}
-  end
   if G.missingjoker_revert then
     for _, joker in pairs(G.missingjoker_revert) do
       joker:set_ability(G.P_CENTERS["j_mf_missingjoker"])

@@ -13,6 +13,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   immutable = true, -- pretty important
 	pools = { ["Meme"] = true }, -- fuck it. jimball 2 goes in the meme packs
   loc_txt = {
@@ -26,7 +27,7 @@ local joker = {
     return {vars = { center.ability.val } }
   end,
   calculate = function(self, card, context)
-    if context.mf_before_cards and #G.play.cards == 4 then
+    if context.forcetrigger or (context.mf_before_cards and #G.play.cards == 4) then
       if Talisman and Big and Big.arrow then
         return {
           eechips = card.ability.val

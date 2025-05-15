@@ -15,12 +15,33 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = false,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra.x_mult_mod, center.ability.extra.x_mult }
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      card.ability.extra.x_mult = card.ability.extra.x_mult + center.ability.extra.x_mult_mod
+      for _, c in pairs(G.hand.cards) do
+        G.E_MANAGER:add_event(Event({
+          trigger = "before",
+          delay = 0.1,
+          func = function()
+            c:juice_up()
+            card:juice_up()
+            SMODS.debuff_card(c, true, "allicantdo")
+            play_sound('cancel', 0.8+ (0.9 + 0.2*math.random())*0.2, 1)
+            -- ease_dollars(card.ability.cash)
+            return true
+          end,
+        }))
+      end
+      return {
+        xmult = card.ability.extra.x_mult
+      }
+    end
     if context.first_hand_drawn and not context.blueprint then
       for _, c in pairs(G.hand.cards) do
         G.E_MANAGER:add_event(Event({

@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Teacup",
     text = {
@@ -63,6 +64,13 @@ local joker = {
           end
         end
       end
+    end
+
+    if context.forcetrigger then
+      local text,disp_text = G.FUNCS.get_poker_hand_info(context.full_hand)
+      card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+      update_hand_text({sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3}, {handname=localize(text, 'poker_hands'),chips = G.GAME.hands[text].chips, mult = G.GAME.hands[text].mult, level=G.GAME.hands[text].level})
+      level_up_hand(context.blueprint_card or card, text, nil, 1)
     end
   end
 }

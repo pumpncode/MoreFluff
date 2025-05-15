@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Clownfish",
     text = {
@@ -28,6 +29,13 @@ local joker = {
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card.ability.name ~= "Default Base" then
+      return {
+        chips = card.ability.extra.chips,
+        mult = card.ability.extra.mult,
+        card = card
+      }
+    end
+    if context.forcetrigger then
       return {
         chips = card.ability.extra.chips,
         mult = card.ability.extra.mult,

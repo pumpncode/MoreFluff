@@ -9,6 +9,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Bad Legal Defence",
     text = {
@@ -25,7 +26,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.setting_blind and context.blind.boss and not (context.blueprint_card or self).getting_sliced then
+    if (context.forcetrigger or (context.setting_blind and context.blind.boss)) and not (context.blueprint_card or self).getting_sliced then
       if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
         G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
         G.E_MANAGER:add_event(Event({

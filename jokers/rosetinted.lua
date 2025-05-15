@@ -9,6 +9,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Rose-Tinted Glasses",
     text = {
@@ -31,6 +32,16 @@ local joker = {
         end)
       }))
       return true
+    end
+    if context.forcetrigger then
+      G.E_MANAGER:add_event(Event({
+        func = (function()
+            add_tag(Tag('tag_double'))
+            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+            return true
+        end)
+      }))
     end
   end
 }

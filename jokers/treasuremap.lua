@@ -15,6 +15,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Treasure Map",
     text = {
@@ -39,7 +40,7 @@ local joker = {
         colour = G.C.FILTER
       }
     end
-    if context.selling_self and (card.ability.extra.c_rounds >= card.ability.extra.rounds) and not context.blueprint then
+    if (context.forcetrigger or (context.selling_self and (card.ability.extra.c_rounds >= card.ability.extra.rounds))) and not context.blueprint then
       local eval = function(card) return (card.ability.loyalty_remaining == 0) and not G.RESET_JIGGLES end
         juice_card_until(card, eval, true)
       ease_dollars(card.ability.extra.money)

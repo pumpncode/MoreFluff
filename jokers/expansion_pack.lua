@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Expansion Pack",
     text = {
@@ -25,7 +26,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-if context.setting_blind and not card.getting_sliced and not (context.blueprint_card or card).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+if (context.forcetrigger or (context.setting_blind and not card.getting_sliced)) and not (context.blueprint_card or card).getting_sliced and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
                 local jokers_to_create = math.floor(math.min(card.ability.extra, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer)))
                 G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
                 -- ah shit.

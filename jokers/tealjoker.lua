@@ -15,6 +15,7 @@ local joker = {
   eternal_compat = true,
   perishable_compat = false,
   enhancement_gate = "m_mf_teal",
+  demicoloncompat = true,
   update = function(self, card, dt)
     if G.STAGE == G.STAGES.RUN then
       card.ability.extra.teal_tally = 0
@@ -33,7 +34,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main and card.ability.extra.teal_tally > 0 then
+    if (context.forcetrigger or (context.cardarea == G.jokers and context.joker_main)) and card.ability.extra.teal_tally > 0 then
       return {
         xchips = 1 + card.ability.extra.x_chips_per*card.ability.extra.teal_tally,
       }

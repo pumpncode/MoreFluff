@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Jester",
     text = {
@@ -24,7 +25,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main then
+    if context.forcetrigger or (context.cardarea == G.jokers and context.joker_main) then
       return {
         message = localize{type='variable',key='a_chips',vars={card.ability.extra.chips}},
         chip_mod = card.ability.extra.chips, 

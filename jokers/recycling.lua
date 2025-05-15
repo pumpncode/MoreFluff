@@ -10,6 +10,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Recycling",
     text = {
@@ -26,7 +27,7 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
-    if context.skipping_booster and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+    if (context.skipping_booster or context.forcetrigger) and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
       local card_type = pseudorandom_element({"Tarot", "Planet"}, pseudoseed('recycling_type'))
       G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
       G.E_MANAGER:add_event(Event({

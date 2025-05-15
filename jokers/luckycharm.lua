@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Lucky Charm",
     text = {
@@ -27,6 +28,12 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      return {
+        dollars = card.ability.extra.money,
+        mult = card.ability.extra.mult
+      }
+    end
     if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
       if pseudorandom('lucky_charm_money') < G.GAME.probabilities.normal/card.ability.extra.money_chance then
         ease_dollars(card.ability.extra.money)

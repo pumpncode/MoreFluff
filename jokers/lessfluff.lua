@@ -14,12 +14,19 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra.x_mult, center.ability.extra.x_mult_per }
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      card.ability.extra.x_mult = card.ability.extra.x_mult + card.ability.extra.x_mult_per
+      return {
+        xmult = card.ability.extra.x_mult,
+      }
+    end
     if context.cardarea == G.jokers and context.joker_main then
       return {
         xmult = card.ability.extra.x_mult,

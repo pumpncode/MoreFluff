@@ -15,6 +15,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Hollow Joker",
     text = {
@@ -27,7 +28,7 @@ local joker = {
     return {vars = { center.ability.h_size, center.ability.extra.mult_per, center.ability.extra.thresh } }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main and G.hand.config.card_limit < card.ability.extra.thresh then
+    if (context.forcetrigger or (context.cardarea == G.jokers and context.joker_main)) and G.hand.config.card_limit < card.ability.extra.thresh then
       return {
         message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult_per * (card.ability.extra.thresh - G.hand.config.card_limit)}},
         mult_mod = card.ability.extra.mult_per * (card.ability.extra.thresh - G.hand.config.card_limit)

@@ -11,6 +11,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_txt = {
     name = "Golden Carrot",
     text = {
@@ -27,6 +28,9 @@ local joker = {
     }
   end,
   calculate = function(self, card, context)
+    if context.forcetrigger then
+      return { dollars = card.ability.extra.gain }
+    end
     if context.cardarea == G.jokers and context.after and not context.blueprint and not card.gone then
       if card.ability.extra.gain - card.ability.extra.loss <= 0 then 
         G.E_MANAGER:add_event(Event({

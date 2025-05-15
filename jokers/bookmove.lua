@@ -14,6 +14,7 @@ local joker = {
   blueprint_compat = false,
   eternal_compat = false,
   perishable_compat = true,
+  demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue + 1] = G.P_CENTERS.j_hanging_chad
     info_queue[#info_queue + 1] = G.P_CENTERS.j_photograph
@@ -31,9 +32,10 @@ local joker = {
         colour = G.C.FILTER
       }
     end
-    if context.selling_self and (card.ability.extra.c_rounds >= card.ability.extra.rounds) and not context.blueprint then
-      local gained_slots = 1 
+    if context.forcetrigger or (context.selling_self and (card.ability.extra.c_rounds >= card.ability.extra.rounds) and not context.blueprint) then
+      local gained_slots = 1
       if card.edition and card.edition.card_limit then gained_slots = 1 - card.edition.card_limit end
+      if context.forcetrigger then gained_slots = gained_slots - 1 end
       if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit + gained_slots then
         G.GAME.joker_buffer = G.GAME.joker_buffer + 1
         G.E_MANAGER:add_event(Event({

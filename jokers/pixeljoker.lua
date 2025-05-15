@@ -12,6 +12,7 @@ local joker = {
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
+  demicoloncompat = true,
   display_size = { w = 16, h = 16 },
   pixel_size = { w = 16, h = 16 },
   loc_txt = {
@@ -36,6 +37,13 @@ local joker = {
           card = card
         }
       end
+    end
+    if context.forcetrigger then
+      return {
+        x_mult = card.ability.extra.x_mult,
+        colour = G.C.RED,
+        card = card
+      }
     end
   end
 }
