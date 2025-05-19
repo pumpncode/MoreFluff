@@ -118,6 +118,8 @@ SMODS.Sound({
   end,
 })
 
+SMODS.Sound({key = "gun", path = "gun.ogg"})
+
 -- comment out the shit you dont want
 local joker_list = {
   -- common
@@ -212,6 +214,8 @@ local joker_list = {
 
   -- busted shit
   "colorem",
+
+  "johnbalatro",
 }
 
 if not mf_config["Jokers"] then
@@ -518,6 +522,13 @@ SMODS.Atlas({
   path = "watermark.png", 
   px = 336, 
   py = 32 
+})
+SMODS.Atlas({ 
+  key = "mf_soul2", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_soul2.png", 
+  px = 71, 
+  py = 95 
 })
 
 -- add a way for these to be disabled

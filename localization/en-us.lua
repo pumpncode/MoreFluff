@@ -1361,6 +1361,16 @@ local loc_stuff = {
         },
       },
     },
+    Spectral = {
+      c_mf_soul2 = {
+        name = "{s:2,E:4}The Soul {s:2,C:red,E:4}2",
+        text = {
+          "Creates a",
+          "{C:dark_edition,s:3,E:1}Superlegendary{}",
+          "Joker....",
+        }
+      }
+    },
     Enhanced = {
       m_mf_yucky = {
         name = "Yucky Card",

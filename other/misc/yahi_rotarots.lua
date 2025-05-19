@@ -8,7 +8,6 @@ function init()
   })
   
   SMODS.Sound({key = "e_faithful", path = "e_faithful.ogg",})
-  SMODS.Sound({key = "gun", path = "gun.ogg",})
 
   SMODS.Shader({ key = 'faithful', path = 'faithful.fs' })
   
@@ -450,7 +449,7 @@ function init()
           }
         else
           return {
-            Xchips_mod = chips ^ chips ^ (self.config.ee_chips - 1),
+            Xchips_mod = hand_chips ^ hand_chips ^ (self.config.ee_chips - 1),
             message = "^^"..self.config.ee_chips.." Chips",
             colour = G.C.DARK_EDITION
           }
