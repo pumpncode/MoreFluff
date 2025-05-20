@@ -1,4 +1,4 @@
-if not (Talisman and Big and Big.arrow) then
+if Jen or not (Talisman and Big and Big.arrow) then
   return nil
 end
 
@@ -18,7 +18,23 @@ SMODS.Consumable {
   hidden = {
     soul_rate = 0.0000003,
     can_repeat_soul = true,
-  }
+  },
+  
+  can_use = function(self, card)
+    return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers
+  end,
+  use = function(self, card, area, copier)
+    local used_tarot = copier or card
+    G.E_MANAGER:add_event(Event({
+      func = function() 
+        local n_card = create_card('Joker', G.jokers, nil, nil, nil, nil, "j_mf_johnbalatro", 'exp')
+        n_card:add_to_deck()
+        G.jokers:emplace(n_card)
+        n_card:start_materialize()
+        used_tarot:juice_up(0.3, 0.5)
+        return true
+      end}))   
+  end,
 }
 
 SMODS.Rarity {
