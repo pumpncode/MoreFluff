@@ -1,4 +1,4 @@
-if not (Talisman and Big and Big.arrow) then
+if Jen or not (Talisman and Big and Big.arrow or) then
   return nil
 end
 
