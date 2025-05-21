@@ -1,4 +1,4 @@
-if Jen or not (Talisman and Big and Big.arrow) then
+if not mf_config["John"] or Jen or not (Talisman and Big and Big.arrow) then
   return nil
 end
 
