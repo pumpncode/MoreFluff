@@ -48,7 +48,7 @@ SMODS.Rarity {
 local joker = {
   name = "John Balala",
   config = {
-    extra = {op=1,val=10,op_gain=1}
+    extra = {op=1,val=10,op_gain=2}
   },
   pos = {x = 0, y = 8},
   soul_pos = {x = 5, y = 5},
@@ -65,7 +65,9 @@ local joker = {
     name = "{s:2}JOHN BALATRO",
     text = {
       "{X:dark_edition,C:white,s:2}#1##2#{} Mult",
-      "Increase operator by {X:dark_edition,C:white,s:2}#3#{} at end of round",
+      "Multiply operator by {X:dark_edition,C:white,s:2}#3#{} at end of round",
+      "{C:red,s:2}Crashes the game{} if",
+      "removed from deck"
     }
   },
   loc_vars = function(self, info_queue, center)
@@ -84,12 +86,15 @@ local joker = {
       }
     end
     if context.end_of_round and not context.individual and not context.blueprint and not context.repetition then
-      card.ability.extra.op = card.ability.extra.op + card.ability.extra.op_gain
+      card.ability.extra.op = card.ability.extra.op * card.ability.extra.op_gain
       return {
         message = localize("k_upgrade_ex")
       }
     end
-  end
+  end,
+	remove_from_deck = function(self, card, from_debuff)
+		G.crashthegame.lololol()
+	end
 }
 
 return joker
