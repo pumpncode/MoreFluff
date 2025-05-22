@@ -7,7 +7,6 @@ local joker = {
   },
   pos = {x = 9, y = 4},
   soul_pos = {x = 9, y = 5},
-  fusable = true,
   rarity = 4,
   cost = 20,
   unlocked = true,
