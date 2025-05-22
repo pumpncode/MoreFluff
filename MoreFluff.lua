@@ -122,6 +122,8 @@ SMODS.Sound({
 })
 
 SMODS.Sound({key = "gun", path = "gun.ogg"})
+SMODS.Sound({key = "treethree", path = "treethree.ogg"})
+SMODS.Sound({key = "buzzer", path = "buzzer.ogg"})
 
 -- comment out the shit you dont want
 local joker_list = {
@@ -172,6 +174,7 @@ local joker_list = {
   "missingjoker",
   "paintcan",
   "rot_cartomancer",
+  "sapling",
   "snake",
   "slotmachine",
   "stylemeter",
@@ -525,6 +528,13 @@ SMODS.Atlas({
   path = "watermark.png", 
   px = 336, 
   py = 32 
+})
+SMODS.Atlas({ 
+  key = "mf_ee_nuhuh", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_ee_nuhuh.png", 
+  px = 1920, 
+  py = 1080 
 })
 SMODS.Atlas({ 
   key = "mf_soul2", 
@@ -1113,14 +1123,27 @@ function Game:update(dt)
 			jimballobj.pos.y = jimballobj.pos.y + 1
 		end
 	end
+  if G.ee_nuhuh then
+    G.ee_nuhuh[1] = G.ee_nuhuh[1] - dt
+  end
 end
 
 local game_drawref = Game.draw
 function Game:draw()
   game_drawref(self)
 
+  love.graphics.setColor(1,1,1,1)
+
   if next(SMODS.find_card("j_mf_unregisteredhypercam")) then
     love.graphics.draw(G.ASSET_ATLAS["mf_watermark"].image, 0, 0)
+  end
+
+  if G.ee_nuhuh and G.ee_nuhuh[1] > 0 then
+    alpha = G.ee_nuhuh[1]
+    love.graphics.setColor(1,1,1,alpha)
+    local _xscale = love.graphics.getWidth()/1920
+    local _yscale = love.graphics.getHeight()/1080
+    love.graphics.draw(G.ASSET_ATLAS["mf_ee_nuhuh"].image, 0, 0, 0, _xscale, _yscale)
   end
 end
 
