@@ -16,7 +16,7 @@ SMODS.Consumable {
   no_collection = true,
 
   hidden = {
-    soul_rate = 0.0000003,
+    soul_rate = 0.000000003,
     can_repeat_soul = true,
   },
   

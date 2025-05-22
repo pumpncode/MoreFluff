@@ -188,7 +188,7 @@ function init()
   })
 
   if Entropy then
-    Entropy.AscendedTags["tag_mf_colour"] = "tag_entr_ascendant_twisted_tag"
+    Entropy.AscendedTags["tag_mf_colour"] = "tag_entr_ascendant_twisted"
   end
 
   SMODS.Consumable({

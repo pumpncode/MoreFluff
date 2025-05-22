@@ -642,6 +642,15 @@ local loc_stuff = {
           "{C:inactive}(Currently {V:1}A{C:inactive}, {V:2}2{C:inactive}, {V:3}3{C:inactive}, {V:4}4{C:inactive}, {V:5}5{C:inactive}, {V:6}6{C:inactive}, {V:7}7{C:inactive}, {V:8}8{C:inactive}, {V:9}9{C:inactive})"
         },
       },
+      j_mf_sapling = {
+        name = "Fast-Growing Sapling",
+        text = {
+          "After {C:attention}#3#{} rounds,",
+          "sell this card to set",
+          "{C:attention}round score{} to {s:1.1,C:spectral}TREE(3){}",
+          "{C:inactive}(Currently #4#, {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -2103,6 +2112,7 @@ local loc_stuff = {
       k_merged_ex = "Merged!",
       k_swap_ex = "Swap!",
       k_noted_ex = "Noted!",
+      k_equals_tree_three = "=TREE(3)",
       
       k_shape = "Shape?",
       b_shape_cards = "Shape? Cards",

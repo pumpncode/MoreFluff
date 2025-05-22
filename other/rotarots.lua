@@ -281,7 +281,7 @@ function init()
   })
 
   if Entropy then
-    Entropy.AscendedTags["tag_mf_rotarot"] = "tag_entr_ascendant_twisted_tag"
+    Entropy.AscendedTags["tag_mf_rotarot"] = "tag_entr_ascendant_twisted"
   end
 
   -- fool
