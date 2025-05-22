@@ -831,7 +831,7 @@ function init()
       return true
     end,
     use = function(self, card, area, copier)
-      local tag_type = "tag_entr_ascendant_reference_tag"
+      local tag_type = "tag_entr_ascendant_reference"
       for i = 1, card.ability.val do
         G.E_MANAGER:add_event(Event({
           func = (function()
