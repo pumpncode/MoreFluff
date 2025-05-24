@@ -694,6 +694,16 @@ local loc_stuff = {
           "{X:mult,C:white} X#1# {} Mult"
         }
       },
+
+      -- FINITY CROSSMOD
+      j_mf_theneedle = {
+        name = "The Needle",
+        text = {
+          "When {C:attention}Blind{} is selected,",
+          "convert all but one {C:blue}Hand{}",
+          "to {C:red}#1# discards{} each"
+        }
+      },
     },
     Colour = {
       c_mf_black = {

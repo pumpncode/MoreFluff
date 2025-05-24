@@ -444,6 +444,15 @@ if Entropy then
     py = 34 
   })
 end
+if next(SMODS.find_mod("finity")) then
+  SMODS.Atlas({ 
+    key = "mf_finity_crossmod", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_finity_crossmod.png", 
+    px = 71, 
+    py = 95 
+  })
+end
 SMODS.Atlas({ 
   key = "mf_stickers", 
   atlas_table = "ASSET_ATLAS", 
@@ -576,6 +585,10 @@ end
 if mf_config["Superboss"] then
   init_superboss = SMODS.load_file("other/superboss.lua")()
   init_superboss()
+  if next(SMODS.find_mod("finity")) then
+    init_finity = SMODS.load_file("other/finity.lua")()
+    init_finity()
+  end
 end
 
 if mf_config["Other Tags"] then
@@ -1376,6 +1389,18 @@ Game.main_menu = function(change_context)
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
   ) -- im dumb and stupide
+
+  if next(SMODS.find_mod("finity")) then
+    local bossblinds = {
+      ["bl_mf_violet_vessel_dx"] = {"j_finity_violetvessel","Violet Vessel"},
+      ["bl_mf_cerulean_bell_dx"] = {"j_finity_ceruleanbell","Cerulean Bell"},
+      ["bl_mf_needle_dx"] = {"j_mf_theneedle","The Needle"},
+    }
+
+    for k, v in pairs(bossblinds) do
+      FinisherBossBlindStringMap[k] = v
+    end
+  end
   local ret = mainmenuref2(change_context)
   return ret
 end
