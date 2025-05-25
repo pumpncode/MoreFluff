@@ -660,6 +660,13 @@ local loc_stuff = {
           "{C:inactive}(N currently equals {C:attention}#1#{C:inactive})",
         }
       },
+      j_mf_lightningstrikesthrice = {
+        name = "Lightning Strikes Thrice",
+        text = {
+          "Retrigger {C:attention}on discard",
+          "effects {C:attention}#1#{} times",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
