@@ -52,9 +52,6 @@ end
 if mf_config["Other Packs"] == nil then
   mf_config["Other Packs"] = true
 end
-if mf_config["John"] == nil then
-  mf_config["John"] = true
-end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -220,8 +217,6 @@ local joker_list = {
 
   -- busted shit
   "colorem",
-
-  "johnbalatro",
 }
 
 if not mf_config["Jokers"] then
@@ -544,13 +539,6 @@ SMODS.Atlas({
   path = "mf_ee_nuhuh.png", 
   px = 1920, 
   py = 1080 
-})
-SMODS.Atlas({ 
-  key = "mf_soul2", 
-  atlas_table = "ASSET_ATLAS", 
-  path = "mf_soul2.png", 
-  px = 71, 
-  py = 95 
 })
 
 -- add a way for these to be disabled
@@ -1273,8 +1261,6 @@ local morefluffTabs = function() return {
       --   create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
       rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_huger_joker"), ref_table = mf_config, ref_value = "Huger Joker" })
-      rightside_nodes[#rightside_nodes + 1] =
-        create_toggle({ label = "John", ref_table = mf_config, ref_value = "John" })
 
       for _, n in pairs(leftside_nodes) do
         n.config.align = "cr"
