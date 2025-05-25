@@ -651,6 +651,15 @@ local loc_stuff = {
           "{C:inactive}(Currently #4#, {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})",
         }
       },
+      j_mf_onesliptoolate = {
+        name = "One Slip Too Late",
+        text = {
+          "{X:mult,C:white} xN {} Mult if {C:attention}poker hand{} contains",
+          "exactly {C:attention}N{} cards, where {C:attention}N{} is the",
+          "number of hands played this round",
+          "{C:inactive}(N currently equals {C:attention}#1#{C:inactive})",
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
