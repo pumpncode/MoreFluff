@@ -52,9 +52,6 @@ end
 if mf_config["Other Packs"] == nil then
   mf_config["Other Packs"] = true
 end
-if mf_config["John"] == nil then
-  mf_config["John"] = true
-end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -124,6 +121,7 @@ SMODS.Sound({
 SMODS.Sound({key = "gun", path = "gun.ogg"})
 SMODS.Sound({key = "treethree", path = "treethree.ogg"})
 SMODS.Sound({key = "buzzer", path = "buzzer.ogg"})
+SMODS.Sound({key = "lightningstrikesthrice", path = "lightningstrikesthrice.ogg"})
 
 -- comment out the shit you dont want
 local joker_list = {
@@ -168,8 +166,10 @@ local joker_list = {
   "impostor",
   "farmmerge",
   "junkmail",
+  "onesliptoolate",
   "tonersoup",
   "unpleasantcard",
+  "lightningstrikesthrice",
   "loadeddisk",
   "missingjoker",
   "paintcan",
@@ -220,8 +220,6 @@ local joker_list = {
 
   -- busted shit
   "colorem",
-
-  "johnbalatro",
 }
 
 if not mf_config["Jokers"] then
@@ -444,6 +442,15 @@ if Entropy then
     py = 34 
   })
 end
+if next(SMODS.find_mod("finity")) then
+  SMODS.Atlas({ 
+    key = "mf_finity_crossmod", 
+    atlas_table = "ASSET_ATLAS", 
+    path = "mf_finity_crossmod.png", 
+    px = 71, 
+    py = 95 
+  })
+end
 SMODS.Atlas({ 
   key = "mf_stickers", 
   atlas_table = "ASSET_ATLAS", 
@@ -536,13 +543,6 @@ SMODS.Atlas({
   px = 1920, 
   py = 1080 
 })
-SMODS.Atlas({ 
-  key = "mf_soul2", 
-  atlas_table = "ASSET_ATLAS", 
-  path = "mf_soul2.png", 
-  px = 71, 
-  py = 95 
-})
 
 -- add a way for these to be disabled
 if mf_config["Colour Cards"] then
@@ -576,6 +576,10 @@ end
 if mf_config["Superboss"] then
   init_superboss = SMODS.load_file("other/superboss.lua")()
   init_superboss()
+  if next(SMODS.find_mod("finity")) then
+    init_finity = SMODS.load_file("other/finity.lua")()
+    init_finity()
+  end
 end
 
 if mf_config["Other Tags"] then
@@ -1260,8 +1264,6 @@ local morefluffTabs = function() return {
       --   create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
       rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_huger_joker"), ref_table = mf_config, ref_value = "Huger Joker" })
-      rightside_nodes[#rightside_nodes + 1] =
-        create_toggle({ label = "John", ref_table = mf_config, ref_value = "John" })
 
       for _, n in pairs(leftside_nodes) do
         n.config.align = "cr"
@@ -1376,6 +1378,18 @@ Game.main_menu = function(change_context)
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
   ) -- im dumb and stupide
+
+  if next(SMODS.find_mod("finity")) then
+    local bossblinds = {
+      ["bl_mf_violet_vessel_dx"] = {"j_finity_violetvessel","Violet Vessel"},
+      ["bl_mf_cerulean_bell_dx"] = {"j_finity_ceruleanbell","Cerulean Bell"},
+      ["bl_mf_needle_dx"] = {"j_mf_theneedle","The Needle"},
+    }
+
+    for k, v in pairs(bossblinds) do
+      FinisherBossBlindStringMap[k] = v
+    end
+  end
   local ret = mainmenuref2(change_context)
   return ret
 end

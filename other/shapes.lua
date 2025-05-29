@@ -1053,6 +1053,11 @@ function init()
 
   for k, v in pairs(inversions) do
     Entropy.FlipsideInversions[k] = v
+
+    if Entropy.FlipsidePureInversions then
+      Entropy.FlipsidePureInversions[k] = v
+      Entropy.FlipsideInversions[v] = k
+    end
   end
 end
 
