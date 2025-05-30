@@ -667,6 +667,15 @@ local loc_stuff = {
           "effects {C:attention}#1#{} times",
         }
       },
+      j_mf_friendinsideme = {
+        name = "Friend Inside Me",
+        text = {
+          "Once per {C:attention}ante{}, selling a {C:common}Common{}",
+          "or {C:uncommon}Uncommon{} joker creates",
+          "a joker of the next rarity",
+          "{C:inactive}(Currently #1#)"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

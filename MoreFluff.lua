@@ -165,6 +165,7 @@ local joker_list = {
   "hallofmirrors",
   "impostor",
   "farmmerge",
+  "friendinsideme",
   "junkmail",
   "onesliptoolate",
   "tonersoup",
