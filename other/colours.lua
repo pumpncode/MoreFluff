@@ -925,7 +925,6 @@ function init()
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           play_sound('timpani')
           local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
-          n_card.no_omega = true
           n_card:add_to_deck()
           n_card:set_edition({negative = true}, true)
           G.consumeables:emplace(n_card)
@@ -1548,6 +1547,51 @@ function init()
     end
   end
 
+  if next(SMODS.find_mod("finity")) then
+    SMODS.Consumable({
+      object_type = "Consumable",
+      set = "Colour",
+      name = "col_Violet",
+      key = "violet",
+      pos = { x = 2, y = 8 },
+      config = {
+        val = 0,
+        partial_rounds = 0,
+        upgrade_rounds = 4,
+      },
+      cost = 4,
+      atlas = "mf_colours",
+      unlocked = true,
+      discovered = true,
+      hidden = true,
+      display_size = { w = 71, h = 87 },
+      pixel_size = { w = 71, h = 87 },
+      can_use = function(self, card)
+        return true
+      end,
+      use = function(self, card, area, copier)
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+            play_sound('timpani')
+            local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_finity_finity', 'sup')
+            n_card:add_to_deck()
+            n_card:set_edition({negative = true}, true)
+            G.consumeables:emplace(n_card)
+            card:juice_up(0.3, 0.5)
+            return true end }))
+        end
+        delay(0.6)
+      end,
+      loc_vars = function(self, info_queue, card)
+        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      end,
+      set_badges = function (self, card, badges)
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("finity")[1] }, badges)
+      end,
+    })
+  end
+
   SMODS.Voucher({
     object_type = "Voucher",
     key = "paintroller",
@@ -1798,6 +1842,8 @@ function init()
       "c_mf_blank",
       "c_mf_amber",
       "c_mf_moss",
+      "c_mf_caramel",
+      "c_mf_finity",
     }
 
     for _, col in pairs(cols) do
