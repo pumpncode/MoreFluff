@@ -227,6 +227,7 @@ local joker_list = {
 
   -- busted shit
   "colorem",
+  "farmmergecivilisation",
 }
 
 if not mf_config["Jokers"] then

@@ -745,6 +745,16 @@ local loc_stuff = {
           "to {C:red}#1# discards{} each"
         }
       },
+
+      -- THE DEVIOUS THREE WAY CROSSMOD
+      j_mf_farmmergecivilisation = {
+        name = "I Survive in Farm Merge Civilisation",
+        text = {
+          "At end of round, {C:dark_edition}Merge",
+          "all cards together, and convert",
+          "them all to the result"
+        },
+      },
     },
     Colour = {
       c_mf_black = {
