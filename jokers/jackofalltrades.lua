@@ -2,8 +2,8 @@ local joker = {
   name = "Jack of all Trades",
   config = {
     extra = {
-      mult = 2,
-      chips = 10,
+      mult = 1,
+      chips = 1,
       dollars = 1,
     }
   },
