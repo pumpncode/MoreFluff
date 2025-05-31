@@ -676,6 +676,14 @@ local loc_stuff = {
           "{C:inactive}(Currently #1#)"
         }
       },
+      j_mf_thewayhome = {
+        name = "the way home",
+        text = {
+          "When {C:attention}blind{} is {C:attention}selected{};",
+          "{C:green}#1# in #2#{} chance to",
+          "gain {C:blue}#3#{} hands"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -2148,6 +2156,7 @@ local loc_stuff = {
       k_swap_ex = "Swap!",
       k_noted_ex = "Noted!",
       k_equals_tree_three = "=TREE(3)",
+      k_correct_ex = "Correct!",
       
       k_shape = "Shape?",
       b_shape_cards = "Shape? Cards",

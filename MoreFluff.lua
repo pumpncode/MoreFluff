@@ -184,6 +184,7 @@ local joker_list = {
   "talljoker",
   "teacup",
   "tealjoker",
+  "thewayhome",
   "recycling",
   "virtual",
   "wilddrawfour",
