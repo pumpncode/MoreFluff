@@ -2224,6 +2224,7 @@ local loc_stuff = {
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
+      mf_config_horse_sound = "Horse Sound",
       mf_config_superboss = "Superboss",
       mf_config_other_tags = "Other Tags",
       mf_config_other_packs = "Other Packs",
