@@ -122,6 +122,7 @@ SMODS.Sound({key = "gun", path = "gun.ogg"})
 SMODS.Sound({key = "treethree", path = "treethree.ogg"})
 SMODS.Sound({key = "buzzer", path = "buzzer.ogg"})
 SMODS.Sound({key = "lightningstrikesthrice", path = "lightningstrikesthrice.ogg"})
+SMODS.Sound({key = "horsebounce", path = "horsebounce.ogg"})
 
 -- comment out the shit you dont want
 local joker_list = {
