@@ -2,14 +2,14 @@ local joker = {
   name = "Jack of all Trades",
   config = {
     extra = {
-      mult = 1,
-      chips = 1,
+      mult = 2,
+      chips = 10,
       dollars = 1,
     }
   },
   pos = {x = 3, y = 8},
   rarity = 1,
-  cost = 7,
+  cost = 6,
   unlocked = true,
   discovered = true,
   blueprint_compat = true,
