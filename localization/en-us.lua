@@ -684,6 +684,14 @@ local loc_stuff = {
           "gain {C:blue}#3#{} hands"
         }
       },
+      j_mf_jackofalltrades = {
+        name = "Jack of All Trades",
+        text = {
+          "Each {C:attention}Jack{} held",
+          "in hand gives {C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips, and {C:money}$#3#"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -736,6 +744,16 @@ local loc_stuff = {
           "convert all but one {C:blue}Hand{}",
           "to {C:red}#1# discards{} each"
         }
+      },
+
+      -- THE DEVIOUS THREE WAY CROSSMOD
+      j_mf_farmmergecivilisation = {
+        name = "I Survive in Farm Merge Civilisation",
+        text = {
+          "At end of round, {C:dark_edition}Merge",
+          "all cards together, and convert",
+          "them all to the result"
+        },
       },
     },
     Colour = {
@@ -2216,6 +2234,7 @@ local loc_stuff = {
       mf_config_achievements = "Achievements",
       mf_config_unfinished = "Unfinished Content",
       mf_config_huger_joker = "Huger Joker",
+      mf_config_horse_sound = "Horse Sound",
       mf_config_superboss = "Superboss",
       mf_config_other_tags = "Other Tags",
       mf_config_other_packs = "Other Packs",

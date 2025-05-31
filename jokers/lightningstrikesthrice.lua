@@ -54,7 +54,7 @@ local joker = {
 		local count = 0
 		while ((nextx < 0 or (nextx+im.size) > 71) or (nexty < 0 or (nexty+im.size) > 95)) do
 			if count > 50 then break end
-			if count == 0 then play_sound("mf_horsebounce", (math.random()+math.random(9,10))/10, 0.2) end
+			if count == 0 and mf_config["Horse Sound"] then play_sound("mf_horsebounce", (math.random()+math.random(9,10))/10, 0.2) end
 			im.dir = rand_dir()
 			nextx = im.x + im.dir.x*extra.speed*(delta*60)
 			nexty = im.y + im.dir.y*extra.speed*(delta*60)
@@ -70,7 +70,9 @@ local joker = {
   eternal_compat = true,
   perishable_compat = true,
   loc_vars = function(self, info_queue, center)
-    play_sound('mf_lightningstrikesthrice')
+		if mf_config["Horse Sound"] then
+    	play_sound('mf_lightningstrikesthrice')
+		end
     return {
       vars = { center.ability.extra.retriggers }
     }

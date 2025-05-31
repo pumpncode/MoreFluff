@@ -52,6 +52,9 @@ end
 if mf_config["Other Packs"] == nil then
   mf_config["Other Packs"] = true
 end
+if mf_config["Horse Sound"] == nil then
+  mf_config["Horse Sound"] = true
+end
 -- if mf_config["Unfinished"] == nil then
 --   mf_config["Unfinished"] = false
 -- end
@@ -132,10 +135,11 @@ local joker_list = {
   "clownfish",
   "expansion_pack",
   "hollow",
+  "jackofalltrades",
   "jester",
   "lollipop",
   "luckycharm",
-  "monochrome",
+  -- "monochrome", -- Cut.
   "mspaint",
   "philosophical",
   "simplified",
@@ -223,6 +227,7 @@ local joker_list = {
 
   -- busted shit
   "colorem",
+  "farmmergecivilisation",
 }
 
 if not mf_config["Jokers"] then
@@ -1267,6 +1272,8 @@ local morefluffTabs = function() return {
       --   create_toggle({ label = localize("mf_config_unfinished"), ref_table = mf_config, ref_value = "Unfinished" })
       rightside_nodes[#rightside_nodes + 1] =
         create_toggle({ label = localize("mf_config_huger_joker"), ref_table = mf_config, ref_value = "Huger Joker" })
+      rightside_nodes[#rightside_nodes + 1] =
+        create_toggle({ label = localize("mf_config_horse_sound"), ref_table = mf_config, ref_value = "Horse Sound" })
 
       for _, n in pairs(leftside_nodes) do
         n.config.align = "cr"
