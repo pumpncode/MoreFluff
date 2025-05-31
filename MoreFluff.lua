@@ -132,10 +132,11 @@ local joker_list = {
   "clownfish",
   "expansion_pack",
   "hollow",
+  "jackofalltrades",
   "jester",
   "lollipop",
   "luckycharm",
-  "monochrome",
+  -- "monochrome", -- Cut.
   "mspaint",
   "philosophical",
   "simplified",

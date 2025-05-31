@@ -684,6 +684,14 @@ local loc_stuff = {
           "gain {C:blue}#3#{} hands"
         }
       },
+      j_mf_jackofalltrades = {
+        name = "Jack of All Trades",
+        text = {
+          "Each {C:attention}Jack{} held",
+          "in hand gives {C:mult}+#1#{} Mult,",
+          "{C:chips}+#2#{} Chips, and {C:money}$#3#"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
