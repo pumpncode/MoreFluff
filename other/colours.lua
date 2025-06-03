@@ -53,7 +53,7 @@ function init()
       ease_background_colour({ new_colour = G.C.SECONDARY_SET.Colour, special_colour = G.C.BLACK, contrast = 2 })
     end,
     loc_vars = function(self, info_queue, card)
-      return { vars = { card.config.center.config.choose, card.ability.extra } }
+      return { vars = { card.config and card.config.center.config.choose or 1, card.ability and card.ability.extra or 2} }
     end,
     group_key = "k_colour_pack",
   })

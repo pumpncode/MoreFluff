@@ -1,3 +1,13 @@
+if not Kino then
+  return {
+    init = function(self)
+      --this function runs after the file is loaded, but before items are registered
+    end,
+    items = {
+    }
+  }
+end
+
 local joker = {
   name = "I Survive in Farm Merge Civilisation",
   key = "farmmergecivilisation",
