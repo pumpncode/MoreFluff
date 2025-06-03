@@ -226,8 +226,8 @@ local joker_list = {
   -- "selfinsert", -- cut this one for now (its not happening)
 
   -- busted shit
-  "colorem",
-  "farmmergecivilisation",
+  -- "colorem", -- pulled out into cryptid world
+  -- "farmmergecivilisation", -- likewise
 }
 
 if not mf_config["Jokers"] then
