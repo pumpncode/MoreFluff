@@ -34,7 +34,7 @@ local joker = {
         return {
           message = localize('k_plus_spectral'),
           colour = G.C.SECONDARY_SET.Spectral,
-          card = self
+          card = card
         }
       end
     end
@@ -54,7 +54,7 @@ local joker = {
         return {
           message = localize('k_plus_spectral'),
           colour = G.C.SECONDARY_SET.Spectral,
-          card = self
+          card = card
         }
       end
     end
