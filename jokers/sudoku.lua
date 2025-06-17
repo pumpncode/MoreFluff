@@ -33,7 +33,7 @@ local joker = {
       return {
         message = localize('k_reset'),
         colour = G.C.RED,
-        card = self
+        card = card
       }
     end
     if context.individual and context.cardarea == G.play and not context.blueprint and not context.repetition then

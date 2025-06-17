@@ -42,7 +42,7 @@ local joker = {
           colour = G.C.MONEY,
           delay = 0.45, 
           remove = true,
-          card = self
+          card = card
         }
       end
     end
