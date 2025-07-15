@@ -1,3 +1,5 @@
+-- i dont think this file is used anymore?
+
 if not mf_config["Colour Cards"] or not Cryptid then
   return nil
 end
@@ -27,7 +29,7 @@ local joker = {
   },
   loc_vars = function(self, info_queue, center)
     return {
-      vars = { (G.GAME and G.GAME.probabilities.normal or 1), (center and center.ability.extra.odds or 2) }
+      -- vars = { (G.GAME and G.GAME..normal or 1), (center and center.ability.extra.odds or 2) }
     }
   end,
   calculate = function(self, card, context)
@@ -37,7 +39,7 @@ local joker = {
 			and not context.consumeable.beginning_end
 		then
 			if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-				if pseudorandom("colorem") < G.GAME.probabilities.normal / card.ability.extra.odds then
+				-- if pseudorandom("colorem") < G.GAME..normal / card.ability.extra.odds then
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							local cards = copy_card(context.consumeable)

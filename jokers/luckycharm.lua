@@ -23,8 +23,10 @@ local joker = {
     }
   },
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, numerator, demoninator, 'luckycharm_mult')
+    local new_numerator_2, new_denominator_2 = SMODS.get_probability_vars(center, numerator, demoninator, 'luckycharm_money')
     return {
-      vars = {G.GAME.probabilities.normal, center.ability.extra.mult, center.ability.extra.mult_chance, center.ability.extra.money, center.ability.extra.money_chance}
+      vars = {new_numerator, center.ability.extra.mult, new_denominator, center.ability.extra.money, new_denominator_2, new_numerator_2}
     }
   end,
   calculate = function(self, card, context)
@@ -35,7 +37,7 @@ local joker = {
       }
     end
     if context.end_of_round and not context.individual and not context.repetition and not context.blueprint then
-      if pseudorandom('lucky_charm_money') < G.GAME.probabilities.normal/card.ability.extra.money_chance then
+      if SMODS.pseudorandom_probability(card, 'lucky_charm_money', 1, card.ability.extra.money_chance, 'lucky_charm_money') then
         ease_dollars(card.ability.extra.money)
         return {
           message = localize('$')..card.ability.extra.money,
@@ -48,7 +50,7 @@ local joker = {
     end
     
     if context.cardarea == G.jokers and context.joker_main  then
-      if pseudorandom('lucky_charm_mult') < G.GAME.probabilities.normal/card.ability.extra.mult_chance then
+      if SMODS.pseudorandom_probability(card, 'lucky_charm_mult', 1, card.ability.extra.mult_chance, 'lucky_charm_mult') then
         return {
           message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},
           mult_mod = card.ability.extra.mult

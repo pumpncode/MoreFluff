@@ -16,13 +16,14 @@ local joker = {
   perishable_compat = true,
   demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, 1, center.ability.odds, 'cueball')
     return {
-      vars = { G.GAME.probabilities.normal, center.ability.odds }
+      vars = { new_numerator, new_denominator }
     }
   end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and SMODS.has_no_rank(context.other_card) then
-      if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and (pseudorandom('cueball') < G.GAME.probabilities.normal/card.ability.odds) then
+      if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit and (SMODS.pseudorandom_probability(card, 'cueball', 1, card.ability.odds, 'cueball')) then
           G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
           return {
             extra = {focus = card, message = localize('k_plus_rotarot'), func = function()

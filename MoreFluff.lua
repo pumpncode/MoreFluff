@@ -1,18 +1,16 @@
---- STEAMODDED HEADER
---- MOD_NAME: More Fluff
---- MOD_ID: MoreFluff
---- PREFIX: mf
---- MOD_AUTHOR: [notmario, CHECK CREDITS IN MOD TAB]
---- MOD_DESCRIPTION: Back, despite popular demand
---- BADGE_COLOR: 814BA8
---- DEPENDENCIES: [Steamodded>=1.0.0~BETA-0312b]
---- VERSION: 1.5.6
-
 local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
 
 current_mod.optional_features = {
   retrigger_joker = true,
+}
+
+SMODS.Rarity {
+  key = "token",
+  badge_colour = HEX("474747"),
+  loc_txt = {
+    name = "Token"
+  }
 }
 
 local mod_path = SMODS.current_mod.path
@@ -228,6 +226,9 @@ local joker_list = {
   -- busted shit
   -- "colorem", -- pulled out into cryptid world
   -- "farmmergecivilisation", -- likewise
+
+  -- tokens
+  "oopsallfives",
 }
 
 if not mf_config["Jokers"] then

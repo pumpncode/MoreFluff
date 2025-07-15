@@ -18,8 +18,9 @@ local joker = {
   perishable_compat = true,
   demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, 1, center.ability.extra.odds, 'paintcan')
     return {
-      vars = { G.GAME.probabilities.normal, center.ability.extra.odds }
+      vars = { new_numerator, new_denominator }
     }
   end,
   calculate = function(self, card, context)
