@@ -10,5 +10,5 @@
 	"dependencies": [
     "Steamodded(>=1.0.0~BETA-0711a)"
   ],
-	"allow_distribution": true
+	"allow_redistribution": true
 }
