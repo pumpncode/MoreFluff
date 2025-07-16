@@ -23,8 +23,8 @@ local joker = {
     }
   },
   loc_vars = function(self, info_queue, center)
-    local new_numerator, new_denominator = SMODS.get_probability_vars(center, numerator, demoninator, 'luckycharm_mult')
-    local new_numerator_2, new_denominator_2 = SMODS.get_probability_vars(center, numerator, demoninator, 'luckycharm_money')
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, 1, center.ability.extra.mult_chance, 'luckycharm_mult')
+    local new_numerator_2, new_denominator_2 = SMODS.get_probability_vars(center, 1, center.ability.extra.money_chance, 'luckycharm_money')
     return {
       vars = {new_numerator, center.ability.extra.mult, new_denominator, center.ability.extra.money, new_denominator_2, new_numerator_2}
     }
