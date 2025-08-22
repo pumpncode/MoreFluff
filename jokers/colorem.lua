@@ -1,6 +1,6 @@
 -- i dont think this file is used anymore?
 
-if not mf_config["Colour Cards"] or not SMODS.Mods["Cryptid"] then
+if not mf_config["Colour Cards"] or not next(SMODS.find_mod("Cryptid")) then
   return nil
 end
 

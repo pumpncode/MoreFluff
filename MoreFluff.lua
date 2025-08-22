@@ -1,4 +1,4 @@
-local current_mod = SMODS.current_mod
+-- local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
 
 current_mod.optional_features = {
@@ -57,7 +57,7 @@ end
 --   mf_config["Unfinished"] = false
 -- end
 
-if SMODS.Mods["Cryptid"] then
+if next(SMODS.find_mod("Cryptid")) then
   SMODS.load_mod_config(SMODS.Mods.Cryptid)
 end
 
@@ -999,7 +999,7 @@ if mf_config["Achievements"] then
 end
 
 -- cryptid pool additions
-if SMODS.Mods["Cryptid"] then
+if next(SMODS.find_mod("Cryptid")) then
   if Cryptid.aliases then
     local aliases = {
       paul = "basepaul card",

@@ -1,4 +1,4 @@
-if not SMODS.Mods["Cryptid"] or not next(SMODS.find_mod("kino")) then
+if not next(SMODS.find_mod("Cryptid")) or not next(SMODS.find_mod("kino")) then
   return nil
 end
 
