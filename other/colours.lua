@@ -1434,7 +1434,7 @@ function init()
     end,
     requires = { "v_mf_paintroller" },
   })
-  if Cryptid then
+  if SMODS.Mods["Cryptid"] then
     SMODS.Voucher({
       object_type = "Voucher",
       key = "artprogram",

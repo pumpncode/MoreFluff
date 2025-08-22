@@ -57,7 +57,7 @@ end
 --   mf_config["Unfinished"] = false
 -- end
 
-if Cryptid then
+if SMODS.Mods["Cryptid"] then
   SMODS.load_mod_config(SMODS.Mods.Cryptid)
 end
 
@@ -999,7 +999,7 @@ if mf_config["Achievements"] then
 end
 
 -- cryptid pool additions
-if Cryptid then
+if SMODS.Mods["Cryptid"] then
   if Cryptid.aliases then
     local aliases = {
       paul = "basepaul card",

@@ -1,4 +1,4 @@
-if not Cryptid then
+if not SMODS.Mods["Cryptid"] then
   return nil
 end
 local joker = {
