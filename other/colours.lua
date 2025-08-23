@@ -1434,7 +1434,7 @@ function init()
     end,
     requires = { "v_mf_paintroller" },
   })
-  if SMODS.Mods["Cryptid"] then
+  if next(SMODS.find_mod("Cryptid")) then
     SMODS.Voucher({
       object_type = "Voucher",
       key = "artprogram",
