@@ -1,4 +1,4 @@
--- local current_mod = SMODS.current_mod
+local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
 
 current_mod.optional_features = {
