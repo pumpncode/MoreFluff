@@ -653,7 +653,7 @@ function init()
     end,
     use = function(self, card, area, copier)
       local used_tarot = copier or card
-      if pseudorandom("evil_wheel") < G.GAME.probabilities.normal/card.ability.chance then
+      if SMODS.pseudorandom_probability(card, 'rot_wheel', 1, card.ability.chance, 'rot_wheel')  then
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
           local over = false
           local eligible_card = pseudorandom_element(card.eligible_strength_jokers, pseudoseed("evil_wheel_roll"))
@@ -701,9 +701,12 @@ function init()
         info_queue[#info_queue + 1] = thing
         ::wof_loc_continue::
       end
+
+      local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.chance, 'rot_wheel')
+
       return { vars = {
-        G.GAME.probabilities.normal,
-        card.ability.chance
+        new_numerator,
+        new_denominator
       } }
     end
   })

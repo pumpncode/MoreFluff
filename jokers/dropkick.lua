@@ -32,7 +32,7 @@ local joker = {
     if context.setting_blind then
       card.ability.extra.current_triggers = 0
     end
-    if context.after and context.cardarea == G.jokers and next(context.poker_hands['Straight']) then
+    if context.after and context.cardarea == G.jokers and context.poker_hands and next(context.poker_hands['Straight']) then
       card.ability.extra.current_triggers = card.ability.extra.current_triggers + 1
       if card.ability.extra.current_triggers >= 5 then
         check_for_unlock({type = 'mf_dropkick_ten_hands'})

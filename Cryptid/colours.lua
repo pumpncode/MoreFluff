@@ -225,8 +225,9 @@ local colorem = {
     },
   },
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, center.ability.extra.odds, 'identifier')
     return {
-      vars = { (G.GAME and G.GAME.probabilities.normal or 1), (center and center.ability.extra.odds or 2) }
+      vars = { new_numerator, new_denominator }
     }
   end,
   calculate = function(self, card, context)
@@ -236,7 +237,7 @@ local colorem = {
 			and not context.consumeable.beginning_end
 		then
 			if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
-				if pseudorandom("colorem") < G.GAME.probabilities.normal / card.ability.extra.odds then
+				if SMODS.pseudorandom_probability(card, 'colorem', 1, card.ability.extra.odds, 'colorem') then
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							local cards = copy_card(context.consumeable)

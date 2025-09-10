@@ -24,6 +24,7 @@ local joker = {
       "a {C:attention}Three of a Kind"
     },
   },
+  pronouns = "any_all",
   loc_vars = function(self, info_queue, center)
     return {
       vars = { center.ability.extra.x_mult }

@@ -105,11 +105,11 @@ local effect_evals = {
 }
 
 local effect_guards = {
-  handtype = function (context, effect)
+  handtype = function (context, effect, card)
     return context.poker_hands ~= nil and next(context.poker_hands[effect[6]]) 
   end,
-  odds = function (context, effect)
-    return pseudorandom("complexitycreep_odds") < G.GAME.probabilities.normal/effect[6]
+  odds = function (context, effect, card)
+    return SMODS.pseudorandom_probability("complexitycreep_odds", 'seed', 1, effect[6], 'ccreep')
   end,
 }
 
@@ -134,8 +134,13 @@ local joker = {
   loc_vars = function(self, info_queue, center)
     -- info_queue[#info_queue+1] = { key = "cc_plusmult", set="ComplexityCreep", specific_vars = { 4 } }
     for _, effect in pairs(center.ability.effects) do
-      local thunk = effect[8] and localize({key=effect[8], type="variable", vars = { effect[2], effect[4], effect[6], G.GAME.probabilities.normal }})[1] or ""
-      local thunk2 = effect[9] and localize({key=effect[9], type="variable", vars = { effect[2], effect[4], effect[6], G.GAME.probabilities.normal }})[1] or ""
+      local numerator = G.GAME.probabilities.normal
+      local denominator = effect[6]
+      if effect[8] == "cc_mf_odds" then
+        numerator, denominator = SMODS.get_probability_vars(card, numerator, demoninator, 'ccreep')
+      end
+      local thunk = effect[8] and localize({key=effect[8], type="variable", vars = { effect[2], effect[4], denominator, numerator }})[1] or ""
+      local thunk2 = effect[9] and localize({key=effect[9], type="variable", vars = { effect[2], effect[4], denominator, numerator }})[1] or ""
       local cond = effect[8] ~= nil
       info_queue[#info_queue+1] = { key = effect[7] .. (cond and "_if" or ""), set="ComplexityCreep", specific_vars = { effect[2], thunk2, thunk } }
     end
@@ -152,7 +157,7 @@ local joker = {
     for _, effect in pairs(card.ability.effects) do
       if effect[3] == "joker" then
         if context.cardarea == G.jokers and context.joker_main then
-          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          local guard = effect[5] and effect_guards[effect[5]](context, effect, card)
           if not effect[5] then guard = true end
           if guard then
             effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
@@ -160,7 +165,7 @@ local joker = {
         end
       elseif effect[3] == "cardscored" or effect[3] == "firstscored" or effect[3] == "facescored" then
         if context.individual and context.cardarea == G.play then
-          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          local guard = effect[5] and effect_guards[effect[5]](context, effect, card)
           if not effect[5] then guard = true end
           if effect[3] == "firstscored" then
             if context.other_card ~= context.scoring_hand[1] then guard = false end
@@ -174,7 +179,7 @@ local joker = {
         end
       elseif effect[3] == "endofround" then
         if context.end_of_round and not context.individual and not context.repetition then
-          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          local guard = effect[5] and effect_guards[effect[5]](context, effect, card)
           if not effect[5] then guard = true end
           if guard then
             effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
@@ -182,7 +187,7 @@ local joker = {
         end
       elseif effect[3] == "cardsold" then
         if context.selling_card then
-          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          local guard = effect[5] and effect_guards[effect[5]](context, effect, card)
           if not effect[5] then guard = true end
           if guard then
             effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)
@@ -190,7 +195,7 @@ local joker = {
         end
       elseif effect[3] == "shoproll" then
         if context.reroll_shop then
-          local guard = effect[5] and effect_guards[effect[5]](context, effect)
+          local guard = effect[5] and effect_guards[effect[5]](context, effect, card)
           if not effect[5] then guard = true end
           if guard then
             effect_list[#effect_list + 1] = effect_evals[effect[1]](effect)

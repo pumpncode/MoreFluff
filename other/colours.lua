@@ -730,7 +730,7 @@ function init()
       for i = 1, card.ability.val do
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
         play_sound('timpani')
-        local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'j_oops', 'sup')
+        local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'j_mf_oopsallfives', 'sup')
         n_card:add_to_deck()
         n_card:set_edition({negative = true}, true)
         G.jokers:emplace(n_card)
@@ -740,6 +740,7 @@ function init()
       delay(0.6)
     end,
     loc_vars = function(self, info_queue, card)
+      info_queue[#info_queue + 1] = G.P_CENTERS["j_mf_oopsallfives"]
       local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
       return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
     end
@@ -1417,7 +1418,8 @@ function init()
     unlocked = true,
     discovered = true,
     loc_vars = function(self, info_queue)
-      return { vars = { G.GAME.probabilities.normal} }
+      local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, 2, 'paintroller')
+      return { vars = { new_numerator, new_denominator } }
     end,
   })
   SMODS.Voucher({
@@ -1432,7 +1434,7 @@ function init()
     end,
     requires = { "v_mf_paintroller" },
   })
-  if Cryptid then
+  if next(SMODS.find_mod("Cryptid")) then
     SMODS.Voucher({
       object_type = "Voucher",
       key = "artprogram",
@@ -1488,13 +1490,13 @@ function init()
     if _card.ability.set == "Colour" or _card.ability.set == "Shape" then
 
       local base_count = 1
-      if G.GAME.used_vouchers.v_mf_paintroller and pseudorandom('paintroller') < G.GAME.probabilities.normal/2 then
+      if G.GAME.used_vouchers.v_mf_paintroller and SMODS.pseudorandom_probability(G.P_CENTERS["v_mf_paintroller"], 'paintroller', 1, 2, 'paintroller') then
         base_count = base_count + 1
       end
 
       -- it's back !!
       for _, jkr in pairs(SMODS.find_card("j_mf_paintcan")) do
-        if pseudorandom('paintcan') < G.GAME.probabilities.normal/jkr.ability.extra.odds then
+        if SMODS.pseudorandom_probability(jkr, 'paintcan', 1, jkr.ability.extra.odds, 'paintcan') then
           base_count = base_count + 1
         end
       end

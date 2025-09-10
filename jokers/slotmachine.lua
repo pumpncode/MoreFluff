@@ -15,13 +15,14 @@ local joker = {
   eternal_compat = true,
   perishable_compat = true,
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, 1, center.ability.extra.odds, 'slotmachine')
     return {
-      vars = { G.GAME.probabilities.normal, center.ability.extra.odds, center.ability.extra.retriggers }
+      vars = { new_numerator, new_denominator, center.ability.extra.retriggers }
     }
   end,
   calculate = function(self, card, context)
     if context.repetition and context.other_card:get_id() == 7 then
-      if pseudorandom('bigwin') < G.GAME.probabilities.normal/card.ability.extra.odds then
+      if SMODS.pseudorandom_probability(card, 'slotmachine', 1, card.ability.extra.odds, 'slotmachine') then
         return {
           message = localize('k_again_ex'),
           repetitions = card.ability.extra.retriggers,

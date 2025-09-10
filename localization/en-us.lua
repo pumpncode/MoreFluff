@@ -233,7 +233,7 @@ local loc_stuff = {
         text = {
           "{C:green}#1# in #3#{} chance",
           "for {C:mult}+#2#{} Mult",
-          "{C:green}#1# in #5#{} chance",
+          "{C:green}#6# in #5#{} chance",
           "to win {C:money}$#4#",
           "at end of round"
         }
@@ -692,6 +692,14 @@ local loc_stuff = {
           "{C:chips}+#2#{} Chips, and {C:money}$#3#"
         },
       },
+      j_mf_oopsallfives = {
+        name = "Oops! All 5s",
+        text = {
+          "Reduces all {C:attention}listed",
+          "{C:green,E:1,S:1.1}denominators{} by {C:green}1",
+          "{C:inactive}(ex: {C:green}1 in 5{C:inactive} -> {C:green}1 in 4{C:inactive})"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -871,7 +879,7 @@ local loc_stuff = {
         name = "Green",
         text = {
           "Create a {C:dark_edition}Negative{}",
-          "{C:green}Oops! All 6s{} for every {C:attention}#4#{}",
+          "{C:green}Oops! All 5s{} for every {C:attention}#4#{}",
           "rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
           art_credit("Multi")
@@ -1529,7 +1537,7 @@ local loc_stuff = {
       v_mf_paintroller = {
         name = "Paint Roller",
         text = {
-          "{C:green}#1# in 2{} chance to add",
+          "{C:green}#1# in #2#{} chance to add",
           "{C:attention}1{} round to {C:colourcard}Colour Cards{}",
           "when they gain a round"
         },

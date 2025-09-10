@@ -1,4 +1,4 @@
-if not Cryptid then
+if not next(SMODS.find_mod("Cryptid")) then
   return nil
 end
 local joker = {

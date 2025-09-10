@@ -104,7 +104,7 @@ function init()
           card = card,
         }
       end
-      if context.destroy_card and context.destroying_card == card and pseudorandom("brass_card") < G.GAME.probabilities.normal/card.ability.chance then
+      if context.destroy_card and context.destroying_card == card and SMODS.pseudorandom_probability(card, 'brass_card', 1, card.ability.chance, 'brass_card') then
         return {
           remove = true
         }
@@ -112,11 +112,13 @@ function init()
     end,
     loc_vars = function(self, info_queue, card)
       -- info_queue[#info_queue + 1] = G.P_CENTERS.m_mf_yucky
+      
+      local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card and card.ability.chance or self.config.chance, 'brass_card')
   
       return { vars = { 
         card and card.ability.retriggers or self.config.retriggers,
-        card and G.GAME.probabilities.normal,
-        card and card.ability.chance or self.config.chance,
+        new_numerator,
+        new_denominator,
       } }
     end
   })
@@ -223,7 +225,7 @@ function init()
       chance = 2
     },
     calculate = function (self, card, context)
-      if context.destroy_card and context.destroying_card == card and pseudorandom("yucky") < G.GAME.probabilities.normal/card.ability.chance then
+      if context.destroy_card and context.destroying_card == card and SMODS.pseudorandom_probability(card, 'yucky', 1, card.ability.chance, 'yucky_card') then
         return {
           remove = true
         }
@@ -231,10 +233,12 @@ function init()
     end,
     loc_vars = function(self, info_queue, card)
       -- info_queue[#info_queue + 1] = G.P_CENTERS.m_mf_yucky
+      
+      local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card and card.ability.chance or self.config.chance, 'yucky_card')
   
       return { vars = { 
-        card and G.GAME.probabilities.normal,
-        card and card.ability.chance or self.config.chance
+        new_numerator,
+        new_denominator
       } }
     end
   })

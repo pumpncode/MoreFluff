@@ -14,13 +14,14 @@ local joker = {
   perishable_compat = true,
   demicoloncompat = true,
   loc_vars = function(self, info_queue, center)
+    local new_numerator, new_denominator = SMODS.get_probability_vars(center, 1, center.ability.odds, 'thewayhome')
     return {
-      vars = { G.GAME.probabilities.normal, center.ability.odds, center.ability.extra }
+      vars = { new_numerator, new_denominator, center.ability.extra }
     }
   end,
   calculate = function(self, card, context)
     if (context.forcetrigger or context.setting_blind) and not (context.blueprint_card or card).getting_sliced then
-      if pseudorandom('thewayhome') < G.GAME.probabilities.normal/card.ability.odds then
+      if SMODS.pseudorandom_probability(card, 'thewayhome', 1, card.ability.odds, 'thewayhome')  then
         return {
           message = localize("k_correct_ex"),
           func = function()
