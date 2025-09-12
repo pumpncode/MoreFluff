@@ -700,6 +700,15 @@ local loc_stuff = {
           "{C:inactive}(ex: {C:green}1 in 5{C:inactive} -> {C:green}1 in 4{C:inactive})"
         },
       },
+      j_mf_passando = {
+        name = "Passing Balatro in 5 Minutes",
+        text = {
+          "{X:attention,C:white}X2{} Speed",
+          "Creates a {C:dark_edition}Negative{} {C:attention}Diet Cola",
+          "for every {C:attention}2{} Blinds skipped",
+          "{C:inactive}(Currently #1#/#2#)"
+        },
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
