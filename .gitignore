@@ -1,3 +1,4 @@
 *.xcf
 config.lua
 .lovelyignore
+.luarc.json
