@@ -385,7 +385,8 @@ local loc_stuff = {
         name = "Marigold",
         text = {
           "{C:attention}Retriggers{} played and held",
-          "{C:attention}Marigold Cards{} #1# times"
+          "{C:attention}Marigold Cards{} #1# times",
+          art_credit("marigold"),
         },
       },
       j_mf_yuckyrat = { 
