@@ -157,6 +157,7 @@ local joker_list = {
   "blunder",
   "brilliant",
   "broomcloset",
+  "rot_cartomancer",
   "clipart",
   "coupon_catalogue",
   "css",
@@ -177,7 +178,7 @@ local joker_list = {
   "loadeddisk",
   "missingjoker",
   "paintcan",
-  "rot_cartomancer",
+  "passando",
   "sapling",
   "snake",
   "slotmachine",
@@ -1444,49 +1445,71 @@ if success and dpAPI.isVersionCompatible(1) then
   })
 end
 
+local title_screen_list = {
+  "j_mf_triangle",
+  "j_mf_philosophical",
+  "j_mf_basepaul_card",
+  "j_mf_blunder",
+  "j_mf_cba",
+  "j_mf_blahaj",
+  "j_mf_farmmerge",
+  "j_mf_hugejoker",
+  "j_mf_jankman",
+  "j_mf_lessfluff",
+  "j_mf_mspaint",
+  "j_mf_talljoker",
+  "j_mf_unregisteredhypercam",
+  "c_mf_rot_hermit",
+  "c_mf_rot_wheel",
+  "c_mf_pink", -- what if the title screen was pink and yellow
+  "c_mf_yellow",
+}
 
--- -- thank you mr cryptid
--- local g_main_menu = Game.main_menu
--- function Game:main_menu(change_context)
---   local ret = g_main_menu(self, change_context)
---   local newcard = Card(
---     G.title_top.T.x,
---     G.title_top.T.y,
---     G.CARD_W,
---     G.CARD_H,
---     G.P_CARDS.empty,
---     G.P_CENTERS.j_mf_philosophical,
---     { bypass_discovery_center = true }
---   )
---   -- recenter the title
---   G.title_top.T.w = G.title_top.T.w + G.CARD_W * 0.7675 -- uh if i do this again then it gets really big so uh. Manually it is then
---   G.title_top.T.x = G.title_top.T.x - 0.8
---   G.title_top:emplace(newcard)
---   -- make the card look the same way as the title screen Ace of Spades
---   newcard.T.w = newcard.T.w * 1.1 * 1.2
---   newcard.T.h = newcard.T.h * 1.1 * 1.2
---   newcard.no_ui = true
---   newcard.states.visible = false
+-- ugh okay so Whatever i guess this can be like this
+-- ts pmo
+local g_main_menu = Game.main_menu
+function Game:main_menu(change_context)
+  local ret = g_main_menu(self, change_context)
+  local card_key = title_screen_list[math.floor(math.random() * #title_screen_list)]
+  local newcard = Card(
+    G.title_top.T.x,
+    G.title_top.T.y,
+    G.CARD_W,
+    G.CARD_H,
+    G.P_CARDS.empty,
+    G.P_CENTERS[card_key],
+    { bypass_discovery_center = true }
+  )
+  -- recenter the title
+  G.title_top.T.w = G.title_top.T.w + 1.7675 -- uh if i do this again then it gets really big so uh. Manually it is then
+  G.title_top.T.x = G.title_top.T.x - 0.8
+  G.title_top:emplace(newcard)
+  -- make the card look the same way as the title screen Ace of Spades
+  newcard.T.w = newcard.T.w * 1.1 * 1.2
+  newcard.T.h = newcard.T.h * 1.1 * 1.2
+  newcard.no_ui = true
+  newcard:set_sprites(newcard.config.center)
+  newcard.states.visible = false
 
---   G.E_MANAGER:add_event(Event({
---     trigger = "after",
---     delay = 0,
---     blockable = false,
---     blocking = false,
---     func = function()
---       if change_context == "splash" then
---         newcard.states.visible = true
---         newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, true, 2.5)
---       else
---         newcard.states.visible = true
---         newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, nil, 1.2)
---       end
---       return true
---     end,
---   }))
+  G.E_MANAGER:add_event(Event({
+    trigger = "after",
+    delay = 0,
+    blockable = false,
+    blocking = false,
+    func = function()
+      if change_context == "splash" then
+        newcard.states.visible = true
+        newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, true, 2.5)
+      else
+        newcard.states.visible = true
+        newcard:start_materialize({ G.C.WHITE, G.C.WHITE }, nil, 1.2)
+      end
+      return true
+    end,
+  }))
 
---   return ret
--- end
+  return ret
+end
 
 if Balatest then
   assert(SMODS.load_file("other/tests/jokers.lua"))()
