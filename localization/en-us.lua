@@ -710,6 +710,16 @@ local loc_stuff = {
           "{C:inactive}(Currently #1#/#2#)"
         },
       },
+      j_mf_grep = {
+        name = "grep",
+        text = {
+          "If {C:attention}first discard{} of round",
+          "has only {C:attention}1{} card, shuffle",
+          "all cards with {C:attention}matching",
+          "{C:attention}rank or suit{} to",
+          "the top of the {C:dark_edition}deck"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -2203,6 +2213,7 @@ local loc_stuff = {
       k_noted_ex = "Noted!",
       k_equals_tree_three = "=TREE(3)",
       k_correct_ex = "Correct!",
+      k_searched_ex = "Searched!",
       
       k_shape = "Shape?",
       b_shape_cards = "Shape? Cards",

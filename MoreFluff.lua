@@ -203,6 +203,7 @@ local joker_list = {
   "cba",
   "complexitycreep",
   "fleshprison",
+  "grep",
   "hugejoker",
   "hyperjimbo",
   "jankman",
