@@ -1470,7 +1470,8 @@ local title_screen_list = {
 local g_main_menu = Game.main_menu
 function Game:main_menu(change_context)
   local ret = g_main_menu(self, change_context)
-  local card_key = title_screen_list[math.floor(math.random() * #title_screen_list) + 1] -- oh my goodness gracious i forgot that lua is 1 indexed
+  math.randomseed(os.time()) -- Hm... does this break anything?
+  local card_key = title_screen_list[math.random(#title_screen_list)]
   local newcard = Card(
     G.title_top.T.x,
     G.title_top.T.y,
