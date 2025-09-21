@@ -24,7 +24,6 @@ end
 
 Balatest.TestPlay {
   name = "colourcard_tickup",
-  requires = {},
   category = "colour_base",
   consumeables = {"c_mf_black"},
   execute = function()
@@ -38,7 +37,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_fullround",
-  requires = {},
   category = "colour_base",
   consumeables = {"c_mf_pink"},
   execute = function()
@@ -54,7 +52,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_manyrounds",
-  requires = {},
   category = "colour_base",
   consumeables = {"c_mf_pink"},
   execute = function()
@@ -80,7 +77,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_black_one",
-  requires = {},
   category = "colour_black",
   jokers = {"j_joker"},
   consumeables = {"c_mf_black"},
@@ -96,7 +92,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_black_two",
-  requires = {},
   category = "colour_black",
   jokers = {"j_joker","j_joker"},
   consumeables = {"c_mf_black"},
@@ -112,7 +107,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_black_two_doesnt_doubleup",
-  requires = {},
   category = "colour_black",
   jokers = {"j_joker"},
   consumeables = {"c_mf_black"},
@@ -130,7 +124,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_deepblue_one",
-  requires = {},
   category = "colour_deepblue",
   consumeables = {"c_mf_deepblue"},
 
@@ -162,7 +155,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_deepblue_four",
-  requires = {},
   category = "colour_deepblue",
   consumeables = {"c_mf_deepblue"},
 
@@ -199,7 +191,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_crimson_one",
-  requires = {},
   category = "colour_crimson",
   consumeables = {"c_mf_crimson"},
   execute = function()
@@ -215,7 +206,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_crimson_two",
-  requires = {},
   category = "colour_crimson",
   consumeables = {"c_mf_crimson"},
   execute = function()
@@ -234,7 +224,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_seaweed_one",
-  requires = {},
   category = "colour_seaweed",
   consumeables = {"c_mf_seaweed"},
 
@@ -266,7 +255,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_seaweed_four",
-  requires = {},
   category = "colour_seaweed",
   consumeables = {"c_mf_seaweed"},
 
@@ -303,7 +291,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_brown_one",
-  requires = {},
   category = "colour_brown",
   consumeables = {"c_mf_brown"},
   dollars = 0,
@@ -320,7 +307,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_brown_three",
-  requires = {},
   category = "colour_brown",
   consumeables = {"c_mf_brown"},
   dollars = 0,
@@ -339,7 +325,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_grey_one",
-  requires = {},
   category = "colour_grey",
   consumeables = {"c_mf_grey"},
   execute = function()
@@ -355,7 +340,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_grey_two",
-  requires = {},
   category = "colour_grey",
   consumeables = {"c_mf_grey"},
   execute = function()
@@ -374,7 +358,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_silver_one",
-  requires = {},
   category = "colour_silver",
   consumeables = {"c_mf_silver"},
   execute = function()
@@ -390,7 +373,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_silver_two",
-  requires = {},
   category = "colour_silver",
   consumeables = {"c_mf_silver"},
   execute = function()
@@ -409,7 +391,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_white_one",
-  requires = {},
   category = "colour_white",
   consumeables = {"c_mf_white"},
   execute = function()
@@ -426,7 +407,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_white_two",
-  requires = {},
   category = "colour_white",
   consumeables = {"c_mf_white"},
   execute = function()
@@ -450,7 +430,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_red_one",
-  requires = {},
   category = "colour_red",
   consumeables = {"c_mf_red"},
 
@@ -482,7 +461,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_red_four",
-  requires = {},
   category = "colour_red",
   consumeables = {"c_mf_red"},
 
@@ -519,7 +497,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_orange_one",
-  requires = {},
   category = "colour_orange",
   consumeables = {"c_mf_orange"},
 
@@ -551,7 +528,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_orange_four",
-  requires = {},
   category = "colour_orange",
   consumeables = {"c_mf_orange"},
 
@@ -588,7 +564,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_yellow_one",
-  requires = {},
   category = "colour_yellow",
   consumeables = {"c_mf_yellow"},
   execute = function()
@@ -603,7 +578,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_yellow_two",
-  requires = {},
   category = "colour_yellow",
   consumeables = {"c_mf_yellow"},
   execute = function()
@@ -620,7 +594,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_green_one",
-  requires = {},
   category = "colour_green",
   consumeables = {"c_mf_green"},
   execute = function()
@@ -630,13 +603,12 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_eq(#G.jokers.cards, 1)
-    Balatest.assert(G.jokers.cards[1].config.center.key == "j_oops")
+    Balatest.assert(G.jokers.cards[1].config.center.key == "j_mf_oopsallfives")
   end
 }
 
 Balatest.TestPlay {
   name = "colourcard_green_two",
-  requires = {},
   category = "colour_green",
   consumeables = {"c_mf_green"},
   execute = function()
@@ -646,8 +618,8 @@ Balatest.TestPlay {
   end,
   assert = function()
     Balatest.assert_eq(#G.jokers.cards, 2)
-    Balatest.assert(G.jokers.cards[1].config.center.key == "j_oops")
-    Balatest.assert(G.jokers.cards[2].config.center.key == "j_oops")
+    Balatest.assert(G.jokers.cards[1].config.center.key == "j_mf_oopsallfives")
+    Balatest.assert(G.jokers.cards[2].config.center.key == "j_mf_oopsallfives")
   end
 }
 
@@ -655,7 +627,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_blue_one",
-  requires = {},
   category = "colour_blue",
   consumeables = {"c_mf_blue"},
   execute = function()
@@ -672,7 +643,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_blue_two",
-  requires = {},
   category = "colour_blue",
   consumeables = {"c_mf_blue"},
   execute = function()
@@ -694,7 +664,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_lilac_one",
-  requires = {},
   category = "colour_lilac",
   consumeables = {"c_mf_lilac"},
   execute = function()
@@ -711,7 +680,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_lilac_two",
-  requires = {},
   category = "colour_lilac",
   consumeables = {"c_mf_lilac"},
   execute = function()
@@ -733,7 +701,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_pink_one",
-  requires = {},
   category = "colour_pink",
   consumeables = {"c_mf_pink"},
   execute = function()
@@ -754,7 +721,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_pink_two",
-  requires = {},
   category = "colour_pink",
   consumeables = {"c_mf_pink"},
   execute = function()
@@ -775,7 +741,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_peach_one",
-  requires = {},
   category = "colour_peach",
   consumeables = {"c_mf_peach"},
   execute = function()
@@ -792,7 +757,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_peach_two",
-  requires = {},
   category = "colour_peach",
   consumeables = {"c_mf_peach"},
   execute = function()
@@ -814,7 +778,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_gold_one",
-  requires = {},
   category = "colour_gold",
   consumeables = {"c_mf_new_gold"},
   execute = function()
@@ -831,7 +794,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "colourcard_gold_two",
-  requires = {},
   category = "colour_gold",
   consumeables = {"c_mf_new_gold"},
   execute = function()

@@ -18,7 +18,6 @@ end
 --#region All I Can't Do
 Balatest.TestPlay {
   name = "allicantdo_debuffs_hand",
-  requires = {},
   category = "allicantdo",
 
   jokers = {"j_mf_allicantdo"},
@@ -34,7 +33,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "allicantdo_one_high_card",
-  requires = {},
   category = "allicantdo",
 
   jokers = {"j_mf_allicantdo"},
@@ -49,7 +47,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "allicantdo_five_high_cards",
-  requires = {},
   category = "allicantdo",
 
   jokers = {"j_mf_allicantdo"},
@@ -64,7 +61,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "allicantdo_straight_flush",
-  requires = {},
   category = "allicantdo",
 
   jokers = {"j_mf_allicantdo"},
@@ -79,7 +75,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "allicantdo_scaling",
-  requires = {},
   category = "allicantdo",
 
   jokers = {"j_mf_allicantdo"},
@@ -97,7 +92,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "badlegaldefence_smallblind",
-  requires = {},
   category = "badlegaldefence",
 
   jokers = {"j_mf_badlegaldefence"},
@@ -110,7 +104,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "badlegaldefence_bossblind",
-  requires = {},
   category = "badlegaldefence",
 
   jokers = {"j_mf_badlegaldefence"},
@@ -125,7 +118,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "badlegaldefence_no_overflow",
-  requires = {},
   category = "badlegaldefence",
 
   jokers = {"j_mf_badlegaldefence"},
@@ -144,7 +136,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "basepaul_not_paul",
-  requires = {},
   category = "basepaulcard",
 
   jokers = {"j_mf_basepaul_card"},
@@ -160,7 +151,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "basepaul_paul",
-  requires = {},
   category = "basepaulcard",
 
   jokers = {"j_mf_basepaul_card"},
@@ -176,7 +166,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "basepaul_long_name",
-  requires = {},
   category = "basepaulcard",
 
   jokers = {"j_mf_basepaul_card"},
@@ -194,7 +183,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bladedance_functionality",
-  requires = {},
   category = "bladedance",
 
   jokers = {"j_mf_bladedance"},
@@ -219,7 +207,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "blahaj_swaps_chips_and_mult",
-  requires = {},
   category = "blahaj",
 
   jokers = {"j_joker", "j_mf_blahaj", "j_joker", },
@@ -235,7 +222,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "blasphemy_functionality",
-  requires = {},
   category = "blasphemy",
 
   jokers = {"j_mf_blasphemy"},
@@ -252,7 +238,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_one_heart",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -267,7 +252,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_hearts_flush",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -282,7 +266,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_one_spade",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -297,7 +280,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_one_club",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -312,7 +294,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_one_diamond",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -327,7 +308,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bloodpact_sneaky_spade",
-  requires = {},
   category = "bloodpact",
 
   jokers = {"j_mf_bloodpact"},
@@ -344,7 +324,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "blunder_autoselect",
-  requires = {},
   category = "blunder",
 
   jokers = {"j_mf_blunder"},
@@ -362,7 +341,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "blunder_xmult",
-  requires = {},
   category = "blunder",
 
   jokers = {"j_mf_blunder"},
@@ -384,7 +362,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bookmove_no_rounds",
-  requires = {},
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
@@ -400,7 +377,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bookmove_two_rounds",
-  requires = {},
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
@@ -418,7 +394,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bookmove_three_rounds",
-  requires = {},
   category = "bookmove",
 
   jokers = {"j_mf_bookmove"},
@@ -438,7 +413,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bookmove_no_overflow",
-  requires = {},
   category = "bookmove",
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker","j_joker"},
@@ -458,7 +432,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bookmove_fills_five",
-  requires = {},
   category = "bookmove",
 
   jokers = {"j_mf_bookmove","j_joker","j_joker","j_joker"},
@@ -480,7 +453,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bowlingball_three_high",
-  requires = {},
   category = "bowlingball",
 
   jokers = {"j_mf_bowlingball"},
@@ -495,7 +467,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "bowlingball_four_threes",
-  requires = {},
   category = "bowlingball",
 
   jokers = {"j_mf_bowlingball"},
@@ -512,7 +483,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "brassjoker_no_destroyed",
-  requires = {},
   category = "brassjoker",
 
   jokers = {"j_mf_brass", "j_joker"},
@@ -527,7 +497,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "brassjoker_four_brass_none_destroyed",
-  requires = {},
   category = "brassjoker",
 
   jokers = {"j_mf_brass", "j_joker"},
@@ -555,7 +524,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "brassjoker_four_brass_all_destroyed",
-  requires = {},
   category = "brassjoker",
 
   jokers = {"j_mf_brass", "j_joker"},
@@ -585,7 +553,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "brilliant_one_hand",
-  requires = {},
   category = "brilliant",
 
   jokers = {"j_mf_brilliant"},
@@ -600,7 +567,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "brilliant_two_hands",
-  requires = {},
   category = "brilliant",
 
   jokers = {"j_mf_brilliant"},
@@ -618,7 +584,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "broomcloset_default",
-  requires = {},
   category = "broomcloset",
 
   jokers = {"j_mf_broomcloset"},
@@ -633,7 +598,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "broomcloset_purchase",
-  requires = {},
   category = "broomcloset",
 
   jokers = {"j_mf_broomcloset"},
@@ -658,7 +622,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "broomcloset_purchase_reset",
-  requires = {},
   category = "broomcloset",
 
   jokers = {"j_mf_broomcloset"},
@@ -686,7 +649,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cba_no_others",
-  requires = {},
   category = "cba",
 
   jokers = {"j_mf_cba"},
@@ -701,7 +663,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cba_no_editions",
-  requires = {},
   category = "cba",
 
   jokers = {"j_mf_cba", "j_joker"},
@@ -716,7 +677,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cba_edition_right",
-  requires = {},
   category = "cba",
 
   jokers = {"j_mf_cba", { id = 'j_joker', edition = 'foil' }},
@@ -731,7 +691,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cba_edition_left",
-  requires = {},
   category = "cba",
 
   jokers = {{ id = 'j_joker', edition = 'foil' }, "j_mf_cba"},
@@ -746,7 +705,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cba_two_editions",
-  requires = {},
   category = "cba",
 
   jokers = {{ id = 'j_joker', edition = 'foil' }, "j_mf_cba", { id = 'j_mf_jester', edition = 'foil' }},
@@ -763,7 +721,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "clipart_creates",
-  requires = {},
   category = "clipart",
 
   jokers = {"j_mf_clipart"},
@@ -779,7 +736,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "clownfish_unenhanced",
-  requires = {},
   category = "clownfish",
 
   jokers = {"j_mf_clownfish"},
@@ -794,7 +750,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "clownfish_one_enhanced",
-  requires = {},
   category = "clownfish",
 
   jokers = {"j_mf_clownfish"},
@@ -812,7 +767,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "clownfish_five_enhanced",
-  requires = {},
   category = "clownfish",
 
   jokers = {"j_mf_clownfish"},
@@ -840,7 +794,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "complexitycreep_initial_effect",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -853,7 +806,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_grows",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -867,7 +819,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_plusmult",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -882,7 +833,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_pluschips",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -897,7 +847,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_xmult",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -912,7 +861,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_xchips",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -927,7 +875,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_emult",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_joker","j_mf_complexitycreep"},
@@ -944,7 +891,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_echips",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -959,7 +905,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_dollars",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -976,7 +921,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_swapchipmult",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep","j_joker"},
@@ -991,7 +935,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_createtarot",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1007,7 +950,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_createplanet",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1023,7 +965,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_copyconsumeable",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1040,7 +981,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_copyconsumeable_empty",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1056,7 +996,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "complexitycreep_handtype_off",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1073,7 +1012,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_handtype_on",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1090,7 +1028,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_odds_off",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1108,7 +1045,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_odds_on",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1127,7 +1063,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "complexitycreep_cardscored_one",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1144,7 +1079,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_cardscored_two",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1161,7 +1095,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_cardscored_one_fake",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1178,7 +1111,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_firstcard",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1195,7 +1127,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_facecard_one",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1212,7 +1143,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_facecard_two",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1229,7 +1159,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_facecard_none",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1246,7 +1175,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_end_round",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1263,7 +1191,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_cardsold",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep", "j_joker"},
@@ -1281,7 +1208,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "complexitycreep_shoproll",
-  requires = {},
   category = "complexitycreep",
 
   jokers = {"j_mf_complexitycreep"},
@@ -1306,7 +1232,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "couponcatalogue_no_vouchers",
-  requires = {},
   category = "couponcatalogue",
 
   jokers = {"j_mf_coupon_catalogue"},
@@ -1321,7 +1246,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "couponcatalogue_one_voucher",
-  requires = {},
   category = "couponcatalogue",
 
   jokers = {"j_mf_coupon_catalogue"},
@@ -1344,7 +1268,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "couponcatalogue_three_vouchers",
-  requires = {},
   category = "couponcatalogue",
 
   jokers = {"j_mf_coupon_catalogue"},
@@ -1378,7 +1301,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "css_high_card",
-  requires = {},
   category = "css",
 
   jokers = {"j_mf_css"},
@@ -1392,7 +1314,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "css_flush",
-  requires = {},
   category = "css",
 
   jokers = {"j_mf_css"},
@@ -1406,7 +1327,6 @@ Balatest.TestPlay {
 }
 Balatest.TestPlay {
   name = "css_no_overflow",
-  requires = {},
   category = "css",
 
   jokers = {"j_mf_css"},
@@ -1424,7 +1344,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cueball_ranked_card",
-  requires = {},
   category = "cueball",
 
   jokers = {"j_mf_cueball"},
@@ -1439,7 +1358,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cueball_stone_rigged_off",
-  requires = {},
   category = "cueball",
 
   jokers = {"j_mf_cueball"},
@@ -1458,7 +1376,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cueball_stone_rigged_on",
-  requires = {},
   category = "cueball",
 
   jokers = {"j_mf_cueball"},
@@ -1477,7 +1394,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cueball_two_stones_rigged_on",
-  requires = {},
   category = "cueball",
 
   jokers = {"j_mf_cueball"},
@@ -1500,7 +1416,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "dramatic_entrance_first_hand",
-  requires = {},
   category = "dramaticentrance",
 
   jokers = {"j_mf_dramaticentrance"},
@@ -1515,7 +1430,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "dramatic_entrance_second_hand",
-  requires = {},
   category = "dramaticentrance",
 
   jokers = {"j_mf_dramaticentrance"},
@@ -1533,7 +1447,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "dropkick_non_straight",
-  requires = {},
   category = "dropkick",
 
   jokers = {"j_mf_dropkick"},
@@ -1550,7 +1463,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "dropkick_straight",
-  requires = {},
   category = "dropkick",
 
   jokers = {"j_mf_dropkick"},
@@ -1567,7 +1479,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "dropkick_several_straights",
-  requires = {},
   category = "dropkick",
 
   jokers = {"j_mf_dropkick"},
@@ -1591,7 +1502,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "expansionpack_creates",
-  requires = {},
   category = "expansionpack",
 
   jokers = {"j_mf_expansion_pack"},
@@ -1605,7 +1515,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "expansionpack_needs_room",
-  requires = {},
   category = "expansionpack",
 
   jokers = {"j_mf_expansion_pack", "j_joker","j_joker","j_joker","j_joker"},
@@ -1621,7 +1530,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "farmmerge_junk",
-  requires = {},
   category = "farmmerge",
 
   jokers = {"j_mf_farmmerge"},
@@ -1645,7 +1553,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "farmmerge_merges",
-  requires = {},
   category = "farmmerge",
 
   jokers = {"j_mf_farmmerge"},
@@ -1664,7 +1571,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "farmmerge_merges_modifications",
-  requires = {},
   category = "farmmerge",
 
   jokers = {"j_mf_farmmerge"},
@@ -1699,7 +1605,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "farmmerge_merges_priority",
-  requires = {},
   category = "farmmerge",
 
   jokers = {"j_mf_farmmerge"},
@@ -1748,7 +1653,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "fleshprison_smallblind",
-  requires = {},
   category = "fleshprison",
 
   jokers = {"j_mf_fleshprison"},
@@ -1764,7 +1668,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "fleshprison_bossblind",
-  requires = {},
   category = "fleshprison",
 
   jokers = {"j_mf_fleshprison", "j_cavendish", "j_cavendish", "j_cavendish", "j_cavendish"},
@@ -1786,7 +1689,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "flintandsteel_no_trigger",
-  requires = {},
   category = "flintandsteel",
 
   jokers = {"j_mf_flintandsteel"},
@@ -1802,7 +1704,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "flintandsteel_one_trigger",
-  requires = {},
   category = "flintandsteel",
 
   jokers = {"j_mf_flintandsteel"},
@@ -1824,7 +1725,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "flintandsteel_mixed_trigger",
-  requires = {},
   category = "flintandsteel",
 
   jokers = {"j_mf_flintandsteel"},
@@ -1844,11 +1744,77 @@ Balatest.TestPlay {
   end
 }
 
+-- #region Friend Inside Me
+
+Balatest.TestPlay {
+  name = "friendinsideme_common",
+  category = "friendinsideme",
+
+  jokers = {"j_mf_friendinsideme", "j_joker"},
+
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.jokers.cards, 2)
+    Balatest.assert_eq(G.jokers.cards[2].config.center.rarity, 2)
+  end
+}
+
+Balatest.TestPlay {
+  name = "friendinsideme_uncommon",
+  category = "friendinsideme",
+
+  jokers = {"j_mf_friendinsideme", "j_oops"},
+
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.jokers.cards, 2)
+    Balatest.assert_eq(G.jokers.cards[2].config.center.rarity, 3)
+  end
+}
+
+Balatest.TestPlay {
+  name = "friendinsideme_rare",
+  category = "friendinsideme",
+
+  jokers = {"j_mf_friendinsideme", "j_baron"},
+
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.jokers.cards, 1)
+  end
+}
+
+Balatest.TestPlay {
+  name = "friendinsideme_twosells",
+  category = "friendinsideme",
+
+  jokers = {"j_mf_friendinsideme", "j_joker", "j_joker"},
+
+  execute = function()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+    Balatest.q(function() G.FUNCS.sell_card { config = { ref_table = G.jokers.cards[2] } } end)
+    Balatest.wait_for_input()
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.jokers.cards, 2)
+    Balatest.assert_eq(G.jokers.cards[2].config.center.rarity, 2)
+  end
+}
+
 -- #region Gemstone Joker
 
 Balatest.TestPlay {
   name = "gemstone_no_gemstones",
-  requires = {},
   category = "gemstonejoker",
   dollars = 0,
   jokers = {"j_mf_gemstonejoker"},
@@ -1863,7 +1829,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "gemstone_four_gemstones",
-  requires = {},
   category = "gemstonejoker",
   dollars = 0,
   jokers = {"j_mf_gemstonejoker"},
@@ -1889,7 +1854,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "globe_one_reroll",
-  requires = {},
   category = "globe",
   dollars = 99999,
   jokers = {"j_mf_globe"},
@@ -1906,7 +1870,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "globe_three_rerolls",
-  requires = {},
   category = "globe",
   dollars = 99999,
   jokers = {"j_mf_globe"},
@@ -1927,7 +1890,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "globe_no_overflow", -- crustulum experience...
-  requires = {},
   category = "globe",
   dollars = 99999,
   jokers = {"j_mf_globe"},
@@ -1973,7 +1935,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "golden_carrot_one_hand",
-  requires = {},
   category = "goldencarrot",
   dollars = 0,
   jokers = {"j_mf_goldencarrot"},
@@ -1988,7 +1949,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "golden_carrot_five_hands",
-  requires = {},
   category = "goldencarrot",
   dollars = 0,
   jokers = {"j_mf_goldencarrot"},
@@ -2007,7 +1967,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "golden_carrot_eaten",
-  requires = {},
   category = "goldencarrot",
   dollars = 0,
   jokers = {"j_mf_goldencarrot"},
@@ -2032,7 +1991,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hall_of_mirrors_one_six",
-  requires = {},
   category = "hallofmirrors",
   jokers = {"j_mf_hallofmirrors"},
   execute = function()
@@ -2045,7 +2003,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hall_of_mirrors_four_sixes",
-  requires = {},
   category = "hallofmirrors",
   jokers = {"j_mf_hallofmirrors"},
   execute = function()
@@ -2061,7 +2018,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hall_of_mirrors_reset",
-  requires = {},
   category = "hallofmirrors",
   jokers = {"j_mf_hallofmirrors"},
   execute = function()
@@ -2080,7 +2036,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hollow_joker_eight_hand_size",
-  requires = {},
   category = "hollow",
   jokers = {"j_mf_hollow"},
 
@@ -2106,7 +2061,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hollow_joker_two_hand_size",
-  requires = {},
   category = "hollow",
   jokers = {"j_mf_hollow"},
 
@@ -2128,7 +2082,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "huge_joker_functionality",
-  requires = {},
   category = "hugejoker",
   jokers = {"j_mf_hugejoker"},
 
@@ -2145,7 +2098,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hyper_beam_functionality",
-  requires = {},
   category = "hyperbeam",
   jokers = {"j_mf_hyperbeam"},
 
@@ -2162,7 +2114,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hyperjimbo_five_cards",
-  requires = {},
   category = "hyperjimbo",
 
   jokers = {"j_mf_hyperjimbo"},
@@ -2176,7 +2127,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hyperjimbo_two_pair",
-  requires = {},
   category = "hyperjimbo",
 
   jokers = {"j_mf_hyperjimbo"},
@@ -2190,7 +2140,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hyperjimbo_four_of_a_kind",
-  requires = {},
   category = "hyperjimbo",
 
   jokers = {"j_mf_hyperjimbo"},
@@ -2206,7 +2155,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "impostor_no_reds",
-  requires = {},
   category = "impostor",
 
   jokers = {"j_mf_impostor"},
@@ -2220,7 +2168,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "impostor_one_red",
-  requires = {},
   category = "impostor",
 
   jokers = {"j_mf_impostor"},
@@ -2234,7 +2181,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "impostor_two_red",
-  requires = {},
   category = "impostor",
 
   jokers = {"j_mf_impostor"},
@@ -2248,7 +2194,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "impostor_sneaky_red",
-  requires = {},
   category = "impostor",
 
   jokers = {"j_mf_impostor"},
@@ -2262,7 +2207,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "impostor_sneaky_two_red",
-  requires = {},
   category = "impostor",
 
   jokers = {"j_mf_impostor"},
@@ -2274,11 +2218,45 @@ Balatest.TestPlay {
   end,
 }
 
+-- #region Jack of All Trades
+
+Balatest.TestPlay {
+  name = "joat_scores",
+  category = "joat",
+
+  jokers = {"j_mf_jackofalltrades"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( (16 + 10 * 4) * (1 + 2 * 4) )
+    Balatest.assert_eq(G.GAME.dollars, 4)
+  end,
+}
+
+Balatest.TestPlay {
+  name = "joat_nojacks",
+  category = "joat",
+  
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  jokers = {"j_mf_jackofalltrades"},
+  execute = function()
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips( 16 )
+    Balatest.assert_eq(G.GAME.dollars, 0)
+  end,
+}
+
 -- #region Jankman
 
 Balatest.TestPlay {
   name = "jankman_solo",
-  requires = {},
   category = "jankman",
 
   jokers = {"j_mf_jankman"},
@@ -2292,7 +2270,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "jankman_unmodded",
-  requires = {},
   category = "jankman",
 
   jokers = {"j_mf_jankman","j_joker","j_joker","j_joker","j_joker"},
@@ -2306,7 +2283,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "jankman_modded",
-  requires = {},
   category = "jankman",
 
   jokers = {"j_mf_jankman","j_mf_globe","j_mf_globe","j_mf_globe","j_mf_globe"},
@@ -2320,7 +2296,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "jankman_love_that_janker",
-  requires = {},
   category = "jankman",
 
   jokers = {"j_mf_jankman","j_mf_jankman","j_mf_jankman","j_mf_jankman","j_mf_jankman"},
@@ -2336,7 +2311,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "jester_chips",
-  requires = {},
   category = "jester",
 
   jokers = {"j_mf_jester"},
@@ -2352,7 +2326,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "junkmail_adds_correctly_priced_voucher",
-  requires = {},
   category = "jester",
 
   dollars = 15,
@@ -2373,7 +2346,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lessfluff_vanilla",
-  requires = {},
   category = "lessfluff",
 
   jokers = {"j_mf_lessfluff", "j_joker", "j_joker"},
@@ -2387,7 +2359,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lessfluff_modded",
-  requires = {},
   category = "lessfluff",
 
   jokers = {"j_mf_lessfluff", "j_mf_jester", "j_mf_jester"},
@@ -2401,7 +2372,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lessfluff_mixed",
-  requires = {},
   category = "lessfluff",
 
   jokers = {"j_joker", "j_joker", "j_mf_lessfluff", "j_mf_jester", "j_mf_jester"},
@@ -2413,11 +2383,30 @@ Balatest.TestPlay {
   end,
 }
 
+-- #region Lightning Strikes Thrice
+Balatest.TestPlay {
+  name = "lightningstrikesthrice_retriggers_purple_seal",
+  category = "lightningstrikesthrice",
+
+  jokers = {"j_mf_lightningstrikesthrice"},
+  consumeables = {"c_medium"},
+  vouchers = {"v_crystal_ball"},
+
+  execute = function()
+    Balatest.highlight { '2S' }
+    Balatest.use(G.consumeables.cards[1])
+    Balatest.wait_for_input()
+    Balatest.discard { '2S' }
+  end,
+  assert = function()
+    Balatest.assert_eq(#G.consumeables.cards, 3)
+  end,
+}
+
 -- #region Loaded Disk
 
 Balatest.TestPlay {
   name = "loadeddisk_sell",
-  requires = {},
   category = "loadeddisk",
 
   jokers = {"j_mf_loadeddisk"},
@@ -2434,7 +2423,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "loadeddisk_sell_one_remaining",
-  requires = {},
   category = "loadeddisk",
 
   jokers = {"j_mf_loadeddisk"},
@@ -2452,7 +2440,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "loadeddisk_sell_no_slots",
-  requires = {},
   category = "loadeddisk",
 
   jokers = {"j_mf_loadeddisk"},
@@ -2472,7 +2459,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lollipop_base_x_mult",
-  requires = {},
   category = "lollipop",
 
   jokers = {"j_mf_lollipop"},
@@ -2486,7 +2472,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lollipop_two_rounds_after",
-  requires = {},
   category = "lollipop",
 
   jokers = {"j_mf_lollipop"},
@@ -2503,7 +2488,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lollipop_eaten",
-  requires = {},
   category = "lollipop",
 
   jokers = {"j_mf_lollipop"},
@@ -2526,7 +2510,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lucky_charm_nope_mult",
-  requires = {},
   category = "luckycharm",
   dollars = 0,
   jokers = {"j_mf_luckycharm"},
@@ -2542,7 +2525,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lucky_charm_nope_cash",
-  requires = {},
   category = "luckycharm",
   dollars = 0,
   jokers = {"j_mf_luckycharm"},
@@ -2558,7 +2540,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "lucky_charm_yep",
-  requires = {},
   category = "luckycharm",
   dollars = 0,
   jokers = {"j_mf_luckycharm"},
@@ -2576,7 +2557,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "marigold_doesnt_retrigger_not_marigold",
-  requires = {},
   category = "marigold",
   dollars = 0,
   jokers = {"j_mf_marigold", "j_photograph"},
@@ -2594,7 +2574,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "marigold_retriggers_marigold",
-  requires = {},
   category = "marigold",
   dollars = 0,
   jokers = {"j_mf_marigold", "j_photograph"},
@@ -2616,7 +2595,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_base_score",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   execute = function()
@@ -2629,7 +2607,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_bunch_of_junk",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2645,7 +2622,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_red_flush",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2659,7 +2635,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_black_flush",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2673,7 +2648,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_red_black",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2691,7 +2665,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_black_red",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2709,7 +2682,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mashup_album_persists",
-  requires = {},
   category = "mashupalbum",
   jokers = {"j_mf_mashupalbum"},
   blind = "bl_wall",
@@ -2732,7 +2704,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "missing_joker_transforms",
-  requires = {},
   category = "missingjoker",
   jokers = {"j_mf_missingjoker"},
   execute = function()
@@ -2744,7 +2715,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "missing_joker_reverts",
-  requires = {},
   category = "missingjoker",
   jokers = {"j_mf_missingjoker"},
   execute = function()
@@ -2760,7 +2730,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "monochrome_joker_one_round",
-  requires = {},
   category = "monochrome",
   jokers = {"j_mf_monochrome"},
   execute = function()
@@ -2773,7 +2742,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "monochrome_joker_three_rounds",
-  requires = {},
   category = "monochrome",
   jokers = {"j_mf_monochrome"},
 
@@ -2789,7 +2757,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "monochrome_joker_resets_rounds",
-  requires = {},
   category = "monochrome",
   jokers = {"j_mf_monochrome"},
 
@@ -2818,7 +2785,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mspaint_joker_initial_handsize",
-  requires = {},
   category = "mspaint",
   jokers = {"j_mf_mspaint"},
 
@@ -2831,7 +2797,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mspaint_joker_second_hand",
-  requires = {},
   category = "mspaint",
   jokers = {"j_mf_mspaint"},
 
@@ -2845,7 +2810,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "mspaint_joker_goes_back_up",
-  requires = {},
   category = "mspaint",
   jokers = {"j_mf_mspaint"},
 
@@ -2858,11 +2822,172 @@ Balatest.TestPlay {
   end,
 }
 
+-- #region One Slip Too Late
+-- 
+Balatest.TestPlay {
+  name = "onesliptoolate_nevertriggers",
+  category = "onesliptoolate",
+  jokers = {"j_mf_onesliptoolate"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 5)
+  end,
+}
+Balatest.TestPlay {
+  name = "onesliptoolate_triggersontwo",
+  category = "onesliptoolate",
+  jokers = {"j_mf_onesliptoolate"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS', 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 1 + 32 * 4)
+  end,
+}
+Balatest.TestPlay {
+  name = "onesliptoolate_triggersonthree",
+  category = "onesliptoolate",
+  jokers = {"j_mf_onesliptoolate"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS', 'AS', 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 2 + 63 * 9)
+  end,
+}
+Balatest.TestPlay {
+  name = "onesliptoolate_triggersonfour",
+  category = "onesliptoolate",
+  jokers = {"j_mf_onesliptoolate"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS', 'AS', 'AS', 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 3 + 104 * 28)
+  end,
+}
+Balatest.TestPlay {
+  name = "onesliptoolate_triggersonfive",
+  category = "onesliptoolate",
+  jokers = {"j_mf_onesliptoolate"},
+  deck = { cards = { 
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+    { r = 'A', s = 'S' },
+  } },
+
+  execute = function()
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS' }
+    Balatest.play_hand { 'AS', 'AS', 'AS', 'AS', 'AS' }
+  end,
+  assert = function()
+    Balatest.assert_chips(16 * 4 + 215 * 80)
+  end,
+}
+
 -- #region Paint Can
 
 Balatest.TestPlay {
   name = "paintcan_one_rigged_off",
-  requires = {},
   category = "paintcan",
   jokers = {"j_mf_paintcan"},
   consumeables = {"c_mf_black"},
@@ -2879,7 +3004,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "paintcan_one_rigged_on",
-  requires = {},
   category = "paintcan",
   jokers = {"j_mf_paintcan"},
   consumeables = {"c_mf_black"},
@@ -2896,7 +3020,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "paintcan_three_rigged_on",
-  requires = {},
   category = "paintcan",
   jokers = {"j_mf_paintcan","j_mf_paintcan","j_mf_paintcan"},
   consumeables = {"c_mf_black"},
@@ -2916,7 +3039,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "philosophical_joker_slots",
-  requires = {},
   category = "philosophical",
   jokers = {"j_mf_philosophical"},
 
@@ -2929,7 +3051,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "philosophical_joker_sell",
-  requires = {},
   category = "philosophical",
   jokers = {"j_mf_philosophical"},
 
@@ -2944,7 +3065,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "philosophical_buy_with_full_slots",
-  requires = {},
   category = "philosophical",
   jokers = {"j_joker","j_joker","j_joker","j_joker","j_joker"},
 
@@ -2965,7 +3085,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "pixel_joker_junk",
-  requires = {},
   category = "pixeljoker",
   jokers = {"j_mf_pixeljoker"},
   blind = "bl_wall",
@@ -2983,7 +3102,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "pixel_joker_fullhouse",
-  requires = {},
   category = "pixeljoker",
   jokers = {"j_mf_pixeljoker"},
   blind = "bl_wall",
@@ -3001,7 +3119,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rainbow_no_colours",
-  requires = {},
   category = "rainbowjoker",
   jokers = {"j_mf_rainbowjoker"},
   execute = function()
@@ -3014,7 +3131,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rainbow_two_colours",
-  requires = {},
   category = "rainbowjoker",
   jokers = {"j_mf_rainbowjoker"},
   consumeables = {"c_mf_white", "c_mf_white"},
@@ -3028,7 +3144,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rainbow_ten_colours",
-  requires = {},
   category = "rainbowjoker",
   jokers = {"j_mf_rainbowjoker"},
   consumeables = {"c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white","c_mf_white", "c_mf_white"},
@@ -3044,7 +3159,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "recycling_skip",
-  requires = {},
   category = "recycling",
   jokers = {"j_mf_recycling"},
   execute = function()
@@ -3065,7 +3179,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "recycling_no_overflow",
-  requires = {},
   category = "recycling",
   jokers = {"j_mf_recycling"},
   consumeables = {"c_ouija","c_ouija"},
@@ -3093,7 +3206,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rosetinted_one_two",
-  requires = {},
   category = "rosetinted",
   jokers = {"j_mf_rosetinted"},
   execute = function()
@@ -3108,7 +3220,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rosetinted_random_hand",
-  requires = {},
   category = "rosetinted",
   jokers = {"j_mf_rosetinted"},
   execute = function()
@@ -3122,7 +3233,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rosetinted_two_on_second",
-  requires = {},
   category = "rosetinted",
   jokers = {"j_mf_rosetinted"},
   execute = function()
@@ -3139,7 +3249,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rot_cartomancer_creates",
-  requires = {},
   category = "rot_cartomancer",
 
   jokers = {"j_mf_rot_cartomancer"},
@@ -3155,7 +3264,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "simplified_solo",
-  requires = {},
   category = "simplified",
 
   jokers = {"j_mf_simplified"},
@@ -3169,7 +3277,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "simplified_two",
-  requires = {},
   category = "simplified",
 
   jokers = {"j_mf_simplified","j_mf_simplified"},
@@ -3183,7 +3290,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "simplified_other_commons",
-  requires = {},
   category = "simplified",
 
   jokers = {"j_mf_simplified","j_mf_clownfish","j_mf_clownfish","j_mf_clownfish","j_mf_clownfish"},
@@ -3197,7 +3303,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "simplified_other_uncommons",
-  requires = {},
   category = "simplified",
 
   jokers = {"j_mf_simplified","j_mf_globe","j_mf_globe","j_mf_globe","j_mf_globe"},
@@ -3211,7 +3316,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "simplified_five_copies",
-  requires = {},
   category = "simplified",
 
   jokers = {"j_mf_simplified","j_mf_simplified","j_mf_simplified","j_mf_simplified","j_mf_simplified"},
@@ -3227,7 +3331,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "slotmachine_rigged_off",
-  requires = {},
   category = "slotmachine",
 
   jokers = {"j_mf_slotmachine","j_pareidolia","j_photograph"},
@@ -3242,7 +3345,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "slotmachine_rigged_on",
-  requires = {},
   category = "slotmachine",
 
   jokers = {"j_mf_slotmachine","j_pareidolia","j_photograph"},
@@ -3259,7 +3361,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "snake_discard_one",
-  requires = {},
   category = "snake",
 
   jokers = {"j_mf_snake"},
@@ -3288,7 +3389,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "snake_discard_five",
-  requires = {},
   category = "snake",
 
   jokers = {"j_mf_snake"},
@@ -3319,7 +3419,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_zero_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3334,7 +3433,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_one_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3349,7 +3447,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_two_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3364,7 +3461,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_three_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3379,7 +3475,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_four_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3394,7 +3489,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_five_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3409,7 +3503,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_six_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3424,7 +3517,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_seven_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3439,7 +3531,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_eight_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3454,7 +3545,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_nine_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3469,7 +3559,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_ten_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3484,7 +3573,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_eleven_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3499,7 +3587,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_twelve_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3514,7 +3601,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_thirteen_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3529,7 +3615,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_fourteen_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3544,7 +3629,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_fifteen_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3559,7 +3643,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "spiral_sixteen_money",
-  requires = {},
   category = "spiral",
 
   jokers = {"j_mf_spiral"},
@@ -3576,7 +3659,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "stonejokerjoker_one_round",
-  requires = {},
   category = "stonejokerjoker",
 
   jokers = {"j_mf_stonejokerjoker"},
@@ -3593,7 +3675,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "stonejokerjoker_ten_rounds",
-  requires = {},
   category = "stonejokerjoker",
 
   jokers = {"j_mf_stonejokerjoker"},
@@ -3618,7 +3699,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "stylemeter_no_skips",
-  requires = {},
   category = "stylemeter",
 
   jokers = {"j_mf_stylemeter"},
@@ -3633,7 +3713,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "stylemeter_two_skips",
-  requires = {},
   category = "stylemeter",
 
   jokers = {"j_mf_stylemeter"},
@@ -3655,7 +3734,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "sudoku_base",
-  requires = {},
   category = "sudoku",
 
   jokers = {"j_mf_sudoku"},
@@ -3669,7 +3747,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "sudoku_triggers",
-  requires = {},
   category = "sudoku",
 
   jokers = {"j_mf_sudoku"},
@@ -3688,7 +3765,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "sudoku_resets",
-  requires = {},
   category = "sudoku",
 
   jokers = {"j_mf_sudoku"},
@@ -3710,7 +3786,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "talljoker_gives_mult",
-  requires = {},
   category = "talljoker",
 
   jokers = {"j_mf_talljoker"},
@@ -3726,7 +3801,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "tealjoker_base",
-  requires = {},
   category = "tealjoker",
 
   jokers = {"j_mf_tealjoker"},
@@ -3740,7 +3814,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "tealjoker_one_teal",
-  requires = {},
   category = "tealjoker",
 
   jokers = {"j_mf_tealjoker"},
@@ -3758,7 +3831,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "tealjoker_five_teal",
-  requires = {},
   category = "tealjoker",
 
   jokers = {"j_mf_tealjoker"},
@@ -3786,7 +3858,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "thesolo_one_highcard",
-  requires = {},
   category = "thesolo",
 
   jokers = {"j_mf_the_solo"},
@@ -3801,7 +3872,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "thesolo_five_cards",
-  requires = {},
   category = "thesolo",
 
   jokers = {"j_mf_the_solo"},
@@ -3817,7 +3887,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "thesolo_four_highcards",
-  requires = {},
   category = "thesolo",
 
   jokers = {"j_mf_the_solo"},
@@ -3837,7 +3906,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "tonersoup_played_hand",
-  requires = {},
   category = "tonersoup",
 
   jokers = {"j_mf_tonersoup"},
@@ -3853,7 +3921,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "tonersoup_eaten",
-  requires = {},
   category = "tonersoup",
 
   jokers = {"j_mf_tonersoup"},
@@ -3871,7 +3938,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "top10_one_digit",
-  requires = {},
   category = "top10",
 
   dollars = 1,
@@ -3889,7 +3955,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "top10_two_digit",
-  requires = {},
   category = "top10",
 
   dollars = 10,
@@ -3907,7 +3972,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "top10_three_digit",
-  requires = {},
   category = "top10",
 
   dollars = 123,
@@ -3925,7 +3989,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "top10_three_rep_digit",
-  requires = {},
   category = "top10",
 
   dollars = 111,
@@ -3943,7 +4006,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "top10_four_digit",
-  requires = {},
   category = "top10",
 
   dollars = 1234,
@@ -3963,7 +4025,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "treasuremap_no_rounds",
-  requires = {},
   category = "treasuremap",
 
   jokers = {"j_mf_treasuremap"},
@@ -3980,7 +4041,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "treasuremap_one_round",
-  requires = {},
   category = "treasuremap",
 
   jokers = {"j_mf_treasuremap"},
@@ -3998,7 +4058,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "treasuremap_two_rounds",
-  requires = {},
   category = "treasuremap",
 
   jokers = {"j_mf_treasuremap"},
@@ -4019,7 +4078,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "triangle_junk",
-  requires = {},
   category = "triangle",
 
   jokers = {"j_mf_triangle"},
@@ -4036,7 +4094,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "triangle_3oak",
-  requires = {},
   category = "triangle",
 
   jokers = {"j_mf_triangle"},
@@ -4051,7 +4108,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "triangle_3oak_splash",
-  requires = {},
   category = "triangle",
 
   jokers = {"j_mf_triangle","j_splash"},
@@ -4068,7 +4124,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "unpleasantcard_xchips",
-  requires = {},
   category = "unpleasantcard",
 
   jokers = {"j_mf_unpleasantcard"},
@@ -4083,7 +4138,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "unpleasantcard_skips_pack",
-  requires = {},
   category = "unpleasantcard",
 
   jokers = {"j_mf_unpleasantcard"},
@@ -4103,7 +4157,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "unregisteredhypercam_straight",
-  requires = {},
   category = "unregisteredhypercam",
 
   jokers = {"j_mf_unregisteredhypercam"},
@@ -4118,7 +4171,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "unregisteredhypercam_lv_ten_highcard",
-  requires = {},
   category = "unregisteredhypercam",
 
   jokers = {"j_mf_unregisteredhypercam"},
@@ -4145,7 +4197,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "virtualjoker_solo",
-  requires = {},
   category = "virtual",
 
   jokers = {"j_mf_virtual"},
@@ -4163,7 +4214,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "widejoker_highcard",
-  requires = {},
   category = "widejoker",
 
   jokers = {"j_mf_widejoker"},
@@ -4178,7 +4228,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "widejoker_sflush",
-  requires = {},
   category = "widejoker",
 
   jokers = {"j_mf_widejoker"},
@@ -4195,7 +4244,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "wilddrawfour_one_wild",
-  requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
   consumeables = {"c_lovers"},
@@ -4211,7 +4259,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "wilddrawfour_four_wild",
-  requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
   consumeables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
@@ -4236,7 +4283,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "wilddrawfour_reset",
-  requires = {},
   category = "wilddrawfour",
   jokers = {"j_mf_wilddrawfour"},
   consumeables = {"c_lovers","c_lovers","c_lovers","c_lovers"},
@@ -4264,7 +4310,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "yuckyrat_straight",
-  requires = {},
   category = "yuckyrat",
   jokers = {"j_mf_yuckyrat"},
   execute = function()
@@ -4277,7 +4322,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "yuckyrat_two_straights",
-  requires = {},
   category = "yuckyrat",
   jokers = {"j_mf_yuckyrat"},
   execute = function()
