@@ -40,14 +40,24 @@ local joker = {
       local h_card = cards[1]
 
       if h_card:is_suit("Hearts") or h_card:is_suit("Diamonds") then
-        card.ability.extra.mult = card.ability.extra.mult + 4
+        -- card.ability.extra.mult = card.ability.extra.mult + 4
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain"
+        })
         return {
           message = localize('k_upgrade_ex'),
           card = card,
           colour = G.C.RED
         }
       else
-        card.ability.extra.chips = card.ability.extra.chips + 15
+        -- card.ability.extra.chips = card.ability.extra.chips + 15
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain"
+        })
         return {
           message = localize('k_upgrade_ex'),
           card = card,
@@ -57,31 +67,31 @@ local joker = {
     end
     if context.cardarea == G.jokers and context.joker_main then
       if card.ability.extra.mult > 0 and card.ability.extra.chips > 0 then
-        hand_chips = mod_chips(hand_chips + card.ability.extra.chips)
-        update_hand_text({delay = 0}, {chips = hand_chips})
-        card_eval_status_text(card, 'extra', nil, nil, nil, {
-          message = localize{type='variable',key='a_chips',vars={card.ability.extra.chips}},
-          colour = G.C.CHIPS
-        }) 
         return {
-          message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},
-          mult_mod = card.ability.extra.mult,
+          mult = card.ability.extra.mult,
+          chips = card.ability.extra.chips
         }
       elseif card.ability.extra.mult > 0 then
         return {
-          message = localize{type='variable',key='a_mult',vars={card.ability.extra.mult}},
-          mult_mod = card.ability.extra.mult,
+          mult = card.ability.extra.mult,
         }
       elseif card.ability.extra.chips > 0 then
         return {
-          message = localize{type='variable',key='a_chips',vars={card.ability.extra.chips}},
-          chip_mod = card.ability.extra.chips,
+          chips = card.ability.extra.chips,
         }
       end
     end
     if context.forcetrigger then
-      card.ability.extra.mult = card.ability.extra.mult + 4
-      card.ability.extra.chips = card.ability.extra.chips + 15
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_gain"
+        })
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "chips",
+          scalar_value = "chips_gain"
+        })
       return {
         chips = card.ability.extra.chips,
         mult = card.ability.extra.mult,

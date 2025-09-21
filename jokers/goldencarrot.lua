@@ -54,7 +54,14 @@ local joker = {
             colour = G.C.MONEY
         }
       else
-        card.ability.extra.gain = card.ability.extra.gain - card.ability.extra.loss
+        -- card.ability.extra.gain = card.ability.extra.gain + card.ability.extra.loss
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "gain",
+          scalar_value = "loss",
+          operation = "-",
+        })
+        
         return {
             message = "$"..card.ability.extra.gain,
             colour = G.C.MONEY

@@ -31,7 +31,11 @@ local joker = {
         end
       end
       if okay then
-        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_per
+        SMODS.scale_card(card, {
+          ref_table = card.ability.extra,
+          ref_value = "mult",
+          scalar_value = "mult_per",
+        })
         card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex'), colour = G.C.PURPLE})                       
       elseif card.ability.extra.mult > card.ability.extra.mult_per then
         card.ability.extra.mult = card.ability.extra.mult_per

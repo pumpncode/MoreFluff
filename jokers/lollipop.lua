@@ -48,7 +48,13 @@ local joker = {
           colour = G.C.FILTER
         }
       else
-        card.ability.x_mult = card.ability.x_mult - card.ability.extra
+        -- card.ability.x_mult = card.ability.x_mult - card.ability.extra
+        SMODS.scale_card(card, {
+          ref_table = card.ability,
+          ref_value = "x_mult",
+          scalar_value = "extra",
+          operation = "-",
+        })
         return {
           message = localize{type='variable',key='a_xmult_minus',vars={card.ability.extra}},
           colour = G.C.RED

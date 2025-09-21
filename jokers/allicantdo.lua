@@ -23,7 +23,13 @@ local joker = {
   end,
   calculate = function(self, card, context)
     if context.forcetrigger then
-      card.ability.extra.x_mult = card.ability.extra.x_mult + center.ability.extra.x_mult_mod
+      -- card.ability.extra.x_mult = card.ability.extra.x_mult + center.ability.extra.x_mult_mod
+      SMODS.scale_card(card, {
+        ref_table = card.ability.extra,
+        ref_value = "x_mult",
+        scalar_value = "x_mult_mod"
+      })
+      
       for _, c in pairs(G.hand.cards) do
         G.E_MANAGER:add_event(Event({
           trigger = "before",
