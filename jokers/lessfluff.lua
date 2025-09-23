@@ -46,7 +46,7 @@ local joker = {
           end
         end
 
-        gained_xmult = gained_xmult + 1
+        gained_xmult_times = gained_xmult_times + 1
         other_jkr.getting_sliced = true
         G.E_MANAGER:add_event(Event({func = function()
           other_jkr:start_dissolve({G.C.RED}, nil, 1.6)
@@ -55,7 +55,7 @@ local joker = {
         ::continue::
       end
 
-      if gained_xmult > 0 then
+      if gained_xmult_times > 0 then
         -- card.ability.extra.x_mult = card.ability.extra.x_mult + gained_xmult
         for i = 0, gained_xmult_times do
           SMODS.scale_card(card, {
