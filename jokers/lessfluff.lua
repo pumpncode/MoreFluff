@@ -57,7 +57,7 @@ local joker = {
 
       if gained_xmult_times > 0 then
         -- card.ability.extra.x_mult = card.ability.extra.x_mult + gained_xmult
-        for i = 0, gained_xmult_times do
+        for i = 1, gained_xmult_times do
           SMODS.scale_card(card, {
             ref_table = card.ability.extra,
             ref_value = "x_mult",
