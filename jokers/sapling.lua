@@ -10,10 +10,10 @@ local joker = {
   config = {
     extra = {
       c_rounds = 0,
-      rounds = 9,
+      rounds = 6,
     }
   },
-  pos = {x = 0, y = 0},
+  pos = {x = 7, y = 8},
   rarity = 2,
   cost = 7,
   unlocked = true,
