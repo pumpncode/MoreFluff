@@ -162,6 +162,7 @@ local joker_list = {
   "coupon_catalogue",
   "css",
   "cueball",
+  "forge",
   "flintandsteel",
   "gemstonejoker",
   "globe",
@@ -230,6 +231,7 @@ local joker_list = {
   -- "farmmergecivilisation", -- likewise
 
   -- tokens
+  "forgeslop",
   "oopsallfives",
 }
 

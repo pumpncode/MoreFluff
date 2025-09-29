@@ -720,6 +720,22 @@ local loc_stuff = {
           "the top of the {C:dark_edition}deck"
         }
       },
+      j_mf_forge = {
+        name = "Joker Forge",
+        text = {
+          "Creates a random {C:attention}Joker{}",
+          "card once for every",
+          "{C:attention}#3# Jokers{} sold",
+          "{C:inactive}(Currently {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})"
+        }
+      },
+      j_mf_forgeslop = {
+        name = "Forge Slop",
+        text = {
+          "Does not trigger {C:attention}Joker{}",
+          "{C:attention}Forge{} when sold"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -2214,6 +2230,7 @@ local loc_stuff = {
       k_equals_tree_three = "=TREE(3)",
       k_correct_ex = "Correct!",
       k_searched_ex = "Searched!",
+      k_forged_ex = "Forged!",
       
       k_shape = "Shape?",
       b_shape_cards = "Shape? Cards",
