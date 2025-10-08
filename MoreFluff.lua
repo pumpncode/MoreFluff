@@ -586,7 +586,9 @@ if mf_config["Other Packs"] then
   init_moddedpack()
 end
 
-assert(SMODS.load_file("other/planeswalker.lua"))()
+if not RudeBuster then
+  assert(SMODS.load_file("other/planeswalker.lua"))()
+end
 
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
