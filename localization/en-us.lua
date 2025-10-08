@@ -736,6 +736,21 @@ local loc_stuff = {
           "{C:attention}Forge{} when sold"
         }
       },
+      j_mf_trianglewalker = {
+        name = "Triangle, Planeswalker",
+        text = {
+          {
+            "{s:1.5,X:black,C:white} +2 {} : Draw {C:attention}three{} cards",
+          },
+          {
+            "{s:1.5,X:black,C:white} -3 {} : Destroy up to {C:attention}three{} selected cards",
+          },
+          {
+            "{s:1.5,X:black,C:white} -7 {} : Scored cards give",
+            "{X:red,C:white}X3{} Mult until next hand is played",
+          }
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
@@ -1770,6 +1785,15 @@ local loc_stuff = {
           "{X:dark_edition,C:white}^^n{} represents {C:attention}Tetration",
           "In this case, {X:dark_edition,C:white}n^^#1#{} can be",
           "calculated using {X:dark_edition,C:white}n^^#1# = n^n^#2#{}"
+        }
+      },
+      planeswalker_explainer = {
+        name = "Planeswalker",
+        text = {
+          "Starts with #1# {C:dark_edition}Loyalty{}.",
+          "Once per hand, you can {C:attention}activate{} an",
+          "{C:dark_edition}ability{} by adjusting {C:dark_edition}Loyalty{}.",
+          "{C:dark_edition}Loyalty{} cannot go below 0.",
         }
       },
 			mf_halted = {

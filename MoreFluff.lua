@@ -212,6 +212,7 @@ local joker_list = {
   "pixeljoker",
   "rainbowjoker",
   "rosetinted",
+  "trianglewalker",
   "the_solo",
   "top10",
   "widejoker",
@@ -407,6 +408,13 @@ SMODS.Atlas({
   px = 71, 
   py = 95 
 })
+SMODS.Atlas({ 
+  key = "mf_loyalty", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_loyalty.png", 
+  px = 71, 
+  py = 95 
+})
 SMODS.Shader({
   key="dissolvegreen",
   path="dissolvegreen.fs"
@@ -577,6 +585,8 @@ if mf_config["Other Packs"] then
   init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
   init_moddedpack()
 end
+
+assert(SMODS.load_file("other/planeswalker.lua"))()
 
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
@@ -1392,6 +1402,10 @@ local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
+  ) -- im dumb and stupide
+  
+  G.mf_loyalty_spr = Sprite(
+    0, 0, 71, 95, G.ASSET_ATLAS["mf_loyalty"], {x = 0, y = 0}
   ) -- im dumb and stupide
 
   if next(SMODS.find_mod("finity")) then
