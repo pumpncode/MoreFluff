@@ -433,12 +433,7 @@ function init()
         func = function() 
           for i=#destroyed_cards, 1, -1 do
             local card = destroyed_cards[i]
-            if card.ability.name == 'Glass Card' then 
-              card:shatter()
-            else
-              card:start_dissolve(nil, i == #destroyed_cards)
-            end
-            card:remove_from_deck()
+            SMODS.destroy_cards({card})
           end
           return true end }))
       delay(0.5)

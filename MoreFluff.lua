@@ -208,6 +208,7 @@ local joker_list = {
   "hugejoker",
   "hyperjimbo",
   "jankman",
+  "mindsculptor",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",

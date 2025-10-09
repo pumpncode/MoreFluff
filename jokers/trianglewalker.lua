@@ -5,8 +5,6 @@ local joker = {
     extra = {
       loyalty = 3,
       uses = 1,
-      scoring = false,
-      x_mult = 3,
     }
   },
   pos = {x = 0, y=9},
@@ -21,26 +19,15 @@ local joker = {
   demicoloncompat = false,
   
   planeswalker = true,
-  planeswalker_costs = { 1, -3, -6 },
+  planeswalker_costs = { 2, -3, -11 },
   
   pronouns = "she_they",
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue+1] = { key = "planeswalker_explainer", set="Other", specific_vars = { 3 } }
-    return {
-      vars = { center.ability.extra.x_mult }
-    }
   end,
   calculate = function(self, card, context)
-    if context.after and context.cardarea == G.jokers then
+    if context.setting_blind and context.cardarea == G.jokers then
       card.ability.extra.uses = 1
-      card.ability.extra.scoring = false
-    end
-    if context.individual and context.cardarea == G.play and card.ability.extra.scoring then
-      return {
-        x_mult = card.ability.extra.x_mult,
-        colour = G.C.RED,
-        card = card
-      }
     end
   end,
 
@@ -51,14 +38,14 @@ local joker = {
     elseif idx == 2 then
       return #G.hand.highlighted >= 1 and #G.hand.highlighted <= 3
     elseif idx == 3 then
-      return true
+      return #G.hand.highlighted >= 1 and #G.hand.highlighted <= 3
     else return false end
   end,
 
   loyalty = function(card, idx)
     card.ability.extra.uses = card.ability.extra.uses - 1
     if idx == 1 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty + 1
+      card.ability.extra.loyalty = card.ability.extra.loyalty + 2
       SMODS.draw_cards(3)
     elseif idx == 2 then
       card.ability.extra.loyalty = card.ability.extra.loyalty - 3
@@ -69,8 +56,37 @@ local joker = {
       end
       SMODS.destroy_cards(destroyed_cards)
     elseif idx == 3 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 6
-      card.ability.extra.scoring = true
+      card.ability.extra.loyalty = card.ability.extra.loyalty - 11
+      for i = 1, #G.hand.highlighted do
+        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            G.hand.highlighted[i]:flip(); play_sound('tarot2', percent, 0.6); G.hand.highlighted[i]
+              :juice_up(
+                0.3, 0.3); return true
+          end
+        }))
+      end
+      for i=1, #G.hand.highlighted do
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+          G.hand.highlighted[i]:set_edition("e_polychrome")
+          return true end }))
+      end  
+      delay(0.2)
+      for i = 1, #G.hand.highlighted do
+        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            G.hand.highlighted[i]:flip(); play_sound('tarot2', percent, 0.6); G.hand.highlighted[i]
+              :juice_up(
+                0.3, 0.3); return true
+          end
+        }))
+      end
     end
   end
 }

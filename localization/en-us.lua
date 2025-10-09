@@ -740,15 +740,33 @@ local loc_stuff = {
         name = "Triangle, Planeswalker",
         text = {
           {
-            "{s:1.5,X:black,C:white} +1 {} : Draw {C:attention}three{} cards",
+            "{s:1.5,X:black,C:white} +2 {} : Draw {C:attention}three{} cards",
           },
           {
             "{s:1.5,X:black,C:white} -3 {} : Destroy up to {C:attention}three{} selected cards",
           },
           {
-            "{s:1.5,X:black,C:white} -6 {} : Scored cards give",
-            "{X:red,C:white}X3{} Mult until next hand is played",
+            "{s:1.5,X:black,C:white} -11 {} : Make up to {C:attention}three{} selected",
+            "{C:attention}playing cards{} {C:dark_edition}Polychrome{}",
           }
+        }
+      },
+      j_mf_mindsculptor = {
+        name = "Jimbo, the Mind Sculptor",
+        text = {
+          {
+            "{s:1.5,X:black,C:white} +2 {} : Draw a card",
+          },
+          {
+            "{s:1.5,X:black,C:white} 0 {} : Draw {C:attention}four{} cards, then {C:green}shuffle{} the",
+            "{C:attention}three{} leftmost cards in hand into your deck",
+          },
+          {
+            "{s:1.5,X:black,C:white} -1 {} : {C:green}Shuffle{} all cards held in hand into your deck",
+          },
+          {
+            "{s:1.5,X:black,C:white} -12 {} : {C:red}Destroy{} all cards remaining in your deck",
+          },
         }
       },
       -- ORTALAB SWAPS
@@ -1791,7 +1809,7 @@ local loc_stuff = {
         name = "Planeswalker",
         text = {
           "Starts with #1# {C:dark_edition}Loyalty{}.",
-          "Once per hand, you can {C:attention}activate{} an",
+          "Once per round, you can {C:attention}activate{} an",
           "{C:dark_edition}ability{} by adjusting {C:dark_edition}Loyalty{}.",
           "{C:dark_edition}Loyalty{} cannot go below 0.",
         }

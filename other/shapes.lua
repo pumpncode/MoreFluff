@@ -205,11 +205,9 @@ function init()
         G.E_MANAGER:add_event(Event({
           trigger = 'after',
           delay = 0.1,
-          func = function() 
-            conv_card:start_dissolve(nil, i == #destroyed_cards)
-            conv_card:remove_from_deck()
+          func = function()
+            SMODS.destroy_crards({conv_card})
             return true end }))
-        destroyed_cards[#destroyed_cards + 1] = conv_card
       else
         if conv_card.area ~= G.discard and conv_card.area.config.type ~= 'deck' then
           G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() conv_card:flip();play_sound('card1', 1);conv_card:juice_up(0.3, 0.3);return true end }))
@@ -217,11 +215,6 @@ function init()
         else
           conv_card:change_suit(suit)
         end
-      end
-    end
-    if #destroyed_cards > 1 then
-      for i = 1, #G.jokers.cards do
-        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
       end
     end
   end
