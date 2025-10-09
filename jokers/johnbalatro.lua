@@ -17,7 +17,7 @@ local joker = {
   demicoloncompat = false,
   
   planeswalker = true,
-  planeswalker_costs = { 1, -11 },
+  planeswalker_costs = { 1, -17 },
   
   pronouns = "she_her",
   
