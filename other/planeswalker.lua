@@ -1,43 +1,76 @@
+function is_planeswalker(joker)
+  if joker.config.center.planeswalker == true then
+    return true
+  elseif type(joker.config.center.planeswalker) == "function" then
+    return joker.config.center.planeswalker(joker)
+  end
+  return false
+end
+
+G.mf_custom_loyalty = {}
+
 SMODS.DrawStep({
 	key = "walker_loyalty",
 	order = 26,
 	func = function(self)
     if not G.mf_loyalty_spr then return nil end
 
-    if not self.config.center.planeswalker then
+    if not is_planeswalker(self) or self.config.center.suppress_loyalty_drawstep then
       return nil
     end
 
-    G.mf_loyalty_spr.role.draw_major = self
+    local target_spr = G.mf_loyalty_spr
+
+    if self.config.center.loyalty_atlas then
+      local atlas = self.config.center.loyalty_atlas
+      if not G.mf_custom_loyalty[atlas] then
+        G.mf_custom_loyalty[atlas] = Sprite(
+          0, 0, 71, 95, G.ASSET_ATLAS[atlas], {x = 0, y = 0}
+        )
+      end
+      target_spr = G.mf_custom_loyalty[atlas]
+    end
+
+    target_spr.role.draw_major = self
 
     local shader = "dissolve"
 
     local loyalty = self.ability.extra.loyalty
+    
+    target_spr:set_sprite_pos({x=0, y=3})
+    target_spr:draw_shader(shader, nil, nil, nil, self.children.center)
 
     if loyalty > 99 then
-      loyalty = 99
-    end
-
-    if loyalty <= 9 then
-      G.mf_loyalty_spr:set_sprite_pos({x=loyalty, y=0})
-      G.mf_loyalty_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+      target_spr:set_sprite_pos({x=1, y=3})
+      target_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+    elseif loyalty <= 9 then
+      target_spr:set_sprite_pos({x=loyalty, y=0})
+      target_spr:draw_shader(shader, nil, nil, nil, self.children.center)
     else
-      G.mf_loyalty_spr:set_sprite_pos({x=math.floor(loyalty/10), y=1})
-      G.mf_loyalty_spr:draw_shader(shader, nil, nil, nil, self.children.center)
-      G.mf_loyalty_spr:set_sprite_pos({x=loyalty%10, y=2})
-      G.mf_loyalty_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+      target_spr:set_sprite_pos({x=math.floor(loyalty/10), y=1})
+      target_spr:draw_shader(shader, nil, nil, nil, self.children.center)
+      target_spr:set_sprite_pos({x=loyalty%10, y=2})
+      target_spr:draw_shader(shader, nil, nil, nil, self.children.center)
     end
 	end,
 	conditions = { vortex = false, facing = "front" },
 })
 
+function get_loyalty_costs(card)
+  if type(card.config.center.planeswalker_costs) == "table" then
+    return card.config.center.planeswalker_costs
+  elseif type(card.config.center.planeswalker_costs) == "function" then
+    return card.config.center.planeswalker_costs(card)
+  end
+  return {}
+end
 
 -- modified from entropy
 -- how entropious
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
 	local abc = G_UIDEF_use_and_sell_buttons_ref(card)
-  if (card.area == G.jokers and G.jokers and card.config.center.planeswalker) and not card.debuff then
+  if (card.area == G.jokers and G.jokers and is_planeswalker(card)) and not card.debuff then
     sell = {n=G.UIT.C, config={align = "cr"}, nodes={
         {n=G.UIT.C, config={ref_table = card, align = "cr",padding = 0.1, r=0.08, minw = 1.25, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, one_press = true, button = 'sell_card', func = 'can_sell_card', handy_insta_action = 'sell'}, nodes={
           {n=G.UIT.B, config = {w=0.1,h=0.6}},
@@ -57,9 +90,14 @@ function G.UIDEF.use_and_sell_buttons(card)
           sell
         }},
       }
-      for i, cost in ipairs(card.config.center.planeswalker_costs) do
+
+      costs = get_loyalty_costs(card)
+      
+      for i, cost in ipairs(costs) do
+        
         text = ""..cost
-        if cost > 0 then text = "+"..cost end
+        if type(cost) == "number" and cost > 0 then text = "+"..cost end
+        
         ability = {n=G.UIT.C, config={align = "cr"}, nodes={
             {n=G.UIT.C, config={ref_table = card, align = "cr",padding = 0.1, r=0.08, minw = 0.8, hover = true, shadow = true, colour = G.C.UI.BACKGROUND_INACTIVE, button = 'loyalty_'..i, func = 'can_loyalty_'..i}, nodes={
             
@@ -90,8 +128,12 @@ function can_loyalty(joker, ability_number)
       (G.GAME.STOP_USE and G.GAME.STOP_USE > 0) --or 
       --G.STATE == G.STATES.BLIND_SELECT 
       then return false end
+  local can_pay_cost = true
+  if type(joker.config.center.planeswalker_costs[ability_number]) == "number" then
+    can_pay_cost = (joker.config.center.planeswalker_costs[ability_number] + joker.ability.extra.loyalty) >= 0
+  end
   return
-    (joker.config.center.planeswalker_costs[ability_number] + joker.ability.extra.loyalty) >= 0 and
+    can_pay_cost and
     joker.ability.extra.uses and
     joker.config.center.can_loyalty(joker, ability_number)
 end
