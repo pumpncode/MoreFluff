@@ -740,13 +740,13 @@ local loc_stuff = {
         name = "Triangle, Planeswalker",
         text = {
           {
-            "{s:1.5,X:black,C:white} +2 {} : Draw {C:attention}three{} cards",
+            "{X:black,C:white} +2 {}: Draw {C:attention}three{} cards",
           },
           {
-            "{s:1.5,X:black,C:white} -3 {} : Destroy up to {C:attention}three{} selected cards",
+            "{X:black,C:white} -3 {}: Destroy up to {C:attention}three{} selected cards",
           },
           {
-            "{s:1.5,X:black,C:white} -11 {} : Make up to {C:attention}three{} selected",
+            "{X:black,C:white} -11 {}: Make up to {C:attention}three{} selected",
             "{C:attention}playing cards{} {C:dark_edition}Polychrome{}",
           }
         }
@@ -755,18 +755,37 @@ local loc_stuff = {
         name = "Jimbo, the Mind Sculptor",
         text = {
           {
-            "{s:1.5,X:black,C:white} +2 {} : Draw a card",
+            "{X:black,C:white} +2 {}: Draw a card",
           },
           {
-            "{s:1.5,X:black,C:white} 0 {} : Draw {C:attention}four{} cards, then {C:green}shuffle{} the",
+            "{X:black,C:white} 0 {}: Draw {C:attention}four{} cards, then {C:green}shuffle{} the",
             "{C:attention}three{} leftmost cards in hand into your deck",
           },
           {
-            "{s:1.5,X:black,C:white} -1 {} : {C:green}Shuffle{} all cards held in hand into your deck",
+            "{X:black,C:white} -1 {}: {C:green}Shuffle{} all cards held in hand into your deck",
           },
           {
-            "{s:1.5,X:black,C:white} -12 {} : {C:red}Destroy{} all cards remaining in your deck",
+            "{X:black,C:white} -12 {}: {C:red}Destroy{} all cards remaining in your deck",
           },
+        }
+      },
+      j_mf_johnbalatro = {
+        name = "John Balatro..?",
+        text = {
+          {
+            "{X:black,C:white} +1 {}: Exactly {C:attention}three{} selected {C:attention}playing cards",
+            "without {C:mult}Mult{} bonuses get {C:mult}+4{} Mult"
+          },
+          {
+            "{X:black,C:white} -11 {}: {C:attention,E:1}Unleash{} John Balatro",
+          },
+        }
+      },
+      j_mf_johnbalatrotrue = {
+        name = "John Balatro",
+        text = {
+          "{X:dark_edition,C:white,s:1.5}^2{} Mult",
+          "before scoring"
         }
       },
       -- ORTALAB SWAPS

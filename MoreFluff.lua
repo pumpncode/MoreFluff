@@ -209,6 +209,7 @@ local joker_list = {
   "hyperjimbo",
   "jankman",
   "mindsculptor",
+  "johnbalatro",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",
@@ -224,6 +225,8 @@ local joker_list = {
   
   -- rare, but it goes last (Unless Cryptid...)
   "lessfluff",
+
+  "johnbalatrotrue",
 
   -- 1.3
   -- "selfinsert", -- cut this one for now (its not happening)
@@ -264,7 +267,9 @@ for _, v in ipairs(joker_list) do
   if not joker then
     goto continue
   end
-  joker.key = v
+  if not joker.key then
+    joker.key = v
+  end
   joker.atlas = "mf_jokers"
   if v == "hyperjimbo" then
     joker.atlas = "mf_hyperjimbo"
