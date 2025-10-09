@@ -21,7 +21,7 @@ local joker = {
   demicoloncompat = false,
   
   planeswalker = true,
-  planeswalker_costs = { 2, -3, -7 },
+  planeswalker_costs = { 1, -3, -6 },
   
   pronouns = "she_they",
   loc_vars = function(self, info_queue, center)
@@ -58,7 +58,7 @@ local joker = {
   loyalty = function(card, idx)
     card.ability.extra.uses = card.ability.extra.uses - 1
     if idx == 1 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty + 2
+      card.ability.extra.loyalty = card.ability.extra.loyalty + 1
       SMODS.draw_cards(3)
     elseif idx == 2 then
       card.ability.extra.loyalty = card.ability.extra.loyalty - 3
@@ -69,7 +69,7 @@ local joker = {
       end
       SMODS.destroy_cards(destroyed_cards)
     elseif idx == 3 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 7
+      card.ability.extra.loyalty = card.ability.extra.loyalty - 6
       card.ability.extra.scoring = true
     end
   end

@@ -740,13 +740,13 @@ local loc_stuff = {
         name = "Triangle, Planeswalker",
         text = {
           {
-            "{s:1.5,X:black,C:white} +2 {} : Draw {C:attention}three{} cards",
+            "{s:1.5,X:black,C:white} +1 {} : Draw {C:attention}three{} cards",
           },
           {
             "{s:1.5,X:black,C:white} -3 {} : Destroy up to {C:attention}three{} selected cards",
           },
           {
-            "{s:1.5,X:black,C:white} -7 {} : Scored cards give",
+            "{s:1.5,X:black,C:white} -6 {} : Scored cards give",
             "{X:red,C:white}X3{} Mult until next hand is played",
           }
         }
