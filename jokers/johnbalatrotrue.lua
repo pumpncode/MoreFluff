@@ -24,6 +24,7 @@ local joker = {
 
   planeswalker = false,
   planeswalker_costs = {},
+  pronouns = "she_her",
   loc_txt = {
   },
   loc_vars = function(self, info_queue, center)

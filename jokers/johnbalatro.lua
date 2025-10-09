@@ -19,6 +19,8 @@ local joker = {
   planeswalker = true,
   planeswalker_costs = { 1, -11 },
   
+  pronouns = "she_her",
+  
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue+1] = { key = "planeswalker_explainer", set="Other", specific_vars = { 1 } }
   end,
