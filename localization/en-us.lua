@@ -773,11 +773,11 @@ local loc_stuff = {
         name = "John Balatro..?",
         text = {
           {
-            "{X:black,C:white} +1 {}: Exactly {C:attention}three{} selected {C:attention}playing cards",
+            "{X:black,C:white} +1 {}: Exactly {C:attention}five{} selected {C:attention}playing cards",
             "without {C:mult}Mult{} bonuses get {C:mult}+4{} Mult"
           },
           {
-            "{X:black,C:white} -17 {}: {C:attention,E:1}Unleash{} John Balatro",
+            "{X:black,C:white} -11 {}: {C:attention,E:1}Unleash{} John Balatro",
           },
         }
       },

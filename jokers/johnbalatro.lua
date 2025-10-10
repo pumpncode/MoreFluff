@@ -17,7 +17,7 @@ local joker = {
   demicoloncompat = false,
   
   planeswalker = true,
-  planeswalker_costs = { 1, -17 },
+  planeswalker_costs = { 1, -11 },
   
   pronouns = "she_her",
   
@@ -34,7 +34,7 @@ local joker = {
   can_loyalty = function(card, idx)
     if card.ability.extra.uses <= 0 then return false end
     if idx == 1 then
-      if #G.hand.highlighted ~= 3 then
+      if #G.hand.highlighted ~= 5 then
         return false
       end
       for _, o_card in pairs(G.hand.highlighted) do
@@ -53,8 +53,19 @@ local joker = {
     card.ability.extra.uses = card.ability.extra.uses - 1
     if idx == 1 then
       card.ability.extra.loyalty = card.ability.extra.loyalty + 1
-      for _, o_card in pairs(G.hand.highlighted) do
+      for i = 1, #G.hand.highlighted do
+        o_card = G.hand.highlighted[i]
         o_card.ability.perma_mult = (o_card.ability.perma_mult or 0) + 4
+        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            play_sound('multhit1', percent, 0.6); G.hand.highlighted[i]
+              :juice_up(
+                0.3, 0.3); return true
+          end
+        }))
       end
     elseif idx == 2 then
       card.ability.extra.loyalty = card.ability.extra.loyalty - 11
