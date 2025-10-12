@@ -30,7 +30,7 @@ local joker = {
   loc_vars = function(self, info_queue, center)
   end,
   calculate = function(self, card, context)
-    if context.forcetrigger or context.mf_before_cards then
+    if context.forcetrigger or context.initial_scoring_step then
       if Talisman then
         return {
           emult = card.ability.extra.powmult
