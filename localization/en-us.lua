@@ -788,6 +788,14 @@ local loc_stuff = {
           "before scoring"
         }
       },
+      j_mf_dinner = {
+        name = "DINNER!",
+        text = {
+          "Retrigger the {C:attention}Joker",
+          "to the right for",
+          "the next {C:attention}#1#{} rounds"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",

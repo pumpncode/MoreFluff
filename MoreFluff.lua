@@ -162,6 +162,7 @@ local joker_list = {
   "coupon_catalogue",
   "css",
   "cueball",
+  "dinner",
   "forge",
   "flintandsteel",
   "gemstonejoker",
