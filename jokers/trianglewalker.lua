@@ -20,19 +20,16 @@ local joker = {
   
   planeswalker = true,
   planeswalker_costs = { 2, -3, -11 },
+  default_loyalty_effects = true,
   
   pronouns = "she_they",
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue+1] = { key = "planeswalker_explainer", set="Other", specific_vars = { 3 } }
   end,
   calculate = function(self, card, context)
-    if context.setting_blind and context.cardarea == G.jokers then
-      card.ability.extra.uses = 1
-    end
   end,
 
   can_loyalty = function(card, idx)
-    if card.ability.extra.uses <= 0 then return false end
     if idx == 1 then
       return #G.hand.cards >= 1
     elseif idx == 2 then
@@ -43,20 +40,15 @@ local joker = {
   end,
 
   loyalty = function(card, idx)
-    card.ability.extra.uses = card.ability.extra.uses - 1
     if idx == 1 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty + 2
       SMODS.draw_cards(3)
-    elseif idx == 2 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 3
-      
+    elseif idx == 2 then      
       destroyed_cards = {}
       for i=#G.hand.highlighted, 1, -1 do
         destroyed_cards[#destroyed_cards+1] = G.hand.highlighted[i]
       end
       SMODS.destroy_cards(destroyed_cards)
     elseif idx == 3 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 11
       for i = 1, #G.hand.highlighted do
         local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
         G.E_MANAGER:add_event(Event({

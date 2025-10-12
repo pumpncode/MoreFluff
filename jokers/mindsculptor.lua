@@ -20,26 +20,15 @@ local joker = {
   
   planeswalker = true,
   planeswalker_costs = { 2, 0, -1, -12 },
+  default_loyalty_effects = true,
   
   loc_vars = function(self, info_queue, center)
     info_queue[#info_queue+1] = { key = "planeswalker_explainer", set="Other", specific_vars = { 3 } }
   end,
   calculate = function(self, card, context)
-    if context.setting_blind and context.cardarea == G.jokers then
-      card.ability.extra.uses = 1
-      card.ability.extra.scoring = false
-    end
-    if context.individual and context.cardarea == G.play and card.ability.extra.scoring then
-      return {
-        x_mult = card.ability.extra.x_mult,
-        colour = G.C.RED,
-        card = card
-      }
-    end
   end,
 
   can_loyalty = function(card, idx)
-    if card.ability.extra.uses <= 0 then return false end
     if idx == 1 then
       return #G.hand.cards > 0
     elseif idx == 2 then
@@ -53,9 +42,7 @@ local joker = {
   end,
 
   loyalty = function(card, idx)
-    card.ability.extra.uses = card.ability.extra.uses - 1
     if idx == 1 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty + 2
       SMODS.draw_cards(1)
     elseif idx == 2 then
       SMODS.draw_cards(4)
@@ -64,15 +51,12 @@ local joker = {
       end
       G.deck:shuffle('jace'..G.GAME.round_resets.ante)
     elseif idx == 3 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 1
       local hand_count = #G.hand.cards
       for i=1, hand_count do --draw cards from deck
         draw_card(G.hand, G.deck, i*100/hand_count,'down', nil, nil,  0.08)
       end
       G.deck:shuffle('jace'..G.GAME.round_resets.ante)
     elseif idx == 4 then
-      card.ability.extra.loyalty = card.ability.extra.loyalty - 12
-
       local d_c = {}
       for _, card in pairs(G.deck.cards) do
         d_c[#d_c+1] = card

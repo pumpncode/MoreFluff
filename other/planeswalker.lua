@@ -134,12 +134,19 @@ function can_loyalty(joker, ability_number)
   end
   return
     can_pay_cost and
-    joker.ability.extra.uses and
+    (joker.ability.extra.uses ~= 0 or not joker.config.center.default_loyalty_effects) and
     joker.config.center.can_loyalty(joker, ability_number)
 end
 
 function loyalty(joker, ability_number)
   joker.config.center.loyalty(joker, ability_number)
+  if joker.config.center.default_loyalty_effects then
+    joker.ability.extra.uses = joker.ability.extra.uses - 1
+    local cost = joker.config.center.planeswalker_costs[ability_number]
+    if type(cost) == "number" then
+      joker.ability.extra.loyalty = joker.ability.extra.loyalty + cost
+    end
+  end
 end
 
 -- i hate this but less
@@ -155,5 +162,15 @@ for i = 1,100 do
   end
   G.FUNCS["loyalty_"..i] = function(e)
     return loyalty(e.config.ref_table, i)
+  end
+end
+
+SMODS.current_mod.calculate = function(self, context)
+  if context.setting_blind then
+    for _, joker in pairs(G.jokers.cards) do
+      if is_planeswalker(joker) and joker.config.center.default_loyalty_effects then
+        joker.ability.extra.uses = 1
+      end
+    end
   end
 end
