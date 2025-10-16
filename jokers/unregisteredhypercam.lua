@@ -18,7 +18,7 @@ local joker = {
     return {vars = { center.ability.val } }
   end,
   calculate = function(self, card, context)
-    if context.forcetrigger or context.mf_before_cards then
+    if context.forcetrigger or context.initial_scoring_step then
       if Talisman and Big and Big.arrow then
         return {
           eemult = card.ability.val
