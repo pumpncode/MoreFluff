@@ -193,7 +193,7 @@ local joker_list = {
   "thewayhome",
   "recycling",
   "virtual",
-  "wilddrawfour",
+  -- "wilddrawfour",
   "yuckyrat",
 
   -- rare
@@ -204,18 +204,16 @@ local joker_list = {
   "bowlingball",
   "cba",
   "complexitycreep",
+  "doubledscale",
   "fleshprison",
   "grep",
   "hugejoker",
   "hyperjimbo",
   "jankman",
-  "mindsculptor",
-  "johnbalatro",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",
   "rosetinted",
-  "trianglewalker",
   "the_solo",
   "top10",
   "widejoker",
@@ -223,6 +221,11 @@ local joker_list = {
   -- legendary!!
   "triangle",
   "marigold",
+
+  -- walkers
+  "mindsculptor",
+  "johnbalatro",
+  "trianglewalker",
   
   -- rare, but it goes last (Unless Cryptid...)
   "lessfluff",

@@ -796,6 +796,13 @@ local loc_stuff = {
           "the next {C:attention}#1#{} rounds"
         }
       },
+      j_mf_doubledscale = {
+        name = "Doubled Scale",
+        text = {
+          "{C:attention}Scaling Jokers{} {C:green,E:1}scale",
+          "{C:attention}twice{} as fast"
+        }
+      },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
         name = "Clint Condition",
