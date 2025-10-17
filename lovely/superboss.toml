@@ -12,7 +12,7 @@ pattern = '''for i = 1, #G.GAME.tags do
 end'''
 position = 'before'
 payload = '''
-if G.GAME.round_resets.ante == G.GAME.win_ante and (G.GAME.round_resets.blind ~= G.P_BLINDS.bl_small and G.GAME.round_resets.blind ~= G.P_BLINDS.bl_big) and not G.GAME.superboss_active and G.P_CENTERS["v_mf_superboss_ticket"] then
+if G.GAME.round_resets.ante == G.GAME.win_ante and (Blind.get_type(G.GAME.round_resets.blind) ~= "Small" and Blind.get_type(G.GAME.round_resets.blind) ~= "Big") and not G.GAME.superboss_active and G.P_CENTERS["v_mf_superboss_ticket"] then
   local voucher_key = "v_mf_superboss_ticket"
   G.shop_vouchers.config.card_limit = G.shop_vouchers.config.card_limit + 1
   local new_card = Card(G.shop_vouchers.T.x + G.shop_vouchers.T.w/2,
