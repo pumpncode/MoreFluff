@@ -827,10 +827,6 @@ function init()
         func = function() 
           SMODS.destroy_cards(destroyed_cards)
           return true end }))
-      delay(0.5)
-      for i = 1, #G.jokers.cards do
-        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
-      end
       delay(0.6)
     end,
     loc_vars = function(self, info_queue, card)
