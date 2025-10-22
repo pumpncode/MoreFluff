@@ -726,7 +726,8 @@ local loc_stuff = {
           "Creates a random {C:attention}Joker{}",
           "card once for every",
           "{C:attention}#3# Jokers{} sold",
-          "{C:inactive}(Currently {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})"
+          "{C:inactive}(Currently {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})",
+          art_credit("LFMoth")
         }
       },
       j_mf_forgeslop = {
@@ -800,7 +801,8 @@ local loc_stuff = {
         name = "Doubled Scale",
         text = {
           "{C:attention}Scaling Jokers{} {C:green,E:1}scale",
-          "{C:attention}twice{} as fast"
+          "{C:attention}twice{} as fast",
+          art_credit("LFMoth")
         }
       },
       -- ORTALAB SWAPS
