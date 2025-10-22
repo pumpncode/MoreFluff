@@ -1699,6 +1699,37 @@ local loc_stuff = {
         }
       },
     },
+    Stake = {
+      stake_mf_pink = {
+        name = "Pink Stake",
+        text = {
+          "{C:red}-1{} Discard selection limit",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_lime = {
+        name = "Lime Stake",
+        text = {
+          "Required score scales",
+          "faster for each {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_violet = {
+        name = "Violet Stake",
+        text = {
+          "Even antes have a {C:dark_edition}Showdown",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_jimbo = {
+        name = "Jimbo Stake",
+        text = {
+          "+2 Win {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+    },
     Other = {
       undiscovered_colour = {
         name = "Not Discovered",

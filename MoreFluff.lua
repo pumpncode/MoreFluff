@@ -600,6 +600,8 @@ if not RudeBuster then
   assert(SMODS.load_file("other/planeswalker.lua"))()
 end
 
+assert(SMODS.load_file("other/stakes.lua"))()
+
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
   init_enhancers = SMODS.load_file("other/enhancers.lua")()
