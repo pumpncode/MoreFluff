@@ -767,6 +767,7 @@ local loc_stuff = {
           },
           {
             "{X:black,C:white} -12 {}: {C:red}Destroy{} all cards remaining in your deck",
+            art_credit("Ice"),
           },
         }
       },
