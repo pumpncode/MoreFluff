@@ -1564,3 +1564,10 @@ if Balatest then
   assert(SMODS.load_file("other/tests/rotarots.lua"))()
   assert(SMODS.load_file("other/tests/superboss.lua"))()
 end
+
+-- Adding file loading to the end so it can be moved by Fluff
+if Blockbuster and Blockbuster.ValueManipulation then
+  -- Loads in the standards for Blockbuster Value Manipulation compatibility
+  assert(SMODS.load_file("other/compat_standard/morefluff.lua"))()
+  assert(SMODS.load_file("other/compat_standard/morefluff_scaling.lua"))()
+end
