@@ -2,8 +2,8 @@
 -- language, they will still be called "Colour" cards.
 -- ha ha ha.
 
-local art_credit = function (name)
-  if mf_config["Programmer Art"] then return nil end
+local art_credit = function (name, forced)
+  if mf_config["Programmer Art"] and not forced then return nil end
   if mf_config["Disable Art Credits"] then return nil end
   return "{s:0.8,C:inactive}Art by: "..name
 end
@@ -1704,7 +1704,8 @@ local loc_stuff = {
       stake_mf_pink = {
         name = "Pink Stake",
         text = {
-          "{C:red}-1{} Discard selection limit",
+          "The second {C:attention}Booster Pack{}",
+          "will always be a {C:attention}Standard Pack{}",
           "{s:0.8}Applies all previous Stakes",
         }
       },
@@ -1716,17 +1717,58 @@ local loc_stuff = {
           "{s:0.8}Applies all previous Stakes",
         }
       },
+      stake_mf_steel = {
+        name = "Steel Stake",
+        text = {
+          "Shop can have {C:attention}Heavy{} Jokers",
+          "{C:inactive,s:0.8}(-1 Discard selection limit)",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_zodiac = {
+        name = "Zodiac Stake",
+        text = {
+          "Start run with {C:attention}Planet Merchant{},",
+          "{C:attention}Tarot Merchant{}, and {C:attention}Magic Trick",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_hot = {
+        name = "Hot Stake",
+        text = {
+          "Shop can have {C:attention}Potato{} Jokers",
+          "{C:inactive,s:0.8}(Must be sold first)",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_accelerated = {
+        name = "Accelerated Stake",
+        text = {
+          "Required score scales much",
+          "faster for each {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+          art_credit("Aikoyori"),
+        }
+      },
+      stake_mf_cardboard = {
+        name = "Cardboard Stake",
+        text = {
+          "{C:uncommon}Uncommon{} and {C:rare}Rare{} jokers",
+          "are {C:attention}2x{} less likely to spawn",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
       stake_mf_violet = {
         name = "Violet Stake",
         text = {
-          "Even antes have a {C:dark_edition}Showdown",
+          "Ante 4 has a {C:dark_edition}Showdown",
           "{s:0.8}Applies all previous Stakes",
         }
       },
       stake_mf_jimbo = {
         name = "Jimbo Stake",
         text = {
-          "+2 Win {C:attention}Ante",
+          "+1 Win {C:attention}Ante",
           "{s:0.8}Applies all previous Stakes",
         }
       },
@@ -1886,6 +1928,18 @@ local loc_stuff = {
 				name = "Halted",
 				text = {
 					"Cannot gain any more {C:attention}Rounds{}"
+				},
+			},
+			mf_heavy = {
+				name = "Heavy",
+				text = {
+				  "-1 {C:red}Discard{} selection limit"
+				},
+			},
+			mf_potato = {
+				name = "Potato",
+				text = {
+				  "Must be sold first"
 				},
 			},
     },
@@ -2403,6 +2457,8 @@ local loc_stuff = {
       colour = "Colour",
       shape = "Shape",
       mf_halted = "Halted",
+      mf_heavy = "Heavy",
+      mf_potato = "Potato",
     },
     achievement_names = {
       ach_mf_ten_colour_rounds = "10-ted",
