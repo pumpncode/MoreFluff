@@ -1353,14 +1353,28 @@ local morefluffTabs = function() return {
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Multi / MVBit: Colour Cards', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'Multi', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
             }},
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Some Jokers by footlongdingledong', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'LFMoth', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'footlongdingledong', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'Ice', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
             }},
