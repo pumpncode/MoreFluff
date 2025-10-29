@@ -70,14 +70,8 @@ SMODS.Sticker {
   badge_colour = HEX '65a5dd',
   pos = { x = 1, y = 2 },
   atlas = "mf_stake_stickers",
-  sets =  { ["Joker"] = true },
+  sets = { ["Joker"] = true },
   should_apply = function (self, card, center, area, bypass_reroll)
-    if self.sets[card.ability.set] then
-      if G.GAME.modifiers.enable_heavy_in_shop and pseudorandom((area == G.pack_cards and 'mf_p_heavy_' or 'mf_heavy_')..G.GAME.round_resets.ante) > 0.6 then
-        self:apply(card, true)
-        return true
-      end
-    end
     return false
   end,
   calculate = function(self, card, context)
@@ -171,14 +165,8 @@ SMODS.Sticker {
   badge_colour = HEX 'e77e56',
   pos = { x = 2, y = 2 },
   atlas = "mf_stake_stickers",
-  sets =  { ["Joker"] = true },
+  sets = { ["Joker"] = true },
   should_apply = function (self, card, center, area, bypass_reroll)
-    if self.sets[card.ability.set] then
-      if G.GAME.modifiers.enable_potato_in_shop and pseudorandom((area == G.pack_cards and 'mf_p_potato_' or 'mf_potato_')..G.GAME.round_resets.ante) > 0.65 and not card.ability.eternal then
-        self:apply(card, true)
-        return true
-      end
-    end
     return false
   end,
   calculate = function(self, card, context)
@@ -278,3 +266,21 @@ SMODS.Stake {
   end,
   colour = G.C.RED,
 }
+
+local cc = create_card
+function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+  local card = cc(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+
+  if _type == "Joker" and (area == G.shop_jokers or area == G.pack_cards) then
+    local heavypoll = pseudorandom((area == G.pack_cards and 'packheavy' or 'heavypoll')..G.GAME.round_resets.ante)
+    if G.GAME.modifiers.enable_heavy_in_shop and heavypoll > 0.70 then
+      card.ability["mf_heavy"] = true
+    end
+    local potpoll = pseudorandom((area == G.pack_cards and 'packpot' or 'potpoll')..G.GAME.round_resets.ante)
+    if G.GAME.modifiers.enable_potato_in_shop and potpoll > 0.70 and not card.ability.eternal then
+      card.ability["mf_potato"] = true
+    end
+  end
+
+  return card
+end
