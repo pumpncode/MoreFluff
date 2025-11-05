@@ -2,7 +2,7 @@ local joker = {
   name = "Unpleasant Card",
   config = {
     extra = {
-      x_chips = 1.67
+      x_chips = 2.067
     }
   },
   pos = {x = 0, y = 7},
