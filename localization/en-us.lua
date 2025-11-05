@@ -571,8 +571,8 @@ local loc_stuff = {
         name = "Unpleasant Card",
         text = {
           "{X:chips,C:white} X#1# {} Chips",
-          "{C:attention}Booster Packs{} are",
-          "automatically skipped"
+          "{C:attention}Booster Packs{} contain",
+          "only {C:attention}1{} card"
         },
       },
       j_mf_slotmachine = { 

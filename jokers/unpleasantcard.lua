@@ -2,7 +2,7 @@ local joker = {
   name = "Unpleasant Card",
   config = {
     extra = {
-      x_chips = 2.7
+      x_chips = 1.67
     }
   },
   pos = {x = 0, y = 7},
@@ -26,7 +26,7 @@ local joker = {
         xchips = card.ability.extra.x_chips
       }
     end
-  end
+  end,
 }
 
 if JokerDisplay then
