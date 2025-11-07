@@ -41,7 +41,7 @@ local joker = {
         if card.ability.extra.rounds_left - 1 <= 0 then
             SMODS.destroy_cards(card, nil, nil, true)
             return {
-                message = localize('k_drank_ex'),
+                message = localize('k_eaten_ex'),
                 colour = G.C.FILTER
             }
         else
