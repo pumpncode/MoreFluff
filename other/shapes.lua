@@ -13,7 +13,7 @@ function init()
     secondary_colour = HEX("316ea0"),
     collection_rows = { 4, 4 },
     loc_txt = {},
-    default = "c_mf_black",
+    default = "c_mf_cloud",
     can_stack = false,
     can_divide = false,
     can_be_pulled = "b_take",
