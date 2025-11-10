@@ -208,7 +208,7 @@ function init()
           trigger = 'after',
           delay = 0.1,
           func = function()
-            SMODS.destroy_crards({conv_card})
+            SMODS.destroy_cards({conv_card})
             return true end }))
       else
         if conv_card.area ~= G.discard and conv_card.area.config.type ~= 'deck' then
