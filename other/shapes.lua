@@ -16,6 +16,8 @@ function init()
     default = "c_mf_black",
     can_stack = false,
     can_divide = false,
+    can_be_pulled = "b_take",
+    no_use_button = true
   })
 
   SMODS.UndiscoveredSprite({

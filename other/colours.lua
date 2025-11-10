@@ -1581,7 +1581,7 @@ function init()
   local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
   function G.UIDEF.use_and_sell_buttons(card)
     if (card.area == G.pack_cards and G.pack_cards) and card.ability.consumeable then --Add a use button
-      if card.ability.set == "Colour" or card.ability.set == "Shape" then
+      if card.ability.set == "Colour" then
         return {
           n = G.UIT.ROOT,
           config = { padding = -0.1, colour = G.C.CLEAR },
