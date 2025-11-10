@@ -671,7 +671,7 @@ function init()
       return true
     end,
     use = function(self, card, area, copier)
-      local card_type = "RPlanet"
+      local card_type = "Star"
       local rng_seed = "star"
       for i = 1, card.ability.val do
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
@@ -691,8 +691,47 @@ function init()
     end
   })
 
-  -- pentagon goes here
-
+  SMODS.Consumable({
+    object_type = "Consumable",
+    set = "Shape",
+    name = "shape_Pentagon",
+    key = "pentagon",
+    pos = { x = 1, y = 4 },
+    config = {
+      val = 0,
+      partial_rounds = 0,
+      upgrade_rounds = 2,
+    },
+    cost = 4,
+    atlas = "mf_shapes",
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    can_use = function(self, card)
+      return true
+    end,
+    use = function(self, card, area, copier)
+      local card_type = "Fraud"
+      local rng_seed = "fraud"
+      for i = 1, card.ability.val do
+        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+          play_sound('timpani')
+          local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+          n_card:add_to_deck()
+          n_card:set_edition({negative = true}, true)
+          G.consumeables:emplace(n_card)
+          card:juice_up(0.3, 0.5)
+          return true end }))
+      end
+      delay(0.6)
+    end,
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+    end
+  })
+  
   SMODS.Sticker {
     key = "halted",
     atlas = "mf_stickers",
@@ -805,179 +844,179 @@ function init()
     end,
   })
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Shape",
-    name = "shape_house",
-    key = "house",
-    pos = { x = 0, y = 5 },
-    config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
-    },
-    cost = 4,
-    atlas = "mf_shapes",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local tag_type = "tag_entr_ascendant_reference"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end,
-    set_badges = function (self, card, badges)
-      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
-    end,
-  })
+  -- SMODS.Consumable({
+  --   object_type = "Consumable",
+  --   set = "Shape",
+  --   name = "shape_house",
+  --   key = "house",
+  --   pos = { x = 0, y = 5 },
+  --   config = {
+  --     val = 0,
+  --     partial_rounds = 0,
+  --     upgrade_rounds = 4,
+  --   },
+  --   cost = 4,
+  --   atlas = "mf_shapes",
+  --   unlocked = true,
+  --   discovered = true,
+  --   display_size = { w = 71, h = 87 },
+  --   pixel_size = { w = 71, h = 87 },
+  --   can_use = function(self, card)
+  --     return true
+  --   end,
+  --   use = function(self, card, area, copier)
+  --     local tag_type = "tag_entr_ascendant_reference"
+  --     for i = 1, card.ability.val do
+  --       G.E_MANAGER:add_event(Event({
+  --         func = (function()
+  --           add_tag(Tag(tag_type))
+  --           play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+  --           play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+  --           return true
+  --         end)
+  --       }))
+  --       delay(0.2)
+  --     end
+  --     delay(0.6)
+  --   end,
+  --   loc_vars = function(self, info_queue, card)
+  --     local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+  --     return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+  --   end,
+  --   set_badges = function (self, card, badges)
+  --     SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+  --   end,
+  -- })
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Shape",
-    name = "shape_loss",
-    key = "loss",
-    pos = { x = 1, y = 5 },
-    config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
-    },
-    cost = 4,
-    atlas = "mf_shapes",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local tag_type = "tag_cry_loss"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end,
-    set_badges = function (self, card, badges)
-      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
-    end,
-  })
+  -- SMODS.Consumable({
+  --   object_type = "Consumable",
+  --   set = "Shape",
+  --   name = "shape_loss",
+  --   key = "loss",
+  --   pos = { x = 1, y = 5 },
+  --   config = {
+  --     val = 0,
+  --     partial_rounds = 0,
+  --     upgrade_rounds = 4,
+  --   },
+  --   cost = 4,
+  --   atlas = "mf_shapes",
+  --   unlocked = true,
+  --   discovered = true,
+  --   display_size = { w = 71, h = 87 },
+  --   pixel_size = { w = 71, h = 87 },
+  --   can_use = function(self, card)
+  --     return true
+  --   end,
+  --   use = function(self, card, area, copier)
+  --     local tag_type = "tag_cry_loss"
+  --     for i = 1, card.ability.val do
+  --       G.E_MANAGER:add_event(Event({
+  --         func = (function()
+  --           add_tag(Tag(tag_type))
+  --           play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
+  --           play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
+  --           return true
+  --         end)
+  --       }))
+  --       delay(0.2)
+  --     end
+  --     delay(0.6)
+  --   end,
+  --   loc_vars = function(self, info_queue, card)
+  --     local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+  --     return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+  --   end,
+  --   set_badges = function (self, card, badges)
+  --     SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+  --   end,
+  -- })
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Shape",
-    name = "shape_prism",
-    key = "prism",
-    pos = { x = 2, y = 5 },
-    soul_pos = { x = 2, y = 6 },
-    config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 12,
-    },
-    cost = 4,
-    atlas = "mf_shapes",
-    hidden = true,
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_entr_beyond', 'sup')
-          n_card.no_omega = true
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end,
-    set_badges = function (self, card, badges)
-      SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
-    end,
-  })
+  -- SMODS.Consumable({
+  --   object_type = "Consumable",
+  --   set = "Shape",
+  --   name = "shape_prism",
+  --   key = "prism",
+  --   pos = { x = 2, y = 5 },
+  --   soul_pos = { x = 2, y = 6 },
+  --   config = {
+  --     val = 0,
+  --     partial_rounds = 0,
+  --     upgrade_rounds = 12,
+  --   },
+  --   cost = 4,
+  --   atlas = "mf_shapes",
+  --   hidden = true,
+  --   unlocked = true,
+  --   discovered = true,
+  --   display_size = { w = 71, h = 87 },
+  --   pixel_size = { w = 71, h = 87 },
+  --   can_use = function(self, card)
+  --     return true
+  --   end,
+  --   use = function(self, card, area, copier)
+  --     for i = 1, card.ability.val do
+  --       G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+  --         play_sound('timpani')
+  --         local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_entr_beyond', 'sup')
+  --         n_card.no_omega = true
+  --         n_card:add_to_deck()
+  --         n_card:set_edition({negative = true}, true)
+  --         G.consumeables:emplace(n_card)
+  --         card:juice_up(0.3, 0.5)
+  --         return true end }))
+  --     end
+  --     delay(0.6)
+  --   end,
+  --   loc_vars = function(self, info_queue, card)
+  --     local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+  --     return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+  --   end,
+  --   set_badges = function (self, card, badges)
+  --     SMODS.create_mod_badges({ mod = SMODS.find_mod("entr")[1] }, badges)
+  --   end,
+  -- })
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Shape",
-    name = "shape_Brackets",
-    key = "brackets",
-    pos = { x = 3, y = 5 },
-    config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
-    },
-    cost = 4,
-    atlas = "mf_shapes",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local card_type = "RCode"
-      local rng_seed = "brackets"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+  -- SMODS.Consumable({
+  --   object_type = "Consumable",
+  --   set = "Shape",
+  --   name = "shape_Brackets",
+  --   key = "brackets",
+  --   pos = { x = 3, y = 5 },
+  --   config = {
+  --     val = 0,
+  --     partial_rounds = 0,
+  --     upgrade_rounds = 4,
+  --   },
+  --   cost = 4,
+  --   atlas = "mf_shapes",
+  --   unlocked = true,
+  --   discovered = true,
+  --   display_size = { w = 71, h = 87 },
+  --   pixel_size = { w = 71, h = 87 },
+  --   can_use = function(self, card)
+  --     return true
+  --   end,
+  --   use = function(self, card, area, copier)
+  --     local card_type = "RCode"
+  --     local rng_seed = "brackets"
+  --     for i = 1, card.ability.val do
+  --       G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+  --         play_sound('timpani')
+  --         local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
+  --         n_card:add_to_deck()
+  --         n_card:set_edition({negative = true}, true)
+  --         G.consumeables:emplace(n_card)
+  --         card:juice_up(0.3, 0.5)
+  --         return true end }))
+  --     end
+  --     delay(0.6)
+  --   end,
+  --   loc_vars = function(self, info_queue, card)
+  --     local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+  --     return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+  --   end
+  -- })
 
   -- Joker Display
 

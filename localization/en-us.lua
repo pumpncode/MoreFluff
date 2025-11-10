@@ -1476,16 +1476,16 @@ local loc_stuff = {
         name = "Star",
         text = {
           "Create a random {C:dark_edition}Negative{}",
-          "{C:rplanbet}Star?{} card for every",
+          "{C:purple}Star{} card for every",
           "{C:attention}#4#{} rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_lilac = {
-        name = "Lilac",
+      c_mf_pentagon = {
+        name = "Pentagon",
         text = {
           "Create a random {C:dark_edition}Negative{}",
-          "{C:tarot}Tarot{} card for every",
+          "{C:red}Fraud{} card for every",
           "{C:attention}#4#{} rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
@@ -1493,7 +1493,7 @@ local loc_stuff = {
       c_mf_pause = {
         name = "Pause",
         text = {
-          "Add {C:attention}1{} round to a all {C:colourcard}Colour{}",
+          "Add {C:attention}1{} round to all {C:colourcard}Colour{}",
           "cards for every {C:attention}#4#{} rounds this",
           "has been held, then {C:red}Halt{} them all",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
@@ -2396,8 +2396,8 @@ local loc_stuff = {
       k_searched_ex = "Searched!",
       k_forged_ex = "Forged!",
       
-      k_shape = "Shape?",
-      b_shape_cards = "Shape? Cards",
+      k_shape = "Shape",
+      b_shape_cards = "Shape Cards",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
