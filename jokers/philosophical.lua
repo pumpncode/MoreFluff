@@ -1,7 +1,7 @@
 local joker = {
   name = "Philosophical Joker",
   config = {
-    extra = 1
+    card_limit = 1,
   },
   pos = {x = 4, y = 0},
   rarity = 1,
@@ -19,15 +19,15 @@ local joker = {
   },
   loc_vars = function(self, info_queue, center)
     return {
-      vars = { center.ability.extra }
+      vars = { center.ability.card_limit }
     }
   end,
-	add_to_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra
-	end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra
-	end
+	-- add_to_deck = function(self, card, from_debuff)
+	-- 	G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra
+	-- end,
+	-- remove_from_deck = function(self, card, from_debuff)
+	-- 	G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra
+	-- end
 }
 
 if JokerDisplay then

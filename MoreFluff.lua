@@ -880,9 +880,7 @@ function Back.apply_to_run(self)
     G.E_MANAGER:add_event(Event({
       func = function()
         for i = 1,5 do
-          local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_mf_philosophical', nil)
-          card:add_to_deck()
-          G.jokers:emplace(card)
+          SMODS.add_card{key="j_mf_philosophical", area=G.jokers}
         end
         return true
       end
