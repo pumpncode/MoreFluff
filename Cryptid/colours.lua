@@ -270,15 +270,15 @@
 --   }
 -- end
 
--- return {
---   init = function(self)
---     --this function runs after the file is loaded, but before items are registered
---   end,
---   items = {
---     magenta,
---     moonstone,
---     mutare,
---     ooffoo,
---     colorem,
---   }
--- }
+return {
+  init = function(self)
+    --this function runs after the file is loaded, but before items are registered
+  end,
+  items = {
+    -- magenta,
+    -- moonstone,
+    -- mutare,
+    -- ooffoo,
+    -- colorem,
+  }
+}
