@@ -1212,8 +1212,11 @@ local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
   
-  for _, other_card in pairs(G.deck.cards) do
-    SMODS.debuff_card(other_card, false, "allicantdo")
+  if G.allicantdoundebuff then
+    for _, other_card in pairs(G.deck.cards) do
+      SMODS.debuff_card(other_card, false, "allicantdo")
+    end
+    G.allicantdoundebuff = nil
   end
 
   if G.missingjoker_revert then
@@ -1252,6 +1255,7 @@ local update_blind_selectref = Game.update_blind_select
 function Game:update_blind_select(dt)
   update_blind_selectref(self, dt)
   G.do_colour_end_of_round_stuff = true
+  G.allicantdoundebuff = true
 end
 
 -- config menu
