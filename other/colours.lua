@@ -88,10 +88,10 @@ function init()
       end
 
       if card.ability.create_set or card.ability.create_key then
+        local tbl = { edition = "e_negative" }
+        if card.ability.create_set then tbl.set = card.ability.create_set end
+        if card.ability.create_key then tbl.key = card.ability.create_key end
         for i = 1, card.ability.val do
-          local tbl = { edition = "e_negative" }
-          if card.ability.create_set then tbl.set = card.ability.create_set end
-          if card.ability.create_key then tbl.key = card.ability.create_key end
           G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
@@ -102,6 +102,13 @@ function init()
               return true
             end
           }))
+        end
+        delay(0.6)
+      end
+
+      if self.colour_effect and type(self.colour_effect) == "function" then
+        for i = 1, card.ability.val do
+          self.colour_effect(self, card, area)
         end
         delay(0.6)
       end
@@ -301,34 +308,29 @@ function init()
     Entropy.AscendedTags["tag_mf_colour"] = "tag_entr_ascendant_twisted"
   end
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Black",
+  FLUFF.Colour {
     key = "black",
+    name = "col_Black",
+    atlas = "mf_colours",
     pos = { x = 0, y = 1 },
     config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
+      upgrade_rounds = 4
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
     can_use = function(self, card)
       for k, v in pairs(G.jokers.cards) do
-        if v.ability.set == 'Joker' and ((not v.edition) or (v.edition and not v.edition.egative)) then
+        if v.ability.set == "Joker" and ((not v.edition) or (v.edition and not v.edition.negative)) then
           return true
         end
       end
       return false
     end,
-    use = function(self, card, area, copier)
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+
+    colour_effect = function(self, card, area)
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
           local temp_pool = {}
           local backup_pool = {}
           for k, v in pairs(G.jokers.cards) do
@@ -354,15 +356,11 @@ function init()
             check_for_unlock({type = 'have_edition'})
             card:juice_up(0.3, 0.5)
           end
-        return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+          return true
+        end
+      }))
     end
-  })
+  }
 
   FLUFF.Colour {
     key = "deepblue",
@@ -397,40 +395,44 @@ function init()
     }
   }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Brown",
+  FLUFF.Colour {
     key = "brown",
+    name = "col_Brown",
+    atlas = "mf_colours",
     pos = { x = 0, y = 2 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
       cash_per = 2
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
+    loc_vars = function(self, info_queue, card)
+      local tbl = FLUFF.Colour.loc_vars(self, info_queue, card)
+      table.insert(tbl.vars, card.ability.cash_per)
+      return tbl
+    end,
+
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
-    use = function(self, card, area, copier)
+
+    use = function(self, card, area)
       local temp_hand = {}
       local destroyed_cards = {}
-      for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand+1] = v end
-      table.sort(temp_hand, function (a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
-      pseudoshuffle(temp_hand, pseudoseed('brown'))
+      for _, v in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = v end
+      table.sort(temp_hand, function(a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
+      pseudoshuffle(temp_hand, pseudoseed("brown"))
 
-      for i = 1, math.min(#temp_hand, card.ability.val) do destroyed_cards[#destroyed_cards+1] = temp_hand[i] end
+      for i = 1, math.min(#temp_hand, card.ability.val) do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
 
-      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true end }))
+      G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.4,
+        func = function()
+          play_sound("tarot1")
+          card:juice_up(0.3, 0.5)
+          return true
+        end
+      }))
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.1,
@@ -439,20 +441,14 @@ function init()
             local card = destroyed_cards[i]
             SMODS.destroy_cards({card})
           end
-          return true end }))
+          return true
+        end
+      }))
       delay(0.5)
       ease_dollars(card.ability.cash_per * card.ability.val)
-      delay(0.3)
-      for i = 1, #G.jokers.cards do
-        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
-      end
       delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds, card.ability.cash_per} }
     end
-  })
+  }
   
   FLUFF.Colour {
     key = "grey",
@@ -564,34 +560,23 @@ function init()
     }
   }
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Pink",
+  FLUFF.Colour {
     key = "pink",
+    name = "col_Pink",
+    atlas = "mf_colours",
     pos = { x = 2, y = 4 },
     config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 2,
+      upgrade_rounds = 2
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
     can_use = function(self, card)
       return true
     end,
-    use = function(self, card, area, copier)
+
+    use = function(self, card, area)
       n_random_colour_rounds(card.ability.val)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
     end
-  })
+  }
   
   if mf_config["45 Degree Rotated Tarot Cards"] then
     FLUFF.Colour {
@@ -660,57 +645,41 @@ function init()
 
   if next(SMODS.find_mod("sillyseals")) then
     -- the rest of them are still hell yeahs i just cant be bothered writing it every time
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_RoyalBlue",
+    FLUFF.Colour {
       key = "royalblue",
-      pos = { x = 3, y = 6 },
-      config = {
-        val = 0,
-        partial_rounds = 0,
-        upgrade_rounds = 4,
-      },
-      cost = 4,
+      name = "col_RoyalBlue",
       atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
+      pos = { x = 3, y = 6 },
       hidden = true,
       soul_rate = 0.03,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
+      config = {
+        upgrade_rounds = 4
+      },
+
       can_use = function(self, card)
         return true
       end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          local key = nil
-          if jl.chance('sealspectralpack_legendary', 20, true) then
-            key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed('sealspectrals'))
-          elseif jl.chance('sealspectralpack_epic', 5, true) then
-            key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed('sealspectrals'))
-          else
-            key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals'))
-          end
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
+
+      colour_effect = function(self, card, area)
+        local key = nil
+        if jl.chance("sealspectralpack_legendary", 20, true) then
+          key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed("sealspectrals"))
+        elseif jl.chance("sealspectralpack_epic", 5, true) then
+          key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed("sealspectrals"))
+        else
+          key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed("sealspectrals"))
         end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
-      set_badges = function (self, card, badges)
-        SMODS.create_mod_badges({ mod = SMODS.find_mod("sillyseals")[1] }, badges)
-      end,
-    })
+
+        G.E_MANAGER:add_event(Event({
+          trigger = "after",
+          delay = 0.4,
+          func = function()
+            SMODS.add_card { edition = "e_negative", key = key }
+            return true
+          end
+        }))
+      end
+    }
     
     FLUFF.Colour {
       key = "respiceperprisma",
