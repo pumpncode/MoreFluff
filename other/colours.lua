@@ -1,4 +1,120 @@
 function init()
+  FLUFF.Colour = SMODS.Consumable:extend {
+    object_type = "Consumable",
+    set = "Colour",
+    cost = 4,
+    unlocked = true,
+    discovered = true,
+    display_size = { w = 71, h = 87 },
+    pixel_size = { w = 71, h = 87 },
+    
+    loc_vars = function(self, info_queue, card)
+      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
+      return { vars = {
+        card.ability.val,
+        val,
+        max,
+        card.ability.upgrade_rounds
+      } }
+    end,
+
+    set_ability = function(self, card, initial, delay_sprites)
+      card.ability.val = card.ability.val or 0
+      card.ability.partial_rounds = card.ability.partial_rounds or 0
+    end,
+
+    can_use = function(self, card)
+      if card.ability.suit then
+        return #G.hand.cards > 1
+      end
+      if card.ability.tag or card.ability.create_set or card.ability.create_key then
+        return true
+      end
+    end,
+
+    use = function(self, card, area)
+      if card.ability.suit then
+        local rng_seed = self.key
+        local blacklist = {}
+        for i = 1, card.ability.val do
+          local temp_pool = {}
+          for k, v in pairs(G.hand.cards) do
+            if not v:is_suit(card.ability.suit) and not blacklist[v] then
+              table.insert(temp_pool, v)
+            end
+          end
+          local over = false
+          if #temp_pool == 0 then break end
+          local eligible_card = pseudorandom_element(temp_pool, rng_seed)
+          blacklist[eligible_card] = true
+          G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.15,
+            func = function()
+              eligible_card:flip()
+              play_sound('card1', 1)
+              eligible_card:juice_up(0.3, 0.3)
+              return true
+            end
+          }))
+          G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+              eligible_card:flip()
+              play_sound('tarot2', percent)
+              eligible_card:change_suit(card.ability.suit)
+              return true
+            end
+          }))
+          card:juice_up(0.3, 0.5)
+        end
+        delay(0.6)
+      end
+
+      if card.ability.tag then
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({
+            func = function()
+              add_tag(Tag(card.ability.tag))
+              play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+              play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+              return true
+            end
+          }))
+          delay(0.2)
+        end
+        delay(0.6)
+      end
+
+      if card.ability.create_set or card.ability.create_key then
+        local tbl = { edition = "e_negative" }
+        if card.ability.create_set then tbl.set = card.ability.create_set end
+        if card.ability.create_key then tbl.key = card.ability.create_key end
+        for i = 1, card.ability.val do
+          G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+              play_sound('timpani')
+              SMODS.add_card(tbl)
+              card:juice_up(0.3, 0.5)
+              return true
+            end
+          }))
+        end
+        delay(0.6)
+      end
+
+      if self.colour_effect and type(self.colour_effect) == "function" then
+        for i = 1, card.ability.val do
+          self.colour_effect(self, card, area)
+        end
+        delay(0.6)
+      end
+    end
+  }
+
   -- for the funny progress bar.
   function progressbar(val, max)
     if max > 10 then
@@ -192,34 +308,29 @@ function init()
     Entropy.AscendedTags["tag_mf_colour"] = "tag_entr_ascendant_twisted"
   end
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Black",
+  FLUFF.Colour {
     key = "black",
+    name = "col_Black",
+    atlas = "mf_colours",
     pos = { x = 0, y = 1 },
     config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
+      upgrade_rounds = 4
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
     can_use = function(self, card)
       for k, v in pairs(G.jokers.cards) do
-        if v.ability.set == 'Joker' and ((not v.edition) or (v.edition and not v.edition.egative)) then
+        if v.ability.set == "Joker" and ((not v.edition) or (v.edition and not v.edition.negative)) then
           return true
         end
       end
       return false
     end,
-    use = function(self, card, area, copier)
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
+
+    colour_effect = function(self, card, area)
+      G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
           local temp_pool = {}
           local backup_pool = {}
           for k, v in pairs(G.jokers.cards) do
@@ -245,189 +356,83 @@ function init()
             check_for_unlock({type = 'have_edition'})
             card:juice_up(0.3, 0.5)
           end
-        return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+          return true
+        end
+      }))
     end
-  })
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Deep Blue",
+  FLUFF.Colour {
     key = "deepblue",
+    name = "col_Deep Blue",
+    atlas = "mf_colours",
     pos = { x = 1, y = 1 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return #G.hand.cards > 1
-    end,
-    use = function(self, card, area, copier)
-      local suit = "Spades"
-      local rng_seed = "deepblue"
-      local blacklist = {}
-      for i = 1, card.ability.val do
-        local temp_pool = {}
-        for k, v in pairs(G.hand.cards) do
-          if not v:is_suit(suit) and not blacklist[v] then
-            table.insert(temp_pool, v)
-          end
-        end
-        local over = false
-        if #temp_pool == 0 then
-          break
-        end
-        local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
-        blacklist[eligible_card] = true
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
-        card:juice_up(0.3, 0.5)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      suit = "Spades"
+    }
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Crimson",
+  FLUFF.Colour {
     key = "crimson",
+    name = "col_Crimson",
+    atlas = "mf_colours",
     pos = { x = 2, y = 1 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local tag_type = "tag_rare"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      tag = "tag_rare"
+    }
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Seaweed",
+  FLUFF.Colour {
     key = "seaweed",
+    name = "col_Seaweed",
+    atlas = "mf_colours",
     pos = { x = 3, y = 1 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return #G.hand.cards > 1
-    end,
-    use = function(self, card, area, copier)
-      local suit = "Clubs"
-      local rng_seed = "seaweed"
-      local blacklist = {}
-      for i = 1, card.ability.val do
-        local temp_pool = {}
-        for k, v in pairs(G.hand.cards) do
-          if not v:is_suit(suit) and not blacklist[v] then
-            table.insert(temp_pool, v)
-          end
-        end
-        local over = false
-        if #temp_pool == 0 then
-          break
-        end
-        local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
-        blacklist[eligible_card] = true
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
-        card:juice_up(0.3, 0.5)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      suit = "Clubs"
+    }
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Brown",
+  FLUFF.Colour {
     key = "brown",
+    name = "col_Brown",
+    atlas = "mf_colours",
     pos = { x = 0, y = 2 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
       cash_per = 2
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
+    loc_vars = function(self, info_queue, card)
+      local tbl = FLUFF.Colour.loc_vars(self, info_queue, card)
+      table.insert(tbl.vars, card.ability.cash_per)
+      return tbl
+    end,
+
     can_use = function(self, card)
       return #G.hand.cards > 1
     end,
-    use = function(self, card, area, copier)
+
+    use = function(self, card, area)
       local temp_hand = {}
       local destroyed_cards = {}
-      for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand+1] = v end
-      table.sort(temp_hand, function (a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
-      pseudoshuffle(temp_hand, pseudoseed('brown'))
+      for _, v in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = v end
+      table.sort(temp_hand, function(a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
+      pseudoshuffle(temp_hand, pseudoseed("brown"))
 
-      for i = 1, math.min(#temp_hand, card.ability.val) do destroyed_cards[#destroyed_cards+1] = temp_hand[i] end
+      for i = 1, math.min(#temp_hand, card.ability.val) do destroyed_cards[#destroyed_cards + 1] = temp_hand[i] end
 
-      G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('tarot1')
-        card:juice_up(0.3, 0.5)
-        return true end }))
+      G.E_MANAGER:add_event(Event({
+        trigger = "after",
+        delay = 0.4,
+        func = function()
+          play_sound("tarot1")
+          card:juice_up(0.3, 0.5)
+          return true
+        end
+      }))
       G.E_MANAGER:add_event(Event({
         trigger = 'after',
         delay = 0.1,
@@ -436,974 +441,367 @@ function init()
             local card = destroyed_cards[i]
             SMODS.destroy_cards({card})
           end
-          return true end }))
+          return true
+        end
+      }))
       delay(0.5)
       ease_dollars(card.ability.cash_per * card.ability.val)
-      delay(0.3)
-      for i = 1, #G.jokers.cards do
-        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
-      end
       delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds, card.ability.cash_per} }
     end
-  })
+  }
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Grey",
+  FLUFF.Colour {
     key = "grey",
+    name = "col_Grey",
+    atlas = "mf_colours",
     pos = { x = 1, y = 2 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local tag_type = "tag_double"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      tag = "tag_double"
+    }
+  }
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Silver",
+  FLUFF.Colour {
     key = "silver",
+    name = "col_Silver",
+    atlas = "mf_colours",
     pos = { x = 2, y = 2 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local tag_type = "tag_polychrome"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({
-          func = (function()
-            add_tag(Tag(tag_type))
-            play_sound('generic1', 0.9 + math.random()*0.1, 0.8)
-            play_sound('holo1', 1.2 + math.random()*0.1, 0.4)
-            return true
-          end)
-        }))
-        delay(0.2)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
-  
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_White",
+      tag = "tag_polychrome"
+    }
+  }
+
+  FLUFF.Colour {
     key = "white",
+    name = "col_White",
+    atlas = "mf_colours",
     pos = { x = 3, y = 2 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local card_type = "Colour"
-      local rng_seed = "white"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
-
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Red",
+      create_set = "Colour"
+    }
+  }
+  
+  FLUFF.Colour {
     key = "red",
+    name = "col_Red",
+    atlas = "mf_colours",
     pos = { x = 0, y = 3 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return #G.hand.cards > 1
-    end,
-    use = function(self, card, area, copier)
-      local suit = "Hearts"
-      local rng_seed = "red"
-      local blacklist = {}
-      for i = 1, card.ability.val do
-        local temp_pool = {}
-        for k, v in pairs(G.hand.cards) do
-          if not v:is_suit(suit) and not blacklist[v] then
-            table.insert(temp_pool, v)
-          end
-        end
-        local over = false
-        if #temp_pool == 0 then
-          break
-        end
-        local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
-        blacklist[eligible_card] = true
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
-        card:juice_up(0.3, 0.5)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      suit = "Hearts"
+    }
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Orange",
+  FLUFF.Colour {
     key = "orange",
+    name = "col_Orange",
+    atlas = "mf_colours",
     pos = { x = 1, y = 3 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 1,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return #G.hand.cards > 1
-    end,
-    use = function(self, card, area, copier)
-      local suit = "Diamonds"
-      local rng_seed = "orange"
-      local blacklist = {}
-      for i = 1, card.ability.val do
-        local temp_pool = {}
-        for k, v in pairs(G.hand.cards) do
-          if not v:is_suit(suit) and not blacklist[v] then
-            table.insert(temp_pool, v)
-          end
-        end
-        local over = false
-        if #temp_pool == 0 then
-          break
-        end
-        local eligible_card = pseudorandom_element(temp_pool, pseudoseed(rng_seed))
-        blacklist[eligible_card] = true
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function() eligible_card:flip();play_sound('card1', 1);eligible_card:juice_up(0.3, 0.3);return true end }))
-        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.4,func = function() eligible_card:flip();play_sound('tarot2', percent);eligible_card:change_suit(suit);return true end }))
-        card:juice_up(0.3, 0.5)
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      suit = "Diamonds"
+    }
+  }
 
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Yellow",
+  FLUFF.Colour {
     key = "yellow",
+    name = "col_Yellow",
+    atlas = "mf_colours",
     pos = { x = 2, y = 3 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
-      value_per = 8,
+      value_per = 8
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return false
-    end,
-    use = function(self, card, area, copier)
-      
-    end,
+
     loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds, card.ability.value_per} }
+      local tbl = FLUFF.Colour.loc_vars(self, info_queue, card)
+      table.insert(tbl.vars, card.ability.value_per)
+      return tbl
     end
-  })
-  
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Green",
+  }
+
+  FLUFF.Colour {
     key = "green",
+    name = "col_Green",
+    atlas = "mf_colours",
     pos = { x = 3, y = 3 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 3,
+      create_key = "j_mf_oopsallfives"
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('timpani')
-        local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'j_mf_oopsallfives', 'sup')
-        n_card:add_to_deck()
-        n_card:set_edition({negative = true}, true)
-        G.jokers:emplace(n_card)
-        card:juice_up(0.3, 0.5)
-        return true end }))
-      end
-      delay(0.6)
-    end,
+
     loc_vars = function(self, info_queue, card)
       info_queue[#info_queue + 1] = G.P_CENTERS["j_mf_oopsallfives"]
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
+      return FLUFF.Colour.loc_vars(self, info_queue, card)
     end
-  })
-  
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Blue",
+  }
+
+  FLUFF.Colour {
     key = "blue",
+    name = "col_Blue",
+    atlas = "mf_colours",
     pos = { x = 0, y = 4 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 2,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local card_type = "Planet"
-      local rng_seed = "blue"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      create_set = "Planet"
+    }
+  }
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Lilac",
+  FLUFF.Colour {
     key = "lilac",
+    name = "col_Lilac",
+    atlas = "mf_colours",
     pos = { x = 1, y = 4 },
     config = {
-      val = 0,
-      partial_rounds = 0,
       upgrade_rounds = 2,
-    },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      local card_type = "Tarot"
-      local rng_seed = "blue"
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+      create_set = "Tarot"
+    }
+  }
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Pink",
+  FLUFF.Colour {
     key = "pink",
+    name = "col_Pink",
+    atlas = "mf_colours",
     pos = { x = 2, y = 4 },
     config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 2,
+      upgrade_rounds = 2
     },
-    cost = 4,
-    atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
+
     can_use = function(self, card)
       return true
     end,
-    use = function(self, card, area, copier)
+
+    use = function(self, card, area)
       n_random_colour_rounds(card.ability.val)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
     end
-  })
+  }
   
   if mf_config["45 Degree Rotated Tarot Cards"] then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Peach",
+    FLUFF.Colour {
       key = "peach",
+      name = "col_Peach",
+      atlas = "mf_colours",
       pos = { x = 3, y = 4 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 2,
-      },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        local card_type = "Rotarot"
-        local rng_seed = "peach"
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end
-    })
+        create_set = "Rotarot"
+      }
+    }
   end
   
-  SMODS.Consumable({
-    object_type = "Consumable",
-    set = "Colour",
-    name = "col_Gold",
+  FLUFF.Colour {
     key = "new_gold",
-    pos = { x = 1, y = 6 },
-    config = {
-      val = 0,
-      partial_rounds = 0,
-      upgrade_rounds = 4,
-    },
-    hidden = true,
-    cost = 4,
+    name = "col_Gold",
     atlas = "mf_colours",
-    unlocked = true,
-    discovered = true,
-    display_size = { w = 71, h = 87 },
-    pixel_size = { w = 71, h = 87 },
-    can_use = function(self, card)
-      return true
-    end,
-    use = function(self, card, area, copier)
-      for i = 1, card.ability.val do
-        G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-          play_sound('timpani')
-          local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_soul', 'sup')
-          n_card:add_to_deck()
-          n_card:set_edition({negative = true}, true)
-          G.consumeables:emplace(n_card)
-          card:juice_up(0.3, 0.5)
-          return true end }))
-      end
-      delay(0.6)
-    end,
-    loc_vars = function(self, info_queue, card)
-      local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-      return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-    end
-  })
+    pos = { x = 1, y = 6 },
+    hidden = true,
+    config = {
+      upgrade_rounds = 4,
+      create_key = "c_soul"
+    }
+  }
 
   if next(SMODS.find_mod("aikoyorisshenanigans")) then
     -- hell yeah 2
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_WordleGreen",
+    FLUFF.Colour {
       key = "wordlegreen",
+      name = "col_WordleGreen",
+      atlas = "mf_colours",
       pos = { x = 0, y = 6 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 1,
+        create_set = "Alphabet"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        local card_type = "Alphabet"
-        local rng_seed = "wordle"
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
+
       in_pool = function(self, args)
         return G.GAME.akyrs_character_stickers_enabled and G.GAME.akyrs_wording_enabled
       end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("aikoyorisshenanigans")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   if next(SMODS.find_mod("LuckyRabbit")) then
     -- hell yeah 3
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_PastelPink",
+    FLUFF.Colour {
       key = "pastelpink",
+      name = "col_PastelPink",
+      atlas = "mf_colours",
       pos = { x = 2, y = 6 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 2,
+        create_set = "Silly"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        local card_type = "Silly"
-        local rng_seed = "pastel"
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds, colours = {HEX("ff98e2")}} }
-      end,
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("LuckyRabbit")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   if next(SMODS.find_mod("sillyseals")) then
     -- the rest of them are still hell yeahs i just cant be bothered writing it every time
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_RoyalBlue",
+    FLUFF.Colour {
       key = "royalblue",
-      pos = { x = 3, y = 6 },
-      config = {
-        val = 0,
-        partial_rounds = 0,
-        upgrade_rounds = 4,
-      },
-      cost = 4,
+      name = "col_RoyalBlue",
       atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
+      pos = { x = 3, y = 6 },
       hidden = true,
       soul_rate = 0.03,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
+      config = {
+        upgrade_rounds = 4
+      },
+
       can_use = function(self, card)
         return true
       end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          local key = nil
-          if jl.chance('sealspectralpack_legendary', 20, true) then
-            key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed('sealspectrals'))
-          elseif jl.chance('sealspectralpack_epic', 5, true) then
-            key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed('sealspectrals'))
-          else
-            key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed('sealspectrals'))
-          end
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
+
+      colour_effect = function(self, card, area)
+        local key = nil
+        if jl.chance("sealspectralpack_legendary", 20, true) then
+          key = pseudorandom_element(Seals.legendary_seal_spectrals, pseudoseed("sealspectrals"))
+        elseif jl.chance("sealspectralpack_epic", 5, true) then
+          key = pseudorandom_element(Seals.epic_seal_spectrals, pseudoseed("sealspectrals"))
+        else
+          key = pseudorandom_element(Seals.rare_seal_spectrals, pseudoseed("sealspectrals"))
         end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
-      set_badges = function (self, card, badges)
-        SMODS.create_mod_badges({ mod = SMODS.find_mod("sillyseals")[1] }, badges)
-      end,
-    })
+
+        G.E_MANAGER:add_event(Event({
+          trigger = "after",
+          delay = 0.4,
+          func = function()
+            SMODS.add_card { edition = "e_negative", key = key }
+            return true
+          end
+        }))
+      end
+    }
     
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_RespicePerPrisma",
+    FLUFF.Colour {
       key = "respiceperprisma",
-      pos = { x = 3, y = 7 },
-      config = {
-        val = 0,
-        partial_rounds = 0,
-        upgrade_rounds = 12,
-      },
-      cost = 4,
+      name = "col_RespicePerPrisma",
       atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
+      pos = { x = 3, y = 7 },
       hidden = true,
       soul_rate = 0.0003,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          local key = "c_sillyseals_ringularity"
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, key, "royalblue")
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+      config = {
+        upgrade_rounds = 12,
+        create_key = "c_sillyseals_ringularity"
+      },
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("sillyseals")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   if next(SMODS.find_mod("Tsunami")) then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Teal",
+    FLUFF.Colour {
       key = "teal",
+      name = "col_Teal",
+      atlas = "mf_colours",
       pos = { x = 0, y = 7 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 2,
+        create_key = "j_splash"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(nil,G.jokers, nil, nil, nil, nil, 'j_splash', 'sup')
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.jokers:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+
       set_badges = function (self, card, badges)
-        SMODS.create_mod_badges({ mod = SMODS.find_mod("Tsunami")[1]  }, badges)
-      end,
-    })
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("Tsunami")[1] }, badges)
+      end
+    }
   end
 
   if next(SMODS.find_mod("egjs")) then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Blank",
+    FLUFF.Colour {
       key = "blank",
+      name = "col_Blank",
+      atlas = "mf_colours",
       pos = { x = 1, y = 7 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 3,
+        create_key = "c_egjs_js_basic"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(nil,G.jokers, nil, nil, nil, nil, 'c_egjs_js_basic', 'sup')
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+
       set_badges = function (self, card, badges)
-        SMODS.create_mod_badges({ mod = SMODS.find_mod("egjs")[1]  }, badges)
-      end,
-    })
+        SMODS.create_mod_badges({ mod = SMODS.find_mod("egjs")[1] }, badges)
+      end
+    }
   end
 
   if next(SMODS.find_mod("sarcpot")) then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Amber",
+    FLUFF.Colour {
       key = "amber",
+      name = "col_Amber",
+      atlas = "mf_colours",
       pos = { x = 2, y = 7 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 3,
+        create_set = "Travel"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        local card_type = "Travel"
-        local rng_seed = "amber"
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("sarcpot")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   if next(SMODS.find_mod("Prism")) then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Moss",
+    FLUFF.Colour {
       key = "moss",
+      name = "col_Moss",
+      atlas = "mf_colours",
       pos = { x = 0, y = 8 },
       config = {
-        val = 0,
-        partial_rounds = 0,
         upgrade_rounds = 3,
+        create_set = "Myth"
       },
-      cost = 4,
-      atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        local card_type = "Myth"
-        local rng_seed = "moss"
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("Prism")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   if next(SMODS.find_mod("sdm0sstuff")) then
     if SDM_0s_Stuff_Config and SDM_0s_Stuff_Config.sdm_bakery then
-      SMODS.Consumable({
-        object_type = "Consumable",
-        set = "Colour",
-        name = "col_Caramel",
+      FLUFF.Colour {
         key = "caramel",
+        name = "col_Caramel",
+        atlas = "mf_colours",
         pos = { x = 1, y = 8 },
         config = {
-          val = 0,
-          partial_rounds = 0,
           upgrade_rounds = 3,
+          create_set = "Bakery"
         },
-        cost = 4,
-        atlas = "mf_colours",
-        unlocked = true,
-        discovered = true,
-        display_size = { w = 71, h = 87 },
-        pixel_size = { w = 71, h = 87 },
-        can_use = function(self, card)
-          return true
-        end,
-        use = function(self, card, area, copier)
-          local card_type = "Bakery"
-          local rng_seed = "caramel"
-          for i = 1, card.ability.val do
-            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-              play_sound('timpani')
-              local n_card = create_card(card_type, G.consumeables, nil, nil, nil, nil, nil, rng_seed)
-              n_card:add_to_deck()
-              n_card:set_edition({negative = true}, true)
-              G.consumeables:emplace(n_card)
-              card:juice_up(0.3, 0.5)
-              return true end }))
-          end
-          delay(0.6)
-        end,
-        loc_vars = function(self, info_queue, card)
-          local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-          return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-        end,
+
         set_badges = function (self, card, badges)
           SMODS.create_mod_badges({ mod = SMODS.find_mod("sdm0sstuff")[1] }, badges)
-        end,
-      })
+        end
+      }
     end
   end
 
   if next(SMODS.find_mod("finity")) then
-    SMODS.Consumable({
-      object_type = "Consumable",
-      set = "Colour",
-      name = "col_Violet",
+    FLUFF.Colour {
       key = "violet",
-      pos = { x = 2, y = 8 },
-      config = {
-        val = 0,
-        partial_rounds = 0,
-        upgrade_rounds = 4,
-      },
-      cost = 4,
+      name = "col_Violet",
       atlas = "mf_colours",
-      unlocked = true,
-      discovered = true,
+      pos = { x = 2, y = 8 },
       hidden = true,
-      display_size = { w = 71, h = 87 },
-      pixel_size = { w = 71, h = 87 },
-      can_use = function(self, card)
-        return true
-      end,
-      use = function(self, card, area, copier)
-        for i = 1, card.ability.val do
-          G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-            play_sound('timpani')
-            local n_card = create_card(nil,G.consumeables, nil, nil, nil, nil, 'c_finity_finity', 'sup')
-            n_card:add_to_deck()
-            n_card:set_edition({negative = true}, true)
-            G.consumeables:emplace(n_card)
-            card:juice_up(0.3, 0.5)
-            return true end }))
-        end
-        delay(0.6)
-      end,
-      loc_vars = function(self, info_queue, card)
-        local val, max = progressbar(card.ability.partial_rounds, card.ability.upgrade_rounds)
-        return { vars = {card.ability.val, val, max, card.ability.upgrade_rounds} }
-      end,
+      config = {
+        upgrade_rounds = 4,
+        create_key = "c_finity_finity"
+      },
+
       set_badges = function (self, card, badges)
         SMODS.create_mod_badges({ mod = SMODS.find_mod("finity")[1] }, badges)
-      end,
-    })
+      end
+    }
   end
 
   SMODS.Voucher({
