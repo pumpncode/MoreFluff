@@ -117,6 +117,8 @@ function init()
 
   -- for the funny progress bar.
   function progressbar(val, max)
+    local val = val or 0
+    local max = max or 1
     if max > 10 then
       return val, "/"..max
     end
