@@ -1095,7 +1095,7 @@ local loc_stuff = {
       c_mf_pastelpink = {
         name = "Pastel Pink",
         text = {
-          "Create a {C:dark_edition}Negative{} {V:1}Silly{}",
+          "Create a {C:dark_edition}Negative{} {c:attention}Silly{}",
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
