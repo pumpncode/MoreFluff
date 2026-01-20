@@ -731,7 +731,7 @@ local loc_stuff = {
         }
       },
       j_mf_forgeslop = {
-        name = "Forge Slop",
+        name = "Forge Residue",
         text = {
           "Does not trigger {C:attention}Joker{}",
           "{C:attention}Forge{} when sold"
