@@ -796,8 +796,6 @@ local loc_stuff = {
           "{X:spectral,C:white,s:1.5}#4##1##5##2#{} Mult",
           "{X:spectral,C:white,s:1.5}X#4##3##5#{} at end of round",
           "{X:spectral,C:white,s:2}X#4#X#4##6##5##5#{} at end of round",
-          "{X:spectral,C:white,s:3}X#4#X#4#X#4##7##5##5##5#{} at end of round",
-          "{X:spectral,C:white,s:4}X#8#{} loops at end of round",
         }
       },
       j_mf_dinner = {

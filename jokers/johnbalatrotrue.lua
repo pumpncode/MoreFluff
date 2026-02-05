@@ -91,8 +91,6 @@ if Jen then
         card.ability.extra.op_mult,
         "{", "}",
         card.ability.extra.op_mult_mult,
-        card.ability.extra.op_mult_mult_mult,
-        2
       } }
     end,
     calculate = function(self, card, context)
@@ -102,12 +100,9 @@ if Jen then
         }
       end
       if context.end_of_round and not context.individual and not context.blueprint and not context.repetition then
-        local z = card.ability.extra.loops
         for i = 1, z do
-          card.ability.extra.op_mult_mult = card.ability.extra.op_mult_mult * card.ability.extra.op_mult_mult_mult
           card.ability.extra.op_mult = card.ability.extra.op_mult * card.ability.extra.op_mult_mult
           card.ability.extra.operator = card.ability.extra.operator * card.ability.extra.op_mult
-          card.ability.extra.loops = card.ability.extra.loops * 2
         end
         return {
           message = localize("k_upgrade_ex")
