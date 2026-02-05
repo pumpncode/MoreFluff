@@ -62,7 +62,11 @@ local joker = {
         }))
       end
     elseif idx == 2 then
-      card:set_ability(G.P_CENTERS["j_mf_johnbalatrotrue"])
+      if Jen then
+        card:set_ability(G.P_CENTERS["j_mf_johnbalatro_super_ultra_mega_upgraded_deluxe"])
+      else
+        card:set_ability(G.P_CENTERS["j_mf_johnbalatrotrue"])
+      end
       play_sound("mf_treethree")
       card:juice_up()
       G.jokers:unhighlight_all()
