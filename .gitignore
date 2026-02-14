@@ -2,3 +2,4 @@
 config.lua
 .lovelyignore
 .luarc.json
+.ignore

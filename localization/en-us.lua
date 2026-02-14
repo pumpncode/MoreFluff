@@ -2,8 +2,8 @@
 -- language, they will still be called "Colour" cards.
 -- ha ha ha.
 
-local art_credit = function (name)
-  if mf_config["Programmer Art"] then return nil end
+local art_credit = function (name, forced)
+  if mf_config["Programmer Art"] and not forced then return nil end
   if mf_config["Disable Art Credits"] then return nil end
   return "{s:0.8,C:inactive}Art by: "..name
 end
@@ -385,7 +385,8 @@ local loc_stuff = {
         name = "Marigold",
         text = {
           "{C:attention}Retriggers{} played and held",
-          "{C:attention}Marigold Cards{} #1# times"
+          "{C:attention}Marigold Cards{} #1# times",
+          art_credit("marigold"),
         },
       },
       j_mf_yuckyrat = { 
@@ -570,8 +571,8 @@ local loc_stuff = {
         name = "Unpleasant Card",
         text = {
           "{X:chips,C:white} X#1# {} Chips",
-          "{C:attention}Booster Packs{} are",
-          "automatically skipped"
+          "{C:attention}Booster Packs{} contain",
+          "only {C:attention}1{} card"
         },
       },
       j_mf_slotmachine = { 
@@ -708,6 +709,110 @@ local loc_stuff = {
           "for every {C:attention}2{} Blinds skipped",
           "{C:inactive}(Currently #1#/#2#)"
         },
+      },
+      j_mf_grep = {
+        name = "grep",
+        text = {
+          "If {C:attention}first discard{} of round",
+          "has only {C:attention}1{} card, shuffle",
+          "all cards with {C:attention}matching",
+          "{C:attention}rank or suit{} to",
+          "the top of the {C:dark_edition}deck"
+        }
+      },
+      j_mf_forge = {
+        name = "Joker Forge",
+        text = {
+          "Creates a random {C:attention}Joker{}",
+          "card once for every",
+          "{C:attention}#3# Jokers{} sold",
+          "{C:inactive}(Currently {}[{C:attention}#1#{C:inactive}#2#{}]{C:inactive})",
+          art_credit("LFMoth")
+        }
+      },
+      j_mf_forgeslop = {
+        name = "Forge Residue",
+        text = {
+          "Does not trigger {C:attention}Joker{}",
+          "{C:attention}Forge{} when sold"
+        }
+      },
+      j_mf_trianglewalker = {
+        name = "Triangle, Planeswalker",
+        text = {
+          {
+            "{X:black,C:white} +2 {}: Draw {C:attention}three{} cards",
+          },
+          {
+            "{X:black,C:white} -3 {}: Destroy up to {C:attention}three{} selected cards",
+          },
+          {
+            "{X:black,C:white} -11 {}: Make up to {C:attention}three{} selected",
+            "{C:attention}playing cards{} {C:dark_edition}Polychrome{}",
+          }
+        }
+      },
+      j_mf_mindsculptor = {
+        name = "Jimbo, the Mind Sculptor",
+        text = {
+          {
+            "{X:black,C:white} +2 {}: Draw a card",
+          },
+          {
+            "{X:black,C:white} 0 {}: Draw {C:attention}four{} cards, then {C:green}shuffle{} the",
+            "{C:attention}three{} leftmost cards in hand into your deck",
+          },
+          {
+            "{X:black,C:white} -1 {}: {C:green}Shuffle{} all cards held in hand into your deck",
+          },
+          {
+            "{X:black,C:white} -12 {}: {C:red}Destroy{} all cards remaining in your deck",
+            art_credit("Ice"),
+          },
+        }
+      },
+      j_mf_johnbalatro = {
+        name = "John Balatro..?",
+        text = {
+          {
+            "{X:black,C:white} +1 {}: Exactly {C:attention}five{} selected {C:attention}playing cards",
+            "without {C:mult}Mult{} bonuses get {C:mult}+4{} Mult"
+          },
+          {
+            "{X:black,C:white} -11 {}: {C:attention,E:1}Unleash{} John Balatro",
+          },
+        }
+      },
+      j_mf_johnbalatrotrue = {
+        name = "John Balatro",
+        text = {
+          "{X:dark_edition,C:white,s:1.5}^2{} Mult",
+          "before scoring"
+        }
+      },
+      j_mf_johnbalatro_super_ultra_mega_upgraded_deluxe = {
+        name = "John Balatro+",
+        text = {
+          "{X:spectral,C:white,s:1.5}#4##1##5##2#{} Mult",
+          "{X:spectral,C:white,s:1.5}X#4##3##5#{} at end of round",
+          "{X:spectral,C:white,s:2}X#4#X#4##6##5##5#{} at end of round",
+        }
+      },
+      j_mf_dinner = {
+        name = "DINNER!",
+        text = {
+          "Retrigger the {C:attention}Joker",
+          "to the right for",
+          "the next {C:attention}#1#{} rounds"
+        }
+      },
+      j_mf_doubledscale = {
+        name = "Doubled Scale",
+        text = {
+          "{C:attention}Scaling Jokers{} {C:green,E:1}scale",
+          "{C:attention}twice{} as fast",
+          art_credit("LFMoth")
+        }
       },
       -- ORTALAB SWAPS
       j_mf_clintcondition = {
@@ -998,7 +1103,7 @@ local loc_stuff = {
       c_mf_pastelpink = {
         name = "Pastel Pink",
         text = {
-          "Create a {C:dark_edition}Negative{} {V:1}Silly{}",
+          "Create a {C:dark_edition}Negative{} {c:attention}Silly{}",
           "card for every {C:attention}#4#{}",
           "rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})",
@@ -1379,16 +1484,16 @@ local loc_stuff = {
         name = "Star",
         text = {
           "Create a random {C:dark_edition}Negative{}",
-          "{C:rplanbet}Star?{} card for every",
+          "{C:purple}Star{} card for every",
           "{C:attention}#4#{} rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
       },
-      c_mf_lilac = {
-        name = "Lilac",
+      c_mf_pentagon = {
+        name = "Pentagon",
         text = {
           "Create a random {C:dark_edition}Negative{}",
-          "{C:tarot}Tarot{} card for every",
+          "{C:red}Fraud{} card for every",
           "{C:attention}#4#{} rounds this has been held",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
         },
@@ -1396,7 +1501,7 @@ local loc_stuff = {
       c_mf_pause = {
         name = "Pause",
         text = {
-          "Add {C:attention}1{} round to a all {C:colourcard}Colour{}",
+          "Add {C:attention}1{} round to all {C:colourcard}Colour{}",
           "cards for every {C:attention}#4#{} rounds this",
           "has been held, then {C:red}Halt{} them all",
           "{C:inactive}(Currently {C:attention}#1#{C:inactive}, {}[{C:attention}#2#{C:inactive}#3#{}]{C:inactive})"
@@ -1603,6 +1708,79 @@ local loc_stuff = {
         }
       },
     },
+    Stake = {
+      stake_mf_pink = {
+        name = "Pink Stake",
+        text = {
+          "The second {C:attention}Booster Pack{}",
+          "will always be a {C:attention}Standard Pack{}",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_lime = {
+        name = "Lime Stake",
+        text = {
+          "Required score scales",
+          "faster for each {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_steel = {
+        name = "Steel Stake",
+        text = {
+          "Shop can have {C:attention}Heavy{} Jokers",
+          "{C:inactive,s:0.8}(-1 Discard selection limit)",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_zodiac = {
+        name = "Zodiac Stake",
+        text = {
+          "Start run with {C:attention}Planet Merchant{},",
+          "{C:attention}Tarot Merchant{}, and {C:attention}Magic Trick",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_hot = {
+        name = "Hot Stake",
+        text = {
+          "Shop can have {C:attention}Potato{} Jokers",
+          "{C:inactive,s:0.8}(Must be sold first)",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_accelerated = {
+        name = "Accelerated Stake",
+        text = {
+          "Required score scales much",
+          "faster for each {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+          art_credit("Aikoyori"),
+        }
+      },
+      stake_mf_cardboard = {
+        name = "Cardboard Stake",
+        text = {
+          "{C:uncommon}Uncommon{} and {C:rare}Rare{} jokers",
+          "are {C:attention}2x{} less likely to spawn",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_violet = {
+        name = "Violet Stake",
+        text = {
+          "Ante 4 has a {C:dark_edition}Showdown",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+      stake_mf_jimbo = {
+        name = "Jimbo Stake",
+        text = {
+          "+1 Win {C:attention}Ante",
+          "{s:0.8}Applies all previous Stakes",
+        }
+      },
+    },
     Other = {
       undiscovered_colour = {
         name = "Not Discovered",
@@ -1745,10 +1923,31 @@ local loc_stuff = {
           "calculated using {X:dark_edition,C:white}n^^#1# = n^n^#2#{}"
         }
       },
+      planeswalker_explainer = {
+        name = "Planeswalker",
+        text = {
+          "Starts with #1# {C:dark_edition}Loyalty{}.",
+          "Once per round, you can {C:attention}activate{} an",
+          "{C:dark_edition}ability{} by adjusting {C:dark_edition}Loyalty{}.",
+          "{C:dark_edition}Loyalty{} cannot go below 0.",
+        }
+      },
 			mf_halted = {
 				name = "Halted",
 				text = {
 					"Cannot gain any more {C:attention}Rounds{}"
+				},
+			},
+			mf_heavy = {
+				name = "Heavy",
+				text = {
+				  "-1 {C:red}Discard{} selection limit"
+				},
+			},
+			mf_potato = {
+				name = "Potato",
+				text = {
+				  "Must be sold first"
 				},
 			},
     },
@@ -2202,9 +2401,11 @@ local loc_stuff = {
       k_noted_ex = "Noted!",
       k_equals_tree_three = "=TREE(3)",
       k_correct_ex = "Correct!",
+      k_searched_ex = "Searched!",
+      k_forged_ex = "Forged!",
       
-      k_shape = "Shape?",
-      b_shape_cards = "Shape? Cards",
+      k_shape = "Shape",
+      b_shape_cards = "Shape Cards",
       
       k_rotarot = "45 Degree Rotated Tarot",
       b_rotarot_cards = "45 Degree Rotated Tarot Cards",
@@ -2264,6 +2465,8 @@ local loc_stuff = {
       colour = "Colour",
       shape = "Shape",
       mf_halted = "Halted",
+      mf_heavy = "Heavy",
+      mf_potato = "Potato",
     },
     achievement_names = {
       ach_mf_ten_colour_rounds = "10-ted",

@@ -1,3 +1,4 @@
+FLUFF = {}
 local current_mod = SMODS.current_mod
 MoreFluff = SMODS.current_mod
 
@@ -162,6 +163,8 @@ local joker_list = {
   "coupon_catalogue",
   "css",
   "cueball",
+  "dinner",
+  "forge",
   "flintandsteel",
   "gemstonejoker",
   "globe",
@@ -179,6 +182,7 @@ local joker_list = {
   "missingjoker",
   "paintcan",
   "passando",
+  "rosetinted",
   "sapling",
   "snake",
   "slotmachine",
@@ -191,7 +195,7 @@ local joker_list = {
   "thewayhome",
   "recycling",
   "virtual",
-  "wilddrawfour",
+  -- "wilddrawfour",
   "yuckyrat",
 
   -- rare
@@ -202,14 +206,15 @@ local joker_list = {
   "bowlingball",
   "cba",
   "complexitycreep",
+  "doubledscale",
   "fleshprison",
+  "grep",
   "hugejoker",
   "hyperjimbo",
   "jankman",
   "mashupalbum",
   "pixeljoker",
   "rainbowjoker",
-  "rosetinted",
   "the_solo",
   "top10",
   "widejoker",
@@ -217,9 +222,16 @@ local joker_list = {
   -- legendary!!
   "triangle",
   "marigold",
+
+  -- walkers
+  "mindsculptor",
+  "johnbalatro",
+  "trianglewalker",
   
   -- rare, but it goes last (Unless Cryptid...)
   "lessfluff",
+
+  "johnbalatrotrue",
 
   -- 1.3
   -- "selfinsert", -- cut this one for now (its not happening)
@@ -229,6 +241,7 @@ local joker_list = {
   -- "farmmergecivilisation", -- likewise
 
   -- tokens
+  "forgeslop",
   "oopsallfives",
 }
 
@@ -259,7 +272,9 @@ for _, v in ipairs(joker_list) do
   if not joker then
     goto continue
   end
-  joker.key = v
+  if not joker.key then
+    joker.key = v
+  end
   joker.atlas = "mf_jokers"
   if v == "hyperjimbo" then
     joker.atlas = "mf_hyperjimbo"
@@ -401,6 +416,13 @@ SMODS.Atlas({
   key = "mf_mv", 
   atlas_table = "ASSET_ATLAS", 
   path = "mf_mv.png", 
+  px = 71, 
+  py = 95 
+})
+SMODS.Atlas({ 
+  key = "mf_loyalty", 
+  atlas_table = "ASSET_ATLAS", 
+  path = "mf_loyalty.png", 
   px = 71, 
   py = 95 
 })
@@ -574,6 +596,12 @@ if mf_config["Other Packs"] then
   init_moddedpack = SMODS.load_file("other/moddedpack.lua")()
   init_moddedpack()
 end
+
+if not RudeBuster then
+  assert(SMODS.load_file("other/planeswalker.lua"))()
+end
+
+assert(SMODS.load_file("other/stakes.lua"))()
 
 -- add a way for these to be disabled
 if mf_config["45 Degree Rotated Tarot Cards"] then
@@ -853,9 +881,7 @@ function Back.apply_to_run(self)
     G.E_MANAGER:add_event(Event({
       func = function()
         for i = 1,5 do
-          local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_mf_philosophical', nil)
-          card:add_to_deck()
-          G.jokers:emplace(card)
+          SMODS.add_card{key="j_mf_philosophical", area=G.jokers}
         end
         return true
       end
@@ -1187,8 +1213,11 @@ local update_round_evalref = Game.update_round_eval
 function Game:update_round_eval(dt)
   update_round_evalref(self, dt)
   
-  for _, other_card in pairs(G.deck.cards) do
-    SMODS.debuff_card(other_card, false, "allicantdo")
+  if G.allicantdoundebuff then
+    for _, other_card in pairs(G.deck.cards) do
+      SMODS.debuff_card(other_card, false, "allicantdo")
+    end
+    G.allicantdoundebuff = nil
   end
 
   if G.missingjoker_revert then
@@ -1207,7 +1236,7 @@ end
 
 local old_g_funcs_check_for_buy_space = G.FUNCS.check_for_buy_space
 G.FUNCS.check_for_buy_space = function(card)
-  if card.ability.name == "Philosophical Joker" and card.ability.extra >= 1 then
+  if card.ability.name == "Philosophical Joker" and card.ability.card_limit >= 1 then
     return true
   end
   return old_g_funcs_check_for_buy_space(card)
@@ -1215,7 +1244,7 @@ end
 
 local old_g_funcs_can_select_card = G.FUNCS.can_select_card
 G.FUNCS.can_select_card = function(e)
-  if e.config.ref_table.ability.name == "Philosophical Joker" and e.config.ref_table.ability.extra >= 1 then 
+  if e.config.ref_table.ability.name == "Philosophical Joker" and e.config.ref_table.ability.card_limit >= 1 then 
     e.config.colour = G.C.GREEN
     e.config.button = 'use_card'
   else
@@ -1227,6 +1256,7 @@ local update_blind_selectref = Game.update_blind_select
 function Game:update_blind_select(dt)
   update_blind_selectref(self, dt)
   G.do_colour_end_of_round_stuff = true
+  G.allicantdoundebuff = true
 end
 
 -- config menu
@@ -1326,14 +1356,28 @@ local morefluffTabs = function() return {
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Multi / MVBit: Colour Cards', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'Multi', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
             }},
             {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
               {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
                 {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
-                  {n=G.UIT.T, config={text = 'Some Jokers by footlongdingledong', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                  {n=G.UIT.T, config={text = 'LFMoth', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'footlongdingledong', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
+                }},
+              }},
+            }},
+            {n=G.UIT.R, config={align = "tm", padding = 0}, nodes={
+              {n=G.UIT.C, config={align = "tl", padding = 0.05, minw = 2.5}, nodes={
+                {n=G.UIT.R, config={align = "cl", padding = 0}, nodes={
+                  {n=G.UIT.T, config={text = 'Ice', scale = text_scale*0.5, colour = G.C.UI.WHITE, shadow = true}},
                 }},
               }},
             }},
@@ -1389,6 +1433,10 @@ local mainmenuref2 = Game.main_menu
 Game.main_menu = function(change_context)
   G.mf_mv_spr = Sprite(
     0, 0, 71, 95, G.ASSET_ATLAS["mf_mv"], {x = 0, y = 0}
+  ) -- im dumb and stupide
+  
+  G.mf_loyalty_spr = Sprite(
+    0, 0, 71, 95, G.ASSET_ATLAS["mf_loyalty"], {x = 0, y = 0}
   ) -- im dumb and stupide
 
   if next(SMODS.find_mod("finity")) then
@@ -1470,7 +1518,8 @@ local title_screen_list = {
 local g_main_menu = Game.main_menu
 function Game:main_menu(change_context)
   local ret = g_main_menu(self, change_context)
-  local card_key = title_screen_list[math.floor(math.random() * #title_screen_list)]
+  math.randomseed(os.time()) -- Hm... does this break anything?
+  local card_key = title_screen_list[math.random(#title_screen_list)]
   local newcard = Card(
     G.title_top.T.x,
     G.title_top.T.y,
@@ -1517,4 +1566,11 @@ if Balatest then
   assert(SMODS.load_file("other/tests/colours.lua"))()
   assert(SMODS.load_file("other/tests/rotarots.lua"))()
   assert(SMODS.load_file("other/tests/superboss.lua"))()
+end
+
+-- Adding file loading to the end so it can be moved by Fluff
+if Blockbuster and Blockbuster.ValueManipulation then
+  -- Loads in the standards for Blockbuster Value Manipulation compatibility
+  assert(SMODS.load_file("other/compat_standard/morefluff.lua"))()
+  assert(SMODS.load_file("other/compat_standard/morefluff_scaling.lua"))()
 end

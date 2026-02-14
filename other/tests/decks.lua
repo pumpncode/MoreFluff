@@ -1,6 +1,5 @@
 Balatest.TestPlay {
   name = "gros_michel_deck",
-  requires = {},
   category = "decks",
   back = "Gros Michel Deck",
   execute = function()
@@ -13,7 +12,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "philosophical_deck",
-  requires = {},
   category = "decks",
   back = "Philosophical Deck",
   execute = function()
@@ -30,7 +28,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rainbow_deck",
-  requires = {},
   category = "decks",
   back = "Rainbow Deck",
   execute = function()
@@ -45,7 +42,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "blasphemous_deck",
-  requires = {},
   category = "decks",
   back = "Blasphemous Deck",
   execute = function()

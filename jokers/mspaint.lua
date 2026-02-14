@@ -29,6 +29,7 @@ local joker = {
     if context.first_hand_drawn and not context.blueprint and card.ability.h_size == 0 then
       card.ability.h_size = card.ability.h_size + card.ability.extra
       G.hand:change_size(card.ability.extra)
+      -- SMODS.draw_cards(card.ability.extra)
     end
     if context.after and not context.blueprint and card.ability.h_size ~= 0 and context.cardarea == G.jokers then
       G.hand:change_size(-card.ability.extra)

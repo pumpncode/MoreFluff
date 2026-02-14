@@ -1,100 +1,77 @@
-if not mf_config["John"] or Jen or not (Talisman and Big and Big.arrow) then
-  return nil
-end
-
-
-SMODS.Consumable {
-  key = "soul2",
-  set = "Spectral",
-
-  atlas = "mf_soul2",
-  pos = { x = 0, y = 0 },
-  soul_pos = { x = 1, y = 0 },
-
-  unlocked = true,
-  discovered = true,
-  no_collection = true,
-
-  hidden = {
-    soul_rate = 0.000000003,
-    can_repeat_soul = true,
-  },
-  
-  can_use = function(self, card)
-    return #G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers
-  end,
-  use = function(self, card, area, copier)
-    local used_tarot = copier or card
-    G.E_MANAGER:add_event(Event({
-      func = function() 
-        local n_card = create_card('Joker', G.jokers, nil, nil, nil, nil, "j_mf_johnbalatro", 'exp')
-        n_card:add_to_deck()
-        G.jokers:emplace(n_card)
-        n_card:start_materialize()
-        used_tarot:juice_up(0.3, 0.5)
-        return true
-      end}))   
-  end,
-}
-
-SMODS.Rarity {
-  key = "superlegendary",
-  loc_txt = {
-    name = "Superlegendary"
-  },
-  badge_colour = HEX("2852FF")
-}
-
 local joker = {
-  name = "John Balala",
   config = {
-    extra = {op=1,val=10,op_gain=2}
+    extra = {
+      loyalty = 1,
+      uses = 1,
+    }
   },
-  pos = {x = 0, y = 8},
-  soul_pos = {x = 5, y = 5},
-  rarity = "mf_superlegendary",
-  cost = 9999999,
+  pos = {x = 2, y=9},
+
+  rarity = 3,
+  cost = 10,
   unlocked = true,
   discovered = true,
   blueprint_compat = true,
   eternal_compat = true,
   perishable_compat = true,
-  demicoloncompat = true,
-  no_collection = true,
-  loc_txt = {
-    name = "{s:2}JOHN BALATRO",
-    text = {
-      "{X:dark_edition,C:white,s:2}#1##2#{} Mult",
-      "Multiply operator by {X:dark_edition,C:white,s:2}#3#{} at end of round",
-      "{C:red,s:2}Crashes the game{} if",
-      "removed from deck"
-    }
-  },
+  demicoloncompat = false,
+  
+  planeswalker = true,
+  planeswalker_costs = { 1, -11 },
+  default_loyalty_effects = true,
+  
+  pronouns = "she_her",
+  
   loc_vars = function(self, info_queue, center)
-    local op_string = "{"..center.ability.extra.op.."}"
-    if center.ability.extra.op <= 10 then
-      op_string = string.rep("^", center.ability.extra.op)
-    end
-    return {
-      vars = { op_string, center.ability.extra.val, center.ability.extra.op_gain }
-    }
+    info_queue[#info_queue+1] = { key = "planeswalker_explainer", set="Other", specific_vars = { 1 } }
   end,
   calculate = function(self, card, context)
-    if context.cardarea == G.jokers and context.joker_main then
-      return {
-        hypermult = { card.ability.extra.op, card.ability.extra.val }
-      }
-    end
-    if context.end_of_round and not context.individual and not context.blueprint and not context.repetition then
-      card.ability.extra.op = card.ability.extra.op * card.ability.extra.op_gain
-      return {
-        message = localize("k_upgrade_ex")
-      }
-    end
   end,
-	remove_from_deck = function(self, card, from_debuff)
-		G.crashthegame.lololol()
-	end
+
+  can_loyalty = function(card, idx)
+    if idx == 1 then
+      if #G.hand.highlighted ~= 5 then
+        return false
+      end
+      for _, o_card in pairs(G.hand.highlighted) do
+        if o_card.ability.perma_mult ~= 0 then
+          return false
+        end
+      end
+      return true
+    elseif idx == 2 then
+      return true
+    end
+    return false
+  end,
+
+  loyalty = function(card, idx)
+    if idx == 1 then
+      for i = 1, #G.hand.highlighted do
+        o_card = G.hand.highlighted[i]
+        o_card.ability.perma_mult = (o_card.ability.perma_mult or 0) + 4
+        local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+        G.E_MANAGER:add_event(Event({
+          trigger = 'after',
+          delay = 0.15,
+          func = function()
+            play_sound('multhit1', percent, 0.6); G.hand.highlighted[i]
+              :juice_up(
+                0.3, 0.3); return true
+          end
+        }))
+      end
+    elseif idx == 2 then
+      if Jen then
+        card:set_ability(G.P_CENTERS["j_mf_johnbalatro_super_ultra_mega_upgraded_deluxe"])
+      else
+        card:set_ability(G.P_CENTERS["j_mf_johnbalatrotrue"])
+      end
+      play_sound("mf_treethree")
+      card:juice_up()
+      G.jokers:unhighlight_all()
+    end
+  end
 }
 
 return joker

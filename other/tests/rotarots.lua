@@ -17,7 +17,6 @@ end
 
 Balatest.TestPlay {
   name = "rotarot_fool_nothingbefore",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_fool"},
   execute = function()
@@ -31,7 +30,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_fool_copies_colour",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_fool","c_mf_yellow"},
   execute = function()
@@ -48,7 +46,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_fool_copies_rotarot",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_fool","c_mf_rot_hermit"},
   execute = function()
@@ -65,7 +62,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_fool_copies_most_recent",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_fool","c_mf_rot_hermit","c_mf_yellow"},
   execute = function()
@@ -84,7 +80,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_magician_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_magician"},
   execute = function()
@@ -99,7 +94,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_magician_five",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_magician"},
   execute = function()
@@ -118,7 +112,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "yucky_rigged_off",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_magician"},
   execute = function()
@@ -134,7 +127,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "yucky_rigged_on",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_magician"},
   execute = function()
@@ -150,7 +142,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_high_priestess",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_high_priestess"},
   execute = function()
@@ -166,7 +157,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_high_priestess_one_left",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_high_priestess", "c_death"},
   execute = function()
@@ -182,7 +172,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_empress_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_empress"},
   execute = function()
@@ -197,7 +186,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_empress_two",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_empress"},
   execute = function()
@@ -213,7 +201,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cult_lv_1",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_empress"},
   execute = function()
@@ -228,7 +215,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cult_lv_4",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_empress","c_pluto","c_pluto","c_pluto"},
   execute = function()
@@ -246,7 +232,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_emperor",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_emperor"},
   execute = function()
@@ -262,7 +247,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_emperor_one_left",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_emperor", "c_death"},
   execute = function()
@@ -278,7 +262,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_heirophant_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_heirophant"},
   execute = function()
@@ -293,7 +276,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_heirophant_two",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_heirophant"},
   execute = function()
@@ -309,7 +291,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "monus_lv_1",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_heirophant"},
   execute = function()
@@ -324,7 +305,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "monus_lv_4",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_heirophant","c_pluto","c_pluto","c_pluto"},
   execute = function()
@@ -342,7 +322,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_lovers_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_lovers"},
   execute = function()
@@ -357,7 +336,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_lovers_two",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_lovers"},
   execute = function()
@@ -373,7 +351,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "styled_seal",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_lovers"},
 
@@ -394,7 +371,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_chariot",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_chariot"},
   execute = function()
@@ -409,7 +385,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "teal_xchips",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_chariot"},
   execute = function()
@@ -424,7 +399,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_justice",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_justice"},
   execute = function()
@@ -439,7 +413,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_brass_retriggers",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_justice"},
   execute = function()
@@ -454,7 +427,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_brass_destroy_rigged_off",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_justice"},
   execute = function()
@@ -470,7 +442,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_brass_destroy_rigged_on",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_justice"},
   execute = function()
@@ -486,7 +457,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hermit_zero",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hermit"},
   dollars = 0,
@@ -500,7 +470,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hermit_five",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hermit"},
   dollars = 5,
@@ -514,7 +483,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hermit_twenty_four",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hermit"},
   dollars = 24,
@@ -528,7 +496,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hermit_twenty_five",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hermit"},
   dollars = 25,
@@ -542,7 +509,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hermit_twenty_six",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hermit"},
   dollars = 26,
@@ -556,7 +522,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_wheel_off",
-  requires = {},
   category = "rotarot",
   jokers = {"j_joker"},
   consumeables = {"c_mf_rot_wheel"},
@@ -571,7 +536,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_wheel_on",
-  requires = {},
   category = "rotarot",
   jokers = {"j_joker"},
   consumeables = {"c_mf_rot_wheel"},
@@ -586,7 +550,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_strength_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_strength"},
   deck = { cards = { 
@@ -604,7 +567,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_strength_three",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_strength"},
   deck = { cards = { 
@@ -626,7 +588,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_hanged_man",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_hanged_man"},
   execute = function()
@@ -640,7 +601,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_death",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_death"},
   deck = { cards = { 
@@ -662,7 +622,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_temperance_joker",
-  requires = {},
   category = "rotarot",
   jokers = {"j_joker"},
   consumeables = {"c_mf_rot_temperance"},
@@ -678,7 +637,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_temperance_consumeable",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_temperance","c_mf_rot_temperance"},
   execute = function()
@@ -693,7 +651,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_temperance_many_things",
-  requires = {},
   category = "rotarot",
   jokers = {"j_joker","j_joker"},
   consumeables = {"c_mf_rot_temperance","c_mf_rot_temperance","c_mf_rot_temperance"},
@@ -712,7 +669,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_devil_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_devil"},
   execute = function()
@@ -727,7 +683,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_devil_three",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_devil"},
   execute = function()
@@ -744,7 +699,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "marigold_one",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_devil"},
   dollars = 0,
@@ -760,7 +714,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "marigold_three",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_devil"},
   dollars = 0,
@@ -776,7 +729,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_tower",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_tower"},
   execute = function()
@@ -791,7 +743,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "gemstone_money_and_chips",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_tower"},
   dollars = 0,
@@ -808,7 +759,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_star",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_star"},
   deck = { cards = { 
@@ -830,7 +780,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_moon",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_moon"},
   deck = { cards = { 
@@ -852,7 +801,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_sun",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_sun"},
   deck = { cards = { 
@@ -874,7 +822,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_judgement",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_judgement"},
   deck = { cards = { 
@@ -891,7 +838,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "rotarot_world",
-  requires = {},
   category = "rotarot",
   consumeables = {"c_mf_rot_world"},
   deck = { cards = { 

@@ -10,10 +10,10 @@ local joker = {
   config = {
     extra = {
       c_rounds = 0,
-      rounds = 9,
+      rounds = 6,
     }
   },
-  pos = {x = 0, y = 0},
+  pos = {x = 7, y = 8},
   rarity = 2,
   cost = 7,
   unlocked = true,
@@ -54,11 +54,29 @@ local joker = {
             play_sound("mf_treethree")
             G.GAME.mf_tree_three = true
             G.GAME.chips = G.GAME.blind.chips
-            G.GAME.blind:calculate()
-            if not context.forcetrigger then
-              G.GAME.blind:defeat()
-              G.STATE = G.STATES.NEW_ROUND
-              G.STATE_COMPLETE = false
+            -- snippet taken from Magic the Jokering
+            if not next(SMODS.find_mod("NotJustYet")) then
+              G.E_MANAGER:add_event(Event({
+              func = (function(t)
+                if G.GAME.chips >= G.GAME.blind.chips then 
+                G.E_MANAGER:add_event(
+                  Event({
+                    trigger = "immediate",
+                    func = function()
+                      if G.STATE ~= G.STATES.SELECTING_HAND then
+                        return false
+                      end
+                      G.STATE = G.STATES.HAND_PLAYED
+                      G.STATE_COMPLETE = true
+                      end_round()
+                      return true
+                    end,
+                  }),
+                  "other"
+                )
+              end
+              return true end)
+              }))
             end
           end
         end

@@ -17,7 +17,6 @@ end
 
 Balatest.TestPlay {
   name = "the_ticket",
-  requires = {},
   category = "superboss",
 
   blind = "bl_wheel", -- to increase ante
@@ -47,7 +46,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "violet_vessel_dx_size",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_violet_vessel_dx",
@@ -60,7 +58,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "cerulean_bell_dx_force_select",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_cerulean_bell_dx",
@@ -73,7 +70,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "needle_dx_hands_and_discards",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_needle_dx",
@@ -87,7 +83,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "manacle_dx_hand_size",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_manacle_dx",
@@ -100,7 +95,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "pillar_dx_debuff_rigged_on",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_pillar_dx",
@@ -122,7 +116,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "pillar_dx_debuff_rigged_off",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_pillar_dx",
@@ -144,7 +137,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "pillar_dx_tracks_debuff",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_pillar_dx",
@@ -165,7 +157,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "serpent_dx_redraw_blocked",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_serpent_dx",
@@ -194,7 +185,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "serpent_dx_redraw_when_empty",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_serpent_dx",
@@ -228,7 +218,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "club_dx_debuff",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_club_dx",
@@ -254,7 +243,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "goad_dx_debuff",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_goad_dx",
@@ -280,7 +268,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "window_dx_debuff",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_window_dx",
@@ -306,7 +293,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "head_dx_debuff",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_head_dx",
@@ -332,7 +318,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "arm_dx_from_lv1",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_arm_dx",
@@ -347,7 +332,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "arm_dx_from_lv4",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_arm_dx",
@@ -366,7 +350,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "wheel_dx_one_faceup",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_wheel_dx",
@@ -386,7 +369,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "wheel_dx_faceup_refresh",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_wheel_dx",
@@ -416,7 +398,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "house_dx_discards",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_house_dx",
@@ -445,7 +426,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "psychic_dx_four_cards",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_psychic_dx",
@@ -460,7 +440,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "psychic_dx_five_cards",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_psychic_dx",
@@ -475,7 +454,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "psychic_dx_five_cards_sneaky",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_psychic_dx",
@@ -490,7 +468,6 @@ Balatest.TestPlay {
 
 Balatest.TestPlay {
   name = "hook_dx_discards",
-  requires = {},
   category = "superboss",
 
   blind = "bl_mf_hook_dx",

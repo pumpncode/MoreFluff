@@ -27,7 +27,7 @@ local joker = {
     return {vars = { center.ability.val } }
   end,
   calculate = function(self, card, context)
-    if context.forcetrigger or (context.mf_before_cards and #G.play.cards == 4) then
+    if context.forcetrigger or (context.initial_scoring_step and #G.play.cards == 4) then
       if Talisman and Big and Big.arrow then
         return {
           eechips = card.ability.val

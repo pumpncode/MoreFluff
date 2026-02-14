@@ -5,15 +5,13 @@ priority = -1
 
 [[patches]]
 [patches.pattern]
-target = '''=[SMODS _ "src/game_object.lua"]'''
-pattern = """if G.buttons then G.buttons:remove(); G.buttons = nil end"""
+target = '''card.lua'''
+pattern = """if self.cost > 0 then """
 position = "before"
 payload = """
-if G.pack_cards and (not (G.GAME.STOP_USE and G.GAME.STOP_USE > 0)) and
-(G.STATE == G.STATES.SMODS_BOOSTER_OPENED or G.STATE == G.STATES.PLANET_PACK or G.STATE == G.STATES.STANDARD_PACK or G.STATE == G.STATES.BUFFOON_PACK or (G.hand  )) then 
-  if next(SMODS.find_card("j_mf_unpleasantcard")) then
-    G.FUNCS.skip_booster()
-  end
+if next(SMODS.find_card("j_mf_unpleasantcard")) then
+  self.ability.extra = 1
+  G.GAME.pack_choices = 1
 end"""
 overwrite = true
 match_indent = true

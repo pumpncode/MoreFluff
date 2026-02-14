@@ -66,14 +66,10 @@ local joker = {
       for _, v in pairs(context.full_hand) do
         if v ~= last_card then 
           destroyed_cards[#destroyed_cards + 1] = v
-          v:start_dissolve({HEX("57ecab")}, nil, 1.6)
-          v:remove_from_deck()
         end
       end
-      
-      for i = 1, #G.jokers.cards do
-        G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = destroyed_cards})
-      end
+
+      SMODS.destroy_cards(destroyed_cards)
 
       return {
         message = localize("k_merged_ex")
